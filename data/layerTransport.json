@@ -1,0 +1,17 @@
+{
+    "items": [
+        {
+            "name": "seaport-1",
+            "title": "Seaport One",
+            "type": "marker",
+            "options":
+                    {
+                        "lat": 40,
+                        "lng": 60,
+                        "icon": "seaport",
+                        "contentType": "hmtl",
+                        "content": "<p>This is some content referred to Seaport One"
+                    }
+        }
+    ]
+}

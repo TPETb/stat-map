@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta charset="UTF-8" />
+        <title>Stat map</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/main.css" type="text/css">
+        <link rel="stylesheet" href="css/leaflet.css" type="text/css">
+        <!--[if lte IE 8]>
+            <link rel="stylesheet" href="css/leaflet.ie.css" />
+        <![endif]-->
+
+        <script src="js/lib/jquery-1.10.2.min.js" type="text/javascript"></script>
+        <script src="js/lib/tv-lib.js" type="text/javascript"></script>
+        <script src="js/lib/leaflet.js" type="text/javascript"></script>
+
+        <script src="js/app/models/Layer.js" type="text/javascript"></script>
+        <script src="js/app/models/Layer/Item.js" type="text/javascript"></script>
+        <script src="js/app/models/Layer/Item/Raster.js" type="text/javascript"></script>
+        <script src="js/app/models/Layer/Item/Vector.js" type="text/javascript"></script>
+        <script src="js/app/models/Layer/Item/Marker.js" type="text/javascript"></script>
+        <script src="js/app/models/Service.js" type="text/javascript"></script>
+        <script src="js/app/models/Service/Remote.js" type="text/javascript"></script>
+        <script src="js/app/models/Service/Local.js" type="text/javascript"></script>
+        <script src="js/app/models/Statistics.js" type="text/javascript"></script>
+        <script src="js/app/models/Taxonomy.js" type="text/javascript"></script>
+
+        <script src="js/app/AppController.js" type="text/javascript"></script>
+        
+        <script src="js/app/AppView.js" type="text/javascript"></script>
+        <script src="js/app/views/MapView.js" type="text/javascript"></script>
+        <script src="js/app/views/UIView.js" type="text/javascript"></script>
+
+        <script src="js/main.js" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <div id="map"></div>
+        <div id="ui">
+            <div class="layers"></div>
+        </div>
+    </body>
+</html>

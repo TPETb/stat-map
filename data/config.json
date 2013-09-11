@@ -1,0 +1,52 @@
+{
+    "bounds": {
+        "southWest": {
+            "lat": 35.141090,
+            "lng": 52.441429
+        },
+        "northEast": {
+            "lat": 42.795551,
+            "lng": 66.684303
+        }
+    },
+    "view": {
+        "lat": 39,
+        "lng": 58.5
+    },
+    "tileProvider": "http://{s}.tile.cloudmade.com/d4fc77ea4a63471cab2423e66626cbb6/997/256/{z}/{x}/{y}.png",
+    "markers": {
+        "airport": {
+            "iconUrl": "images/leaf-green.png",
+            "iconRetinaUrl": "images/leaf-green@2x.png",
+            "iconSize": [38, 95],
+            "iconAnchor": [22, 94],
+            "shadowUrl": "images/leaf-shadow.png",
+            "shadowRetinaUrl": "images/leaf-shadow@2x.png",
+            "shadowSize": [50, 64],
+            "shadowAnchor": [4, 62],
+            "popupAnchor": [-3, -76]
+        },
+        "seaport": {
+            "iconUrl": "images/leaf-green.png",
+            "iconRetinaUrl": "images/leaf-green@2x.png",
+            "iconSize": [38, 95],
+            "iconAnchor": [22, 94],
+            "shadowUrl": "images/leaf-shadow.png",
+            "shadowRetinaUrl": "images/leaf-shadow@2x.png",
+            "shadowSize": [50, 64],
+            "shadowAnchor": [4, 62],
+            "popupAnchor": [-3, -76]
+        },
+        "museum": {
+            "iconUrl": "images/leaf-green.png",
+            "iconRetinaUrl": "images/leaf-green@2x.png",
+            "iconSize": [38, 95],
+            "iconAnchor": [22, 94],
+            "shadowUrl": "images/leaf-shadow.png",
+            "shadowRetinaUrl": "images/leaf-shadow@2x.png",
+            "shadowSize": [50, 64],
+            "shadowAnchor": [4, 62],
+            "popupAnchor": [-3, -76]
+        }
+    }
+}
