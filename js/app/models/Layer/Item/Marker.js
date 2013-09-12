@@ -30,17 +30,18 @@ layerIMP.init = function(options) {
  * @returns {some Leaflet Object}
  */
 layerIMP.getMapObject = function() {
+    var config = SM.App.getModel().getConfig();
     // Generate icon
     var icon = L.icon({
-        iconUrl: SM.config.markers[this.icon].iconUrl,
-        iconRetinaUrl: SM.config.markers[this.icon].iconRetinaUrl,
-        iconSize: SM.config.markers[this.icon].iconSize,
-        iconAnchor: SM.config.markers[this.icon].iconAnchor,
-        shadowUrl: SM.config.markers[this.icon].shadowUrl,
-        shadowRetinaUrl: SM.config.markers[this.icon].shadowRetinaUrl,
-        shadowSize: SM.config.markers[this.icon].shadowSize,
-        shadowAnchor: SM.config.markers[this.icon].shadowAnchor,
-        popupAnchor: SM.config.markers[this.icon].popupAnchor
+        iconUrl: config.markers[this.icon].iconUrl,
+        iconRetinaUrl: config.markers[this.icon].iconRetinaUrl,
+        iconSize: config.markers[this.icon].iconSize,
+        iconAnchor: config.markers[this.icon].iconAnchor,
+        shadowUrl: config.markers[this.icon].shadowUrl,
+        shadowRetinaUrl: config.markers[this.icon].shadowRetinaUrl,
+        shadowSize: config.markers[this.icon].shadowSize,
+        shadowAnchor: config.markers[this.icon].shadowAnchor,
+        popupAnchor: config.markers[this.icon].popupAnchor
     });
     var marker = L.marker([this.lat, this.lng], {icon: icon});
     

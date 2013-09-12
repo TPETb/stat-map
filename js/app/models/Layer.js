@@ -5,10 +5,11 @@ if (!SM) {
     var SM = {};
 }
 
-SM.Layer = function(layerItems) {
+SM.Layer = function(options) {
     this._items = [];
+    this._Name = options.name;
 
-    this.init(layerItems);
+    this.init();
 };
 
 layerP = SM.Layer.prototype;
@@ -26,8 +27,8 @@ layerP.init = function() {
  * @param {type} layerItems
  * @returns {undefined}
  */
-layerP.initItems = function(layerItems) {
-    $.each(layerItems, $.proxy(function(index, item) {
+layerP.addItems = function(itemsConfig) {
+    $.each(itemsConfig, $.proxy(function(index, item) {
         this._items.push(new SM.Layer_Item(item));
     }, this));
 };
@@ -43,4 +44,8 @@ layerP.getMapObjects = function () {
     }, this));
     
     return result;
+};
+
+layerP.getName = function () {
+    return this._Name;
 };
