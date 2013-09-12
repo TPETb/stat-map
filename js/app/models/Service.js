@@ -11,6 +11,9 @@ if (!SM) {
 SM.Service = function(driver, options) {
     this._driver = null;
 
+    this._Data = {};
+    this._Data.Statistics = {};
+
     this.init(driver);
 };
 
@@ -38,7 +41,7 @@ serviceP.setDriver = function(driver) {
  * @returns {object}
  */
 serviceP.configRetrieved = new TVL.Event();
-serviceP.requestConfig = function () {
+serviceP.requestConfig = function() {
     this._driver.configRetrieved.add(this._onConfigRetrieved, this);
     this._driver.requestConfig();
 };
@@ -55,7 +58,7 @@ serviceP.requestLayersList = function() {
     this._driver.layersListRetrieved.add(this._onLayersListRetrieved, this);
     this._driver.requestLayersList();
 };
-serviceP._onLayersListRetrieved = function (sender, data) {
+serviceP._onLayersListRetrieved = function(sender, data) {
     this.layersListRetrieved.fire(this, data);
 };
 
@@ -69,7 +72,7 @@ serviceP.requestLayerItems = function(layerName) {
     this._driver.layerItemsRetrieved.add(this._onLayerItemsRetrieved, this);
     this._driver.requestLayerItems(layerName);
 };
-serviceP._onLayerItemsRetrieved = function (sender, settings) {
+serviceP._onLayerItemsRetrieved = function(sender, settings) {
     this.layerItemsRetrieved.fire(this, settings);
 };
 
@@ -79,36 +82,44 @@ serviceP._onLayerItemsRetrieved = function (sender, settings) {
  * @returns {@pro;statisticsList@this._cache|array}
  */
 serviceP.regionsRetrieved = new TVL.Event();
-serviceP.requestRegions = function () {
+serviceP.requestRegions = function() {
     this._driver.regionsRetrieved.add(this._onRegionsRetrieved, this);
     this._driver.requestRegions();
 };
-serviceP._onRegionsRetrieved = function (sender, settings) {
+serviceP._onRegionsRetrieved = function(sender, settings) {
     this.regionsRetrieved.fire(this, settings);
 }
 
 /**
- * Returns list of statistics available to this map
- * @returns {array}
+ * retrieve statistics related data
+ * @returns {undefined}
  */
+serviceP.StatisticsListRetrieved = new TVL.Event();
+serviceP.requestStatisticsList = function() {
+    this._driver.StatisticsListRetrieved.add(this._OnStatisticsListRetrieved, this);
+    this._driver.requestStatisticsList();
+};
+serviceP._OnStatisticsListRetrieved = function(sender, settings) {
+    this._Data.StatisticsList = settings.data;
+    this.StatisticsListRetrieved.fire(this);
+};
 serviceP.getStatisticsList = function() {
-    if (!this._cache.statisticsList) {
-        this._cache.statisticsList = this._driver.getStatisticsList();
-    }
-    
-    return this._cache.statisticsList;
+    return this._Data.StatisticsList;
 };
 
 /**
- * Example limits object
- *  {
- *    period: {
- *        start: "some date presentation to be decided",
- *        finish: "some date presentation to be decided"
- *    },
- *    items: [1, 2, 3, 4]
- * }
- **/
-serviceP.getStatisticData = function(statisticName, limits) {
-    return this._driver.getStatisticData(statisticName, limits);
+ * retrieve statistics related data
+ * @returns {undefined}
+ */
+serviceP.StatisticRetrieved = new TVL.Event();
+serviceP.requestStatistic = function(statistic) {
+    this._driver.StatisticRetrieved.add(this._OnStatisticRetrieved, this);
+    this._driver.requestStatistic(statistic);
+};
+serviceP._OnStatisticRetrieved = function(sender, settings) {
+    this._Data.Statistics[settings.statistic.name] = settings.data;
+    this.StatisticRetrieved.fire(this, {"statistic": settings.statistic});
+};
+serviceP.getStatisticData = function(statistic) {
+    return this._Data.Statistics[statistic.name];
 };

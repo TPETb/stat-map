@@ -11,8 +11,10 @@ if (!SM) {
 SM.UIView = function(options) {
     this._config = {}; // Configuration
 
-    this._wrapper = $('#ui .layers');
-    this._container = null;
+    this._LayersControlWrapper = $('#ui .layers');
+    this._LayersControlContainer = null;
+    this._StatisticsControlWrapper = $('#ui .statistics-control');
+    this._StatisticsControlContainer = null;
 
     this._layers = {};
 
@@ -21,7 +23,7 @@ SM.UIView = function(options) {
     this.layerShowDemanded = new TVL.Event();
 
     // Statistics events
-    this.displayStatisticDemanded = new TVL.Event();
+    this.StatisticShowDemanded = new TVL.Event();
     this.hideStatisticDemanded = new TVL.Event();
 
     this.init(options);
@@ -35,8 +37,10 @@ var uiViewP = SM.UIView.prototype;
  * @returns {uiViewP}
  */
 uiViewP.init = function(options) {
-    this._container = $('<ul>');
-    this._container.appendTo(this._wrapper);
+    this._LayersControlContainer = $('<ul>');
+    this._LayersControlContainer.appendTo(this._LayersControlWrapper);
+    this._StatisticsControlContainer = $('<ul>');
+    this._StatisticsControlContainer.appendTo(this._LayersControlWrapper);
 
     return this;
 };
@@ -93,7 +97,7 @@ uiViewP.addLayer = function(layerConfig) {
             // add event listener right here as it is just DOM event
             .on('change', $.proxy(this._onLayerChange, this));
     item.find('span').text(layerConfig.title);
-    item.appendTo(this._container);
+    item.appendTo(this._LayersControlContainer);
 
     this._layers[layerConfig.name] = item;
 };
@@ -131,8 +135,26 @@ uiViewP.unforceLayer = function(layerName) {
 
 };
 
-uiViewP.setStatistics = function(statisticsConfig) {
+/**
+ * Add statistics control according to the statistics list passed
+ * @param {type} statisticsConfig
+ * @returns {undefined}
+ */
+uiViewP.setStatisticsList = function(statisticsConfig) {
+    $.each(statisticsConfig, $.proxy(function(index, statistic) {
+        item = $('<li><a href="#"></a></li>');
+        item.find('a').attr({
+        })
+                .text(statistic.title)
+                // add event listener right here as it is just DOM event
+                .on('click', $.proxy(this.OnStatisticControlItemClick, this, statistic));
+        item.appendTo(this._LayersControlContainer);
+    }, this));
+};
 
+uiViewP.OnStatisticControlItemClick = function (statistic, event) {
+    $(event.target).addClass('active');
+    this.StatisticShowDemanded.fire(this, {"statistic": statistic});
 };
 
 uiViewP = null;

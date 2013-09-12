@@ -18,8 +18,8 @@ SM.AppView = function(options) {
     this.layerShowDemanded = new TVL.Event();
 
     // Statistics events
-    this.displayStatisticDemanded = new TVL.Event();
-    this.hideStatisticDemanded = new TVL.Event();
+    this.StatisticShowDemanded = new TVL.Event();
+    this.StatisticHideDemanded = new TVL.Event();
 
     this.init(options);
 };
@@ -66,8 +66,18 @@ appViewP.setLayers = function(layersConfig) {
  * @param {type} regionsConfig
  * @returns {undefined}
  */
-appViewP.setRegions = function(regionsConfig) {
-    this._mapView.setRegions(regionsConfig);
+appViewP.setTaxonomy = function(taxonomyObjects) {
+    this._mapView.setTaxonomy(taxonomyObjects);
+};
+
+/**
+ * 
+ * @param {type} statisticsList
+ * @returns {undefined}
+ */
+appViewP.setStatisticsList = function (statisticsList) {
+    this._uiView.setStatisticsList(statisticsList);
+    this._mapView.setStatisticsList(statisticsList);
 };
 
 /**
@@ -77,6 +87,7 @@ appViewP.setRegions = function(regionsConfig) {
 appViewP._addEventListeners = function() {
     this._uiView.layerHideDemanded.add(this._onLayerHideDemanded, this);
     this._uiView.layerShowDemanded.add(this._onLayerShowDemanded, this);
+    this._uiView.StatisticShowDemanded.add(this._OnStatisticShowDemanded, this);
 };
 
 /**
@@ -90,4 +101,7 @@ appViewP._onLayerHideDemanded = function(sender, layerName) {
 };
 appViewP._onLayerShowDemanded = function(sender, layerName) {
     this.layerShowDemanded.fire(this, layerName);
+};
+appViewP._OnStatisticShowDemanded = function(sender, settings) {
+    this.StatisticShowDemanded.fire(this, settings);
 };

@@ -15,7 +15,8 @@ SM.Service_Remote = function(options) {
     this._options.regionsUrl = 'data/regions.php';
     this._options.layersListUrl = 'data/layersList.json';
     this._options.layerItemsUrl = 'data/layerTransport.json';
-    this._options.statisticsListUrl = 'data/layersList.json';
+    this._options.StatisticsListUrl = 'data/statistics.json';
+    this._options.StatisticUrl = 'data/statisticMonthlySalary.json?1';
 
     this.init(options);
 };
@@ -73,36 +74,50 @@ serviceRP._onLayerItemsRetrieved = function(layerName, data) {
     this.layerItemsRetrieved.fire(this, settings);
 };
 
-
+/**
+ * Retrieve regions
+ * @returns {undefined}
+ */
 serviceRP.regionsRetrieved = new TVL.Event();
-serviceRP.requestRegions = function () {
+serviceRP.requestRegions = function() {
     $.getJSON(this._options.regionsUrl).done($.proxy(this._onRegionsRetrieved, this));
 };
-serviceRP._onRegionsRetrieved = function (data) {
+serviceRP._onRegionsRetrieved = function(data) {
     this.regionsRetrieved.fire(this, data.items);
-}
+};
 
 /**
  * Returns list of statistics available to this map
  * @returns {array}
  */
-serviceRP.getStatisticsList = function() {
-    return $.getJSON(this._options.statisticsListUrl);
+serviceRP.StatisticsListRetrieved = new TVL.Event();
+serviceRP.requestStatisticsList = function() {
+    $.getJSON(this._options.StatisticsListUrl).done($.proxy(this._OnStatisticsListRetrieved, this));
+};
+serviceRP._OnStatisticsListRetrieved = function(data) {
+    this.StatisticsListRetrieved.fire(this, {"data": data.items});
 };
 
 /**
- * Example limits object
- *  {
- *    period: {
- *        start: "some date presentation to be decided",
- *        finish: "some date presentation to be decided"
- *    },
- *    items: [1, 2, 3, 4]
- * }
- **/
-serviceRP.getStatisticData = function(statisticName, limits) {
-    return this._driver.getStatisticData(statisticName, limits);
+ * Returns statistic
+ * @returns {array}
+ */
+serviceRP.StatisticRetrieved = new TVL.Event();
+serviceRP.requestStatistic = function(statisticName) {
+    $.getJSON(this._options.StatisticUrl)
+            .done($.proxy(this._OnStatisticRetrieved, this, statisticName))
+            .always($.proxy(function() {
+                console.log("Requested " + this._options.StatisticUrl);
+            }, this))
+            .fail($.proxy(function(jqXHR) {
+                console.log("But failed");
+                console.log(jqXHR.error());
+            }, this));
 };
+serviceRP._OnStatisticRetrieved = function(statistic, data) {
+    this.StatisticRetrieved.fire(this, {"data": data, "statistic": statistic});
+};
+
 
 /**
  * Purges the cache

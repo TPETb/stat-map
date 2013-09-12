@@ -13,6 +13,7 @@ SM.MapView = function(config) {
     this._config = {}; // Configuration
 
     this._container = $('#map');
+    this._TaxonomyObjectGroup = null;
 
     this._layers = {};
 
@@ -29,6 +30,7 @@ var mapViewP = SM.MapView.prototype;
 mapViewP.init = function() {
     this.resizeMapContainer($(window).width(), $(window).height());
     this._map = L.map(this._container.attr('id'));
+    this._TaxonomyObjectGroup = L.layerGroup();
 
     return this;
 };
@@ -64,19 +66,20 @@ mapViewP.setConfigValue = function(name, value) {
 
 /**
  * Add regions to map
- * @param {type} regionsConfig
+ * @param {type} regionObjects
  * @returns {undefined}
  */
-mapViewP.setRegions = function(regionsConfig) {
-    $.each(regionsConfig, $.proxy(function(index, regionConfig) {
-        poly = L.polygon(regionConfig.shape, {
-            color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.5,
-//            stroke: false
-        });
-        poly.addTo(this._map);
+mapViewP.setTaxonomy = function(taxonomyObjects) {
+    if (!taxonomyObjects)
+        return;
+    
+    this._TaxonomyObjectGroup.clearLayers();
+    
+    $.each(taxonomyObjects, $.proxy(function(index, taxonomyObject) {
+        this._TaxonomyObjectGroup.addLayer(taxonomyObject);
     }, this));
+    
+    this._TaxonomyObjectGroup.addTo(this._map); 
 };
 
 /**
@@ -108,11 +111,12 @@ mapViewP.addLayer = function(layerConfig) {
     SM.service.layerItemsRetrieved.add(this._onLayerItemsLoaded, this);
     SM.service.requestLayerItems(layerConfig.name);
 };
+
 mapViewP._onLayerItemsLoaded = function(sender, settings) {
     // Populate layer with items
     this._layers[settings.layerName].initItems(settings.items);
     var mapObjects = this._layers[settings.layerName].getMapObjects();
-    console.log(mapObjects);
+    
     for (var i = 0; i < mapObjects.length; i++) {
         mapObjects[i].addTo(this._map);
     }
@@ -130,7 +134,12 @@ mapViewP.removeLayer = function(layerName) {
 
 };
 
-mapViewP.setStatistics = function() {
+/**
+ * Add statistics control according to the statistics list passed
+ * @param {type} statisticsConfig
+ * @returns {undefined}
+ */
+mapViewP.setStatisticsList = function(statisticsConfig) {
 
 };
 

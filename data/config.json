@@ -48,5 +48,151 @@
             "shadowAnchor": [4, 62],
             "popupAnchor": [-3, -76]
         }
-    }
+    },
+    "rates": [
+        {
+            "value": 0,
+            "polyStyle": {
+                "fill": false,
+                "fillColor": null,
+                "fillOpacity": 0,
+                "stroke": true,
+                "color": "red",
+                "dashArray": "3, 2",
+                "weight": 2
+            }
+        },
+        {
+            "value": 1,
+            "polyStyle": {
+                "fill": true,
+                "fillColor": "#f00",
+                "fillOpacity": 1,
+                "stroke": false,
+                "color": "red",
+                "dashArray": "3, 2",
+                "weight": 2
+            }
+        },
+        {
+            "value": 2,
+            "polyStyle": {
+                "fill": true,
+                "fillColor": "#ff6a00",
+                "fillOpacity": 1,
+                "stroke": false,
+                "color": "red",
+                "dashArray": "3, 2",
+                "weight": 2
+            }
+        },
+        {
+            "value": 3,
+            "polyStyle": {
+                "fill": true,
+                "fillColor": "#ffd500",
+                "fillOpacity": 1,
+                "stroke": false,
+                "color": "red",
+                "dashArray": "3, 2",
+                "weight": 2
+            }
+        },
+        {
+            "value": 4,
+            "polyStyle": {
+                "fill": true,
+                "fillColor": "#bfff00",
+                "fillOpacity": 1,
+                "stroke": false,
+                "color": "red",
+                "dashArray": "3, 2",
+                "weight": 2
+            }
+        },
+        {
+            "value": 5,
+            "polyStyle": {
+                "fill": true,
+                "fillColor": "#5f0",
+                "fillOpacity": 1,
+                "stroke": false,
+                "color": "red",
+                "dashArray": "3, 2",
+                "weight": 2
+            }
+        },
+        {
+            "value": 6,
+            "polyStyle": {
+                "fill": true,
+                "fillColor": "#00ff15",
+                "fillOpacity": 1,
+                "stroke": false,
+                "color": "red",
+                "dashArray": "3, 2",
+                "weight": 2
+            }
+        },
+        {
+            "value": 7,
+            "polyStyle": {
+                "fill": true,
+                "fillColor": "#00ff80",
+                "fillOpacity": 1,
+                "stroke": false,
+                "color": "red",
+                "dashArray": "3, 2",
+                "weight": 2
+            }
+        },
+        {
+            "value": 8,
+            "polyStyle": {
+                "fill": true,
+                "fillColor": "#00ffea",
+                "fillOpacity": 1,
+                "stroke": false,
+                "color": "red",
+                "dashArray": "3, 2",
+                "weight": 2
+            }
+        },
+        {
+            "value": 9,
+            "polyStyle": {
+                "fill": true,
+                "fillColor": "#0af",
+                "fillOpacity": 1,
+                "stroke": false,
+                "color": "red",
+                "dashArray": "3, 2",
+                "weight": 2
+            }
+        },
+        {
+            "value": 10,
+            "polyStyle": {
+                "fill": true,
+                "fillColor": "#0040ff",
+                "fillOpacity": 1,
+                "stroke": false,
+                "color": "red",
+                "dashArray": "3, 2",
+                "weight": 2
+            }
+        },
+        {
+            "value": 11,
+            "polyStyle": {
+                "fill": true,
+                "fillColor": "#2a00ff",
+                "fillOpacity": 1,
+                "stroke": false,
+                "color": "red",
+                "dashArray": "3, 2",
+                "weight": 2
+            }
+        }
+    ]
 }
