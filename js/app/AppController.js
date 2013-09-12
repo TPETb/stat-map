@@ -96,7 +96,7 @@ appCtrlP._OnStatisticRetrieved = function (sender, settings) {
     // now we need to loop though available statistics in fact
     // but we will just fix first period for now
     // start loop
-    var statisticToDisplay = this._Statistic.periods[3];
+    var statisticToDisplay = this._Statistic.periods[0];
     this._Taxonomy.setStatisticValues(statisticToDisplay.values);
     
     this._View.setTaxonomy(this._Taxonomy.getMapObjects());
