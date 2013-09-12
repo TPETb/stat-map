@@ -13,6 +13,7 @@ SM.MapView = function (options) {
     this._map = {}; // Map container
 
     this._container = $('#map');
+    this._TaxonomyObjectGroup = null;
 
     this._Layers = [];
 
@@ -29,6 +30,7 @@ var mapViewP = SM.MapView.prototype;
 mapViewP.init = function () {
     this.resizeMapContainer($(window).width(), $(window).height());
     this._map = L.map(this._container.attr('id'));
+    this._TaxonomyObjectGroup = L.layerGroup();
 
     this._addEventListeners();
 };
@@ -78,6 +80,24 @@ mapViewP._onLayerItemsRetrieved = function (sender, layerName) {
 };
 
 /**
+ * Add regions to map
+ * @param {type} regionObjects
+ * @returns {undefined}
+ */
+mapViewP.setTaxonomy = function(taxonomyObjects) {
+    if (!taxonomyObjects)
+        return;
+    
+    this._TaxonomyObjectGroup.clearLayers();
+    
+    $.each(taxonomyObjects, $.proxy(function(index, taxonomyObject) {
+        this._TaxonomyObjectGroup.addLayer(taxonomyObject);
+    }, this));
+    
+    this._TaxonomyObjectGroup.addTo(this._map); 
+};
+
+/**
  * Warning!
  * "Layer" in next methods is not Leaflet Layer - it is informational layer!
  *
@@ -116,7 +136,12 @@ mapViewP.showLayer = function (layerName) {
 
 };
 
-mapViewP.removeLayers = function () {
+/**
+ * Add statistics control according to the statistics list passed
+ * @param {type} statisticsConfig
+ * @returns {undefined}
+ */
+mapViewP.setStatisticsList = function(statisticsConfig) {
 
 };
 

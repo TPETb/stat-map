@@ -45,6 +45,36 @@ appViewP.init = function() {
 appViewP._addEventListeners = function() {
     this._UIView.LayerHideDemanded.add(this._onLayerHideDemanded, this);
     this._UIView.LayerShowDemanded.add(this._onLayerShowDemanded, this);
+    this._UIView.StatisticShowDemanded.add(this._OnStatisticShowDemanded, this);
+};
+
+/**
+ * 
+ * @param {type} layersConfig
+ * @returns {undefined}
+ */
+appViewP.setLayers = function(layersConfig) {
+    this._mapView.setLayers(layersConfig);
+    this._uiView.setLayers(layersConfig);
+};
+
+/**
+ * 
+ * @param {type} regionsConfig
+ * @returns {undefined}
+ */
+appViewP.setTaxonomy = function(taxonomyObjects) {
+    this._mapView.setTaxonomy(taxonomyObjects);
+};
+
+/**
+ * 
+ * @param {type} statisticsList
+ * @returns {undefined}
+ */
+appViewP.setStatisticsList = function(statisticsList) {
+    this._uiView.setStatisticsList(statisticsList);
+    this._mapView.setStatisticsList(statisticsList);
 };
 
 /**
@@ -59,4 +89,8 @@ appViewP._onLayerHideDemanded = function(sender, layerName) {
 
 appViewP._onLayerShowDemanded = function(sender, layerName) {
     this.LayerShowDemanded.fire(this, layerName);
+};
+
+appViewP._OnStatisticShowDemanded = function(sender, settings) {
+    this.StatisticShowDemanded.fire(this, settings);
 };
