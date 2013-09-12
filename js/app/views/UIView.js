@@ -9,20 +9,18 @@ if (!SM) {
  * type: View class
  */
 SM.UIView = function(options) {
-    this._config = {}; // Configuration
+    this._Model = options.model;
 
-    this._wrapper = $('#ui .layers');
-    this._container = null;
-
-    this._layers = {};
+    this._DomNode = $('#ui .layers');
+    this._LayersContainer = null;
 
     // Layers events
-    this.layerHideDemanded = new TVL.Event();
-    this.layerShowDemanded = new TVL.Event();
+    this.LayerHideDemanded = new TVL.Event();
+    this.LayerShowDemanded = new TVL.Event();
 
     // Statistics events
-    this.displayStatisticDemanded = new TVL.Event();
-    this.hideStatisticDemanded = new TVL.Event();
+    this.ShowStatisticDemanded = new TVL.Event();
+    this.HideStatisticDemanded = new TVL.Event();
 
     this.init(options);
 };
@@ -35,47 +33,28 @@ var uiViewP = SM.UIView.prototype;
  * @returns {uiViewP}
  */
 uiViewP.init = function(options) {
-    this._container = $('<ul>');
-    this._container.appendTo(this._wrapper);
+    this._LayersContainer = $('<ul>');
+    this._LayersContainer.appendTo(this._DomNode);
 
-    return this;
+    this._addEventListeners();
 };
 
-/**
- * Loops though provided config and applies known values
- * @param {type} config
- * @returns {undefined}
- * @todo rework zoom value
- */
-uiViewP.setConfig = function(config) {
+uiViewP._addEventListeners = function () {
+    this._Model.LayersListRetrieved.add(this._onLayersListRetrieved, this);
 };
+uiViewP._onLayersListRetrieved = function () {
+    this.addLayersList(this._Model.getLayers());
+}
 
 /**
- * Somewhat alias to setConfig
- * @param {type} name
- * @param {type} value
- * @returns {undefined}
- */
-uiViewP.setConfigValue = function(name, value) {
-    this.setConfig({name: value});
-};
-
-/**
- * This method removes all Layers already present. Use it if you want to have whole new Layers list
- * 
+ *
  * @param {object} layers changed
  * @returns {undefined}
  */
-uiViewP.setLayers = function(layers) {
-    // remove layers if there are any
-    $.each(this._layers, $.proxy(function(index) {
-        this.removeLayer(index);
-    }, this));
-
-    // add layers
-    $.each(layers, $.proxy(function(index, layerConfig) {
-        this.addLayer(layerConfig);
-    }, this));
+uiViewP.addLayersList = function(layersConfig) {
+    for (var i = 0; i < layersConfig.length; i++) {
+        this.addLayersListItem(layersConfig[i]);
+    }
 };
 
 /**
@@ -83,19 +62,16 @@ uiViewP.setLayers = function(layers) {
  * @param {type} layerConfig
  * @returns {undefined}
  */
-uiViewP.addLayer = function(layerConfig) {
+uiViewP.addLayersListItem = function(layerConfig) {
     var item = $('<li><label><input type="checkbox"/><span></span></label></li>');
     item.find('input').attr({
         name: layerConfig.name,
         checked: layerConfig.active,
         disabled: layerConfig.forced
-    })
-            // add event listener right here as it is just DOM event
-            .on('change', $.proxy(this._onLayerChange, this));
-    item.find('span').text(layerConfig.title);
-    item.appendTo(this._container);
+    }).on('change', $.proxy(this._onLayerChange, this));
 
-    this._layers[layerConfig.name] = item;
+    item.find('span').text(layerConfig.title);
+    item.appendTo(this._LayersContainer);
 };
 
 /**
@@ -105,9 +81,9 @@ uiViewP.addLayer = function(layerConfig) {
  */
 uiViewP._onLayerChange = function(event) {
     if ($(event.target).is(':checked')) {
-        this.layerShowDemanded.fire(this, $(this).attr('name'));
+        this.LayerShowDemanded.fire(this, $(this).attr('name'));
     } else {
-        this.layerHideDemanded.fire(this, $(this).attr('name'));
+        this.LayerHideDemanded.fire(this, $(this).attr('name'));
     }
 };
 
@@ -119,7 +95,7 @@ uiViewP.showLayer = function(layerName) {
 
 };
 
-uiViewP.removeLayer = function(layerName) {
+uiViewP.removeLayers = function() {
 
 };
 
