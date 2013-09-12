@@ -73,6 +73,20 @@ serviceP._onLayerItemsRetrieved = function (sender, settings) {
     this.layerItemsRetrieved.fire(this, settings);
 };
 
+
+/**
+ * retrieve regions config
+ * @returns {@pro;statisticsList@this._cache|array}
+ */
+serviceP.regionsRetrieved = new TVL.Event();
+serviceP.requestRegions = function () {
+    this._driver.regionsRetrieved.add(this._onRegionsRetrieved, this);
+    this._driver.requestRegions();
+};
+serviceP._onRegionsRetrieved = function (sender, settings) {
+    this.regionsRetrieved.fire(this, settings);
+}
+
 /**
  * Returns list of statistics available to this map
  * @returns {array}

@@ -12,6 +12,7 @@ if (!SM) {
 SM.Service_Remote = function(options) {
     this._options = {};
     this._options.configUrl = 'data/config.json';
+    this._options.regionsUrl = 'data/regions.php';
     this._options.layersListUrl = 'data/layersList.json';
     this._options.layerItemsUrl = 'data/layerTransport.json';
     this._options.statisticsListUrl = 'data/layersList.json';
@@ -71,6 +72,15 @@ serviceRP._onLayerItemsRetrieved = function(layerName, data) {
     };
     this.layerItemsRetrieved.fire(this, settings);
 };
+
+
+serviceRP.regionsRetrieved = new TVL.Event();
+serviceRP.requestRegions = function () {
+    $.getJSON(this._options.regionsUrl).done($.proxy(this._onRegionsRetrieved, this));
+};
+serviceRP._onRegionsRetrieved = function (data) {
+    this.regionsRetrieved.fire(this, data.items);
+}
 
 /**
  * Returns list of statistics available to this map

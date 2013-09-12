@@ -63,6 +63,23 @@ mapViewP.setConfigValue = function(name, value) {
 };
 
 /**
+ * Add regions to map
+ * @param {type} regionsConfig
+ * @returns {undefined}
+ */
+mapViewP.setRegions = function(regionsConfig) {
+    $.each(regionsConfig, $.proxy(function(index, regionConfig) {
+        poly = L.polygon(regionConfig.shape, {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+//            stroke: false
+        });
+        poly.addTo(this._map);
+    }, this));
+};
+
+/**
  * Warning!
  * "Layer" in next methods is not Leaflet Layer - it is informational layer!
  * 

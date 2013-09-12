@@ -11,3 +11,7 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+/converter.php
+/calc.php
+/data/regions.php
+/assets/path.svg

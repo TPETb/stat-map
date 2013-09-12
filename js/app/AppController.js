@@ -44,10 +44,17 @@ appCtrlP._onConfigRetrieved = function(sender, config) {
     // good time to load layers
     this._service.layersListRetrieved.add(this._onLayersListRetrieved, this);
     this._service.requestLayersList();
+    // good time to load regions
+    this._service.regionsRetrieved.add(this._onRegionsRetrieved, this);
+    this._service.requestRegions();
 };
 
 appCtrlP._onLayersListRetrieved = function(sender, layersList) {
     this._View.setLayers(layersList);
+};
+
+appCtrlP._onRegionsRetrieved = function (sender, regionsConfig) {
+    this._View.setRegions(regionsConfig);
 };
 
 appCtrlP._addEventListeners = function() {

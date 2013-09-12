@@ -62,6 +62,15 @@ appViewP.setLayers = function(layersConfig) {
 };
 
 /**
+ * 
+ * @param {type} regionsConfig
+ * @returns {undefined}
+ */
+appViewP.setRegions = function(regionsConfig) {
+    this._mapView.setRegions(regionsConfig);
+};
+
+/**
  * List to view events
  * @returns {undefined}
  */
