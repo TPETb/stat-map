@@ -10,10 +10,10 @@ if (!SM) {
  */
 SM.MapView = function (options) {
     this._Model = options.model;
-    this._map = {}; // Map container
+    this._Map = {}; // Map container
 
     this._container = $('#Map');
-    this._TaxonomyObjectGroup = null;
+
 
     this._Layers = [];
 
@@ -29,8 +29,12 @@ var mapViewP = SM.MapView.prototype;
  */
 mapViewP.init = function () {
     this.resizeMapContainer($(window).width(), $(window).height());
-    this._map = L.map(this._container.attr('id'));
-    this._TaxonomyObjectGroup = L.layerGroup();
+
+    this._Map = L.map(this._container.attr('id'));
+    this._TaxonomyView = new SM.TaxonomyView({
+        model: this._Model,
+        map: this._Map
+    });
 
     this._addEventListeners();
 };
@@ -53,14 +57,14 @@ mapViewP._onConfigRetrieved = function () {
     var config = this._Model.getConfig();
 
     if (config.view) {
-        this._map.setView([config.view.lat, config.view.lng], 6);
+        this._Map.setView([config.view.lat, config.view.lng], 6);
     }
 
     if (config.tileProvider) {
         L.tileLayer(config.tileProvider, {
             attribution: '',
             maxZoom: 18
-        }).addTo(this._map);
+        }).addTo(this._Map);
     }
 };
 
@@ -75,7 +79,7 @@ mapViewP._onLayerItemsRetrieved = function (sender, layerName) {
 
     var mapObjects = layer.getMapObjects();
     for (var i = 0; i < mapObjects.length; i++) {
-        mapObjects[i].addTo(this._map);
+        mapObjects[i].addTo(this._Map);
     }
 };
 
@@ -84,18 +88,7 @@ mapViewP._onLayerItemsRetrieved = function (sender, layerName) {
  * @param {type} regionObjects
  * @returns {undefined}
  */
-mapViewP.setTaxonomy = function(taxonomyObjects) {
-    if (!taxonomyObjects)
-        return;
-    
-    this._TaxonomyObjectGroup.clearLayers();
-    
-    $.each(taxonomyObjects, $.proxy(function(index, taxonomyObject) {
-        this._TaxonomyObjectGroup.addLayer(taxonomyObject);
-    }, this));
-    
-    this._TaxonomyObjectGroup.addTo(this._map); 
-};
+
 
 /**
  * Warning!

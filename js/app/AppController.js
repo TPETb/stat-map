@@ -12,7 +12,7 @@ SM.AppController = function (options) {
     this._Model = null; // SM.AppModel instance
     this._View = null; // SM.AppView instance
 
-    this._Taxonomy = new SM.Taxonomy();
+
     this._Statistic = null;
     
     this.init(options);
@@ -40,11 +40,9 @@ appCtrlP._addEventListeners = function () {
     this._Model.ConfigRetrieved.add(this._onConfigRetrieved, this);
     this._Model.LayersListRetrieved.add(this._onLayersListRetrieved, this);
     
-    this._Model.RegionsRetrieved.add(this._onRegionsRetrieved, this);
-    
     this._View.LayerHideDemanded.add(this._onLayerHideDemanded, this);
     this._View.LayerShowDemanded.add(this._onLayerShowDemanded, this);
-    this._View.StatisticShowDemanded.add(this._OnStatisticShowDemanded, this);
+    this._View.StatisticShowDemanded.add(this._onStatisticShowDemanded, this);
 };
 
 appCtrlP._onConfigRetrieved = function (sender) {
@@ -55,13 +53,6 @@ appCtrlP._onConfigRetrieved = function (sender) {
 
 appCtrlP._onLayersListRetrieved = function (sender) {
     this._Model.requestLayersItems();
-};
-
-appCtrlP._onRegionsRetrieved = function (sender, regionsConfig) {
-    // init Taxonomy and pass object from it to view
-    this._Taxonomy.setRegions(regionsConfig);
-    
-    this._View.setTaxonomy(this._Taxonomy.getMapObjects());
 };
 
 appCtrlP._onLayerHideDemanded = function (sender, layerName) {
@@ -76,24 +67,8 @@ appCtrlP.getModel = function () {
     return this._Model;
 };
 
-appCtrlP._OnStatisticShowDemanded = function (sender, settings) {
-    // Load corresponding statistic data and pass it to view
-    this._Model.StatisticRetrieved.add(this._OnStatisticRetrieved, this, settings.statistic);
+appCtrlP._onStatisticShowDemanded = function (sender, settings) {
     this._Model.requestStatistic(settings.statistic);
-};
-
-appCtrlP._OnStatisticRetrieved = function (sender, settings) {
-    this._Statistic = this._Model.getStatisticData(settings.statistic);
-    this._Taxonomy.setStatisticOptions(this._Statistic);
-    
-    // now we need to loop though available statistics in fact
-    // but we will just fix first period for now
-    // start loop
-    var statisticToDisplay = this._Statistic.periods[0];
-    this._Taxonomy.setStatisticValues(statisticToDisplay.values);
-    
-    this._View.setTaxonomy(this._Taxonomy.getMapObjects());
-    // end loop
 };
 
 appCtrlP = null;

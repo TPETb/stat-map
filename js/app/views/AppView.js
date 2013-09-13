@@ -49,15 +49,6 @@ appViewP._addEventListeners = function() {
 };
 
 /**
- * 
- * @param {type} taxonomyObjects
- * @returns {undefined}
- */
-appViewP.setTaxonomy = function(taxonomyObjects) {
-    this._MapView.setTaxonomy(taxonomyObjects);
-};
-
-/**
  * React to child view events
  * @param {type} sender
  * @param {type} layerName
