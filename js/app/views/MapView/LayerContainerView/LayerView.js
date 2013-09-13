@@ -26,7 +26,7 @@ layerLVP.init = function () {
  * @returns {undefined}
  */
 layerLVP.addItems = function(itemsConfig) {
-    for (var i = 0; i < itemsConfig; i++) {
+    for (var i = 0; i < itemsConfig.length; i++) {
         switch (itemsConfig[i].type) {
             case 'marker':
                 this._Items.push(new SM.Layer_Item_MarkerView(itemsConfig[i].options));

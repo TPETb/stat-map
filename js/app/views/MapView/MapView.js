@@ -30,7 +30,8 @@ mapViewP.init = function () {
 
     this._Map = L.map(this._DomNode.attr('id'));
     this._LayerContainer = new SM.LayerContainerView({
-        model: this._Model
+        model: this._Model,
+        map: this._Map
     });
     this._TaxonomyView = new SM.TaxonomyView({
         model: this._Model,

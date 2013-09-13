@@ -7,6 +7,7 @@ if (!SM) {
 
 SM.LayerContainerView = function(options) {
     this._Model = options.model;
+    this._Map = options.map;
     this._Items = [];
 
     this.init();
