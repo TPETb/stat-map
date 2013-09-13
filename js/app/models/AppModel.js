@@ -170,4 +170,5 @@ appModelP.getStatisticData = function(statistic) {
     return this._Statistics[statistic.name];
 };
 
+
 appModelP = null;
