@@ -136,6 +136,13 @@ mapViewP.showLayer = function (layerName) {
 
 };
 
+mapViewP.removeLayers = function() {
+    for (var i = 0; i < this._Layers.length; i++) {
+        // remove layer from map
+    }
+    this._Layers = [];
+};
+
 /**
  * Add statistics control according to the statistics list passed
  * @param {type} statisticsConfig
