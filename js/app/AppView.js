@@ -50,31 +50,11 @@ appViewP._addEventListeners = function() {
 
 /**
  * 
- * @param {type} layersConfig
- * @returns {undefined}
- */
-appViewP.setLayers = function(layersConfig) {
-    this._MapView.setLayers(layersConfig);
-    this._UIView.setLayers(layersConfig);
-};
-
-/**
- * 
  * @param {type} taxonomyObjects
  * @returns {undefined}
  */
 appViewP.setTaxonomy = function(taxonomyObjects) {
     this._MapView.setTaxonomy(taxonomyObjects);
-};
-
-/**
- * 
- * @param {type} statisticsList
- * @returns {undefined}
- */
-appViewP.setStatisticsList = function(statisticsList) {
-    this._UIView.setStatisticsList(statisticsList);
-    this._MapView.setStatisticsList(statisticsList);
 };
 
 /**

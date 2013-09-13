@@ -12,7 +12,7 @@ SM.MapView = function (options) {
     this._Model = options.model;
     this._map = {}; // Map container
 
-    this._container = $('#map');
+    this._container = $('#Map');
     this._TaxonomyObjectGroup = null;
 
     this._Layers = [];

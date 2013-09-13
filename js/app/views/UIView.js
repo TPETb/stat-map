@@ -8,12 +8,13 @@ if (!SM) {
 /*
  * type: View class
  */
-SM.UIView = function(options) {
+SM.UIView = function (options) {
     this._Model = options.model;
 
-    this._DomNode = $('#ui');
-    this._LayersControlContainer = null;
-    this._StatisticsControlContainer = null;
+    this._ParentNode = $('body');
+    this._LayersList = null;
+    this._StatisticsBtn = null;
+    this._StatisticsMenu = null;
 
     this._layers = {};
 
@@ -35,50 +36,71 @@ var uiViewP = SM.UIView.prototype;
  * @param {type} config
  * @returns {uiViewP}
  */
-uiViewP.init = function(options) {
-    this._LayersControlContainer = $('<ul class="layers">');
-    this._DomNode.append(this._LayersControlContainer);
-    this._StatisticsControlContainer = $('<ul class="statistics-control">');
-    this._DomNode.append(this._StatisticsControlContainer);
-
+uiViewP.init = function (options) {
+    this._render();
     this._addEventListeners();
 };
 
-uiViewP._addEventListeners = function() {
-    this._Model.LayersListRetrieved.add(this._onLayersListRetrieved, this);
+uiViewP._render = function () {
+    this._LayersList = $('<ul id="LayersList">');
+    this._LayersList.menu();
+    this._ParentNode.append(this._LayersList);
+
+    this._StatisticsBtn = $('<button id="StatisticsBtn">Статистика</button>');
+    this._StatisticsBtn.button();
+    this._ParentNode.append(this._StatisticsBtn);
+
+    this._StatisticsMenu = $('<ul id="StatisticsMenu">');
+    this._StatisticsMenu.menu();
+    this._ParentNode.append(this._StatisticsMenu);
 };
 
-uiViewP._onLayersListRetrieved = function() {
-    this.addLayersList(this._Model.getLayers());
+uiViewP._addEventListeners = function () {
+    this._Model.LayersListRetrieved.add(this._onLayersListRetrieved, this);
+    this._Model.StatisticsListRetrieved.add(this._OnStatisticsListRetrieved, this);
+
+    //his._StatisticsBtn.on('click', $.proxy(this._onStatisticsBtnClick, this));
+};
+
+uiViewP._onLayersListRetrieved = function () {
+    this.addLayersListItems(this._Model.getLayers());
 }
 
-/**
- *
- * @param {object} layers changed
- * @returns {undefined}
- */
-uiViewP.addLayersList = function(layersConfig) {
-    for (var i = 0; i < layersConfig.length; i++) {
-        this.addLayersListItem(layersConfig[i]);
-    }
+uiViewP._OnStatisticsListRetrieved = function () {
+    this.addStatisticsMenuItems(this._Model.getStatisticsList());
 };
 
-/**
- * Adds layer to list of available layers
- * @param {type} layerConfig
- * @returns {undefined}
- */
-uiViewP.addLayersListItem = function(layerConfig) {
-    var item = $('<li><label><input type="checkbox"/><span></span></label></li>');
-    item.find('input').attr({
-        name: layerConfig.name,
-        checked: layerConfig.active,
-        disabled: layerConfig.forced
-    })
+uiViewP._onStatisticsBtnClick = function () {
+
+};
+
+uiViewP.addLayersListItems = function (layersConfig) {
+    for (var i = 0; i < layersConfig.length; i++) {
+        var item = $('<li><a href="#"><input type="checkbox"/><span></span></a></li>');
+        item.find('input').attr({
+            name: layersConfig[i].name,
+            checked: layersConfig[i].active,
+            disabled: layersConfig[i].forced
+        })
             // add event listener right here as it is just DOM event
             .on('change', $.proxy(this._onLayerChange, this));
-    item.find('span').text(layerConfig.title);
-    item.appendTo(this._LayersControlContainer);
+        item.find('span').text(layersConfig[i].title);
+        item.appendTo(this._LayersList);
+    }
+    this._LayersList.menu('refresh');
+};
+
+uiViewP.addStatisticsMenuItems = function (statisticsConfig) {
+    for (var i = 0; i < statisticsConfig.length; i++) {
+        var item = $('<li><a href="#"></a></li>');
+        item.find('a').attr({
+        })
+            .text(statisticsConfig[i].title)
+            // add event listener right here as it is just DOM event
+            .on('click', $.proxy(this._onStatisticMenuItemClick, this, statisticsConfig[i]));
+        item.appendTo(this._StatisticsMenu);
+    }
+    this._StatisticsMenu.menu('refresh');
 };
 
 /**
@@ -86,7 +108,7 @@ uiViewP.addLayersListItem = function(layerConfig) {
  * @param {type} input
  * @returns {undefined}
  */
-uiViewP._onLayerChange = function(event) {
+uiViewP._onLayerChange = function (event) {
     if ($(event.target).is(':checked')) {
         this.LayerShowDemanded.fire(this, $(this).attr('name'));
     } else {
@@ -94,44 +116,27 @@ uiViewP._onLayerChange = function(event) {
     }
 };
 
-uiViewP.hideLayer = function(layerName) {
+uiViewP.hideLayer = function (layerName) {
 
 };
 
-uiViewP.showLayer = function(layerName) {
+uiViewP.showLayer = function (layerName) {
 
 };
 
-uiViewP.removeLayers = function() {
+uiViewP.removeLayers = function () {
 
 };
 
-uiViewP.forceLayer = function(layerName) {
+uiViewP.forceLayer = function (layerName) {
 
 };
 
-uiViewP.unforceLayer = function(layerName) {
+uiViewP.unforceLayer = function (layerName) {
 
 };
 
-/**
- * Add statistics control according to the statistics list passed
- * @param {type} statisticsConfig
- * @returns {undefined}
- */
-uiViewP.setStatisticsList = function(statisticsConfig) {
-    $.each(statisticsConfig, $.proxy(function(index, statistic) {
-        item = $('<li><a href="#"></a></li>');
-        item.find('a').attr({
-        })
-                .text(statistic.title)
-                // add event listener right here as it is just DOM event
-                .on('click', $.proxy(this.OnStatisticControlItemClick, this, statistic));
-        item.appendTo(this._LayersControlContainer);
-    }, this));
-};
-
-uiViewP.OnStatisticControlItemClick = function(statistic, event) {
+uiViewP._onStatisticMenuItemClick = function (statistic, event) {
     $(event.target).addClass('active');
     this.StatisticShowDemanded.fire(this, {"statistic": statistic});
 };

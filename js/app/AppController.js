@@ -39,10 +39,8 @@ appCtrlP.init = function (options) {
 appCtrlP._addEventListeners = function () {
     this._Model.ConfigRetrieved.add(this._onConfigRetrieved, this);
     this._Model.LayersListRetrieved.add(this._onLayersListRetrieved, this);
-    this._Model.LayerItemsRetrieved.add(this._onLayerItemsRetrieved, this);
     
     this._Model.RegionsRetrieved.add(this._onRegionsRetrieved, this);
-    this._Model.StatisticsListRetrieved.add(this._OnStatisticsListRetrieved, this);
     
     this._View.LayerHideDemanded.add(this._onLayerHideDemanded, this);
     this._View.LayerShowDemanded.add(this._onLayerShowDemanded, this);
@@ -64,14 +62,6 @@ appCtrlP._onRegionsRetrieved = function (sender, regionsConfig) {
     this._Taxonomy.setRegions(regionsConfig);
     
     this._View.setTaxonomy(this._Taxonomy.getMapObjects());
-};
-
-appCtrlP._OnStatisticsListRetrieved = function() {
-    this._View.setStatisticsList(this._Model.getStatisticsList());
-};
-
-appCtrlP._onLayerItemsRetrieved = function (sender, layerName) {
-
 };
 
 appCtrlP._onLayerHideDemanded = function (sender, layerName) {
