@@ -57,9 +57,9 @@
                 "fillColor": null,
                 "fillOpacity": 0,
                 "stroke": true,
-                "color": "red",
-                "dashArray": "3, 2",
-                "weight": 2
+                "color": "gray",
+                "dashArray": "1, 2",
+                "weight": 1
             }
         },
         {
@@ -68,8 +68,8 @@
                 "fill": true,
                 "fillColor": "#f00",
                 "fillOpacity": 1,
-                "stroke": false,
-                "color": "red",
+                "stroke": true,
+                "color": "gray",
                 "dashArray": "3, 2",
                 "weight": 2
             }
@@ -80,8 +80,8 @@
                 "fill": true,
                 "fillColor": "#ff6a00",
                 "fillOpacity": 1,
-                "stroke": false,
-                "color": "red",
+                "stroke": true,
+                "color": "gray",
                 "dashArray": "3, 2",
                 "weight": 2
             }
@@ -92,8 +92,8 @@
                 "fill": true,
                 "fillColor": "#ffd500",
                 "fillOpacity": 1,
-                "stroke": false,
-                "color": "red",
+                "stroke": true,
+                "color": "gray",
                 "dashArray": "3, 2",
                 "weight": 2
             }
@@ -104,8 +104,8 @@
                 "fill": true,
                 "fillColor": "#bfff00",
                 "fillOpacity": 1,
-                "stroke": false,
-                "color": "red",
+                "stroke": true,
+                "color": "gray",
                 "dashArray": "3, 2",
                 "weight": 2
             }
@@ -116,8 +116,8 @@
                 "fill": true,
                 "fillColor": "#5f0",
                 "fillOpacity": 1,
-                "stroke": false,
-                "color": "red",
+                "stroke": true,
+                "color": "gray",
                 "dashArray": "3, 2",
                 "weight": 2
             }
@@ -128,8 +128,8 @@
                 "fill": true,
                 "fillColor": "#00ff15",
                 "fillOpacity": 1,
-                "stroke": false,
-                "color": "red",
+                "stroke": true,
+                "color": "gray",
                 "dashArray": "3, 2",
                 "weight": 2
             }
@@ -140,8 +140,8 @@
                 "fill": true,
                 "fillColor": "#00ff80",
                 "fillOpacity": 1,
-                "stroke": false,
-                "color": "red",
+                "stroke": true,
+                "color": "gray",
                 "dashArray": "3, 2",
                 "weight": 2
             }
@@ -152,8 +152,8 @@
                 "fill": true,
                 "fillColor": "#00ffea",
                 "fillOpacity": 1,
-                "stroke": false,
-                "color": "red",
+                "stroke": true,
+                "color": "gray",
                 "dashArray": "3, 2",
                 "weight": 2
             }
@@ -164,8 +164,8 @@
                 "fill": true,
                 "fillColor": "#0af",
                 "fillOpacity": 1,
-                "stroke": false,
-                "color": "red",
+                "stroke": true,
+                "color": "gray",
                 "dashArray": "3, 2",
                 "weight": 2
             }
@@ -176,8 +176,8 @@
                 "fill": true,
                 "fillColor": "#0040ff",
                 "fillOpacity": 1,
-                "stroke": false,
-                "color": "red",
+                "stroke": true,
+                "color": "gray",
                 "dashArray": "3, 2",
                 "weight": 2
             }
@@ -188,8 +188,8 @@
                 "fill": true,
                 "fillColor": "#2a00ff",
                 "fillOpacity": 1,
-                "stroke": false,
-                "color": "red",
+                "stroke": true,
+                "color": "gray",
                 "dashArray": "3, 2",
                 "weight": 2
             }
