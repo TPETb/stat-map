@@ -13,7 +13,6 @@ SM.Service_Remote = function() {
 
     this._configUrl = 'data/config.json';
     this._layersListUrl = 'data/layersList.json';
-    this._layerItemsUrl = 'data/layerTransport.json';
     this._regionsUrl = 'data/regions.json';
     this._statisticsListUrl = 'data/statistics.json';
     this._statisticUrl = 'data/statisticMonthlySalary.json';
@@ -65,10 +64,10 @@ serviceRP._onLayersListRetrieved = function(data) {
  * @returns {array}
  * @todo use single entru point for data instead of source attribute of layerConfig
  */
-serviceRP.requestLayerItems = function(layerName) {
-    $.getJSON(this._layerItemsUrl).done($.proxy(this._onLayerItemsRetrieved, this, layerName));
+serviceRP.requestLayerItems = function(layerUrl) {
+    $.getJSON(layerUrl).done($.proxy(this._onLayerItemsRetrieved, this));
 };
-serviceRP._onLayerItemsRetrieved = function(layerName, data) {
+serviceRP._onLayerItemsRetrieved = function(data) {
     this.LayerItemsRetrieved.fire(this, data);
 };
 

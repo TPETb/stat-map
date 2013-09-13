@@ -84,13 +84,13 @@ appModelP._onLayersListRetrieved = function (sender, data) {
  * @param {object} Layer config, one of retrieved from getLayersList
  * @returns {array}
  */
-appModelP.requestLayerItems = function (layerName) {
-    this._Service.requestLayerItems(layerName);
+appModelP.requestLayerItems = function (layerUrl) {
+    this._Service.requestLayerItems(layerUrl);
 };
 
 appModelP.requestLayersItems = function () {
     for (var i = 0; i < this._Layers.length; i++) {
-        this.requestLayerItems(this._Layers[i].name);
+        this.requestLayerItems(this._Layers[i].source);
     }
 };
 
@@ -103,7 +103,7 @@ appModelP._onLayerItemsRetrieved = function (sender, data) {
 };
 
 appModelP.getLayer = function (layerName) {
-    if (this._Layers.length < 0) return false;
+    if (this._Layers.length === 0) return false;
 
     for (var i = 0; i < this._Layers.length; i++) {
         if (this._Layers[i].name === layerName) {
