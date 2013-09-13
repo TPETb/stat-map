@@ -1,18 +1,18 @@
 {
     "items": [
         {
-            "name": "transport-sea",
-            "title": "Sea transport",
+            "name": "airports",
+            "title": "Аэропорты",
             "active": true,
             "forced": false,
-            "source": "data/layerTransport.json"
+            "source": "data/layerAirports.json"
         },
         {
-            "name": "transport-air",
-            "title": "Air transport",
+            "name": "seaports",
+            "title": "Морские порты",
             "active": true,
             "forced": false,
-            "source": "data/layerTransport.json"
+            "source": "data/layerSeaports.json"
         }
     ]
 }
