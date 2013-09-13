@@ -1,0 +1,19 @@
+{
+    "items": [
+        {
+            "name": "monthly-salary",
+            "title": "Среднемесячная заработная плата на средних и крупных предприятиях (% к соотв. периоду прошлого года)",
+            "source": "data/statisticMonthlySalary.json"
+        },
+        {
+            "name": "monthly-salary",
+            "title": "Среднемесячная заработная плата на средних и крупных предприятиях (% к соотв. периоду прошлого года)",
+            "source": "data/statisticMonthlySalary.json"
+        },
+        {
+            "name": "monthly-salary",
+            "title": "Среднемесячная заработная плата на средних и крупных предприятиях (% к соотв. периоду прошлого года)",
+            "source": "data/statisticMonthlySalary.json"
+        }
+    ]
+}

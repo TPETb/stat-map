@@ -1,0 +1,81 @@
+{
+    "name": "monthly-salari",
+    "title": "Среднемесячная заработная плата на средних и крупных предприятиях (% к соотв. периоду прошлого года)",
+    "units": "%",
+    "range": [
+        {"min": 91, "max": 95, "label": "From 91 to 95", "rate": 1},
+        {"min": 96, "max": 100, "label": "From 96 to 100", "rate": 2},
+        {"min": 101, "max": 105, "label": "From 101 to 105", "rate": 3},
+        {"min": 106, "max": 110, "label": "From 106 to 110", "rate": 4},
+        {"min": 111, "max": 115, "label": "From 111 to 115", "rate": 5},
+        {"min": 116, "max": 120, "label": "From 116 to 120", "rate": 6},
+        {"min": 121, "max": 125, "label": "From 121 to 125", "rate": 7},
+        {"min": 126, "max": 130, "label": "From 126 to 130", "rate": 8},
+        {"min": 131, "max": 135, "label": "From 131 to 135", "rate": 9},
+        {"min": 136, "max": 140, "label": "From 136 to 140", "rate": 10},
+        {"min": 141, "max": 145, "label": "From 141 to 145", "rate": 11},
+        {"min": 146, "max": 150, "label": "From 146 to 150", "rate": 12}
+    ],
+    "periods": [
+        {
+            "name": "period-1",
+            "title": "I кв 2011",
+            "values": [
+                {"object": "ashhabad", "value": 100.2},
+                {"object": "ahalskiy", "value": 111.2},
+                {"object": "balkanskiy", "value": 124.6},
+                {"object": "dashoguzskiy", "value": 130.9},
+                {"object": "lebapskiy", "value": 141.4},
+                {"object": "mariyskiy", "value": 116.5}
+            ]
+        },
+        {
+            "name": "period-2",
+            "title": "II кв 2011",
+            "values": [
+                {"object": "ashhabad", "value": 101.2},
+                {"object": "ahalskiy", "value": 101.2},
+                {"object": "balkanskiy", "value": 104.6},
+                {"object": "dashoguzskiy", "value": 100.9},
+                {"object": "lebapskiy", "value": 101.4},
+                {"object": "mariyskiy", "value": 101.5}
+            ]
+        },
+        {
+            "name": "period-3",
+            "title": "III кв 2011",
+            "values": [
+                {"object": "ashhabad", "value": 121.2},
+                {"object": "ahalskiy", "value": 121.2},
+                {"object": "balkanskiy", "value": 124.6},
+                {"object": "dashoguzskiy", "value": 120.9},
+                {"object": "lebapskiy", "value": 121.4},
+                {"object": "mariyskiy", "value": 121.5}
+            ]
+        },
+        {
+            "name": "period-4",
+            "title": "IV кв 2011",
+            "values": [
+                {"object": "ashhabad", "value": 131.2},
+                {"object": "ahalskiy", "value": 131.2},
+                {"object": "balkanskiy", "value": 134.6},
+                {"object": "dashoguzskiy", "value": 130.9},
+                {"object": "lebapskiy", "value": 131.4},
+                {"object": "mariyskiy", "value": 131.5}
+            ]
+        },
+        {
+            "name": "period-5",
+            "title": "I кв 2012",
+            "values": [
+                {"object": "ashhabad", "value": 141.2},
+                {"object": "ahalskiy", "value": 141.2},
+                {"object": "balkanskiy", "value": 144.6},
+                {"object": "dashoguzskiy", "value": 140.9},
+                {"object": "lebapskiy", "value": 141.4},
+                {"object": "mariyskiy", "value": 141.5}
+            ]
+        }
+    ]
+}
