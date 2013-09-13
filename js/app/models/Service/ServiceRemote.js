@@ -14,7 +14,9 @@ SM.Service_Remote = function() {
     this._configUrl = 'data/config.json';
     this._layersListUrl = 'data/layersList.json';
     this._layerItemsUrl = 'data/layerTransport.json';
-    this._statisticsListUrl = 'data/layersList.json';
+    this._regionsUrl = 'data/regions.php';
+    this._statisticsListUrl = 'data/statistics.json';
+    this._statisticUrl = 'data/statisticMonthlySalary.json';
 
     this.init();
 };
@@ -30,6 +32,9 @@ serviceRP.init = function() {
     this.ConfigRetrieved = new TVL.Event();
     this.LayersListRetrieved = new TVL.Event();
     this.LayerItemsRetrieved = new TVL.Event();
+    this.RegionsRetrieved = new TVL.Event();
+    this.StatisticsListRetrieved = new TVL.Event();
+    this.StatisticRetrieved = new TVL.Event();
 };
 
 /**
@@ -65,6 +70,45 @@ serviceRP.requestLayerItems = function(layerName) {
 };
 serviceRP._onLayerItemsRetrieved = function(layerName, data) {
     this.LayerItemsRetrieved.fire(this, data);
+};
+
+/**
+ * Retrieve regions
+ * @returns {undefined}
+ */
+
+serviceRP.requestRegions = function() {
+    $.getJSON(this._regionsUrl).done($.proxy(this._onRegionsRetrieved, this));
+};
+serviceRP._onRegionsRetrieved = function(data) {
+    this.RegionsRetrieved.fire(this, {"regions": data.items});
+};
+
+/**
+ * Returns list of statistics available to this map
+ * @returns {array}
+ */
+serviceRP.requestStatisticsList = function() {
+    $.getJSON(this._statisticsListUrl).done($.proxy(this._OnStatisticsListRetrieved, this));
+};
+serviceRP._OnStatisticsListRetrieved = function(data) {
+    this.StatisticsListRetrieved.fire(this, {"data": data.items});
+};
+
+/**
+ * Returns statistic
+ * @returns {array}
+ */
+serviceRP.requestStatistic = function(statisticName) {
+    $.getJSON(this._statisticUrl)
+            .done($.proxy(this._OnStatisticRetrieved, this, statisticName))
+            .fail($.proxy(function(jqXHR) {
+        console.log("failed request:");
+        console.log(jqXHR);
+    }, this));
+};
+serviceRP._OnStatisticRetrieved = function(statistic, data) {
+    this.StatisticRetrieved.fire(this, {"data": data, "statistic": statistic});
 };
 
 serviceRP = null;

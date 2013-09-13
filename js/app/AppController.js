@@ -46,6 +46,7 @@ appCtrlP._addEventListeners = function () {
     
     this._View.LayerHideDemanded.add(this._onLayerHideDemanded, this);
     this._View.LayerShowDemanded.add(this._onLayerShowDemanded, this);
+    this._View.StatisticShowDemanded.add(this._OnStatisticShowDemanded, this);
 };
 
 appCtrlP._onConfigRetrieved = function (sender) {
@@ -66,7 +67,7 @@ appCtrlP._onRegionsRetrieved = function (sender, regionsConfig) {
 };
 
 appCtrlP._OnStatisticsListRetrieved = function() {
-    this._View.setStatisticsList(this._service.getStatisticsList());
+    this._View.setStatisticsList(this._Model.getStatisticsList());
 };
 
 appCtrlP._onLayerItemsRetrieved = function (sender, layerName) {
@@ -87,12 +88,12 @@ appCtrlP.getModel = function () {
 
 appCtrlP._OnStatisticShowDemanded = function (sender, settings) {
     // Load corresponding statistic data and pass it to view
-    this._service.StatisticRetrieved.add(this._OnStatisticRetrieved, this, settings.statistic);
-    this._service.requestStatistic(settings.statistic);
+    this._Model.StatisticRetrieved.add(this._OnStatisticRetrieved, this, settings.statistic);
+    this._Model.requestStatistic(settings.statistic);
 };
 
 appCtrlP._OnStatisticRetrieved = function (sender, settings) {
-    this._Statistic = this._service.getStatisticData(settings.statistic);
+    this._Statistic = this._Model.getStatisticData(settings.statistic);
     this._Taxonomy.setStatisticOptions(this._Statistic);
     
     // now we need to loop though available statistics in fact
