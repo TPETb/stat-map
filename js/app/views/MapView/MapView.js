@@ -116,7 +116,7 @@ mapViewP.addLayers = function (layersConfig) {
 };
 
 mapViewP.addLayer = function (layerConfig) {
-    this._Layers.push(new SM.Layer(layerConfig));
+    this._Layers.push(new SM.LayerView(layerConfig));
 };
 
 mapViewP.getLayer = function (layerName) {

@@ -5,7 +5,7 @@ if (!SM) {
     var SM = {};
 }
 
-SM.Layer_Item_Marker = function(options) {
+SM.Layer_Item_MarkerView = function(options) {
     this.lat = null;
     this.lng = null;
     this.icon = null;
@@ -15,9 +15,9 @@ SM.Layer_Item_Marker = function(options) {
     this.init(options);
 };
 
-layerIMP = SM.Layer_Item_Marker.prototype;
+layerIMVP = SM.Layer_Item_MarkerView.prototype;
 
-layerIMP.init = function(options) {
+layerIMVP.init = function(options) {
     this.lat = options.lat;
     this.lng = options.lng;
     this.icon = options.icon;
@@ -29,7 +29,7 @@ layerIMP.init = function(options) {
  * Return object that can be added to Leaflet object
  * @returns {some Leaflet Object}
  */
-layerIMP.getMapObject = function() {
+layerIMVP.getMapObject = function() {
     var config = SM.App.getModel().getConfig();
     // Generate icon
     var icon = L.icon({

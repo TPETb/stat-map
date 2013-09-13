@@ -5,20 +5,20 @@ if (!SM) {
     var SM = {};
 }
 
-SM.Layer = function(options) {
+SM.LayerView = function(options) {
     this._items = [];
     this._Name = options.name;
 
     this.init();
 };
 
-layerP = SM.Layer.prototype;
+layerVP = SM.LayerView.prototype;
 
 /**
  * Constructor
  * @returns {undefined}
  */
-layerP.init = function() {
+layerVP.init = function() {
 
 };
 
@@ -27,9 +27,9 @@ layerP.init = function() {
  * @param {type} layerItems
  * @returns {undefined}
  */
-layerP.addItems = function(itemsConfig) {
+layerVP.addItems = function(itemsConfig) {
     $.each(itemsConfig, $.proxy(function(index, item) {
-        this._items.push(new SM.Layer_Item(item));
+        this._items.push(new SM.Layer_ItemView(item));
     }, this));
 };
 
@@ -37,7 +37,7 @@ layerP.addItems = function(itemsConfig) {
  * Returns Leaflet objects that can be added to map
  * @returns {undefined}
  */
-layerP.getMapObjects = function () {
+layerVP.getMapObjects = function () {
     var result = [];
     $.each(this._items, $.proxy(function(index, item){
         result.push(item.getMapObject());
@@ -46,6 +46,6 @@ layerP.getMapObjects = function () {
     return result;
 };
 
-layerP.getName = function () {
+layerVP.getName = function () {
     return this._Name;
 };

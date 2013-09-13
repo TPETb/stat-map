@@ -1,8 +1,15 @@
 {
     "items": [
         {
-            "name": "transport",
-            "title": "Transport",
+            "name": "transport-sea",
+            "title": "Sea transport",
+            "active": true,
+            "forced": false,
+            "source": "data/layerTransport.json"
+        },
+        {
+            "name": "transport-air",
+            "title": "Air transport",
             "active": true,
             "forced": false,
             "source": "data/layerTransport.json"

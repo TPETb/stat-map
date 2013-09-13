@@ -94,8 +94,7 @@ uiViewP.addLayersMenuItems = function (layersConfig) {
 uiViewP.addStatisticsMenuItems = function (statisticsConfig) {
     for (var i = 0; i < statisticsConfig.length; i++) {
         var item = $('<li><a href="#"></a></li>');
-        item.find('a').attr({
-        })
+        item.find('a').attr({ })
             .text(statisticsConfig[i].title)
             // add event listener right here as it is just DOM event
             .on('click', $.proxy(this._onStatisticMenuItemClick, this, statisticsConfig[i]));
