@@ -129,4 +129,5 @@ appModelP.getStatisticData = function (statisticName, limits) {
     return this._Service.getStatisticData(statisticName, limits);
 };
 
+
 appModelP = null;
