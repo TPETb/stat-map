@@ -1,17 +1,12 @@
 {
     "items": [
         {
-            "name": "monthly-salary",
-            "title": "Среднемесячная заработная плата на средних и крупных предприятиях (% к соотв. периоду прошлого года)",
-            "source": "data/statisticMonthlySalary.json"
+            "name": "ind1",
+            "title": "Розничный товарооборот с учетом оборота предприятий питания",
+            "source": "data/statisticMonthlyTurnover.json"
         },
         {
-            "name": "monthly-salary",
-            "title": "Среднемесячная заработная плата на средних и крупных предприятиях (% к соотв. периоду прошлого года)",
-            "source": "data/statisticMonthlySalary.json"
-        },
-        {
-            "name": "monthly-salary",
+            "name": "ind12",
             "title": "Среднемесячная заработная плата на средних и крупных предприятиях (% к соотв. периоду прошлого года)",
             "source": "data/statisticMonthlySalary.json"
         }
