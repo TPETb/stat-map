@@ -12,7 +12,7 @@ SM.UIView = function (options) {
     this._Model = options.model;
 
     this._ParentNode = $('body');
-    this._LayersList = null;
+    this._LayersMenu = null;
     this._StatisticsBtn = null;
     this._StatisticsMenu = null;
 
@@ -42,9 +42,9 @@ uiViewP.init = function (options) {
 };
 
 uiViewP._render = function () {
-    this._LayersList = $('<ul id="LayersList">');
-    this._LayersList.menu();
-    this._ParentNode.append(this._LayersList);
+    this._LayersMenu = $('<ul id="LayersMenu">');
+    this._LayersMenu.menu();
+    this._ParentNode.append(this._LayersMenu);
 
     this._StatisticsBtn = $('<button id="StatisticsBtn">Статистика</button>');
     this._StatisticsBtn.button();
@@ -53,17 +53,18 @@ uiViewP._render = function () {
     this._StatisticsMenu = $('<ul id="StatisticsMenu">');
     this._StatisticsMenu.menu();
     this._ParentNode.append(this._StatisticsMenu);
+    this._StatisticsMenu.hide();
 };
 
 uiViewP._addEventListeners = function () {
     this._Model.LayersListRetrieved.add(this._onLayersListRetrieved, this);
     this._Model.StatisticsListRetrieved.add(this._OnStatisticsListRetrieved, this);
 
-    //his._StatisticsBtn.on('click', $.proxy(this._onStatisticsBtnClick, this));
+    this._StatisticsBtn.on('click', $.proxy(this._onStatisticsBtnClick, this));
 };
 
 uiViewP._onLayersListRetrieved = function () {
-    this.addLayersListItems(this._Model.getLayers());
+    this.addLayersMenuItems(this._Model.getLayers());
 }
 
 uiViewP._OnStatisticsListRetrieved = function () {
@@ -71,10 +72,10 @@ uiViewP._OnStatisticsListRetrieved = function () {
 };
 
 uiViewP._onStatisticsBtnClick = function () {
-
+    this._StatisticsMenu.toggle();
 };
 
-uiViewP.addLayersListItems = function (layersConfig) {
+uiViewP.addLayersMenuItems = function (layersConfig) {
     for (var i = 0; i < layersConfig.length; i++) {
         var item = $('<li><a href="#"><input type="checkbox"/><span></span></a></li>');
         item.find('input').attr({
@@ -85,9 +86,9 @@ uiViewP.addLayersListItems = function (layersConfig) {
             // add event listener right here as it is just DOM event
             .on('change', $.proxy(this._onLayerChange, this));
         item.find('span').text(layersConfig[i].title);
-        item.appendTo(this._LayersList);
+        item.appendTo(this._LayersMenu);
     }
-    this._LayersList.menu('refresh');
+    this._LayersMenu.menu('refresh');
 };
 
 uiViewP.addStatisticsMenuItems = function (statisticsConfig) {
