@@ -9,20 +9,13 @@ if (!SM) {
  * Handles the retrieval of data
  */
 SM.AppModel = function () {
-    this._Service = new SM.Service_Remote();
-    
     this._Config = null;
     this._Layers = [];
-    this._Regions = [];
-    this._StatisticsList = [];
-    this._Statistics = [];
+    this._Service = new SM.Service_Remote();
 
     this.ConfigRetrieved = new TVL.Event();
     this.LayersListRetrieved = new TVL.Event();
     this.LayerItemsRetrieved = new TVL.Event();
-    this.RegionsRetrieved = new TVL.Event();
-    this.StatisticsListRetrieved = new TVL.Event();
-    this.StatisticRetrieved = new TVL.Event();
 
     this.init();
 };
@@ -123,51 +116,17 @@ appModelP.getConfig = function () {
 };
 
 /**
- * retrieve regions config
- * @returns {@pro;statisticsList@this._cache|array}
- */
-appModelP.requestRegions = function() {
-    this._Service.RegionsRetrieved.add(this._onRegionsRetrieved, this);
-    this._Service.requestRegions();
-};
-appModelP._onRegionsRetrieved = function(sender, settings) {
-    this._Regions = settings.regions;
-    this.RegionsRetrieved.fire(this);
-}
-appModelP.getRegions = function () {
-    return this._Regions;
-};
-
-/**
- * retrieve statistics related data
- * @returns {undefined}
- */
-appModelP.requestStatisticsList = function() {
-    this._Service.StatisticsListRetrieved.add(this._OnStatisticsListRetrieved, this);
-    this._Service.requestStatisticsList();
-};
-appModelP._OnStatisticsListRetrieved = function(sender, settings) {
-    this._StatisticsList = settings.data;
-    this.StatisticsListRetrieved.fire(this);
-};
-appModelP.getStatisticsList = function() {
-    return this._StatisticsList;
-};
-
-/**
- * retrieve statistics related data
- * @returns {undefined}
- */
-appModelP.requestStatistic = function(statistic) {
-    this._Service.StatisticRetrieved.add(this._OnStatisticRetrieved, this);
-    this._Service.requestStatistic(statistic);
-};
-appModelP._OnStatisticRetrieved = function(sender, settings) {
-    this._Statistics[settings.statistic.name] = settings.data;
-    this.StatisticRetrieved.fire(this, {"statistic": settings.statistic});
-};
-appModelP.getStatisticData = function(statistic) {
-    return this._Statistics[statistic.name];
+ * Example limits object
+ *  {
+ *    period: {
+ *        start: "some date presentation to be decided",
+ *        finish: "some date presentation to be decided"
+ *    },
+ *    items: [1, 2, 3, 4]
+ * }
+ **/
+appModelP.getStatisticData = function (statisticName, limits) {
+    return this._Service.getStatisticData(statisticName, limits);
 };
 
 appModelP = null;

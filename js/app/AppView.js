@@ -54,17 +54,17 @@ appViewP._addEventListeners = function() {
  * @returns {undefined}
  */
 appViewP.setLayers = function(layersConfig) {
-    this._MapView.setLayers(layersConfig);
-    this._UIView.setLayers(layersConfig);
+    this._mapView.setLayers(layersConfig);
+    this._uiView.setLayers(layersConfig);
 };
 
 /**
  * 
- * @param {type} taxonomyObjects
+ * @param {type} regionsConfig
  * @returns {undefined}
  */
 appViewP.setTaxonomy = function(taxonomyObjects) {
-    this._MapView.setTaxonomy(taxonomyObjects);
+    this._mapView.setTaxonomy(taxonomyObjects);
 };
 
 /**
@@ -73,8 +73,8 @@ appViewP.setTaxonomy = function(taxonomyObjects) {
  * @returns {undefined}
  */
 appViewP.setStatisticsList = function(statisticsList) {
-    this._UIView.setStatisticsList(statisticsList);
-    this._MapView.setStatisticsList(statisticsList);
+    this._uiView.setStatisticsList(statisticsList);
+    this._mapView.setStatisticsList(statisticsList);
 };
 
 /**
