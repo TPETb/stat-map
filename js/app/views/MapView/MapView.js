@@ -12,7 +12,7 @@ SM.MapView = function (options) {
     this._DomNode = $('#Map');
     this._Model = options.model;
     this._Map = {}; // Map container
-    this._LayerContainer = null;
+    this._LayerContainerView = null;
     this._TaxonomyView = null;
 
     this.init();
@@ -29,7 +29,7 @@ mapViewP.init = function () {
     this.resize($(window).width(), $(window).height());
 
     this._Map = L.map(this._DomNode.attr('id'));
-    this._LayerContainer = new SM.LayerContainerView({
+    this._LayerContainerView = new SM.LayerContainerView({
         model: this._Model,
         map: this._Map
     });
