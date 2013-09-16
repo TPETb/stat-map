@@ -9,13 +9,11 @@ if (!SM) {
  * type: View class
  */
 SM.MapView = function (options) {
+    this._DomNode = $('#Map');
     this._Model = options.model;
     this._Map = {}; // Map container
-
-    this._container = $('#Map');
-
-
-    this._Layers = [];
+    this._LayerContainerView = null;
+    this._TaxonomyView = null;
 
     this.init();
 };
@@ -28,9 +26,19 @@ var mapViewP = SM.MapView.prototype;
  * @returns {mapViewP}
  */
 mapViewP.init = function () {
-    this.resizeMapContainer($(window).width(), $(window).height());
+    this.resize($(window).width(), $(window).height());
 
-    this._Map = L.map(this._container.attr('id'));
+    this._Map = L.map(this._DomNode.attr('id'), {
+        maxZoom: 8,
+        maxBounds: [
+            [20, 37],
+            [57, 81]
+        ]
+    });
+    this._LayerContainerView = new SM.LayerContainerView({
+        model: this._Model,
+        map: this._Map
+    });
     this._TaxonomyView = new SM.TaxonomyView({
         model: this._Model,
         map: this._Map
@@ -41,10 +49,20 @@ mapViewP.init = function () {
 
 mapViewP._addEventListeners = function () {
     this._Model.ConfigRetrieved.add(this._onConfigRetrieved, this);
-    this._Model.LayersListRetrieved.add(this._onLayersListRetrieved, this);
-    this._Model.LayerItemsRetrieved.add(this._onLayerItemsRetrieved, this);
 
     $(window).on('resize', $.proxy(this._onViewportResize, this));
+};
+
+mapViewP.hideStatistic = function () {
+    this._TaxonomyView.resetStatistic();
+};
+
+mapViewP.showLayer = function (layerName) {
+    this._LayerContainerView.showLayer(layerName);
+};
+
+mapViewP.hideLayer = function (layerName) {
+    this._LayerContainerView.hideLayer(layerName);
 };
 
 /**
@@ -63,90 +81,10 @@ mapViewP._onConfigRetrieved = function () {
     if (config.tileProvider) {
         L.tileLayer(config.tileProvider, {
             attribution: '',
-            maxZoom: 18
+            maxZoom: 8,
+            minZoom: 5
         }).addTo(this._Map);
     }
-};
-
-mapViewP._onLayersListRetrieved = function (sender) {
-    this.addLayers(this._Model.getLayers());
-};
-
-mapViewP._onLayerItemsRetrieved = function (sender, layerName) {
-    // Populate layer with items
-    var layer = this.getLayer(layerName);
-    layer.addItems(this._Model.getLayer(layerName).items);
-
-    var mapObjects = layer.getMapObjects();
-    for (var i = 0; i < mapObjects.length; i++) {
-        mapObjects[i].addTo(this._Map);
-    }
-};
-
-/**
- * Add regions to map
- * @param {type} regionObjects
- * @returns {undefined}
- */
-
-
-/**
- * Warning!
- * "Layer" in next methods is not Leaflet Layer - it is informational layer!
- *
- * Warning!
- * This method removes all Layers already present. Use it if you want to have whole new Layers list
- *
- * @param {object} layers changed
- * @returns {undefined}
- */
-mapViewP.addLayers = function (layersConfig) {
-    this.removeLayers();
-
-    for (var i = 0; i < layersConfig.length; i++) {
-        this.addLayer(layersConfig[i]);
-    }
-};
-
-mapViewP.addLayer = function (layerConfig) {
-    this._Layers.push(new SM.LayerView(layerConfig));
-};
-
-mapViewP.getLayer = function (layerName) {
-    for (var i = 0; i < this._Layers.length; i++) {
-        if (this._Layers[i].getName() === layerName) {
-            return this._Layers[i];
-        }
-    }
-    return false;
-};
-
-mapViewP.hideLayer = function (layerName) {
-
-};
-
-mapViewP.showLayer = function (layerName) {
-
-};
-
-mapViewP.removeLayers = function() {
-    for (var i = 0; i < this._Layers.length; i++) {
-        // remove layer from map
-    }
-    this._Layers = [];
-};
-
-/**
- * Add statistics control according to the statistics list passed
- * @param {type} statisticsConfig
- * @returns {undefined}
- */
-mapViewP.setStatisticsList = function(statisticsConfig) {
-
-};
-
-mapViewP.setStatistics = function () {
-
 };
 
 mapViewP._calculateZoomRange = function () {
@@ -157,8 +95,8 @@ mapViewP._onViewportResize = function () {
     //this.resizeMap($(window).width(), $(window).height());
 };
 
-mapViewP.resizeMapContainer = function (width, height) {
-    this._container.width(width).height(height);
+mapViewP.resize = function (width, height) {
+    this._DomNode.width(width).height(height);
 };
 
 mapViewP._onResize = function () {

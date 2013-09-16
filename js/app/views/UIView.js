@@ -49,6 +49,10 @@ uiViewP._render = function () {
     this._StatisticsBtn = $('<button id="StatisticsBtn">Статистика</button>');
     this._StatisticsBtn.button();
     this._ParentNode.append(this._StatisticsBtn);
+    
+    this._StatisticsHideBtn = $('<button id="StatisticsHideBtn">Убрать статистику</button>');
+    this._StatisticsHideBtn.button();
+    this._ParentNode.append(this._StatisticsHideBtn);
 
     this._StatisticsMenu = $('<ul id="StatisticsMenu">');
     this._StatisticsMenu.menu();
@@ -61,6 +65,7 @@ uiViewP._addEventListeners = function () {
     this._Model.StatisticsListRetrieved.add(this._OnStatisticsListRetrieved, this);
 
     this._StatisticsBtn.on('click', $.proxy(this._onStatisticsBtnClick, this));
+    this._StatisticsHideBtn.on('click', $.proxy(this._onStatisticHideButtonClick, this));
 };
 
 uiViewP._onLayersListRetrieved = function () {
@@ -110,9 +115,9 @@ uiViewP.addStatisticsMenuItems = function (statisticsConfig) {
  */
 uiViewP._onLayerChange = function (event) {
     if ($(event.target).is(':checked')) {
-        this.LayerShowDemanded.fire(this, $(this).attr('name'));
+        this.LayerShowDemanded.fire(this, $(event.target).attr('name'));
     } else {
-        this.LayerHideDemanded.fire(this, $(this).attr('name'));
+        this.LayerHideDemanded.fire(this, $(event.target).attr('name'));
     }
 };
 
@@ -136,9 +141,18 @@ uiViewP.unforceLayer = function (layerName) {
 
 };
 
+uiViewP.hideStatistic = function () {
+    
+};
+
 uiViewP._onStatisticMenuItemClick = function (statistic, event) {
     $(event.target).addClass('active');
     this.StatisticShowDemanded.fire(this, {"statistic": statistic});
+    this._StatisticsMenu.toggle();
+};
+
+uiViewP._onStatisticHideButtonClick = function (event) {
+    this.StatisticHideDemanded.fire(this);
 };
 
 uiViewP = null;

@@ -43,6 +43,7 @@ appCtrlP._addEventListeners = function () {
     this._View.LayerHideDemanded.add(this._onLayerHideDemanded, this);
     this._View.LayerShowDemanded.add(this._onLayerShowDemanded, this);
     this._View.StatisticShowDemanded.add(this._onStatisticShowDemanded, this);
+    this._View.StatisticHideDemanded.add(this._onStatisticHideDemanded, this);
 };
 
 appCtrlP._onConfigRetrieved = function (sender) {
@@ -56,11 +57,11 @@ appCtrlP._onLayersListRetrieved = function (sender) {
 };
 
 appCtrlP._onLayerHideDemanded = function (sender, layerName) {
-    console.log(layerName + ' hide demanded');
+    this._View.hideLayer(layerName);
 };
 
 appCtrlP._onLayerShowDemanded = function (sender, layerName) {
-    console.log(layerName + ' show demanded');
+    this._View.showLayer(layerName);
 };
 
 appCtrlP.getModel = function () {
@@ -69,6 +70,10 @@ appCtrlP.getModel = function () {
 
 appCtrlP._onStatisticShowDemanded = function (sender, settings) {
     this._Model.requestStatistic(settings.statistic);
+};
+
+appCtrlP._onStatisticHideDemanded = function (sender) {
+    this._View.hideStatistic();
 };
 
 appCtrlP = null;

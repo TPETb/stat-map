@@ -15,6 +15,8 @@ SM.TaxonomyView = function(options) {
     this._StatisticOptions = {};
     this._StatisticValues = [];
     this._TaxonomyObjectGroup = null;
+    this._CurrentPeriod = -1;
+    this._TimedExecutioner = null;
 
     this.init();
 };
@@ -37,7 +39,7 @@ taxVP._addEventListeners = function () {
 };
 
 taxVP._onRegionsRetrieved = function (sender) {
-    this.addMapObjects(this._Model.getRegions());
+    this.setMapObjects(this._Model.getRegions());
 };
 
 taxVP._onStatisticRetrieved = function (sender, settings) {
@@ -47,18 +49,43 @@ taxVP._onStatisticRetrieved = function (sender, settings) {
     // now we need to loop though available statistics in fact
     // but we will just fix first period for now
     // start loop
-    var statisticToDisplay = this._Statistic.periods[0];
+    this._loopThroughStatisticPeriods();
+    // end loop
+};
+
+taxVP._showStatisticPeriod = function (period) {
+    var statisticToDisplay = this._Statistic.periods[period];
     this.setStatisticValues(statisticToDisplay.values);
 
-    this.addMapObjects(this._Model.getRegions());
-    // end loop
+    this.setMapObjects(this._Model.getRegions());
+};
+
+taxVP._showNextStatisticPeriod = function () {
+    this._CurrentPeriod ++;
+    if (this._CurrentPeriod >= this._Statistic.periods.length) {
+        this._CurrentPeriod = 0;
+    }
+    this._showStatisticPeriod(this._CurrentPeriod);
+};
+
+taxVP._loopThroughStatisticPeriods = function () {
+    clearInterval(this._TimedExecutioner);
+    this._CurrentPeriod = -1;
+    this._TimedExecutioner = setInterval($.proxy(this._showNextStatisticPeriod, this), 1000);
+};
+
+taxVP.resetStatistic = function () {
+    this.setStatisticValues(null);
+    this.setStatisticOptions(null);
+    clearInterval(this._TimedExecutioner);
+    this.setMapObjects(this._Model.getRegions());
 };
 
 /**
  * Returns array of Leaflet objects ready to add to map
  * @returns {undefined}
  */
-taxVP.addMapObjects = function(regionsConfig) {
+taxVP.setMapObjects = function(regionsConfig) {
     this._TaxonomyObjectGroup.clearLayers();
 
     for (var i = 0; i < regionsConfig.length; i++) {
