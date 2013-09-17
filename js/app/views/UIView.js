@@ -15,8 +15,10 @@ SM.UIView = function (options) {
     this._LayersMenu = null;
     this._StatisticsBtn = null;
     this._StatisticsMenu = null;
-
-    this._layers = {};
+    this._PeriodsBtn = null;
+    this._PeriodsMenu = null;
+    this._TableBtn = null;
+    this._TableMenu = null;
 
     // Layers events
     this.LayerHideDemanded = new TVL.Event();
@@ -58,6 +60,24 @@ uiViewP._render = function () {
     this._StatisticsMenu.menu();
     this._ParentNode.append(this._StatisticsMenu);
     this._StatisticsMenu.hide();
+
+    this._PeriodsBtn = $('<button id="PeriodsBtn">Периоды</button>');
+    this._PeriodsBtn.button();
+    this._ParentNode.append(this._PeriodsBtn);
+
+    this._PeriodsMenu = $('<ul id="PeriodsMenu">');
+    this._PeriodsMenu.menu();
+    this._ParentNode.append(this._PeriodsMenu);
+
+    this._TableBtn = $('<button id="TableBtn">Таблица</button>');
+    this._TableBtn.button();
+    this._ParentNode.append(this._TableBtn);
+
+    this._TableMenu = $('<ul id="TableMenu">');
+    this._TableMenu.menu();
+    this._ParentNode.append(this._TableMenu);
+
+
 };
 
 uiViewP._addEventListeners = function () {
