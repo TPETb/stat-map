@@ -68,8 +68,13 @@ appCtrlP.getModel = function () {
     return this._Model;
 };
 
-appCtrlP._onStatisticShowDemanded = function (sender, settings) {
-    this._Model.requestStatistic(settings.statistic);
+appCtrlP._onStatisticShowDemanded = function (sender, statisticName) {
+    if (!this._Model.getStatistic(statisticName).data) {
+        this._Model.requestStatistic(statisticName);
+    }
+    else {
+        this._View.getUIView().showStatistic(statisticName);
+    }
 };
 
 appCtrlP._onStatisticHideDemanded = function (sender) {

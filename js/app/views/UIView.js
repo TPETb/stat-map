@@ -56,12 +56,12 @@ uiViewP._render = function () {
     this._StatisticsShowBtn = $('<button id="StatisticsShowBtn">Статистика</button>');
     this._StatisticsShowBtn.button();
     this._ToolbarBottom.append(this._StatisticsShowBtn);
-    
+
     this._StatisticsHideBtn = $('<button id="StatisticsHideBtn">Убрать статистику</button>');
     this._StatisticsHideBtn.button();
     this._ToolbarBottom.append(this._StatisticsHideBtn);
 
-    this._StatisticsMenu = $('<ul id="StatisticsMenu">');
+    this._StatisticsMenu = $('<ul id="StatisticsMenu" class="menu-std">');
     this._StatisticsMenu.menu();
     this._ParentNode.append(this._StatisticsMenu);
     this._StatisticsMenu.hide();
@@ -71,7 +71,7 @@ uiViewP._render = function () {
     this._ToolbarBottom.append(this._PeriodsBtn);
     this._PeriodsBtn.hide();
 
-    this._PeriodsMenu = $('<ul id="PeriodsMenu">');
+    this._PeriodsMenu = $('<ul id="PeriodsMenu" class="menu-std">');
     this._PeriodsMenu.menu();
     this._ParentNode.append(this._PeriodsMenu);
     this._PeriodsMenu.hide();
@@ -91,13 +91,13 @@ uiViewP._render = function () {
 uiViewP._addEventListeners = function () {
     this._Model.LayersListRetrieved.add(this._onLayersListRetrieved, this);
     this._Model.StatisticsListRetrieved.add(this._onStatisticsListRetrieved, this);
+    this._Model.StatisticRetrieved.add(this._onStatisticRetrieved, this);
 
     this._StatisticsShowBtn.on('click', $.proxy(this._onStatisticsShowBtnClick, this));
     this._StatisticsHideBtn.on('click', $.proxy(this._onStatisticHideBtnClick, this));
     this._PeriodsBtn.on('click', $.proxy(this._onPeriodsBtnClick, this));
     this._TableBtn.on('click', $.proxy(this._onTableBtnClick, this));
 
-    this.StatisticShowDemanded.add(this._onStatisticShowDemanded, this);
     this.StatisticHideDemanded.add(this._onStatisticHideDemanded, this);
 };
 
@@ -110,11 +110,13 @@ uiViewP._onStatisticsListRetrieved = function () {
 };
 
 uiViewP._onStatisticsShowBtnClick = function () {
+    this._PeriodsMenu.hide();
     this._StatisticsMenu.toggle();
 };
 
 uiViewP._onPeriodsBtnClick = function () {
-
+    this._StatisticsMenu.hide();
+    this._PeriodsMenu.toggle();
 };
 
 uiViewP._onTableBtnClick = function () {
@@ -122,6 +124,7 @@ uiViewP._onTableBtnClick = function () {
 };
 
 uiViewP.addLayersMenuItems = function (layersConfig) {
+    this._LayersMenu.html('');
     for (var i = 0; i < layersConfig.length; i++) {
         var item = $('<li><a href="#"><input type="checkbox"/><span></span></a></li>');
         item.find('input').attr({
@@ -138,15 +141,33 @@ uiViewP.addLayersMenuItems = function (layersConfig) {
 };
 
 uiViewP.addStatisticsMenuItems = function (statisticsConfig) {
+    this._StatisticsMenu.html('');
     for (var i = 0; i < statisticsConfig.length; i++) {
         var item = $('<li><a href="#"></a></li>');
         item.find('a').attr({ })
             .text(statisticsConfig[i].title)
             // add event listener right here as it is just DOM event
-            .on('click', $.proxy(this._onStatisticMenuItemClick, this, statisticsConfig[i]));
+            .on('click', $.proxy(this._onStatisticMenuItemClick, this, statisticsConfig[i].name));
         item.appendTo(this._StatisticsMenu);
     }
     this._StatisticsMenu.menu('refresh');
+};
+
+uiViewP.addPeriodsMenuItems = function (periodsConfig) {
+    this._PeriodsMenu.html('');
+    for (var i = 0; i < periodsConfig.length; i++) {
+        var item = $('<li><a href="#"><input type="checkbox"/><span></span></a></li>');
+        item.find('input').attr({
+            name: periodsConfig[i].name,
+            checked: periodsConfig[i].active,
+            disabled: periodsConfig[i].forced
+        })
+            // add event listener right here as it is just DOM event
+            .on('change', $.proxy(this._onPeriodsChange, this));
+        item.find('span').text(periodsConfig[i].title);
+        item.appendTo(this._PeriodsMenu);
+    }
+    this._PeriodsMenu.menu('refresh');
 };
 
 /**
@@ -160,6 +181,10 @@ uiViewP._onLayerChange = function (event) {
     } else {
         this.LayerHideDemanded.fire(this, $(event.target).attr('name'));
     }
+};
+
+uiViewP._onPeriodsChange = function (event) {
+
 };
 
 uiViewP.hideLayer = function (layerName) {
@@ -183,20 +208,28 @@ uiViewP.unforceLayer = function (layerName) {
 };
 
 uiViewP.hideStatistic = function () {
-    
+
 };
 
-uiViewP._onStatisticMenuItemClick = function (statistic, event) {
+uiViewP._onStatisticRetrieved = function (sender, statisticName) {
+    this.showStatistic(statisticName);
+};
+
+uiViewP._onStatisticMenuItemClick = function (statisticName, event) {
+    this._StatisticsMenu.find('li.ui-menu-item a').each(function () {
+        $(this).removeClass('active');
+    });
     $(event.target).addClass('active');
-    this.StatisticShowDemanded.fire(this, {"statistic": statistic});
+    this.StatisticShowDemanded.fire(this, statisticName);
     this._StatisticsMenu.hide();
 };
 
-uiViewP._onStatisticShowDemanded = function () {
+uiViewP.showStatistic = function (statisticName) {
+    this.addPeriodsMenuItems(this._Model.getStatistic(statisticName).data.periods);
     this._PeriodsBtn.show();
 };
 
-uiViewP._onStatisticHideBtnClick = function (event) {
+uiViewP._onStatisticHideBtnClick = function () {
     this.StatisticHideDemanded.fire(this);
 };
 

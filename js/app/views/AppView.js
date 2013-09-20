@@ -45,8 +45,8 @@ appViewP.init = function() {
 appViewP._addEventListeners = function() {
     this._UIView.LayerHideDemanded.add(this._onLayerHideDemanded, this);
     this._UIView.LayerShowDemanded.add(this._onLayerShowDemanded, this);
-    this._UIView.StatisticShowDemanded.add(this._OnStatisticShowDemanded, this);
-    this._UIView.StatisticHideDemanded.add(this._OnStatisticHideDemanded, this);
+    this._UIView.StatisticShowDemanded.add(this._onStatisticShowDemanded, this);
+    this._UIView.StatisticHideDemanded.add(this._onStatisticHideDemanded, this);
 };
 
 appViewP.hideLayer = function (layerName) {
@@ -76,10 +76,14 @@ appViewP._onLayerShowDemanded = function(sender, layerName) {
     this.LayerShowDemanded.fire(this, layerName);
 };
 
-appViewP._OnStatisticShowDemanded = function(sender, settings) {
+appViewP._onStatisticShowDemanded = function(sender, settings) {
     this.StatisticShowDemanded.fire(this, settings);
 };
 
-appViewP._OnStatisticHideDemanded = function(sender) {
+appViewP._onStatisticHideDemanded = function(sender) {
     this.StatisticHideDemanded.fire(this);
+};
+
+appViewP.getUIView = function () {
+    return this._UIView;
 };

@@ -129,8 +129,8 @@ appModelP._onStatisticsListRetrieved = function(sender, settings) {
  * retrieve statistics related data
  * @returns {undefined}
  */
-appModelP.requestStatistic = function(statisticConfig) {
-    this._Service.requestStatistic(statisticConfig);
+appModelP.requestStatistic = function(statisticName) {
+    this._Service.requestStatistic(this.getStatistic(statisticName));
 };
 
 appModelP._onStatisticRetrieved = function(sender, data) {
