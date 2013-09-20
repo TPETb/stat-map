@@ -55,7 +55,7 @@ serviceRP.requestLayersList = function() {
     $.getJSON(this._layersListUrl).done($.proxy(this._onLayersListRetrieved, this));
 };
 serviceRP._onLayersListRetrieved = function(data) {
-    this.LayersListRetrieved.fire(this, data.items);
+    this.LayersListRetrieved.fire(this, data);
 };
 
 /**
@@ -80,7 +80,7 @@ serviceRP.requestRegions = function() {
     $.getJSON(this._regionsUrl).done($.proxy(this._onRegionsRetrieved, this));
 };
 serviceRP._onRegionsRetrieved = function(data) {
-    this.RegionsRetrieved.fire(this, {"regions": data.items});
+    this.RegionsRetrieved.fire(this, data);
 };
 
 /**
@@ -88,10 +88,10 @@ serviceRP._onRegionsRetrieved = function(data) {
  * @returns {array}
  */
 serviceRP.requestStatisticsList = function() {
-    $.getJSON(this._statisticsListUrl).done($.proxy(this._OnStatisticsListRetrieved, this));
+    $.getJSON(this._statisticsListUrl).done($.proxy(this._onStatisticsListRetrieved, this));
 };
-serviceRP._OnStatisticsListRetrieved = function(data) {
-    this.StatisticsListRetrieved.fire(this, {"data": data.items});
+serviceRP._onStatisticsListRetrieved = function(data) {
+    this.StatisticsListRetrieved.fire(this, data);
 };
 
 /**
@@ -100,14 +100,14 @@ serviceRP._OnStatisticsListRetrieved = function(data) {
  */
 serviceRP.requestStatistic = function(statisticConfig) {
     $.getJSON(statisticConfig.source)
-            .done($.proxy(this._OnStatisticRetrieved, this, statisticConfig))
+            .done($.proxy(this._onStatisticRetrieved, this))
             .fail($.proxy(function(jqXHR) {
         console.log("failed request:");
         console.log(jqXHR);
     }, this));
 };
-serviceRP._OnStatisticRetrieved = function(statistic, data) {
-    this.StatisticRetrieved.fire(this, {"data": data, "statistic": statistic});
+serviceRP._onStatisticRetrieved = function(data) {
+    this.StatisticRetrieved.fire(this, data);
 };
 
 serviceRP = null;

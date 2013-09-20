@@ -42,8 +42,8 @@ taxVP._onRegionsRetrieved = function (sender) {
     this.setMapObjects(this._Model.getRegions());
 };
 
-taxVP._onStatisticRetrieved = function (sender, settings) {
-    this._Statistic = this._Model.getStatisticData(settings.statistic);
+taxVP._onStatisticRetrieved = function (sender, statisticName) {
+    this._Statistic = this._Model.getStatistic(statisticName).data;
     this.setStatisticOptions(this._Statistic);
 
     // now we need to loop though available statistics in fact

@@ -14,7 +14,6 @@ SM.AppModel = function () {
     this._Config = null;
     this._Layers = [];
     this._Regions = [];
-    this._StatisticsList = [];
     this._Statistics = [];
 
     this.ConfigRetrieved = new TVL.Event();
@@ -41,6 +40,9 @@ appModelP._addEventListeners = function () {
     this._Service.ConfigRetrieved.add(this._onConfigRetrieved, this);
     this._Service.LayersListRetrieved.add(this._onLayersListRetrieved, this);
     this._Service.LayerItemsRetrieved.add(this._onLayerItemsRetrieved, this);
+    this._Service.StatisticsListRetrieved.add(this._onStatisticsListRetrieved, this);
+    this._Service.StatisticRetrieved.add(this._onStatisticRetrieved, this);
+    this._Service.RegionsRetrieved.add(this._onRegionsRetrieved, this);
 };
 
 /**
@@ -66,26 +68,17 @@ appModelP.requestLayersList = function () {
 
 appModelP._onLayersListRetrieved = function (sender, data) {
     if (this._Layers.length === 0) {
-        this._Layers = data;
+        this._Layers = data.items;
     }
     else {
-        for (var i = 0; i < data.length; i++) {
-            if (!this.getLayer(data[i].name)) {
-                this._Layers.push(data[i]);
+        for (var i = 0; i < data.items.length; i++) {
+            if (!this.getLayer(data.items[i].name)) {
+                this._Layers.push(data.items[i]);
             }
         }
     }
 
     this.LayersListRetrieved.fire(this);
-};
-
-/**
- * Returns array of layer contents
- * @param {object} Layer config, one of retrieved from getLayersList
- * @returns {array}
- */
-appModelP.requestLayerItems = function (layerUrl) {
-    this._Service.requestLayerItems(layerUrl);
 };
 
 appModelP.requestLayersItems = function () {
@@ -94,11 +87,57 @@ appModelP.requestLayersItems = function () {
     }
 };
 
+appModelP.requestLayerItems = function (layerUrl) {
+    this._Service.requestLayerItems(layerUrl);
+};
+
 appModelP._onLayerItemsRetrieved = function (sender, data) {
     var layer = this.getLayer(data.name);
     if (layer) {
         layer.items = data.items;
         this.LayerItemsRetrieved.fire(this, data.name);
+    }
+};
+
+/**
+ * retrieve regions config
+ * @returns {@pro;statisticsList@this._cache|array}
+ */
+appModelP.requestRegions = function() {
+    this._Service.requestRegions();
+};
+
+appModelP._onRegionsRetrieved = function(sender, settings) {
+    this._Regions = settings.items;
+    this.RegionsRetrieved.fire(this);
+};
+
+/**
+ * retrieve statistics related data
+ * @returns {undefined}
+ */
+appModelP.requestStatisticsList = function() {
+    this._Service.requestStatisticsList();
+};
+
+appModelP._onStatisticsListRetrieved = function(sender, settings) {
+    this._Statistics = settings.items;
+    this.StatisticsListRetrieved.fire(this);
+};
+
+/**
+ * retrieve statistics related data
+ * @returns {undefined}
+ */
+appModelP.requestStatistic = function(statisticConfig) {
+    this._Service.requestStatistic(statisticConfig);
+};
+
+appModelP._onStatisticRetrieved = function(sender, data) {
+    var statistic = this.getStatistic(data.name);
+    if (statistic) {
+        statistic.data = data;
+        this.StatisticRetrieved.fire(this, data.name);
     }
 };
 
@@ -122,53 +161,24 @@ appModelP.getConfig = function () {
     return this._Config;
 };
 
-/**
- * retrieve regions config
- * @returns {@pro;statisticsList@this._cache|array}
- */
-appModelP.requestRegions = function() {
-    this._Service.RegionsRetrieved.add(this._onRegionsRetrieved, this);
-    this._Service.requestRegions();
+appModelP.getStatistic = function (statisticName) {
+    if (this._Statistics.length === 0) return false;
+
+    for (var i = 0; i < this._Statistics.length; i++) {
+        if (this._Statistics[i].name === statisticName) {
+            return this._Statistics[i];
+        }
+    }
+
+    return false;
 };
-appModelP._onRegionsRetrieved = function(sender, settings) {
-    this._Regions = settings.regions;
-    this.RegionsRetrieved.fire(this);
-}
+
+appModelP.getStatistics = function() {
+    return this._Statistics;
+};
+
 appModelP.getRegions = function () {
     return this._Regions;
 };
-
-/**
- * retrieve statistics related data
- * @returns {undefined}
- */
-appModelP.requestStatisticsList = function() {
-    this._Service.StatisticsListRetrieved.add(this._OnStatisticsListRetrieved, this);
-    this._Service.requestStatisticsList();
-};
-appModelP._OnStatisticsListRetrieved = function(sender, settings) {
-    this._StatisticsList = settings.data;
-    this.StatisticsListRetrieved.fire(this);
-};
-appModelP.getStatisticsList = function() {
-    return this._StatisticsList;
-};
-
-/**
- * retrieve statistics related data
- * @returns {undefined}
- */
-appModelP.requestStatistic = function(statisticConfig) {
-    this._Service.StatisticRetrieved.add(this._OnStatisticRetrieved, this);
-    this._Service.requestStatistic(statisticConfig);
-};
-appModelP._OnStatisticRetrieved = function(sender, settings) {
-    this._Statistics[settings.statistic.name] = settings.data;
-    this.StatisticRetrieved.fire(this, {"statistic": settings.statistic});
-};
-appModelP.getStatisticData = function(statistic) {
-    return this._Statistics[statistic.name];
-};
-
 
 appModelP = null;
