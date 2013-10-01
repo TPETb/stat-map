@@ -87,3 +87,7 @@ appViewP._onStatisticHideDemanded = function(sender) {
 appViewP.getUIView = function () {
     return this._UIView;
 };
+
+appViewP.getMapView = function () {
+    return this._MapView;
+};

@@ -164,9 +164,20 @@ appModelP.getConfig = function () {
 appModelP.getStatistic = function (statisticName) {
     if (this._Statistics.length === 0) return false;
 
-    for (var i = 0; i < this._Statistics.length; i++) {
-        if (this._Statistics[i].name === statisticName) {
-            return this._Statistics[i];
+    var statistic = this._getStatistic(this._Statistics, statisticName);
+
+    return statistic;
+};
+
+appModelP._getStatistic = function (statisticArray, statisticName) {
+    for (var i = 0; i < statisticArray.length; i++) {
+        if (statisticArray[i].name === statisticName) {
+            return statisticArray[i];
+        }
+        else {
+            if (statisticArray[i].items) {
+                this._getStatistic(statisticArray[i].items, statisticName);
+            }
         }
     }
 

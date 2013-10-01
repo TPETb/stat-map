@@ -10,17 +10,15 @@ if (!SM) {
  */
 SM.UIView = function (options) {
     this._Model = options.model;
-    this._ParentNode = $('body');
 
-    this._ToolbarBottom = null;
+    this._Body = $('body');
+    this._ToolbarTop = $('#ToolbarTop');
+    this._ContentWrapper = $('#ContentWrapper');
 
     this._LayersMenu = null;
     this._StatisticsShowBtn = null;
+    this._StatisticsHideBtn = null;
     this._StatisticsMenu = null;
-    this._PeriodsBtn = null;
-    this._PeriodsMenu = null;
-    this._TableBtn = null;
-    this._TableMenu = null;
 
     // Layers events
     this.LayerHideDemanded = new TVL.Event();
@@ -46,46 +44,22 @@ uiViewP.init = function (options) {
 };
 
 uiViewP._render = function () {
-    this._ToolbarBottom = $('<div id="ToolbarBottom">');
-    this._ParentNode.append(this._ToolbarBottom);
-
     this._LayersMenu = $('<ul id="LayersMenu">');
     this._LayersMenu.menu();
-    this._ParentNode.append(this._LayersMenu);
+    this._Body.append(this._LayersMenu);
 
-    this._StatisticsShowBtn = $('<button id="StatisticsShowBtn">Статистика</button>');
-    this._StatisticsShowBtn.button();
-    this._ToolbarBottom.append(this._StatisticsShowBtn);
+    this._StatisticsShowBtn = $('<button type="button" class="btn btn-default" id="StatisticsShowBtn">Статистика</button>');
+    this._ToolbarTop.append(this._StatisticsShowBtn);
 
-    this._StatisticsHideBtn = $('<button id="StatisticsHideBtn">Убрать статистику</button>');
-    this._StatisticsHideBtn.button();
-    this._ToolbarBottom.append(this._StatisticsHideBtn);
+    this._StatisticsHideBtn = $('<button type="button" class="btn btn-default" id="StatisticsHideBtn">Убрать статистику</button>');
+    this._ToolbarTop.append(this._StatisticsHideBtn);
 
     this._StatisticsMenu = $('<ul id="StatisticsMenu" class="menu-std">');
     this._StatisticsMenu.menu();
-    this._ParentNode.append(this._StatisticsMenu);
+    this._ContentWrapper.append(this._StatisticsMenu);
     this._StatisticsMenu.hide();
 
-    this._PeriodsBtn = $('<button id="PeriodsBtn">Периоды</button>');
-    this._PeriodsBtn.button();
-    this._ToolbarBottom.append(this._PeriodsBtn);
-    this._PeriodsBtn.hide();
-
-    this._PeriodsMenu = $('<ul id="PeriodsMenu" class="menu-std">');
-    this._PeriodsMenu.menu();
-    this._ParentNode.append(this._PeriodsMenu);
-    this._PeriodsMenu.hide();
-
-    this._TableBtn = $('<button id="TableBtn">Таблица</button>');
-    this._TableBtn.button();
-    this._ToolbarBottom.append(this._TableBtn);
-    this._TableBtn.hide();
-
-    this._TableMenu = $('<ul id="TableMenu">');
-    this._TableMenu.menu();
-    this._ParentNode.append(this._TableMenu);
-    this._TableMenu.hide();
-
+    this._PeriodsView = new SM.PeriodsView({ model: this._Model });
 };
 
 uiViewP._addEventListeners = function () {
@@ -95,10 +69,9 @@ uiViewP._addEventListeners = function () {
 
     this._StatisticsShowBtn.on('click', $.proxy(this._onStatisticsShowBtnClick, this));
     this._StatisticsHideBtn.on('click', $.proxy(this._onStatisticHideBtnClick, this));
-    this._PeriodsBtn.on('click', $.proxy(this._onPeriodsBtnClick, this));
-    this._TableBtn.on('click', $.proxy(this._onTableBtnClick, this));
 
     this.StatisticHideDemanded.add(this._onStatisticHideDemanded, this);
+    this._PeriodsView.PeriodsShowDemanded.add(this._onPeriodsShowDemanded, this);
 };
 
 uiViewP._onLayersListRetrieved = function () {
@@ -110,17 +83,12 @@ uiViewP._onStatisticsListRetrieved = function () {
 };
 
 uiViewP._onStatisticsShowBtnClick = function () {
-    this._PeriodsMenu.hide();
+    this._PeriodsView.hide();
     this._StatisticsMenu.toggle();
 };
 
-uiViewP._onPeriodsBtnClick = function () {
+uiViewP._onPeriodsShowDemanded = function () {
     this._StatisticsMenu.hide();
-    this._PeriodsMenu.toggle();
-};
-
-uiViewP._onTableBtnClick = function () {
-
 };
 
 uiViewP.addLayersMenuItems = function (layersConfig) {
@@ -142,32 +110,31 @@ uiViewP.addLayersMenuItems = function (layersConfig) {
 
 uiViewP.addStatisticsMenuItems = function (statisticsConfig) {
     this._StatisticsMenu.html('');
-    for (var i = 0; i < statisticsConfig.length; i++) {
-        var item = $('<li><a href="#"></a></li>');
-        item.find('a').attr({ })
-            .text(statisticsConfig[i].title)
-            // add event listener right here as it is just DOM event
-            .on('click', $.proxy(this._onStatisticMenuItemClick, this, statisticsConfig[i].name));
-        item.appendTo(this._StatisticsMenu);
-    }
+
+    this._addStatisticsMenuItems(this._StatisticsMenu, statisticsConfig);
+
     this._StatisticsMenu.menu('refresh');
 };
 
-uiViewP.addPeriodsMenuItems = function (periodsConfig) {
-    this._PeriodsMenu.html('');
-    for (var i = 0; i < periodsConfig.length; i++) {
-        var item = $('<li><a href="#"><input type="checkbox"/><span></span></a></li>');
-        item.find('input').attr({
-            name: periodsConfig[i].name,
-            checked: periodsConfig[i].active,
-            disabled: periodsConfig[i].forced
-        })
-            // add event listener right here as it is just DOM event
-            .on('change', $.proxy(this._onPeriodsChange, this));
-        item.find('span').text(periodsConfig[i].title);
-        item.appendTo(this._PeriodsMenu);
+uiViewP._addStatisticsMenuItems = function (jNode, statisticsConfig) {
+    for (var i = 0; i < statisticsConfig.length; i++) {
+        if (statisticsConfig[i].items) {
+            var item = $('<li></li>');
+            var itemTitle = $('<a href="#">' + statisticsConfig[i].title + '</a>');
+            var subMenu = $('<ul></ul>');
+
+            itemTitle.appendTo(item);
+            subMenu.appendTo(item);
+            item.appendTo(jNode);
+
+            this._addStatisticsMenuItems(subMenu, statisticsConfig[i].items);
+        }
+        else {
+            var item = $('<li><a href="#">' + statisticsConfig[i].title + '</a></li>');
+            item.find('a').on('click', $.proxy(this._onStatisticMenuItemClick, this, statisticsConfig[i].name));
+            item.appendTo(jNode);
+        }
     }
-    this._PeriodsMenu.menu('refresh');
 };
 
 /**
@@ -183,10 +150,6 @@ uiViewP._onLayerChange = function (event) {
     }
 };
 
-uiViewP._onPeriodsChange = function (event) {
-
-};
-
 uiViewP.hideLayer = function (layerName) {
 
 };
@@ -199,20 +162,12 @@ uiViewP.removeLayers = function () {
 
 };
 
-uiViewP.forceLayer = function (layerName) {
-
-};
-
-uiViewP.unforceLayer = function (layerName) {
-
-};
-
 uiViewP.hideStatistic = function () {
 
 };
 
 uiViewP._onStatisticRetrieved = function (sender, statisticName) {
-    this.showStatistic(statisticName);
+    this._PeriodsView.showStatistic(statisticName);
 };
 
 uiViewP._onStatisticMenuItemClick = function (statisticName, event) {
@@ -224,17 +179,18 @@ uiViewP._onStatisticMenuItemClick = function (statisticName, event) {
     this._StatisticsMenu.hide();
 };
 
-uiViewP.showStatistic = function (statisticName) {
-    this.addPeriodsMenuItems(this._Model.getStatistic(statisticName).data.periods);
-    this._PeriodsBtn.show();
-};
-
 uiViewP._onStatisticHideBtnClick = function () {
+    this._StatisticsMenu.hide();
+    this._PeriodsView.hide();
     this.StatisticHideDemanded.fire(this);
 };
 
 uiViewP._onStatisticHideDemanded = function () {
-    this._PeriodsBtn.hide();
+    this._PeriodsView.hide();
+};
+
+uiViewP.getPeriodsView = function () {
+    return this._PeriodsView;
 };
 
 uiViewP = null;

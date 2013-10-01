@@ -43,6 +43,10 @@ taxVP._onRegionsRetrieved = function (sender) {
 };
 
 taxVP._onStatisticRetrieved = function (sender, statisticName) {
+    this.showStatistic(statisticName);
+};
+
+taxVP.showStatistic = function (statisticName) {
     this._Statistic = this._Model.getStatistic(statisticName).data;
     this.setStatisticOptions(this._Statistic);
 

@@ -11,9 +11,6 @@ if (!SM) {
 SM.AppController = function (options) {
     this._Model = null; // SM.AppModel instance
     this._View = null; // SM.AppView instance
-
-
-    this._Statistic = null;
     
     this.init(options);
 };
@@ -69,11 +66,13 @@ appCtrlP.getModel = function () {
 };
 
 appCtrlP._onStatisticShowDemanded = function (sender, statisticName) {
+    this._View.hideStatistic();
     if (!this._Model.getStatistic(statisticName).data) {
         this._Model.requestStatistic(statisticName);
     }
     else {
-        this._View.getUIView().showStatistic(statisticName);
+        this._View.getUIView().getPeriodsView().showStatistic(statisticName);
+        this._View.getMapView().getTaxonomyView().showStatistic(statisticName);
     }
 };
 
