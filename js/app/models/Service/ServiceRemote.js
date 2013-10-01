@@ -13,7 +13,7 @@ SM.Service_Remote = function() {
 
     this._configUrl = 'data/config.json';
     this._layersListUrl = 'data/layersList.json';
-    this._regionsUrl = 'data/regions.json';
+    this._regionsUrl = 'data/regions2.json';
     this._statisticsListUrl = 'data/statistics.json';
     this._statisticUrl = 'data/statisticMonthlySalary.json';
 
