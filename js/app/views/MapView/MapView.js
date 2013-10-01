@@ -103,4 +103,8 @@ mapViewP._onResize = function () {
     this._calculateZoomRange();
 };
 
+mapViewP.getTaxonomyView = function () {
+    return this._TaxonomyView;
+};
+
 mapViewP = null;
