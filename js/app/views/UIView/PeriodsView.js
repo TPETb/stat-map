@@ -21,12 +21,10 @@ SM.PeriodsView = function (options) {
     this._Table = null;
     this._StopPlayBtn = null;
 
-    this._ActiveStatistic = null;
-
     this.PeriodsShowDemanded = new TVL.Event();
     this.PeriodsChangeDemanded = new TVL.Event();
-    this.StatisticCicleStopDemanded = new TVL.Event();
-    this.StatisticCicleStartDemanded = new TVL.Event();
+    this.StatisticCycleStopDemanded = new TVL.Event();
+    this.StatisticCycleStartDemanded = new TVL.Event();
 
     this._render();
     this._addEventListeners();
@@ -73,12 +71,12 @@ periodsVP._addEventListeners = function () {
 
 periodsVP._onStopPlayClick = function () {
     if (this._StopPlayBtn.getState() === 'active') {
-        this.StatisticCicleStartDemanded.fire(this);
-        console.log('StatisticCicleStartDemanded');
+        this.StatisticCycleStartDemanded.fire(this);
+        console.log('StatisticCycleStartDemanded');
     }
     else {
-        this.StatisticCicleStopDemanded.fire(this);
-        console.log('StatisticCicleStopDemanded');
+        this.StatisticCycleStopDemanded.fire(this);
+        console.log('StatisticCycleStopDemanded');
     }
 };
 
@@ -115,7 +113,7 @@ periodsVP.addPeriodsMenuItems = function (periodsConfig) {
 };
 
 periodsVP._onPeriodsChange = function (event) {
-    this.StatisticCicleStopDemanded.fire(this);
+    this.StatisticCycleStopDemanded.fire(this);
     var checkedPeriodsNames = [];
     this._PeriodsMenu.find('input[type="checkbox"]').each(function () {
         if (this.checked) {
@@ -131,7 +129,8 @@ periodsVP._onPeriodsChange = function (event) {
         this._Table.hide();
         this._StopPlayBtn.hide();
     }
-    this.PeriodsChangeDemanded.fire(this, checkedPeriodsNames);
+    this._Model.setActiveStatisticPeriods(checkedPeriodsNames);
+    this.PeriodsChangeDemanded.fire(this);
 };
 
 periodsVP.hide = function () {
@@ -142,8 +141,7 @@ periodsVP.hide = function () {
 };
 
 periodsVP.showStatistic = function (statisticName) {
-    this._ActiveStatistic = this._Model.getStatistic(statisticName);
-    this.addPeriodsMenuItems(this._ActiveStatistic.data.periods);
+    this.addPeriodsMenuItems(this._Model.getActiveStatistic().data.periods);
     this._PeriodsBtn.show();
 };
 
@@ -154,14 +152,15 @@ periodsVP._updateTable = function (periodsNames) {
     tbody.html('');
     thead.append('<th>Регион</th>')
 
+    var activeStat = this._Model.getActiveStatistic();
     // todo rewrite
     for (var i=0; i < periodsNames.length; i++) {
-        for (var k=0; k < this._ActiveStatistic.data.periods.length; k++) {
-            if (periodsNames[i] === this._ActiveStatistic.data.periods[k].name) {
-                thead.append('<th>'+ this._ActiveStatistic.data.periods[k].title +'</th>');
+        for (var k=0; k < activeStat.data.periods.length; k++) {
+            if (periodsNames[i] === activeStat.data.periods[k].name) {
+                thead.append('<th>'+ activeStat.data.periods[k].title +'</th>');
                 if (tbody.html().length === 0) {
-                    for (var l=0; l < this._ActiveStatistic.data.periods[k].values.length; l++) {
-                        tbody.append('<tr><td>' + this._ActiveStatistic.data.periods[k].values[l].object + '</td></tr>');
+                    for (var l=0; l < activeStat.data.periods[k].values.length; l++) {
+                        tbody.append('<tr><td>' + activeStat.data.periods[k].values[l].object + '</td></tr>');
                     }
                 }
             }
@@ -169,10 +168,10 @@ periodsVP._updateTable = function (periodsNames) {
     }
 
     for (var i=0; i < periodsNames.length; i++) {
-        for (var k=0; k < this._ActiveStatistic.data.periods.length; k++) {
-            if (periodsNames[i] === this._ActiveStatistic.data.periods[k].name) {
-                for (var l=0; l < this._ActiveStatistic.data.periods[k].values.length; l++) {
-                    $(this._Table.find('tbody tr')[l]).append('<td>' + this._ActiveStatistic.data.periods[k].values[l].value + '</td>');
+        for (var k=0; k < activeStat.data.periods.length; k++) {
+            if (periodsNames[i] === activeStat.data.periods[k].name) {
+                for (var l=0; l < activeStat.data.periods[k].values.length; l++) {
+                    $(this._Table.find('tbody tr')[l]).append('<td>' + activeStat.data.periods[k].values[l].value + '</td>');
                 }
             }
         }

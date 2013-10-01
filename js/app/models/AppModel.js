@@ -16,6 +16,9 @@ SM.AppModel = function () {
     this._Regions = [];
     this._Statistics = [];
 
+    this._ActiveStatistic = null;
+    this._ActiveStatisticPeriods = null;
+
     this.ConfigRetrieved = new TVL.Event();
     this.LayersListRetrieved = new TVL.Event();
     this.LayerItemsRetrieved = new TVL.Event();
@@ -190,6 +193,22 @@ appModelP.getStatistics = function() {
 
 appModelP.getRegions = function () {
     return this._Regions;
+};
+
+appModelP.setActiveStatistic = function (statistic) {
+    this._ActiveStatistic = statistic;
+};
+
+appModelP.getActiveStatistic = function () {
+    return this._ActiveStatistic;
+};
+
+appModelP.setActiveStatisticPeriods = function (periodsNamesArray) {
+    this._ActiveStatisticPeriods = periodsNamesArray;
+};
+
+appModelP.getActiveStatisticPeriods = function () {
+    return this._ActiveStatisticPeriods;
 };
 
 appModelP = null;

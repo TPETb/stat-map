@@ -41,6 +41,9 @@ appCtrlP._addEventListeners = function () {
     this._View.LayerShowDemanded.add(this._onLayerShowDemanded, this);
     this._View.StatisticShowDemanded.add(this._onStatisticShowDemanded, this);
     this._View.StatisticHideDemanded.add(this._onStatisticHideDemanded, this);
+
+    this._View.getUIView().StatisticCycleStartDemanded.add(this._onStatisticCycleStartDemanded, this);
+    this._View.getUIView().StatisticCycleStopDemanded.add(this._onStatisticCycleStopDemanded, this);
 };
 
 appCtrlP._onConfigRetrieved = function (sender) {
@@ -72,8 +75,15 @@ appCtrlP._onStatisticShowDemanded = function (sender, statisticName) {
     }
     else {
         this._View.getUIView().getPeriodsView().showStatistic(statisticName);
-        this._View.getMapView().getTaxonomyView().showStatistic(statisticName);
     }
+};
+
+appCtrlP._onStatisticCycleStartDemanded = function () {
+    this._View.getMapView().getTaxonomyView().showStatistic(this._Model.getActiveStatistic().name);
+};
+
+appCtrlP._onStatisticCycleStopDemanded = function () {
+    this._View.hideStatistic();
 };
 
 appCtrlP._onStatisticHideDemanded = function (sender) {

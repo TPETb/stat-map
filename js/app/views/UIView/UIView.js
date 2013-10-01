@@ -28,6 +28,9 @@ SM.UIView = function (options) {
     this.StatisticShowDemanded = new TVL.Event();
     this.StatisticHideDemanded = new TVL.Event();
 
+    this.StatisticCycleStopDemanded = new TVL.Event();
+    this.StatisticCycleStartDemanded = new TVL.Event();
+
     this.init(options);
 };
 
@@ -72,6 +75,8 @@ uiViewP._addEventListeners = function () {
 
     this.StatisticHideDemanded.add(this._onStatisticHideDemanded, this);
     this._PeriodsView.PeriodsShowDemanded.add(this._onPeriodsShowDemanded, this);
+    this._PeriodsView.StatisticCycleStartDemanded.add(this._onStatisticCycleStartDemanded, this);
+    this._PeriodsView.StatisticCycleStopDemanded.add(this._onStatisticCycleStopDemanded, this);
 };
 
 uiViewP._onLayersListRetrieved = function () {
@@ -89,6 +94,14 @@ uiViewP._onStatisticsShowBtnClick = function () {
 
 uiViewP._onPeriodsShowDemanded = function () {
     this._StatisticsMenu.hide();
+};
+
+uiViewP._onStatisticCycleStartDemanded = function () {
+    this.StatisticCycleStartDemanded.fire(this);
+};
+
+uiViewP._onStatisticCycleStopDemanded = function () {
+    this.StatisticCycleStopDemanded.fire(this);
 };
 
 uiViewP.addLayersMenuItems = function (layersConfig) {
@@ -175,6 +188,9 @@ uiViewP._onStatisticMenuItemClick = function (statisticName, event) {
         $(this).removeClass('active');
     });
     $(event.target).addClass('active');
+
+    this._Model.setActiveStatistic(this._Model.getStatistic(statisticName));
+
     this.StatisticShowDemanded.fire(this, statisticName);
     this._StatisticsMenu.hide();
 };

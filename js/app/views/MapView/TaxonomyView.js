@@ -35,26 +35,20 @@ taxVP.init = function() {
 
 taxVP._addEventListeners = function () {
     this._Model.RegionsRetrieved.add(this._onRegionsRetrieved, this);
-    this._Model.StatisticRetrieved.add(this._onStatisticRetrieved, this);
 };
 
 taxVP._onRegionsRetrieved = function (sender) {
     this.setMapObjects(this._Model.getRegions());
 };
 
-taxVP._onStatisticRetrieved = function (sender, statisticName) {
-    this.showStatistic(statisticName);
-};
-
 taxVP.showStatistic = function (statisticName) {
     this._Statistic = this._Model.getStatistic(statisticName).data;
+
     this.setStatisticOptions(this._Statistic);
 
-    // now we need to loop though available statistics in fact
-    // but we will just fix first period for now
-    // start loop
-    this._loopThroughStatisticPeriods();
-    // end loop
+    clearInterval(this._TimedExecutioner);
+    this._CurrentPeriod = -1;
+    this._TimedExecutioner = setInterval($.proxy(this._showNextStatisticPeriod, this), 1000);
 };
 
 taxVP._showStatisticPeriod = function (period) {
@@ -70,12 +64,6 @@ taxVP._showNextStatisticPeriod = function () {
         this._CurrentPeriod = 0;
     }
     this._showStatisticPeriod(this._CurrentPeriod);
-};
-
-taxVP._loopThroughStatisticPeriods = function () {
-    clearInterval(this._TimedExecutioner);
-    this._CurrentPeriod = -1;
-    this._TimedExecutioner = setInterval($.proxy(this._showNextStatisticPeriod, this), 1000);
 };
 
 taxVP.resetStatistic = function () {
@@ -173,3 +161,5 @@ taxVP._getObjectStyleByRate = function(rate) {
         "weight": 2
     };
 };
+
+taxVP = null;
