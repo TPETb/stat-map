@@ -15,10 +15,14 @@ class StatisticsGenerator
         "Лебапский велаят" => "lebapskiy",
         "Дашогузский велаят" => "dashoguzskiy",
         "Марыйский велаят" => "mariyskiy",
+        "Балканабад" => "balkanabad",
+        "Дашогуз" => "dashoguz",
+        "Туркменабад" => "turkmenabad",
+        "Мары" => "mari",
     );
 
     protected static $objects = array(
-        "turkmenistan", "ahalskiy", "ashhabad", "balkanskiy", "lebapskiy", "dashoguzskiy", "mariyskiy",
+        "turkmenistan", "ahalskiy", "ashhabad", "balkanskiy", "lebapskiy", "dashoguzskiy", "mariyskiy","balkanabad","dashoguz","turkmenabad","mari",
         "etrap-1","etrap-2","etrap-3","etrap-4","etrap-5","etrap-6","etrap-7","etrap-8","etrap-9","etrap-10","etrap-11","etrap-12","etrap-13","etrap-14","etrap-15","etrap-16","etrap-17","etrap-18","etrap-19","etrap-20","etrap-21","etrap-22","etrap-23","etrap-24","etrap-25","etrap-26","etrap-27","etrap-28","etrap-29","etrap-30","etrap-31","etrap-32","etrap-33","etrap-34","etrap-35","etrap-36","etrap-37","etrap-38","etrap-39","etrap-40","etrap-41","etrap-42","etrap-43","etrap-44","etrap-45","etrap-46","etrap-47","etrap-48","etrap-49","etrap-50","etrap-51"
     );
 
