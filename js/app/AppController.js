@@ -80,6 +80,7 @@ appCtrlP._onStatisticShowDemanded = function (sender, statisticName) {
 
 appCtrlP._onStatisticCycleStartDemanded = function () {
     this._View.getMapView().getTaxonomyView().showStatistic(this._Model.getActiveStatistic().name);
+    this._View.getUIView().getPeriodsView().startStatisticCycle();
 };
 
 appCtrlP._onStatisticCycleStopDemanded = function () {

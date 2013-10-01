@@ -20,6 +20,7 @@ SM.PeriodsView = function (options) {
     this._TableBtn = null;
     this._Table = null;
     this._StopPlayBtn = null;
+    this._CurrentPeriod = -1;
 
     this.PeriodsShowDemanded = new TVL.Event();
     this.PeriodsChangeDemanded = new TVL.Event();
@@ -176,6 +177,25 @@ periodsVP._updateTable = function (periodsNames) {
             }
         }
     }
+};
+
+periodsVP.startStatisticCycle = function () {
+    this._TimedExecutioner = setInterval($.proxy(this._showNextStatisticPeriod, this), 1000);
+};
+
+periodsVP._showNextStatisticPeriod = function () {
+    this._CurrentPeriod ++;
+
+    if (this._CurrentPeriod >= $('#Table tr th').length-1) {
+        this._CurrentPeriod = 0;
+    }
+
+    $('#Table tr th').css({background: 'white'});
+    $('#Table tr td').css({background: 'white'});
+
+
+    $('#Table tr th:nth-child('+ (this._CurrentPeriod +2) +')').css({background: '#cccccc'});
+    $('#Table tr td:nth-child('+ (this._CurrentPeriod +2) +')').css({background: '#cccccc'});
 };
 
 periodsVP = null;
