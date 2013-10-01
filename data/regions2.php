@@ -151,5 +151,5 @@ FILE;
 
 $converter = new PolyConverter();
 $converter->extractFrom($source);
-$converter->dump();
+//$converter->dump();
 $converter->show();
