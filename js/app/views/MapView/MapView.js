@@ -75,7 +75,7 @@ mapViewP._onConfigRetrieved = function () {
     var config = this._Model.getConfig();
 
     if (config.view) {
-        this._Map.setView([config.view.lat, config.view.lng], 6);
+        this._Map.setView([config.view.lat, config.view.lng], 7);
     }
 
     if (config.tileProvider) {

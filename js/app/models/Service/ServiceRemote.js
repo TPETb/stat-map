@@ -12,10 +12,10 @@ if (!SM) {
 SM.Service_Remote = function() {
 
     this._configUrl = 'data/config.json';
-    this._layersListUrl = 'data/layersList.json';
-    this._regionsUrl = 'data/regions2.json';
-    this._statisticsListUrl = 'data/statistics.json';
-    this._statisticUrl = 'data/statisticMonthlySalary.json';
+    this._layersListUrl = 'data/layers/index.json';
+    this._regionsUrl = 'data/regions3.json';
+//    this._regionsUrl = 'generators/regions3.php';
+    this._statisticsListUrl = 'data/statistics/index.json';
 
     this.init();
 };

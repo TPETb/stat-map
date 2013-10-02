@@ -94,7 +94,7 @@ taxVP.setMapObjects = function(regionsConfig) {
 
     for (var i = 0; i < regionsConfig.length; i++) {
         var rate;
-        var taxonomyObject = L.polygon(regionsConfig[i].shape);
+        var taxonomyObject = L.multiPolygon(regionsConfig[i].shape);
         if (this._findStatisticByObjectName(regionsConfig[i].name)) {
             rate = this._getStatisticValueRate(this._findStatisticByObjectName(regionsConfig[i].name).value);
         }

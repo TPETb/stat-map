@@ -16,6 +16,33 @@ class PolyConverter
     protected static $middleLat = 39;
     protected static $maxLatDefect = 0.120;
 
+    protected $summary = array(
+        "Марыйский_велаят",
+        "Дашогузский_велаят",
+        "Лебапский_велаят",
+        "Балканский_велаят",
+        "Ахалский_велаят",
+        "Ашхабад",
+        "Балканабад",
+        "Дашогуз",
+        "Туркменабад",
+        "Мары",
+        51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
+    );
+
+    protected $mapping = array(
+        "Марыйский_велаят" => "mariyskiy",
+        "Дашогузский_велаят" => "dashoguzskiy",
+        "Лебапский_велаят" => "lebapskiy",
+        "Балканский_велаят" => "balkanskiy",
+        "Ахалский_велаят" => "ahalskiy",
+        "Ашхабад" => "ashhabad",
+        "Балканабад" => "balkanabad",
+        "Дашогуз" => "dashoguz",
+        "Туркменабад" => "turkmenabad",
+        "Мары" => "mari",
+    );
+
     public function extractFrom($source)
     {
         $minLat = 9999;
@@ -53,10 +80,14 @@ class PolyConverter
     {
         $result = new stdClass();
         $result->items = array();
-        $i = 1;
         foreach ($this->polygons as $polygon) {
             $tmp = new stdClass();
-            $tmp->name = 'name-' . $i++;
+            $regionTitle = array_shift($this->summary);
+            if (isset($this->mapping[$regionTitle])) {
+                $tmp->name = $this->mapping[$regionTitle];
+            } else {
+                $tmp->name = "etrap-{$regionTitle}";
+            }
             $tmp->shape = $polygon;
             $result->items[] = $tmp;
         }
@@ -64,7 +95,8 @@ class PolyConverter
         return $result;
     }
 
-    protected function dumpToFile ($object, $filename) {
+    protected function dumpToFile($object, $filename)
+    {
         $str = json_encode($object);
         $str = preg_replace_callback('/\\\u([a-f0-9]{4})/i', create_function('$m', 'return chr(hexdec($m[1])-1072+224);'), $str);
         $str = iconv('cp1251', 'utf-8', $str);
@@ -73,7 +105,8 @@ class PolyConverter
     }
 
 
-    public function show() {
+    public function show()
+    {
         echo json_encode($this->getFormattedObject());
     }
 
