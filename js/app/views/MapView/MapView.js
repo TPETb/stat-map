@@ -53,10 +53,6 @@ mapViewP._addEventListeners = function () {
     $(window).on('resize', $.proxy(this._onViewportResize, this));
 };
 
-mapViewP.hideStatistic = function () {
-    this._TaxonomyView.resetStatistic();
-};
-
 mapViewP.showLayer = function (layerName) {
     this._LayerContainerView.showLayer(layerName);
 };
