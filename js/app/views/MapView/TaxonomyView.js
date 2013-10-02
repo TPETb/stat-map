@@ -41,14 +41,23 @@ taxVP._onRegionsRetrieved = function (sender) {
     this.setMapObjects(this._Model.getRegions());
 };
 
-taxVP.showStatistic = function (statisticName) {
+taxVP.startStatisticCycle = function () {
+    var statisticName = this._Model.getActiveStatistic().name;
     this._Statistic = this._Model.getStatistic(statisticName).data;
 
     this.setStatisticOptions(this._Statistic);
 
-    clearInterval(this._TimedExecutioner);
-    this._CurrentPeriod = -1;
+    this._showNextStatisticPeriod();
     this._TimedExecutioner = setInterval($.proxy(this._showNextStatisticPeriod, this), 1000);
+};
+
+taxVP.stopStatisticCycle = function () {
+    this._CurrentPeriod = -1;
+
+    this.setStatisticValues(null);
+    this.setStatisticOptions(null);
+    clearInterval(this._TimedExecutioner);
+    this.setMapObjects(this._Model.getRegions());
 };
 
 taxVP._showStatisticPeriod = function (period) {
@@ -64,13 +73,6 @@ taxVP._showNextStatisticPeriod = function () {
         this._CurrentPeriod = 0;
     }
     this._showStatisticPeriod(this._CurrentPeriod);
-};
-
-taxVP.resetStatistic = function () {
-    this.setStatisticValues(null);
-    this.setStatisticOptions(null);
-    clearInterval(this._TimedExecutioner);
-    this.setMapObjects(this._Model.getRegions());
 };
 
 /**

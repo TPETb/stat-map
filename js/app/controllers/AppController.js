@@ -24,9 +24,15 @@ var appCtrlP = SM.AppController.prototype;
  */
 appCtrlP.init = function (options) {
     this._Model = new SM.AppModel();
+
     this._View = new SM.AppView({
-            model: this._Model
-        });
+        model: this._Model
+    });
+
+    this._UICtrl = new SM.UIController({
+        model: this._Model,
+        view: this._View.getUIView()
+    })
 
     this._addEventListeners();
 
@@ -36,14 +42,13 @@ appCtrlP.init = function (options) {
 appCtrlP._addEventListeners = function () {
     this._Model.ConfigRetrieved.add(this._onConfigRetrieved, this);
     this._Model.LayersListRetrieved.add(this._onLayersListRetrieved, this);
-    
-    this._View.LayerHideDemanded.add(this._onLayerHideDemanded, this);
-    this._View.LayerShowDemanded.add(this._onLayerShowDemanded, this);
-    this._View.StatisticShowDemanded.add(this._onStatisticShowDemanded, this);
-    this._View.StatisticHideDemanded.add(this._onStatisticHideDemanded, this);
 
-    this._View.getUIView().StatisticCycleStartDemanded.add(this._onStatisticCycleStartDemanded, this);
-    this._View.getUIView().StatisticCycleStopDemanded.add(this._onStatisticCycleStopDemanded, this);
+    this._UICtrl.LayerHideDemanded.add(this._onLayerHideDemanded, this);
+    this._UICtrl.LayerShowDemanded.add(this._onLayerShowDemanded, this);
+
+    this._UICtrl.StatisticCancelDemanded.add(this._onStatisticCancelDemanded, this);
+    this._UICtrl.StatisticCycleStartDemanded.add(this._onStatisticCycleStartDemanded, this);
+    this._UICtrl.StatisticCycleStopDemanded.add(this._onStatisticCycleStopDemanded, this);
 };
 
 appCtrlP._onConfigRetrieved = function (sender) {
@@ -64,31 +69,22 @@ appCtrlP._onLayerShowDemanded = function (sender, layerName) {
     this._View.showLayer(layerName);
 };
 
-appCtrlP.getModel = function () {
-    return this._Model;
-};
-
-appCtrlP._onStatisticShowDemanded = function (sender, statisticName) {
-    this._View.hideStatistic();
-    if (!this._Model.getStatistic(statisticName).data) {
-        this._Model.requestStatistic(statisticName);
-    }
-    else {
-        this._View.getUIView().getPeriodsView().showStatistic(statisticName);
-    }
+appCtrlP._onStatisticCancelDemanded = function () {
+    this._Model.setActiveStatistic(null);
+    this._View.cancelStatistic();
+    this._View.stopStatisticCycle();
 };
 
 appCtrlP._onStatisticCycleStartDemanded = function () {
-    this._View.getMapView().getTaxonomyView().showStatistic(this._Model.getActiveStatistic().name);
-    this._View.getUIView().getPeriodsView().startStatisticCycle();
+    this._View.startStatisticCycle();
 };
 
 appCtrlP._onStatisticCycleStopDemanded = function () {
-    this._View.hideStatistic();
+    this._View.stopStatisticCycle();
 };
 
-appCtrlP._onStatisticHideDemanded = function (sender) {
-    this._View.hideStatistic();
+appCtrlP.getModel = function () {
+    return this._Model;
 };
 
 appCtrlP = null;

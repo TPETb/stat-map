@@ -11,7 +11,7 @@ if (!SM) {
 SM.AppView = function(options) {
     this._Model = options.model;
     this._MapView = null;
-    this._UIView = null
+    this._UIView = null;
 
     // Layers events
     this.LayerHideDemanded = new TVL.Event();
@@ -43,23 +43,15 @@ appViewP.init = function() {
 };
 
 appViewP._addEventListeners = function() {
+    $(window).on('click', $.proxy(this._onWindowClick, this));
     this._UIView.LayerHideDemanded.add(this._onLayerHideDemanded, this);
     this._UIView.LayerShowDemanded.add(this._onLayerShowDemanded, this);
-    this._UIView.StatisticShowDemanded.add(this._onStatisticShowDemanded, this);
-    this._UIView.StatisticHideDemanded.add(this._onStatisticHideDemanded, this);
 };
 
-appViewP.hideLayer = function (layerName) {
-    this._MapView.hideLayer(layerName);
-};
-
-appViewP.showLayer = function (layerName) {
-    this._MapView.showLayer(layerName);
-};
-
-appViewP.hideStatistic = function () {
-    this._UIView.hideStatistic();
-    this._MapView.hideStatistic();
+appViewP._onWindowClick = function (event) {
+    if ($('#Map').find($(event.target)).length > 0) {
+        this.hideModals();
+    }
 };
 
 /**
@@ -76,12 +68,31 @@ appViewP._onLayerShowDemanded = function(sender, layerName) {
     this.LayerShowDemanded.fire(this, layerName);
 };
 
-appViewP._onStatisticShowDemanded = function(sender, settings) {
-    this.StatisticShowDemanded.fire(this, settings);
+appViewP.hideLayer = function (layerName) {
+    this._MapView.hideLayer(layerName);
 };
 
-appViewP._onStatisticHideDemanded = function(sender) {
-    this.StatisticHideDemanded.fire(this);
+appViewP.showLayer = function (layerName) {
+    this._MapView.showLayer(layerName);
+};
+
+appViewP.hideStatistic = function () {
+    this._UIView.hideStatistic();
+    this._MapView.hideStatistic();
+};
+
+appViewP.cancelStatistic = function () {
+    this._UIView.cancelStatistic();
+};
+
+appViewP.startStatisticCycle = function () {
+    this._MapView.getTaxonomyView().startStatisticCycle();
+    this._UIView.getPeriodsView().startStatisticCycle();
+};
+
+appViewP.stopStatisticCycle = function () {
+    this._MapView.getTaxonomyView().stopStatisticCycle();
+    this._UIView.getPeriodsView().stopStatisticCycle();
 };
 
 appViewP.getUIView = function () {
@@ -91,3 +102,9 @@ appViewP.getUIView = function () {
 appViewP.getMapView = function () {
     return this._MapView;
 };
+
+appViewP.hideModals = function () {
+    this._UIView.hideModals();
+};
+
+appViewP = null;

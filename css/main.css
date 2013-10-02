@@ -51,6 +51,7 @@ body {
     top: 48px;
     font-size: 12px;
     z-index: 2;
+    height: 0px;
 }
 
 #ToolbarTop button {
@@ -68,11 +69,11 @@ body {
     margin-right: 5px;
 }
 
-#StatisticsShowBtn {
+#StatisticsBtn {
 
 }
 
-#StatisticsHideBtn {
+#StatisticsCancelBtn {
 
 }
 
@@ -92,6 +93,7 @@ body {
 #PeriodsMenu {
     width: 110px;
     margin-bottom: 5px;
+    float: left;
 }
 
 #PeriodsMenu a input {
@@ -106,6 +108,8 @@ body {
     box-shadow: none;
     padding: 15px;
     border-style: solid;
+    float: left;
+    margin-left: 4px;
 }
 
 #Table table {

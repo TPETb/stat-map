@@ -15,52 +15,53 @@ SM.UIView = function (options) {
     this._ToolbarTop = $('#ToolbarTop');
     this._ContentWrapper = $('#ContentWrapper');
 
+    // Toolbar controls
+    this._StatisticsBtn = null;
+    this._StatisticsCancelBtn = null;
+    this._PeriodsBtn = null;
+
+    // Complex controls
     this._LayersMenu = null;
-    this._StatisticsShowBtn = null;
-    this._StatisticsHideBtn = null;
-    this._StatisticsMenu = null;
+    this._StatisticsMenuView = null;
+    this._PeriodsView = null;
 
     // Layers events
     this.LayerHideDemanded = new TVL.Event();
     this.LayerShowDemanded = new TVL.Event();
 
-    // Statistics events
     this.StatisticShowDemanded = new TVL.Event();
-    this.StatisticHideDemanded = new TVL.Event();
+    this.StatisticCancelDemanded = new TVL.Event();
 
-    this.StatisticCycleStopDemanded = new TVL.Event();
     this.StatisticCycleStartDemanded = new TVL.Event();
+    this.StatisticCycleStopDemanded = new TVL.Event();
 
     this.init(options);
 };
 
 var uiViewP = SM.UIView.prototype;
 
-/**
- * Initializes everything that doesn't need additional data
- * @param {type} config
- * @returns {uiViewP}
- */
 uiViewP.init = function (options) {
     this._render();
     this._addEventListeners();
 };
 
 uiViewP._render = function () {
+    this._StatisticsBtn = $('<button type="button" class="btn btn-default" id="StatisticsBtn">Статистика</button>');
+    this._ToolbarTop.append(this._StatisticsBtn);
+
+    this._StatisticsCancelBtn = $('<button type="button" class="btn btn-default" id="StatisticsCancelBtn">Убрать статистику</button>');
+    this._ToolbarTop.append(this._StatisticsCancelBtn);
+    this._StatisticsCancelBtn.hide();
+
+    this._PeriodsBtn = $('<button type="button" class="btn btn-default" id="PeriodsBtn">Периоды</button>');
+    this._ToolbarTop.append(this._PeriodsBtn);
+    this._PeriodsBtn.hide();
+
     this._LayersMenu = $('<ul id="LayersMenu">');
     this._LayersMenu.menu();
     this._Body.append(this._LayersMenu);
 
-    this._StatisticsShowBtn = $('<button type="button" class="btn btn-default" id="StatisticsShowBtn">Статистика</button>');
-    this._ToolbarTop.append(this._StatisticsShowBtn);
-
-    this._StatisticsHideBtn = $('<button type="button" class="btn btn-default" id="StatisticsHideBtn">Убрать статистику</button>');
-    this._ToolbarTop.append(this._StatisticsHideBtn);
-
-    this._StatisticsMenu = $('<ul id="StatisticsMenu" class="menu-std">');
-    this._StatisticsMenu.menu();
-    this._ContentWrapper.append(this._StatisticsMenu);
-    this._StatisticsMenu.hide();
+    this._StatisticsMenuView = new SM.StatisticsMenuView({ model: this._Model });
 
     this._PeriodsView = new SM.PeriodsView({ model: this._Model });
 };
@@ -70,30 +71,54 @@ uiViewP._addEventListeners = function () {
     this._Model.StatisticsListRetrieved.add(this._onStatisticsListRetrieved, this);
     this._Model.StatisticRetrieved.add(this._onStatisticRetrieved, this);
 
-    this._StatisticsShowBtn.on('click', $.proxy(this._onStatisticsShowBtnClick, this));
-    this._StatisticsHideBtn.on('click', $.proxy(this._onStatisticHideBtnClick, this));
+    this._StatisticsBtn.on('click', $.proxy(this._onStatisticsBtnClick, this));
+    this._StatisticsCancelBtn.on('click', $.proxy(this._onStatisticsCancelBtnClick, this));
+    this._PeriodsBtn.on('click', $.proxy(this._onPeriodsBtnClick, this));
 
-    this.StatisticHideDemanded.add(this._onStatisticHideDemanded, this);
-    this._PeriodsView.PeriodsShowDemanded.add(this._onPeriodsShowDemanded, this);
+    this._StatisticsMenuView.ItemChecked.add(this._onStatisticsMenuItemChecked, this);
+
     this._PeriodsView.StatisticCycleStartDemanded.add(this._onStatisticCycleStartDemanded, this);
     this._PeriodsView.StatisticCycleStopDemanded.add(this._onStatisticCycleStopDemanded, this);
 };
 
 uiViewP._onLayersListRetrieved = function () {
     this.addLayersMenuItems(this._Model.getLayers());
-}
+};
 
 uiViewP._onStatisticsListRetrieved = function () {
-    this.addStatisticsMenuItems(this._Model.getStatistics());
+    this._StatisticsMenuView.addStatisticsMenuItems(this._Model.getStatistics());
 };
 
-uiViewP._onStatisticsShowBtnClick = function () {
+uiViewP._onStatisticRetrieved = function (sender, statisticName) {
+    this._PeriodsView.addPeriodsMenuItems(this._Model.getActiveStatistic().data.periods);
+};
+
+uiViewP._onStatisticsBtnClick = function () {
+    this._PeriodsView.hideModals();
+    this._StatisticsMenuView.toggle();
+};
+
+uiViewP._onStatisticsCancelBtnClick = function () {
+    this._StatisticsCancelBtn.hide();
+    this._PeriodsBtn.hide();
+
+    this._StatisticsMenuView.hide();
     this._PeriodsView.hide();
-    this._StatisticsMenu.toggle();
+
+    this.StatisticCancelDemanded.fire(this);
 };
 
-uiViewP._onPeriodsShowDemanded = function () {
-    this._StatisticsMenu.hide();
+uiViewP._onPeriodsBtnClick = function () {
+    this._StatisticsMenuView.hide();
+    this._PeriodsView.toggle();
+};
+
+uiViewP._onStatisticsMenuItemChecked = function (sender, statisticName) {
+    this._StatisticsCancelBtn.show();
+    this._PeriodsBtn.show();
+
+    this.StatisticCycleStopDemanded.fire(this);
+    this.StatisticShowDemanded.fire(this, statisticName);
 };
 
 uiViewP._onStatisticCycleStartDemanded = function () {
@@ -121,35 +146,6 @@ uiViewP.addLayersMenuItems = function (layersConfig) {
     this._LayersMenu.menu('refresh');
 };
 
-uiViewP.addStatisticsMenuItems = function (statisticsConfig) {
-    this._StatisticsMenu.html('');
-
-    this._addStatisticsMenuItems(this._StatisticsMenu, statisticsConfig);
-
-    this._StatisticsMenu.menu('refresh');
-};
-
-uiViewP._addStatisticsMenuItems = function (jNode, statisticsConfig) {
-    for (var i = 0; i < statisticsConfig.length; i++) {
-        if (statisticsConfig[i].items) {
-            var item = $('<li></li>');
-            var itemTitle = $('<a href="#">' + statisticsConfig[i].title + '</a>');
-            var subMenu = $('<ul></ul>');
-
-            itemTitle.appendTo(item);
-            subMenu.appendTo(item);
-            item.appendTo(jNode);
-
-            this._addStatisticsMenuItems(subMenu, statisticsConfig[i].items);
-        }
-        else {
-            var item = $('<li><a href="#">' + statisticsConfig[i].title + '</a></li>');
-            item.find('a').on('click', $.proxy(this._onStatisticMenuItemClick, this, statisticsConfig[i].name));
-            item.appendTo(jNode);
-        }
-    }
-};
-
 /**
  * Escalate demand for layer state change
  * @param {type} input
@@ -163,50 +159,26 @@ uiViewP._onLayerChange = function (event) {
     }
 };
 
-uiViewP.hideLayer = function (layerName) {
-
-};
-
-uiViewP.showLayer = function (layerName) {
-
-};
-
-uiViewP.removeLayers = function () {
-
-};
-
-uiViewP.hideStatistic = function () {
-
-};
-
-uiViewP._onStatisticRetrieved = function (sender, statisticName) {
-    this._PeriodsView.showStatistic(statisticName);
-};
-
-uiViewP._onStatisticMenuItemClick = function (statisticName, event) {
-    this._StatisticsMenu.find('li.ui-menu-item a').each(function () {
-        $(this).removeClass('active');
-    });
-    $(event.target).addClass('active');
-
-    this._Model.setActiveStatistic(this._Model.getStatistic(statisticName));
-
-    this.StatisticShowDemanded.fire(this, statisticName);
-    this._StatisticsMenu.hide();
-};
-
-uiViewP._onStatisticHideBtnClick = function () {
-    this._StatisticsMenu.hide();
-    this._PeriodsView.hide();
-    this.StatisticHideDemanded.fire(this);
-};
-
-uiViewP._onStatisticHideDemanded = function () {
-    this._PeriodsView.hide();
-};
-
 uiViewP.getPeriodsView = function () {
     return this._PeriodsView;
 };
 
+uiViewP.getStatisticsMenuView = function () {
+    return this._StatisticsMenuView;
+};
+
+uiViewP.getLayersView = function () {
+    return this._LayersView;
+};
+
+uiViewP.cancelStatistic = function () {
+    this._StatisticsMenuView.cancelChecked();
+};
+
+uiViewP.hideModals = function () {
+    this._StatisticsMenuView.hide();
+    this._PeriodsView.hideModals();
+};
+
 uiViewP = null;
+

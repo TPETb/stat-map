@@ -15,14 +15,12 @@ SM.PeriodsView = function (options) {
     this._ToolbarTop = $('#ToolbarTop');
     this._ContentWrapper = $('#ContentWrapper');
 
-    this._PeriodsBtn = null;
     this._PeriodsMenu = null;
     this._TableBtn = null;
     this._Table = null;
     this._StopPlayBtn = null;
     this._CurrentPeriod = -1;
 
-    this.PeriodsShowDemanded = new TVL.Event();
     this.PeriodsChangeDemanded = new TVL.Event();
     this.StatisticCycleStopDemanded = new TVL.Event();
     this.StatisticCycleStartDemanded = new TVL.Event();
@@ -34,10 +32,6 @@ SM.PeriodsView = function (options) {
 var periodsVP = SM.PeriodsView.prototype;
 
 periodsVP._render = function () {
-    this._PeriodsBtn = $('<button type="button" class="btn btn-default" id="PeriodsBtn">Периоды</button>');
-    this._ToolbarTop.append(this._PeriodsBtn);
-    this._PeriodsBtn.hide();
-
     this._PeriodsMenu = $('<ul id="PeriodsMenu" class="menu-std">');
     this._PeriodsMenu.menu();
     this._ContentWrapper.append(this._PeriodsMenu);
@@ -65,7 +59,6 @@ periodsVP._render = function () {
 };
 
 periodsVP._addEventListeners = function () {
-    this._PeriodsBtn.on('click', $.proxy(this._onPeriodsBtnClick, this));
     this._TableBtn.on('click', $.proxy(this._onTableBtnClick, this));
     this._StopPlayBtn.Click.add(this._onStopPlayClick, this);
 };
@@ -73,27 +66,14 @@ periodsVP._addEventListeners = function () {
 periodsVP._onStopPlayClick = function () {
     if (this._StopPlayBtn.getState() === 'active') {
         this.StatisticCycleStartDemanded.fire(this);
-        console.log('StatisticCycleStartDemanded');
     }
     else {
         this.StatisticCycleStopDemanded.fire(this);
-        console.log('StatisticCycleStopDemanded');
-    }
-};
-
-periodsVP._onPeriodsBtnClick = function () {
-    this.PeriodsShowDemanded.fire(this);
-    this._PeriodsMenu.toggle();
-    if (this._Table.is(":visible")) {
-        this._Table.hide();
-    }
-    if (this._StopPlayBtn._DomNode.is(":visible")) {
-        this._StopPlayBtn.hide();
     }
 };
 
 periodsVP._onTableBtnClick = function () {
-    this._Table.show()
+    this._Table.toggle();
 };
 
 periodsVP.addPeriodsMenuItems = function (periodsConfig) {
@@ -114,36 +94,22 @@ periodsVP.addPeriodsMenuItems = function (periodsConfig) {
 };
 
 periodsVP._onPeriodsChange = function (event) {
+    this._StopPlayBtn.setState('inActive');
     this.StatisticCycleStopDemanded.fire(this);
-    var checkedPeriodsNames = [];
-    this._PeriodsMenu.find('input[type="checkbox"]').each(function () {
-        if (this.checked) {
-            checkedPeriodsNames.push($(this).attr('name'));
-        }
-    });
+
+    var checkedPeriodsNames = this.getCheckedPeriodsNames();
+
     if (checkedPeriodsNames.length > 0) {
         this._updateTable(checkedPeriodsNames);
-        this._Table.show();
+        this._TableBtn.show();
         this._StopPlayBtn.show();
     }
     else {
-        this._Table.hide();
+        this._TableBtn.hide();
         this._StopPlayBtn.hide();
     }
     this._Model.setActiveStatisticPeriods(checkedPeriodsNames);
     this.PeriodsChangeDemanded.fire(this);
-};
-
-periodsVP.hide = function () {
-    this._PeriodsMenu.hide();
-    this._PeriodsBtn.hide();
-    this._Table.hide();
-    this._StopPlayBtn.hide();
-};
-
-periodsVP.showStatistic = function (statisticName) {
-    this.addPeriodsMenuItems(this._Model.getActiveStatistic().data.periods);
-    this._PeriodsBtn.show();
 };
 
 periodsVP._updateTable = function (periodsNames) {
@@ -179,10 +145,6 @@ periodsVP._updateTable = function (periodsNames) {
     }
 };
 
-periodsVP.startStatisticCycle = function () {
-    this._TimedExecutioner = setInterval($.proxy(this._showNextStatisticPeriod, this), 1000);
-};
-
 periodsVP._showNextStatisticPeriod = function () {
     this._CurrentPeriod ++;
 
@@ -194,8 +156,57 @@ periodsVP._showNextStatisticPeriod = function () {
     $('#Table tr td').css({background: 'white'});
 
 
-    $('#Table tr th:nth-child('+ (this._CurrentPeriod +2) +')').css({background: '#cccccc'});
-    $('#Table tr td:nth-child('+ (this._CurrentPeriod +2) +')').css({background: '#cccccc'});
+    $('#Table tr th:nth-child(' + (this._CurrentPeriod + 2) + ')').css({background: '#cccccc'});
+    $('#Table tr td:nth-child(' + (this._CurrentPeriod + 2) + ')').css({background: '#cccccc'});
+};
+
+periodsVP.startStatisticCycle = function () {
+    this.stopStatisticCycle();
+    this._showNextStatisticPeriod();
+    this._TimedExecutioner = setInterval($.proxy(this._showNextStatisticPeriod, this), 1000);
+};
+
+periodsVP.stopStatisticCycle = function () {
+    this._CurrentPeriod = -1;
+    clearInterval(this._TimedExecutioner);
+    $('#Table tr th').css({background: 'white'});
+    $('#Table tr td').css({background: 'white'});
+};
+
+periodsVP.hide = function () {
+    this._PeriodsMenu.hide();
+    this._Table.hide();
+    this._TableBtn.hide();
+    this._StopPlayBtn.hide();
+};
+
+periodsVP.hideModals = function () {
+    this._Table.hide();
+    this._PeriodsMenu.hide();
+};
+
+periodsVP.toggle = function () {
+    this._PeriodsMenu.toggle();
+    if (this._Table.is(":visible")) {
+        this._Table.hide();
+    }
+    else {
+        if (this.getCheckedPeriodsNames().length > 0) {
+            this._StopPlayBtn.show();
+        }
+    }
+};
+
+periodsVP.getCheckedPeriodsNames = function () {
+    var checkedPeriodsNames = [];
+
+    this._PeriodsMenu.find('input[type="checkbox"]').each(function () {
+        if (this.checked) {
+            checkedPeriodsNames.push($(this).attr('name'));
+        }
+    });
+
+    return checkedPeriodsNames;
 };
 
 periodsVP = null;

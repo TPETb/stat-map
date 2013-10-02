@@ -39,12 +39,20 @@ stopPlayP._onClick = function () {
     this.Click.fire(this);
 };
 
+stopPlayP.setState = function (state) {
+    if (this.getState() !== state) {
+        this._DomNode.find('.glyphicon').each(function () {
+            $(this).toggle();
+        });
+    }
+};
+
 stopPlayP.getState = function () {
-    if (this._DomNode.find('.glyphicon-eject').is(":visible")) {
-        return 'active';
+    if (this._DomNode.find('.glyphicon-eject').css("display") === 'none') {
+        return 'inActive';
     }
     else {
-        return 'inActive';
+        return 'active';
     }
 };
 
