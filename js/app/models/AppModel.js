@@ -10,7 +10,7 @@ if (!SM) {
  */
 SM.AppModel = function () {
     this._Service = new SM.Service_Remote();
-    
+
     this._Config = null;
     this._Layers = [];
     this._Regions = [];
@@ -118,11 +118,11 @@ appModelP._onLayerItemsRetrieved = function (sender, data) {
  * retrieve regions config
  * @returns {@pro;statisticsList@this._cache|array}
  */
-appModelP.requestRegions = function() {
+appModelP.requestRegions = function () {
     this._Service.requestRegions();
 };
 
-appModelP._onRegionsRetrieved = function(sender, settings) {
+appModelP._onRegionsRetrieved = function (sender, settings) {
     this._Regions = settings.items;
     this.RegionsRetrieved.fire(this);
     this._addStartUpDataFiredEvent(this.RegionsRetrieved);
@@ -132,11 +132,11 @@ appModelP._onRegionsRetrieved = function(sender, settings) {
  * retrieve statistics related data
  * @returns {undefined}
  */
-appModelP.requestStatisticsList = function() {
+appModelP.requestStatisticsList = function () {
     this._Service.requestStatisticsList();
 };
 
-appModelP._onStatisticsListRetrieved = function(sender, settings) {
+appModelP._onStatisticsListRetrieved = function (sender, settings) {
     this._Statistics = settings.items;
     this.StatisticsListRetrieved.fire(this);
     this._addStartUpDataFiredEvent(this.StatisticsListRetrieved);
@@ -146,11 +146,11 @@ appModelP._onStatisticsListRetrieved = function(sender, settings) {
  * retrieve statistics related data
  * @returns {undefined}
  */
-appModelP.requestStatistic = function(statisticName) {
+appModelP.requestStatistic = function (statisticName) {
     this._Service.requestStatistic(this.getStatistic(statisticName));
 };
 
-appModelP._onStatisticRetrieved = function(sender, data) {
+appModelP._onStatisticRetrieved = function (sender, data) {
     var statistic = this.getStatistic(data.name);
     if (statistic) {
         statistic.data = data;
@@ -190,10 +190,10 @@ appModelP._getStatistic = function (statisticArray, statisticName) {
     for (var i = 0; i < statisticArray.length; i++) {
         if (statisticArray[i].name === statisticName) {
             return statisticArray[i];
-        }
-        else {
+        } else {
             if (statisticArray[i].items) {
-                this._getStatistic(statisticArray[i].items, statisticName);
+                tmp = this._getStatistic(statisticArray[i].items, statisticName);
+                if (tmp) return tmp;
             }
         }
     }
@@ -201,7 +201,7 @@ appModelP._getStatistic = function (statisticArray, statisticName) {
     return false;
 };
 
-appModelP.getStatistics = function() {
+appModelP.getStatistics = function () {
     return this._Statistics;
 };
 

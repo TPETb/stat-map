@@ -29,7 +29,7 @@ mapViewP.init = function () {
     this.resize($(window).width(), $(window).height());
 
     this._Map = L.map(this._DomNode.attr('id'), {
-        maxZoom: 8,
+        maxZoom: 12,
         maxBounds: [
             [20, 37],
             [57, 81]
@@ -71,14 +71,12 @@ mapViewP._onConfigRetrieved = function () {
     var config = this._Model.getConfig();
 
     if (config.view) {
-        this._Map.setView([config.view.lat, config.view.lng], 6);
+        this._Map.setView([config.view.lat, config.view.lng], 7);
     }
 
     if (config.tileProvider) {
         L.tileLayer(config.tileProvider, {
-            attribution: '',
-            maxZoom: 8,
-            minZoom: 5
+            attribution: ''
         }).addTo(this._Map);
     }
 };
