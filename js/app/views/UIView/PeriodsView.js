@@ -19,6 +19,7 @@ SM.PeriodsView = function (options) {
     this._TableBtn = null;
     this._Table = null;
     this._StopPlayBtn = null;
+    this._OkBtn = null;
     this._CurrentPeriod = -1;
 
     this.PeriodsChangeDemanded = new TVL.Event();
@@ -44,6 +45,10 @@ periodsVP._render = function () {
     this._StopPlayBtn = new SM.StopPlayBtn();
     this._StopPlayBtn.hide();
 
+    this._OkBtn = $('<button type="button" class="btn btn-success" id="PeriodsOkBtn">Ок</button>');
+    this._ContentWrapper.append(this._OkBtn);
+    this._OkBtn.hide();
+
     this._Table = $('<div id="Table">' +
         '<table class="table">' +
         '<thead>' +
@@ -60,7 +65,16 @@ periodsVP._render = function () {
 
 periodsVP._addEventListeners = function () {
     this._TableBtn.on('click', $.proxy(this._onTableBtnClick, this));
+    this._OkBtn.on('click', $.proxy(this._onOkBtnClick, this));
     this._StopPlayBtn.Click.add(this._onStopPlayClick, this);
+};
+
+periodsVP._onTableBtnClick = function () {
+    this._Table.toggle();
+};
+
+periodsVP._onOkBtnClick = function () {
+
 };
 
 periodsVP._onStopPlayClick = function () {
@@ -70,10 +84,6 @@ periodsVP._onStopPlayClick = function () {
     else {
         this.StatisticCycleStopDemanded.fire(this);
     }
-};
-
-periodsVP._onTableBtnClick = function () {
-    this._Table.toggle();
 };
 
 periodsVP.addPeriodsMenuItems = function (periodsConfig) {
@@ -175,6 +185,7 @@ periodsVP.stopStatisticCycle = function () {
 
 periodsVP.hide = function () {
     this._PeriodsMenu.hide();
+    this._OkBtn.hide();
     this._Table.hide();
     this._TableBtn.hide();
     this._StopPlayBtn.hide();
@@ -183,10 +194,12 @@ periodsVP.hide = function () {
 periodsVP.hideModals = function () {
     this._Table.hide();
     this._PeriodsMenu.hide();
+    this._OkBtn.hide();
 };
 
 periodsVP.toggle = function () {
     this._PeriodsMenu.toggle();
+    this._OkBtn.toggle();
     if (this._Table.is(":visible")) {
         this._Table.hide();
     }

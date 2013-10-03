@@ -9,6 +9,7 @@
 html, body {
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
 body {
@@ -135,4 +136,32 @@ body {
     font-weight: 400;
     color: #212121;
     /*margin: -1px;*/
+}
+
+#Loader {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.8);
+    z-index: 100;
+
+}
+
+#Loader .inner {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#Loader .content {
+    width: 300px;
+    display: inline-block;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+#PeriodsOkBtn {
+    clear: left;
+    float: left;
 }

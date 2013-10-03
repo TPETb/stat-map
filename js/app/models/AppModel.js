@@ -16,15 +16,20 @@ SM.AppModel = function () {
     this._Regions = [];
     this._Statistics = [];
 
+    this._StartUpDataFiredEvents = [];
+    this._LayerItemsRetrievedCounter = 0;
+
     this._ActiveStatistic = null;
     this._ActiveStatisticPeriods = null;
 
     this.ConfigRetrieved = new TVL.Event();
     this.LayersListRetrieved = new TVL.Event();
+    this.LayersItemsRetrieved = new TVL.Event();
     this.LayerItemsRetrieved = new TVL.Event();
     this.RegionsRetrieved = new TVL.Event();
     this.StatisticsListRetrieved = new TVL.Event();
     this.StatisticRetrieved = new TVL.Event();
+    this.StartUpDataLoaded = new TVL.Event();
 
     this.init();
 };
@@ -59,6 +64,7 @@ appModelP.requestConfig = function () {
 appModelP._onConfigRetrieved = function (sender, data) {
     this._Config = data;
     this.ConfigRetrieved.fire(this);
+    this._addStartUpDataFiredEvent(this.ConfigRetrieved);
 };
 
 /**
@@ -82,6 +88,7 @@ appModelP._onLayersListRetrieved = function (sender, data) {
     }
 
     this.LayersListRetrieved.fire(this);
+    this._addStartUpDataFiredEvent(this.LayersListRetrieved);
 };
 
 appModelP.requestLayersItems = function () {
@@ -99,6 +106,11 @@ appModelP._onLayerItemsRetrieved = function (sender, data) {
     if (layer) {
         layer.items = data.items;
         this.LayerItemsRetrieved.fire(this, data.name);
+        this._LayerItemsRetrievedCounter++;
+        if (this._LayerItemsRetrievedCounter === this._Layers.length) {
+            this.LayersItemsRetrieved.fire(this);
+            this._addStartUpDataFiredEvent(this.LayersItemsRetrieved);
+        }
     }
 };
 
@@ -113,6 +125,7 @@ appModelP.requestRegions = function() {
 appModelP._onRegionsRetrieved = function(sender, settings) {
     this._Regions = settings.items;
     this.RegionsRetrieved.fire(this);
+    this._addStartUpDataFiredEvent(this.RegionsRetrieved);
 };
 
 /**
@@ -126,6 +139,7 @@ appModelP.requestStatisticsList = function() {
 appModelP._onStatisticsListRetrieved = function(sender, settings) {
     this._Statistics = settings.items;
     this.StatisticsListRetrieved.fire(this);
+    this._addStartUpDataFiredEvent(this.StatisticsListRetrieved);
 };
 
 /**
@@ -209,6 +223,13 @@ appModelP.setActiveStatisticPeriods = function (periodsNamesArray) {
 
 appModelP.getActiveStatisticPeriods = function () {
     return this._ActiveStatisticPeriods;
+};
+
+appModelP._addStartUpDataFiredEvent = function (event) {
+    this._StartUpDataFiredEvents.push(event);
+    if (this._StartUpDataFiredEvents.length === 5) {
+        this.StartUpDataLoaded.fire(this);
+    }
 };
 
 appModelP = null;

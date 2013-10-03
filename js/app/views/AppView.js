@@ -13,6 +13,10 @@ SM.AppView = function(options) {
     this._MapView = null;
     this._UIView = null;
 
+    this._Loader = $('#Loader');
+    this._Loader.find('.inner').height($(window).height());
+    this._Loader.find('.inner').width($(window).width());
+
     // Layers events
     this.LayerHideDemanded = new TVL.Event();
     this.LayerShowDemanded = new TVL.Event();
@@ -44,6 +48,9 @@ appViewP.init = function() {
 
 appViewP._addEventListeners = function() {
     $(window).on('click', $.proxy(this._onWindowClick, this));
+
+    this._Model.StartUpDataLoaded.add(this._onStartUpDataLoaded, this);
+
     this._UIView.LayerHideDemanded.add(this._onLayerHideDemanded, this);
     this._UIView.LayerShowDemanded.add(this._onLayerShowDemanded, this);
 };
@@ -52,6 +59,10 @@ appViewP._onWindowClick = function (event) {
     if ($('#Map').find($(event.target)).length > 0) {
         this.hideModals();
     }
+};
+
+appViewP._onStartUpDataLoaded = function () {
+    this._Loader.fadeOut();
 };
 
 /**

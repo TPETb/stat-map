@@ -34,6 +34,8 @@ SM.UIView = function (options) {
 
     this.StatisticCycleStartDemanded = new TVL.Event();
     this.StatisticCycleStopDemanded = new TVL.Event();
+    this.StatisticCyclePauseDemanded = new TVL.Event();
+    this.StatisticCycleCancelDemanded = new TVL.Event();
 
     this.init(options);
 };
