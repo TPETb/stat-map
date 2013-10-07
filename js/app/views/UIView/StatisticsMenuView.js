@@ -12,6 +12,8 @@ SM.StatisticsMenuView = function (options) {
     this._Model = options.model;
     this._ContentWrapper = $('#ContentWrapper');
     this._Menu = null;
+    this._Items = [];
+    this._DomNode = null;
 
     this.ItemChecked = new TVL.Event();
 
@@ -30,6 +32,7 @@ statMenuViewP._render = function () {
     this._Menu.menu();
     this._ContentWrapper.append(this._Menu);
     this._Menu.hide();
+    this._DomNode = $('#StatisticsMenu');
 };
 
 statMenuViewP._addEventListeners = function () {
@@ -37,50 +40,47 @@ statMenuViewP._addEventListeners = function () {
 };
 
 statMenuViewP._onStatisticsListRetrieved = function () {
-    this.addStatisticsMenuItems(this._Model.getStatistics());
+    this.addItems(this._Model.getStatistics().getItems());
 };
 
-statMenuViewP.addStatisticsMenuItems = function (statisticsConfig) {
-    this._Menu.html('');
+statMenuViewP.addItems = function (statistics) {
+    for (var i = 0; i < statistics.length; i++) {
+        this._Items.push(new SM.StatisticsMenuItemView({
+            parentNode: this._DomNode,
+            model: statistics[i]
+        }));
+    }
 
-    this._addStatisticsMenuItems(this._Menu, statisticsConfig);
+    for (var i=0; i < this._Items.length; i++) {
+        this._Items[i].SetActive.add(this._onItemSetActive, this);
+    }
 
     this._Menu.menu('refresh');
 };
 
-statMenuViewP._addStatisticsMenuItems = function (jNode, statisticsConfig) {
-    for (var i = 0; i < statisticsConfig.length; i++) {
-        if (statisticsConfig[i].items) {
-            var item = $('<li></li>');
-            var itemTitle = $('<a href="#">' + statisticsConfig[i].title + '</a>');
-            var subMenu = $('<ul></ul>');
+statMenuViewP._onItemSetActive = function (sender) {
+    for (var i = 0; i < this._Items.length; i++) {
+        this._Items[i].setActive(false, sender);
+    }
 
-            itemTitle.appendTo(item);
-            subMenu.appendTo(item);
-            item.appendTo(jNode);
+    this.hide();
+    this.ItemChecked.fire(this);
+};
 
-            this._addStatisticsMenuItems(subMenu, statisticsConfig[i].items);
-        }
-        else {
-            var item = $('<li><a href="#">' + statisticsConfig[i].title + '</a></li>');
-            item.find('a').on('click', $.proxy(this._onMenuItemClick, this, statisticsConfig[i].name));
-            item.appendTo(jNode);
+statMenuViewP.setActive = function (state) {
+    if (!state) {
+        for (var i = 0; i < this._Items.length; i++) {
+            this._Items[i].setActive(state);
         }
     }
 };
 
-statMenuViewP._onMenuItemClick = function (statisticName, event) {
-    this.cancelChecked();
-    $(event.target).addClass('active');
-
-    this.ItemChecked.fire(this, statisticName);
-    this._Menu.hide();
-};
-
-statMenuViewP.cancelChecked = function () {
-    this._Menu.find('li.ui-menu-item a').each(function () {
-        $(this).removeClass('active');
-    });
+statMenuViewP.removeItems = function () {
+    // todo: impement
+    for (var i = 0; i < this._Items.length; i++) {
+        this._Items[i].dispose();
+    }
+    this._Items = [];
 };
 
 statMenuViewP.show = function () {

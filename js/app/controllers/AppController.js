@@ -45,10 +45,6 @@ appCtrlP._addEventListeners = function () {
 
     this._UICtrl.LayerHideDemanded.add(this._onLayerHideDemanded, this);
     this._UICtrl.LayerShowDemanded.add(this._onLayerShowDemanded, this);
-
-    this._UICtrl.StatisticCancelDemanded.add(this._onStatisticCancelDemanded, this);
-    this._UICtrl.StatisticCycleStartDemanded.add(this._onStatisticCycleStartDemanded, this);
-    this._UICtrl.StatisticCycleStopDemanded.add(this._onStatisticCycleStopDemanded, this);
 };
 
 appCtrlP._onConfigRetrieved = function (sender) {
@@ -67,20 +63,6 @@ appCtrlP._onLayerHideDemanded = function (sender, layerName) {
 
 appCtrlP._onLayerShowDemanded = function (sender, layerName) {
     this._View.showLayer(layerName);
-};
-
-appCtrlP._onStatisticCancelDemanded = function () {
-    this._Model.setActiveStatistic(null);
-    this._View.cancelStatistic();
-    this._View.stopStatisticCycle();
-};
-
-appCtrlP._onStatisticCycleStartDemanded = function () {
-    this._View.startStatisticCycle();
-};
-
-appCtrlP._onStatisticCycleStopDemanded = function () {
-    this._View.stopStatisticCycle();
 };
 
 appCtrlP.getModel = function () {

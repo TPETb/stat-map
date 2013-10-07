@@ -12,11 +12,8 @@ if (!SM) {
 SM.TaxonomyView = function(options) {
     this._Model = options.model;
     this._Map = options.map;
-    this._StatisticOptions = {};
     this._StatisticValues = [];
     this._TaxonomyObjectGroup = null;
-    this._CurrentPeriod = -1;
-    this._TimedExecutioner = null;
 
     this.init();
 };
@@ -35,44 +32,34 @@ taxVP.init = function() {
 
 taxVP._addEventListeners = function () {
     this._Model.RegionsRetrieved.add(this._onRegionsRetrieved, this);
+    this._Model.ActiveStatisticSet.add(this._onActiveStatisticSet, this);
 };
 
 taxVP._onRegionsRetrieved = function (sender) {
     this.setMapObjects(this._Model.getRegions());
 };
 
-taxVP.startStatisticCycle = function () {
-    var statisticName = this._Model.getActiveStatistic().name;
-    this._Statistic = this._Model.getStatistic(statisticName).data;
+taxVP._onActiveStatisticSet = function () {
+    this._ActiveStatistic = this._Model.getActiveStatistic();
 
-    this.setStatisticOptions(this._Statistic);
-
-    this._showNextStatisticPeriod();
-    this._TimedExecutioner = setInterval($.proxy(this._showNextStatisticPeriod, this), 1000);
+    this._ActiveStatistic.CurrentPeriodSet.remove(this._onCurrentPeriodSet);
+    this._ActiveStatistic.CycleCancelled.remove(this._onCycleCancelled);
+    this._ActiveStatistic.CurrentPeriodSet.add(this._onCurrentPeriodSet, this);
+    this._ActiveStatistic.CycleCancelled.add(this._onCycleCancelled, this);
 };
 
-taxVP.stopStatisticCycle = function () {
-    this._CurrentPeriod = -1;
+taxVP._onCurrentPeriodSet = function () {
+    var currentPeriod  = this._ActiveStatistic.getCurrentPeriod();
 
+    this.setStatisticValues(currentPeriod.values);
+
+    this.setMapObjects(this._Model.getRegions());
+};
+
+taxVP._onCycleCancelled = function () {
     this.setStatisticValues(null);
-    this.setStatisticOptions(null);
-    clearInterval(this._TimedExecutioner);
-    this.setMapObjects(this._Model.getRegions());
-};
-
-taxVP._showStatisticPeriod = function (period) {
-    var statisticToDisplay = this._Statistic.periods[period];
-    this.setStatisticValues(statisticToDisplay.values);
 
     this.setMapObjects(this._Model.getRegions());
-};
-
-taxVP._showNextStatisticPeriod = function () {
-    this._CurrentPeriod ++;
-    if (this._CurrentPeriod >= this._Statistic.periods.length) {
-        this._CurrentPeriod = 0;
-    }
-    this._showStatisticPeriod(this._CurrentPeriod);
 };
 
 /**
@@ -96,15 +83,6 @@ taxVP.setMapObjects = function(regionsConfig) {
     }
 
     this._TaxonomyObjectGroup.addTo(this._Map);
-};
-
-/**
- * Set statistic options
- * @param {type} statisticOptions
- * @returns {undefined}
- */
-taxVP.setStatisticOptions = function(statisticOptions) {
-    this._StatisticOptions = statisticOptions;
 };
 
 /**
@@ -133,9 +111,10 @@ taxVP._findStatisticByObjectName = function(objectName) {
 };
 
 taxVP._getStatisticValueRate = function(value) {
-    for (var i = 0; i < this._StatisticOptions.range.length; i++) {
-        if (value >= this._StatisticOptions.range[i].min && value <= this._StatisticOptions.range[i].max) {
-            return this._StatisticOptions.range[i].rate;
+    var statisticData = this._ActiveStatistic.getData();
+    for (var i = 0; i < statisticData.range.length; i++) {
+        if (value >= statisticData.range[i].min && value <= statisticData.range[i].max) {
+            return statisticData.range[i].rate;
         }
     }
 
