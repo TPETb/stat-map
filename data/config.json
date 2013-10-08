@@ -54,7 +54,7 @@
         {
             "value": 0,
             "polyStyle": {
-                "fill": true,
+                "fill": false,
                 "fillColor": "red",
                 "fillOpacity": 0,
                 "stroke": true,
