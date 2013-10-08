@@ -47,18 +47,22 @@ uiViewP._render = function () {
     this._MapTypeBtn = new SM.MapTypeBtn();
     this._MapTypeBtn.setState('welayats');
 
-    this._StatisticsBtn = $('<button type="button" class="btn btn-default navbar-btn" id="StatisticsBtn"><span class="glyphicon glyphicon-stats"></span> Статистика</button>');
-    this._StatisticsCancelBtn = $('<button type="button" class="btn btn-danger navbar-btn" id="StatisticsCancelBtn"><span class="glyphicon glyphicon-ban-circle"></span> Убрать статистику</button>');
+    this._StatisticsBtn = $('<button type="button" class="btn btn-default" id="StatisticsBtn"><span class="glyphicon icon-bar-chart"></span> Статистика</button>');
+    this._StatisticsCancelBtn = $('<button type="button" class="btn btn-default" id="StatisticsCancelBtn"><span class="glyphicon icon-map-marker"></span> Геокарта</button>');
+    this._TransportBtn = $('<button type="button" class="btn btn-default" id="StatisticsCancelBtn"><span class="glyphicon icon-random"></span> Транспорт и коммуникации</button>');
+    this._TourismBtn = $('<button type="button" class="btn btn-default" id="StatisticsCancelBtn"><span class="glyphicon icon-plane"></span> Туризм</button>');
+    this._TradeBtn = $('<button type="button" class="btn btn-default" id="StatisticsCancelBtn"><span class="glyphicon icon-refresh"></span> Внешняя торговля</button>');
+
     this._StatisticsCancelBtn.hide();
 
     this._Toolbar1.append(this._StatisticsBtn);
     this._Toolbar1.append(this._StatisticsCancelBtn);
+    this._Toolbar1.append(this._TransportBtn);
+    this._Toolbar1.append(this._TourismBtn);
+    this._Toolbar1.append(this._TradeBtn);
 
-    this._LayersMenu = $('<ul id="LayersMenu">');
-    this._LayersMenu.menu();
+    this._LayersMenu = $('<ul id="LayersMenu" class="menu-std">');
     this._Body.append(this._LayersMenu);
-
-    this._StatisticsMenuView = new SM.StatisticsMenuView({ model: this._Model });
 
     this._PeriodsView = new SM.PeriodsView({ model: this._Model });
     this._NavBarTitle = $('<p class="navbar-text"></p>');
@@ -68,6 +72,7 @@ uiViewP._render = function () {
 };
 
 uiViewP._addEventListeners = function () {
+    this._Model.StatisticsListRetrieved.add(this._onStatisticsListRetrieved, this);
     this._Model.LayersListRetrieved.add(this._onLayersListRetrieved, this);
     this._Model.ActiveStatisticSet.add(this._onActiveStatisticSet, this);
 
@@ -76,6 +81,10 @@ uiViewP._addEventListeners = function () {
     this._MapTypeBtn.StateChanged.add(this._onMapTypeBtnStateChanged, this);
 
     this._PeriodsView.PeriodsBtnClick.add(this._onPeriodsBtnClick, this);
+};
+
+uiViewP._onStatisticsListRetrieved = function () {
+    this._StatisticsMenuView = new SM.StatisticsMenuView({ model: this._Model.getStatistics() });
 };
 
 uiViewP._onLayersListRetrieved = function () {
@@ -102,8 +111,6 @@ uiViewP._onMapTypeBtnStateChanged = function () {
     this._Model.setActiveTaxonomy(this._MapTypeBtn.getState());
 };
 
-
-
 uiViewP._onPeriodsBtnClick = function () {
     this._StatisticsMenuView.hide();
 };
@@ -118,6 +125,7 @@ uiViewP._onActiveStatisticSet = function (sender) {
 
     this._StatisticsCancelBtn.show();
     this._PeriodsView.show();
+    this._StatisticsMenuView.hide();
 
     this._NavBarTitle.html(this._ActiveStatistic.getTitle());
 };
@@ -125,7 +133,7 @@ uiViewP._onActiveStatisticSet = function (sender) {
 uiViewP.addLayersMenuItems = function (layersConfig) {
     this._LayersMenu.html('');
     for (var i = 0; i < layersConfig.length; i++) {
-        var item = $('<li><a href="#"><input type="checkbox"/><span></span></a></li>');
+        var item = $('<li><input type="checkbox"/><span></span></li>');
         item.find('input').attr({
             name: layersConfig[i].name,
             checked: layersConfig[i].active,
@@ -133,10 +141,10 @@ uiViewP.addLayersMenuItems = function (layersConfig) {
         })
             // add event listener right here as it is just DOM event
             .on('change', $.proxy(this._onLayerChange, this));
-        item.find('span').text(layersConfig[i].title);
+        item.find('span').text(' ' + layersConfig[i].title);
         item.appendTo(this._LayersMenu);
     }
-    this._LayersMenu.menu('refresh');
+
 };
 
 uiViewP._onCurrentPeriodSet = function () {

@@ -40,7 +40,6 @@ periodsVP._render = function () {
     this._Toolbar3.append(this._PeriodsMenuWrapper);
 
     this._PeriodsMenu = $('<ul id="PeriodsMenu" class="menu-std">');
-    this._PeriodsMenu.menu();
     this._PeriodsMenuWrapper.append(this._PeriodsMenu);
     this._PeriodsMenu.hide();
 
@@ -155,18 +154,16 @@ periodsVP._onCycleCancelled = function () {
 periodsVP.addPeriodsMenuItems = function (periodsConfig) {
     this._PeriodsMenu.html('');
     for (var i = 0; i < periodsConfig.length; i++) {
-        var item = $('<li><a href="#"><input type="checkbox"/><span></span></a></li>');
+        var item = $('<li><input type="checkbox"/><span></span></li>');
         item.find('input').attr({
             name: periodsConfig[i].name,
             checked: periodsConfig[i].active,
             disabled: periodsConfig[i].forced
-        })
-            // add event listener right here as it is just DOM event
-            .on('change', $.proxy(this._onPeriodsChange, this));
-        item.find('span').text(periodsConfig[i].title);
+        }).on('change', $.proxy(this._onPeriodsChange, this));
+        item.find('span').text(' ' + periodsConfig[i].title);
         item.appendTo(this._PeriodsMenu);
     }
-    this._PeriodsMenu.menu('refresh');
+
 };
 
 periodsVP._onPeriodsChange = function (event) {
