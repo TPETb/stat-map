@@ -40,19 +40,27 @@ uiViewP.init = function (options) {
 
 uiViewP._render = function () {
     this._NavBar = $('<nav id="UINavBar" class="navbar navbar-default" role="navigation">' +
-            '<div class="navbar-header">' +
-                '<span class="navbar-brand" href="#">Карта</span>' +
+        '<div class="collapse navbar-collapse navbar-ex1-collapse">' +
+            '<div class="btn-group" data-toggle="buttons">' +
+                '<label id="WelayatsBtn" class="btn btn-info active">' +
+                    '<input type="radio"> Велаяты' +
+                '</label>' +
+                '<label id="EtrapsBtn" class="btn btn-info">' +
+                    '<input type="radio"> Этрапы' +
+                '</label>' +
             '</div>' +
-            '<div class="collapse navbar-collapse navbar-ex1-collapse">' +
-                '<button type="button" class="btn btn-default navbar-btn" id="StatisticsBtn"><span class="glyphicon glyphicon-stats"></span> Статистика</button>' +
-                '<button type="button" class="btn btn-danger navbar-btn" id="StatisticsCancelBtn"><span class="glyphicon glyphicon-ban-circle"></span> Убрать статистику</button>' +
-            '</div>' +
-        '</nav>');
+            '<button type="button" class="btn btn-default navbar-btn" id="StatisticsBtn"><span class="glyphicon glyphicon-stats"></span> Статистика</button>' +
+            '<button type="button" class="btn btn-danger navbar-btn" id="StatisticsCancelBtn"><span class="glyphicon glyphicon-ban-circle"></span> Убрать статистику</button>' +
+        '</div>' +
+    '</nav>');
     this._Body.append(this._NavBar);
 
     this._StatisticsBtn = $('#StatisticsBtn');
     this._StatisticsCancelBtn = $('#StatisticsCancelBtn');
     this._StatisticsCancelBtn.hide();
+
+    this._WelayatsBtn = $('#WelayatsBtn');
+    this._EtrapsBtn = $('#EtrapsBtn');
 
     this._LayersMenu = $('<ul id="LayersMenu">');
     this._LayersMenu.menu();
@@ -73,6 +81,8 @@ uiViewP._addEventListeners = function () {
 
     this._StatisticsBtn.on('click', $.proxy(this._onStatisticsBtnClick, this));
     this._StatisticsCancelBtn.on('click', $.proxy(this._onStatisticsCancelBtnClick, this));
+    this._WelayatsBtn.on('click', $.proxy(this._onWelayatsBtnClick, this));
+    this._EtrapsBtn.on('click', $.proxy(this._onEtrapsBtnClick, this));
 
     this._PeriodsView.PeriodsBtnClick.add(this._onPeriodsBtnClick, this);
 };
@@ -95,6 +105,20 @@ uiViewP._onStatisticsCancelBtnClick = function () {
     this._NavBarTitle.html('');
     this._NavBarPeriod.html('');
     this._Model.setActiveStatistic(null);
+};
+
+uiViewP._onWelayatsBtnClick = function () {
+    if (this._WelayatsBtn.hasClass('active')) {
+        return;
+    }
+    this._Model.setActiveTaxonomy('welayats');
+};
+
+uiViewP._onEtrapsBtnClick = function () {
+    if (this._EtrapsBtn.hasClass('active')) {
+        return;
+    }
+    this._Model.setActiveTaxonomy('etraps');
 };
 
 uiViewP._onPeriodsBtnClick = function () {

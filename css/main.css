@@ -36,8 +36,12 @@ body {
     background-color: rgba(255,255,255,0.9);
 }
 
-#UINavBar button {
-    margin-right: 4px;
+#UINavBar button, #UINavBar .btn-group {
+     margin-right: 4px;
+ }
+
+#UINavBar .btn-group button {
+    margin-right: 0;
 }
 
 #UINavBar .navbar-text {

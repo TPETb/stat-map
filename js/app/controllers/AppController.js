@@ -49,7 +49,8 @@ appCtrlP._addEventListeners = function () {
 
 appCtrlP._onConfigRetrieved = function (sender) {
     this._Model.requestLayersList();
-    this._Model.requestRegions();
+    //this._Model.requestRegions();
+    this._Model.requestTaxonomy();
     this._Model.requestStatisticsList();
 };
 

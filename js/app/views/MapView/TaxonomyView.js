@@ -32,11 +32,16 @@ taxVP.init = function() {
 
 taxVP._addEventListeners = function () {
     this._Model.RegionsRetrieved.add(this._onRegionsRetrieved, this);
+    this._Model.ActiveTaxonomySet.add(this._onActiveTaxonomySet, this);
     this._Model.ActiveStatisticSet.add(this._onActiveStatisticSet, this);
 };
 
 taxVP._onRegionsRetrieved = function (sender) {
     this.setMapObjects(this._Model.getRegions());
+};
+
+taxVP._onActiveTaxonomySet = function (sender) {
+    this.setMapObjects(this._Model.getActiveTaxonomy());
 };
 
 taxVP._onActiveStatisticSet = function () {
@@ -53,13 +58,13 @@ taxVP._onCurrentPeriodSet = function () {
 
     this.setStatisticValues(currentPeriod.values);
 
-    this.setMapObjects(this._Model.getRegions());
+    this.setMapObjects(this._Model.getActiveTaxonomy());
 };
 
 taxVP._onCycleCancelled = function () {
     this.setStatisticValues(null);
 
-    this.setMapObjects(this._Model.getRegions());
+    this.setMapObjects(this._Model.getActiveTaxonomy());
 };
 
 /**

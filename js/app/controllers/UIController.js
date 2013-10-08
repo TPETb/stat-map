@@ -35,6 +35,7 @@ uiCtrlP.init = function (options) {
 uiCtrlP._addEventListeners = function () {
     this._View.LayerHideDemanded.add(this._onLayerHideDemanded, this);
     this._View.LayerShowDemanded.add(this._onLayerShowDemanded, this);
+    this._Model.TaxonomyRetrieved.add(this._onTaxonomyRetrieved, this);
 };
 
 uiCtrlP._onLayerHideDemanded = function (sender, layerName) {
@@ -43,6 +44,10 @@ uiCtrlP._onLayerHideDemanded = function (sender, layerName) {
 
 uiCtrlP._onLayerShowDemanded = function (sender, layerName) {
     this.LayerShowDemanded.fire(this, layerName);
+};
+
+uiCtrlP._onTaxonomyRetrieved = function () {
+    this._Model.setActiveTaxonomy('welayats');
 };
 
 uiCtrlP = null;

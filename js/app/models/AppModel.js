@@ -16,6 +16,8 @@ SM.AppModel = function () {
     this._Regions = [];
     this._Statistics = [];
     this._StatisticsList = [];
+    this._Taxonomy = null;
+    this._ActiveTaxonomy = null;
 
     this._StartUpDataFiredEvents = [];
     this._LayerItemsRetrievedCounter = 0;
@@ -27,9 +29,11 @@ SM.AppModel = function () {
     this.LayersItemsRetrieved = new TVL.Event();
     this.LayerItemsRetrieved = new TVL.Event();
     this.RegionsRetrieved = new TVL.Event();
+    this.TaxonomyRetrieved = new TVL.Event();
     this.StatisticsListRetrieved = new TVL.Event();
     this.StartUpDataLoaded = new TVL.Event();
 
+    this.ActiveTaxonomySet = new TVL.Event();
     this.ActiveStatisticSet = new TVL.Event();
 
     this.init();
@@ -51,6 +55,7 @@ appModelP._addEventListeners = function () {
     this._Service.LayerItemsRetrieved.add(this._onLayerItemsRetrieved, this);
     this._Service.StatisticsListRetrieved.add(this._onStatisticsListRetrieved, this);
     this._Service.RegionsRetrieved.add(this._onRegionsRetrieved, this);
+    this._Service.TaxonomyRetrieved.add(this._onTaxonomyRetrieved, this);
 };
 
 /**
@@ -126,6 +131,16 @@ appModelP._onRegionsRetrieved = function (sender, settings) {
     this._Regions = settings.items;
     this.RegionsRetrieved.fire(this);
     this._addStartUpDataFiredEvent(this.RegionsRetrieved);
+};
+
+appModelP.requestTaxonomy = function () {
+    this._Service.requestTaxonomy();
+};
+
+appModelP._onTaxonomyRetrieved = function (sender, settings) {
+    this._Taxonomy = settings;
+    this.TaxonomyRetrieved.fire(this);
+    this._addStartUpDataFiredEvent(this.TaxonomyRetrieved);
 };
 
 /**
@@ -226,6 +241,19 @@ appModelP.setActiveStatisticPeriods = function (periodsNamesArray) {
 
 appModelP.getActiveStatisticPeriods = function () {
     return this._ActiveStatisticPeriods;
+};
+
+appModelP.getTaxonomy = function () {
+    return this._Taxonomy;
+};
+
+appModelP.setActiveTaxonomy = function (taxonomyName) {
+    this._ActiveTaxonomy = this._Taxonomy[taxonomyName];
+    this.ActiveTaxonomySet.fire(this);
+};
+
+appModelP.getActiveTaxonomy = function () {
+    return this._ActiveTaxonomy;
 };
 
 appModelP._addStartUpDataFiredEvent = function (event) {

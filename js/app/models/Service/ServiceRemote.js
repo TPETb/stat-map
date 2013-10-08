@@ -16,6 +16,7 @@ SM.ServiceRemote = function() {
     this._regionsUrl = 'data/regions3.json';
 //    this._regionsUrl = 'generators/regions3.php';
     this._statisticsListUrl = 'data/statistics/index.json';
+    this._TaxonomyUrl = 'data/taxonomy.json';
 
     this.init();
 };
@@ -33,6 +34,7 @@ serviceRP.init = function() {
     this.LayerItemsRetrieved = new TVL.Event();
     this.RegionsRetrieved = new TVL.Event();
     this.StatisticsListRetrieved = new TVL.Event();
+    this.TaxonomyRetrieved = new TVL.Event();
 };
 
 /**
@@ -91,6 +93,13 @@ serviceRP.requestStatisticsList = function() {
 };
 serviceRP._onStatisticsListRetrieved = function(data) {
     this.StatisticsListRetrieved.fire(this, data);
+};
+
+serviceRP.requestTaxonomy = function() {
+    $.getJSON(this._TaxonomyUrl).done($.proxy(this._onTaxonomyRetrieved, this));
+};
+serviceRP._onTaxonomyRetrieved = function(data) {
+    this.TaxonomyRetrieved.fire(this, data);
 };
 
 serviceRP = null;
