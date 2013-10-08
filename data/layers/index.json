@@ -1,0 +1,18 @@
+{
+    "items": [
+        {
+            "name": "airports",
+            "title": "Аэропорты",
+            "active": true,
+            "forced": false,
+            "source": "data/layers/layerAirports.json"
+        },
+        {
+            "name": "seaports",
+            "title": "Морские порты",
+            "active": true,
+            "forced": false,
+            "source": "data/layers/layerSeaports.json"
+        }
+    ]
+}

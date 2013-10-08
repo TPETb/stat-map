@@ -9,19 +9,19 @@ if (!SM) {
  * Handles the retrieval of data
  * @todo extract all url apart from configUrl from config
  */
-SM.Service_Remote = function() {
+SM.ServiceRemote = function() {
 
     this._configUrl = 'data/config.json';
-    this._layersListUrl = 'data/layersList.json';
-    this._regionsUrl = 'data/regions2.json';
-    this._statisticsListUrl = 'data/statistics.json';
-    this._statisticUrl = 'data/statisticMonthlySalary.json';
+    this._layersListUrl = 'data/layers/index.json';
+    this._regionsUrl = 'data/regions3.json';
+//    this._regionsUrl = 'generators/regions3.php';
+    this._statisticsListUrl = 'data/statistics/index.json';
 
     this.init();
 };
 
 // Shortcut
-var serviceRP = SM.Service_Remote.prototype;
+var serviceRP = SM.ServiceRemote.prototype;
 
 /**
  * Constructor
@@ -33,7 +33,6 @@ serviceRP.init = function() {
     this.LayerItemsRetrieved = new TVL.Event();
     this.RegionsRetrieved = new TVL.Event();
     this.StatisticsListRetrieved = new TVL.Event();
-    this.StatisticRetrieved = new TVL.Event();
 };
 
 /**
@@ -92,22 +91,6 @@ serviceRP.requestStatisticsList = function() {
 };
 serviceRP._onStatisticsListRetrieved = function(data) {
     this.StatisticsListRetrieved.fire(this, data);
-};
-
-/**
- * Returns statistic
- * @returns {array}
- */
-serviceRP.requestStatistic = function(statisticConfig) {
-    $.getJSON(statisticConfig.source)
-            .done($.proxy(this._onStatisticRetrieved, this))
-            .fail($.proxy(function(jqXHR) {
-        console.log("failed request:");
-        console.log(jqXHR);
-    }, this));
-};
-serviceRP._onStatisticRetrieved = function(data) {
-    this.StatisticRetrieved.fire(this, data);
 };
 
 serviceRP = null;

@@ -1,48 +1,65 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
 
-        <meta charset="UTF-8" />
-        <title>Stat map</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8"/>
+    <title>Stat map</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <link rel="stylesheet" href="css/main.css" type="text/css">
-        <link rel="stylesheet" href="css/leaflet.css" type="text/css">
-        <link rel="stylesheet" href="css/jquery-ui-1.10.3/jquery-ui.min.css" type="text/css">
-        <!--[if lte IE 8]>
-            <link rel="stylesheet" href="css/leaflet.ie.css" />
-        <![endif]-->
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+    <link rel="stylesheet" href="css/leaflet.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui-1.10.3/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" type="text/css">
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="css/leaflet.ie.css"/>
+    <![endif]-->
 
-        <script src="js/lib/jquery-1.10.2.min.js" type="text/javascript"></script>
-        <script src="js/lib/jquery-ui.min.js" type="text/javascript"></script>
-        <script src="js/lib/tv-lib.js" type="text/javascript"></script>
-        <script src="js/lib/leaflet.js" type="text/javascript"></script>
+    <script src="js/lib/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="js/lib/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="js/lib/tv-lib.js" type="text/javascript"></script>
+    <script src="js/lib/leaflet.js" type="text/javascript"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js" type="text/javascript"></script>
 
-        <script src="js/app/AppController.js" type="text/javascript"></script>
+    <script src="js/app/controllers/AppController.js" type="text/javascript"></script>
+    <script src="js/app/controllers/UIController.js" type="text/javascript"></script>
 
-        <script src="js/app/models/AppModel.js" type="text/javascript"></script>
-        <script src="js/app/models/Service/ServiceRemote.js" type="text/javascript"></script>
-        <script src="js/app/models/Service/ServiceLocal.js" type="text/javascript"></script>
-        
-        <script src="js/app/views/AppView.js" type="text/javascript"></script>
-        <script src="js/app/views/UIView.js" type="text/javascript"></script>
-        <script src="js/app/views/MapView/MapView.js" type="text/javascript"></script>
-        <script src="js/app/views/MapView/StatisticsView.js" type="text/javascript"></script>
-        <script src="js/app/views/MapView/TaxonomyView.js" type="text/javascript"></script>
-        <script src="js/app/views/MapView/LayerContainerView/LayerContainerView.js" type="text/javascript"></script>
-        <script src="js/app/views/MapView/LayerContainerView/LayerView.js" type="text/javascript"></script>
-        <script src="js/app/views/MapView/LayerContainerView/LayerItemView/LayerItemRasterView.js" type="text/javascript"></script>
-        <script src="js/app/views/MapView/LayerContainerView/LayerItemView/LayerItemVectorView.js" type="text/javascript"></script>
-        <script src="js/app/views/MapView/LayerContainerView/LayerItemView/LayerItemMarkerView.js" type="text/javascript"></script>
+    <script src="js/app/models/AppModel.js" type="text/javascript"></script>
+    <script src="js/app/models/StatisticModel.js" type="text/javascript"></script>
+    <script src="js/app/models/Service/ServiceRemote.js" type="text/javascript"></script>
+    <script src="js/app/models/Service/StatisticServiceRemote.js" type="text/javascript"></script>
+    <script src="js/app/models/Service/ServiceLocal.js" type="text/javascript"></script>
 
-        <script src="js/main.js" type="text/javascript"></script>
-    </head>
+    <script src="js/app/views/AppView.js" type="text/javascript"></script>
+    <script src="js/app/views/UIView/UIView.js" type="text/javascript"></script>
+    <script src="js/app/views/UIView/PausePlayBtn.js" type="text/javascript"></script>
+    <script src="js/app/views/UIView/PeriodsView.js" type="text/javascript"></script>
+    <script src="js/app/views/UIView/StatisticsMenuView.js" type="text/javascript"></script>
+    <script src="js/app/views/UIView/StatisticsMenuItemView.js" type="text/javascript"></script>
+    <script src="js/app/views/MapView/MapView.js" type="text/javascript"></script>
+    <script src="js/app/views/MapView/TaxonomyView.js" type="text/javascript"></script>
+    <script src="js/app/views/MapView/LayerContainerView/LayerContainerView.js" type="text/javascript"></script>
+    <script src="js/app/views/MapView/LayerContainerView/LayerView.js" type="text/javascript"></script>
+    <script src="js/app/views/MapView/LayerContainerView/LayerItemView/LayerItemRasterView.js" type="text/javascript"></script>
+    <script src="js/app/views/MapView/LayerContainerView/LayerItemView/LayerItemVectorView.js" type="text/javascript"></script>
+    <script src="js/app/views/MapView/LayerContainerView/LayerItemView/LayerItemMarkerView.js" type="text/javascript"></script>
 
-    <body>
-        <div id="Map"></div>
-        <!--<div id="Ui">-->
+    <script src="js/main.js" type="text/javascript"></script>
+</head>
 
-        <!--</div>-->
-    </body>
+<body>
+    <div id="Map"></div>
+    <div id="ToolbarTop"></div>
+    <div id="ContentWrapper"></div>
+    <div id="Loader">
+        <div class="inner">
+            <div class="content">
+                <div>Загрузка</div>
+                <div class="progress progress-striped active">
+                    <div class="progress-bar" role="progressbar" style="width: 100%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 </html>

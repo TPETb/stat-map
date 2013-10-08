@@ -53,10 +53,6 @@ mapViewP._addEventListeners = function () {
     $(window).on('resize', $.proxy(this._onViewportResize, this));
 };
 
-mapViewP.hideStatistic = function () {
-    this._TaxonomyView.resetStatistic();
-};
-
 mapViewP.showLayer = function (layerName) {
     this._LayerContainerView.showLayer(layerName);
 };
@@ -75,7 +71,7 @@ mapViewP._onConfigRetrieved = function () {
     var config = this._Model.getConfig();
 
     if (config.view) {
-        this._Map.setView([config.view.lat, config.view.lng], 6);
+        this._Map.setView([config.view.lat, config.view.lng], 7);
     }
 
     if (config.tileProvider) {
@@ -99,6 +95,10 @@ mapViewP.resize = function (width, height) {
 
 mapViewP._onResize = function () {
     this._calculateZoomRange();
+};
+
+mapViewP.getTaxonomyView = function () {
+    return this._TaxonomyView;
 };
 
 mapViewP = null;

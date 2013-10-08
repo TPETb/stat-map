@@ -12,11 +12,8 @@ if (!SM) {
 SM.TaxonomyView = function(options) {
     this._Model = options.model;
     this._Map = options.map;
-    this._StatisticOptions = {};
     this._StatisticValues = [];
     this._TaxonomyObjectGroup = null;
-    this._CurrentPeriod = -1;
-    this._TimedExecutioner = null;
 
     this.init();
 };
@@ -35,49 +32,33 @@ taxVP.init = function() {
 
 taxVP._addEventListeners = function () {
     this._Model.RegionsRetrieved.add(this._onRegionsRetrieved, this);
-    this._Model.StatisticRetrieved.add(this._onStatisticRetrieved, this);
+    this._Model.ActiveStatisticSet.add(this._onActiveStatisticSet, this);
 };
 
 taxVP._onRegionsRetrieved = function (sender) {
     this.setMapObjects(this._Model.getRegions());
 };
 
-taxVP._onStatisticRetrieved = function (sender, statisticName) {
-    this._Statistic = this._Model.getStatistic(statisticName).data;
-    this.setStatisticOptions(this._Statistic);
+taxVP._onActiveStatisticSet = function () {
+    this._ActiveStatistic = this._Model.getActiveStatistic();
 
-    // now we need to loop though available statistics in fact
-    // but we will just fix first period for now
-    // start loop
-    this._loopThroughStatisticPeriods();
-    // end loop
+    this._ActiveStatistic.CurrentPeriodSet.remove(this._onCurrentPeriodSet);
+    this._ActiveStatistic.CycleCancelled.remove(this._onCycleCancelled);
+    this._ActiveStatistic.CurrentPeriodSet.add(this._onCurrentPeriodSet, this);
+    this._ActiveStatistic.CycleCancelled.add(this._onCycleCancelled, this);
 };
 
-taxVP._showStatisticPeriod = function (period) {
-    var statisticToDisplay = this._Statistic.periods[period];
-    this.setStatisticValues(statisticToDisplay.values);
+taxVP._onCurrentPeriodSet = function () {
+    var currentPeriod  = this._ActiveStatistic.getCurrentPeriod();
+
+    this.setStatisticValues(currentPeriod.values);
 
     this.setMapObjects(this._Model.getRegions());
 };
 
-taxVP._showNextStatisticPeriod = function () {
-    this._CurrentPeriod ++;
-    if (this._CurrentPeriod >= this._Statistic.periods.length) {
-        this._CurrentPeriod = 0;
-    }
-    this._showStatisticPeriod(this._CurrentPeriod);
-};
-
-taxVP._loopThroughStatisticPeriods = function () {
-    clearInterval(this._TimedExecutioner);
-    this._CurrentPeriod = -1;
-    this._TimedExecutioner = setInterval($.proxy(this._showNextStatisticPeriod, this), 1000);
-};
-
-taxVP.resetStatistic = function () {
+taxVP._onCycleCancelled = function () {
     this.setStatisticValues(null);
-    this.setStatisticOptions(null);
-    clearInterval(this._TimedExecutioner);
+
     this.setMapObjects(this._Model.getRegions());
 };
 
@@ -90,7 +71,7 @@ taxVP.setMapObjects = function(regionsConfig) {
 
     for (var i = 0; i < regionsConfig.length; i++) {
         var rate;
-        var taxonomyObject = L.polygon(regionsConfig[i].shape);
+        var taxonomyObject = L.multiPolygon(regionsConfig[i].shape);
         if (this._findStatisticByObjectName(regionsConfig[i].name)) {
             rate = this._getStatisticValueRate(this._findStatisticByObjectName(regionsConfig[i].name).value);
         }
@@ -102,15 +83,6 @@ taxVP.setMapObjects = function(regionsConfig) {
     }
 
     this._TaxonomyObjectGroup.addTo(this._Map);
-};
-
-/**
- * Set statistic options
- * @param {type} statisticOptions
- * @returns {undefined}
- */
-taxVP.setStatisticOptions = function(statisticOptions) {
-    this._StatisticOptions = statisticOptions;
 };
 
 /**
@@ -139,9 +111,10 @@ taxVP._findStatisticByObjectName = function(objectName) {
 };
 
 taxVP._getStatisticValueRate = function(value) {
-    for (var i = 0; i < this._StatisticOptions.range.length; i++) {
-        if (value >= this._StatisticOptions.range[i].min && value <= this._StatisticOptions.range[i].max) {
-            return this._StatisticOptions.range[i].rate;
+    var statisticData = this._ActiveStatistic.getData();
+    for (var i = 0; i < statisticData.range.length; i++) {
+        if (value >= statisticData.range[i].min && value <= statisticData.range[i].max) {
+            return statisticData.range[i].rate;
         }
     }
 
@@ -169,3 +142,5 @@ taxVP._getObjectStyleByRate = function(rate) {
         "weight": 2
     };
 };
+
+taxVP = null;

@@ -6,13 +6,10 @@
         Purpose of the stylesheet follows.
 */
 
-root { 
-    display: block;
-}
-
 html, body {
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
 body {
@@ -30,24 +27,36 @@ body {
     display: none;
 }
 
-/*#Ui {*/
-    /*position: absolute;*/
-    /*width: 0;*/
-    /*top: 0;*/
-    /*bottom: 0;*/
-    /*left: 0;*/
-    /*overflow: visible;*/
-    /*z-index: 2;*/
-/*}*/
-
-#ToolbarBottom {
+#UINavBar {
     position: absolute;
-    left: 0;
-    bottom: 0;
+    left: 43px;
+    top: 9px;
+    right: 9px;
+    z-index: 2;
+    background-color: rgba(255,255,255,0.9);
+}
+
+#UINavBar button {
+    margin-right: 4px;
+}
+
+#UINavBar .navbar-text {
+    float: none;
+    display: inline-block;
+}
+
+#UINavBar .navbar-text.period {
+    font-weight: bold;
+    margin-left: 0;
+}
+
+#ContentWrapper {
+    position: absolute;
+    left: 43px;
+    top: 67px;
     font-size: 12px;
     z-index: 2;
-    height: 39px;
-    padding-left: 7px;
+    height: 0px;
 }
 
 #LayersMenu {
@@ -57,30 +66,69 @@ body {
     z-index: 2;
 }
 
-#StatisticsShowBtn {
+#LayersMenu a input {
+    margin-right: 5px;
+}
+
+#StatisticsBtn {
 
 }
 
-#StatisticsHideBtn {
+#StatisticsCancelBtn {
 
 }
 
 #StatisticsMenu {
-    position: absolute;
-    left: 9px;
-    bottom: 40px;
-    white-space: nowrap;
-    font-size: 12px;
-    z-index: 2;
+    /*white-space: nowrap;*/
+}
+
+#StatisticsMenu ul ul {
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+#StatisticsMenu li {
+   width: 400px;
+}
+
+#PeriodsMenuWrapper {
+    float: left;
+    margin-right: 4px;
 }
 
 #PeriodsMenu {
+    width: 150px;
+    margin-bottom: 5px;
+}
+
+#PeriodsMenu a input {
+    margin-right: 5px;
+}
+
+#Table {
+    background-color: #fff;
+    border-width: 1px;
+    border-color: #ddd;
+    border-radius: 4px;
+    box-shadow: none;
+    padding: 15px;
+    border-style: solid;
+    float: left;
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+#Table table {
+    margin: 0;
+}
+
+#PausePlayBtn {
     position: absolute;
     left: 9px;
-    bottom: 40px;
-    white-space: nowrap;
-    font-size: 12px;
+    top: 68px;
     z-index: 2;
+    width: 28px;
+    height: 28px;
 }
 
 .menu-std a {
@@ -93,4 +141,32 @@ body {
     font-weight: 400;
     color: #212121;
     /*margin: -1px;*/
+}
+
+#Loader {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.8);
+    z-index: 100;
+
+}
+
+#Loader .inner {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#Loader .content {
+    width: 300px;
+    display: inline-block;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+#PeriodsOkBtn {
+    clear: left;
+    float: left;
 }
