@@ -32,6 +32,9 @@ layerLVP.addItems = function(itemsConfig) {
             case 'marker':
                 this._Items.push(new SM.Layer_Item_MarkerView(itemsConfig[i].options));
                 break;
+            case 'raster':
+                this._Items.push(new SM.Layer_Item_RasterView(itemsConfig[i].options));
+                break;
         }
     }
 };

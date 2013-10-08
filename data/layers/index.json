@@ -13,6 +13,34 @@
             "active": true,
             "forced": false,
             "source": "data/layers/layerSeaports.json"
+        },
+        {
+            "name": "railroad",
+            "title": "Железнодорожные линии",
+            "active": true,
+            "forced": false,
+            "source": "data/layers/railroad.json"
+        },
+        {
+            "name": "highway",
+            "title": "Автомагистрали",
+            "active": true,
+            "forced": false,
+            "source": "data/layers/highway.json"
+        },
+        {
+            "name": "road",
+            "title": "Автодороги",
+            "active": true,
+            "forced": false,
+            "source": "data/layers/road.json"
+        },
+        {
+            "name": "welayat",
+            "title": "Названия велаятов",
+            "active": true,
+            "forced": false,
+            "source": "data/layers/welayat.json"
         }
     ]
 }
