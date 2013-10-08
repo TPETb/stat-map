@@ -9,6 +9,7 @@
 html, body {
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
 body {
@@ -26,36 +27,36 @@ body {
     display: none;
 }
 
-/*#Ui {*/
-    /*position: absolute;*/
-    /*width: 0;*/
-    /*top: 0;*/
-    /*bottom: 0;*/
-    /*left: 0;*/
-    /*overflow: visible;*/
-    /*z-index: 2;*/
-/*}*/
-
-#ToolbarTop {
+#UINavBar {
     position: absolute;
     left: 43px;
     top: 9px;
-    font-size: 12px;
+    right: 9px;
     z-index: 2;
-    height: 39px;
+    background-color: rgba(255,255,255,0.9);
+}
+
+#UINavBar button {
+    margin-right: 4px;
+}
+
+#UINavBar .navbar-text {
+    float: none;
+    display: inline-block;
+}
+
+#UINavBar .navbar-text.period {
+    font-weight: bold;
+    margin-left: 0;
 }
 
 #ContentWrapper {
     position: absolute;
     left: 43px;
-    top: 48px;
+    top: 67px;
     font-size: 12px;
     z-index: 2;
     height: 0px;
-}
-
-#ToolbarTop button {
-    margin-right: 4px;
 }
 
 #LayersMenu {
@@ -90,10 +91,14 @@ body {
    width: 400px;
 }
 
-#PeriodsMenu {
-    width: 110px;
-    margin-bottom: 5px;
+#PeriodsMenuWrapper {
     float: left;
+    margin-right: 4px;
+}
+
+#PeriodsMenu {
+    width: 150px;
+    margin-bottom: 5px;
 }
 
 #PeriodsMenu a input {
@@ -109,17 +114,18 @@ body {
     padding: 15px;
     border-style: solid;
     float: left;
-    margin-left: 4px;
+    max-height: 500px;
+    overflow-y: scroll;
 }
 
 #Table table {
     margin: 0;
 }
 
-#StopPlayBtn {
+#PausePlayBtn {
     position: absolute;
     left: 9px;
-    top: 70px;
+    top: 68px;
     z-index: 2;
     width: 28px;
     height: 28px;
@@ -135,4 +141,32 @@ body {
     font-weight: 400;
     color: #212121;
     /*margin: -1px;*/
+}
+
+#Loader {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.8);
+    z-index: 100;
+
+}
+
+#Loader .inner {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#Loader .content {
+    width: 300px;
+    display: inline-block;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+#PeriodsOkBtn {
+    clear: left;
+    float: left;
 }

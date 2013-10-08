@@ -8,7 +8,7 @@ if (!SM) {
 /*
  * type: View class
  */
-SM.StopPlayBtn = function () {
+SM.PausePlayBtn = function () {
     this._ParentNode = $('body');
 
     this.Click = new TVL.Event();
@@ -17,29 +17,29 @@ SM.StopPlayBtn = function () {
     this._addEventListeners();
 };
 
-var stopPlayP = SM.StopPlayBtn.prototype;
+var pausePlayP = SM.PausePlayBtn.prototype;
 
-stopPlayP._render = function () {
-    this._DomNode = $('<button type="button" class="btn btn-default btn-xs" id="StopPlayBtn">' +
+pausePlayP._render = function () {
+    this._DomNode = $('<button type="button" class="btn btn-default btn-xs" id="PausePlayBtn">' +
         '<span class="glyphicon glyphicon-play"></span>' +
-        '<span class="glyphicon glyphicon-eject"></span>' +
+        '<span class="glyphicon glyphicon-pause"></span>' +
         '</button>');
-    this._DomNode.find('.glyphicon-eject').hide();
+    this._DomNode.find('.glyphicon-pause').hide();
     this._ParentNode.append(this._DomNode);
 };
 
-stopPlayP._addEventListeners = function () {
+pausePlayP._addEventListeners = function () {
     this._DomNode.on('click', $.proxy(this._onClick, this));
 };
 
-stopPlayP._onClick = function () {
+pausePlayP._onClick = function () {
     this._DomNode.find('.glyphicon').each(function () {
         $(this).toggle();
     });
     this.Click.fire(this);
 };
 
-stopPlayP.setState = function (state) {
+pausePlayP.setState = function (state) {
     if (this.getState() !== state) {
         this._DomNode.find('.glyphicon').each(function () {
             $(this).toggle();
@@ -47,8 +47,8 @@ stopPlayP.setState = function (state) {
     }
 };
 
-stopPlayP.getState = function () {
-    if (this._DomNode.find('.glyphicon-eject').css("display") === 'none') {
+pausePlayP.getState = function () {
+    if (this._DomNode.find('.glyphicon-pause').css("display") === 'none') {
         return 'inActive';
     }
     else {
@@ -56,16 +56,16 @@ stopPlayP.getState = function () {
     }
 };
 
-stopPlayP.show = function () {
+pausePlayP.show = function () {
     this._DomNode.show();
 };
 
-stopPlayP.hide = function () {
+pausePlayP.hide = function () {
     this._DomNode.hide();
 };
 
-stopPlayP.toggle = function () {
+pausePlayP.toggle = function () {
     this._DomNode.toggle();
 };
 
-stopPlayP = null;
+pausePlayP = null;

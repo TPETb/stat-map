@@ -9,22 +9,28 @@ if (!SM) {
  * Handles the retrieval of data
  */
 SM.AppModel = function () {
-    this._Service = new SM.Service_Remote();
+    this._Service = new SM.ServiceRemote();
 
     this._Config = null;
     this._Layers = [];
     this._Regions = [];
     this._Statistics = [];
+    this._StatisticsList = [];
+
+    this._StartUpDataFiredEvents = [];
+    this._LayerItemsRetrievedCounter = 0;
 
     this._ActiveStatistic = null;
-    this._ActiveStatisticPeriods = null;
 
     this.ConfigRetrieved = new TVL.Event();
     this.LayersListRetrieved = new TVL.Event();
+    this.LayersItemsRetrieved = new TVL.Event();
     this.LayerItemsRetrieved = new TVL.Event();
     this.RegionsRetrieved = new TVL.Event();
     this.StatisticsListRetrieved = new TVL.Event();
-    this.StatisticRetrieved = new TVL.Event();
+    this.StartUpDataLoaded = new TVL.Event();
+
+    this.ActiveStatisticSet = new TVL.Event();
 
     this.init();
 };
@@ -44,7 +50,6 @@ appModelP._addEventListeners = function () {
     this._Service.LayersListRetrieved.add(this._onLayersListRetrieved, this);
     this._Service.LayerItemsRetrieved.add(this._onLayerItemsRetrieved, this);
     this._Service.StatisticsListRetrieved.add(this._onStatisticsListRetrieved, this);
-    this._Service.StatisticRetrieved.add(this._onStatisticRetrieved, this);
     this._Service.RegionsRetrieved.add(this._onRegionsRetrieved, this);
 };
 
@@ -59,6 +64,7 @@ appModelP.requestConfig = function () {
 appModelP._onConfigRetrieved = function (sender, data) {
     this._Config = data;
     this.ConfigRetrieved.fire(this);
+    this._addStartUpDataFiredEvent(this.ConfigRetrieved);
 };
 
 /**
@@ -82,6 +88,7 @@ appModelP._onLayersListRetrieved = function (sender, data) {
     }
 
     this.LayersListRetrieved.fire(this);
+    this._addStartUpDataFiredEvent(this.LayersListRetrieved);
 };
 
 appModelP.requestLayersItems = function () {
@@ -99,6 +106,11 @@ appModelP._onLayerItemsRetrieved = function (sender, data) {
     if (layer) {
         layer.items = data.items;
         this.LayerItemsRetrieved.fire(this, data.name);
+        this._LayerItemsRetrievedCounter++;
+        if (this._LayerItemsRetrievedCounter === this._Layers.length) {
+            this.LayersItemsRetrieved.fire(this);
+            this._addStartUpDataFiredEvent(this.LayersItemsRetrieved);
+        }
     }
 };
 
@@ -113,6 +125,7 @@ appModelP.requestRegions = function () {
 appModelP._onRegionsRetrieved = function (sender, settings) {
     this._Regions = settings.items;
     this.RegionsRetrieved.fire(this);
+    this._addStartUpDataFiredEvent(this.RegionsRetrieved);
 };
 
 /**
@@ -124,24 +137,19 @@ appModelP.requestStatisticsList = function () {
 };
 
 appModelP._onStatisticsListRetrieved = function (sender, settings) {
-    this._Statistics = settings.items;
+    this._StatisticsList = settings;
+
+    this._Statistics = new SM.StatisticModel(this._StatisticsList);
+    this._Statistics.SetActive.add(this._onStatisticSetActive, this);
+
     this.StatisticsListRetrieved.fire(this);
+    this._addStartUpDataFiredEvent(this.StatisticsListRetrieved);
 };
 
-/**
- * retrieve statistics related data
- * @returns {undefined}
- */
-appModelP.requestStatistic = function (statisticName) {
-    this._Service.requestStatistic(this.getStatistic(statisticName));
-};
-
-appModelP._onStatisticRetrieved = function (sender, data) {
-    var statistic = this.getStatistic(data.name);
-    if (statistic) {
-        statistic.data = data;
-        this.StatisticRetrieved.fire(this, data.name);
-    }
+appModelP._onStatisticSetActive = function (sender) {
+    this._Statistics.setActive(false, sender);
+    this.setActiveStatistic(sender);
+    this.ActiveStatisticSet.fire(this);
 };
 
 appModelP.getLayer = function (layerName) {
@@ -196,7 +204,16 @@ appModelP.getRegions = function () {
 };
 
 appModelP.setActiveStatistic = function (statistic) {
-    this._ActiveStatistic = statistic;
+    if (statistic) {
+        this._ActiveStatistic = statistic;
+    }
+    else {
+        if (this._ActiveStatistic) {
+            this._ActiveStatistic.cancelCycle();
+            this._ActiveStatistic = null;
+        }
+    }
+
 };
 
 appModelP.getActiveStatistic = function () {
@@ -209,6 +226,13 @@ appModelP.setActiveStatisticPeriods = function (periodsNamesArray) {
 
 appModelP.getActiveStatisticPeriods = function () {
     return this._ActiveStatisticPeriods;
+};
+
+appModelP._addStartUpDataFiredEvent = function (event) {
+    this._StartUpDataFiredEvents.push(event);
+    if (this._StartUpDataFiredEvents.length === 5) {
+        this.StartUpDataLoaded.fire(this);
+    }
 };
 
 appModelP = null;

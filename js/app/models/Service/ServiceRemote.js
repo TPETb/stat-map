@@ -9,7 +9,7 @@ if (!SM) {
  * Handles the retrieval of data
  * @todo extract all url apart from configUrl from config
  */
-SM.Service_Remote = function() {
+SM.ServiceRemote = function() {
 
     this._configUrl = 'data/config.json';
     this._layersListUrl = 'data/layers/index.json';
@@ -21,7 +21,7 @@ SM.Service_Remote = function() {
 };
 
 // Shortcut
-var serviceRP = SM.Service_Remote.prototype;
+var serviceRP = SM.ServiceRemote.prototype;
 
 /**
  * Constructor
@@ -33,7 +33,6 @@ serviceRP.init = function() {
     this.LayerItemsRetrieved = new TVL.Event();
     this.RegionsRetrieved = new TVL.Event();
     this.StatisticsListRetrieved = new TVL.Event();
-    this.StatisticRetrieved = new TVL.Event();
 };
 
 /**
@@ -92,22 +91,6 @@ serviceRP.requestStatisticsList = function() {
 };
 serviceRP._onStatisticsListRetrieved = function(data) {
     this.StatisticsListRetrieved.fire(this, data);
-};
-
-/**
- * Returns statistic
- * @returns {array}
- */
-serviceRP.requestStatistic = function(statisticConfig) {
-    $.getJSON(statisticConfig.source)
-            .done($.proxy(this._onStatisticRetrieved, this))
-            .fail($.proxy(function(jqXHR) {
-        console.log("failed request:");
-        console.log(jqXHR);
-    }, this));
-};
-serviceRP._onStatisticRetrieved = function(data) {
-    this.StatisticRetrieved.fire(this, data);
 };
 
 serviceRP = null;
