@@ -19,34 +19,34 @@
         "airport": {
             "iconUrl": "images/markers/airport.png",
             "iconRetinaUrl": "images/markers/airport.png",
-            "iconSize": [55, 100],
-            "iconAnchor": [19, 100],
+            "iconSize": [60, 63],
+            "iconAnchor": [30, 63],
             "shadowUrl": "images/markers/shadow.png",
             "shadowRetinaUrl": "images/markers/shadow.png",
-            "shadowSize": [77, 38],
-            "shadowAnchor": [5, 33],
+            "shadowSize": [79, 24],
+            "shadowAnchor": [22, 24],
             "popupAnchor": [-3, -76]
         },
         "seaport": {
             "iconUrl": "images/markers/seaport.png",
             "iconRetinaUrl": "images/markers/seaport.png",
-            "iconSize": [55, 100],
-            "iconAnchor": [19, 100],
+            "iconSize": [60, 63],
+            "iconAnchor": [30, 63],
             "shadowUrl": "images/markers/shadow.png",
             "shadowRetinaUrl": "images/markers/shadow.png",
-            "shadowSize": [77, 38],
-            "shadowAnchor": [5, 33],
+            "shadowSize": [79, 24],
+            "shadowAnchor": [22, 24],
             "popupAnchor": [-3, -76]
         },
         "landmark": {
             "iconUrl": "images/markers/landmark.png",
             "iconRetinaUrl": "images/markers/landmark.png",
-            "iconSize": [55, 100],
-            "iconAnchor": [19, 100],
+            "iconSize": [60, 63],
+            "iconAnchor": [30, 63],
             "shadowUrl": "images/markers/shadow.png",
             "shadowRetinaUrl": "images/markers/shadow.png",
-            "shadowSize": [77, 38],
-            "shadowAnchor": [5, 33],
+            "shadowSize": [79, 24],
+            "shadowAnchor": [22, 24],
             "popupAnchor": [-3, -76]
         }
     },
@@ -67,7 +67,7 @@
             "value": 1,
             "polyStyle": {
                 "fill": true,
-                "fillColor": "#f00",
+                "fillColor": "#877aad",
                 "fillOpacity": 1,
                 "stroke": true,
                 "color": "gray",
@@ -79,7 +79,7 @@
             "value": 2,
             "polyStyle": {
                 "fill": true,
-                "fillColor": "#ff6a00",
+                "fillColor": "#8884b9",
                 "fillOpacity": 1,
                 "stroke": true,
                 "color": "gray",
@@ -91,7 +91,7 @@
             "value": 3,
             "polyStyle": {
                 "fill": true,
-                "fillColor": "#ffd500",
+                "fillColor": "#8b92bd",
                 "fillOpacity": 1,
                 "stroke": true,
                 "color": "gray",
@@ -103,7 +103,7 @@
             "value": 4,
             "polyStyle": {
                 "fill": true,
-                "fillColor": "#bfff00",
+                "fillColor": "#8ea1b5",
                 "fillOpacity": 1,
                 "stroke": true,
                 "color": "gray",
@@ -115,7 +115,7 @@
             "value": 5,
             "polyStyle": {
                 "fill": true,
-                "fillColor": "#5f0",
+                "fillColor": "#92b1a5",
                 "fillOpacity": 1,
                 "stroke": true,
                 "color": "gray",
@@ -127,7 +127,7 @@
             "value": 6,
             "polyStyle": {
                 "fill": true,
-                "fillColor": "#00ff15",
+                "fillColor": "#99c299",
                 "fillOpacity": 1,
                 "stroke": true,
                 "color": "gray",
@@ -139,7 +139,7 @@
             "value": 7,
             "polyStyle": {
                 "fill": true,
-                "fillColor": "#00ff80",
+                "fillColor": "#a9d097",
                 "fillOpacity": 1,
                 "stroke": true,
                 "color": "gray",
@@ -151,7 +151,7 @@
             "value": 8,
             "polyStyle": {
                 "fill": true,
-                "fillColor": "#00ffea",
+                "fillColor": "#c5dd9f",
                 "fillOpacity": 1,
                 "stroke": true,
                 "color": "gray",
@@ -163,7 +163,7 @@
             "value": 9,
             "polyStyle": {
                 "fill": true,
-                "fillColor": "#0af",
+                "fillColor": "#e1e8ab",
                 "fillOpacity": 1,
                 "stroke": true,
                 "color": "gray",
@@ -175,7 +175,7 @@
             "value": 10,
             "polyStyle": {
                 "fill": true,
-                "fillColor": "#0040ff",
+                "fillColor": "#f6efb3",
                 "fillOpacity": 1,
                 "stroke": true,
                 "color": "gray",
