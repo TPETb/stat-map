@@ -56,7 +56,7 @@
             "polyStyle": {
                 "fill": true,
                 "fillColor": "red",
-                "fillOpacity": 0.2,
+                "fillOpacity": 0,
                 "stroke": true,
                 "color": "black",
                 "dashArray": "1, 2",

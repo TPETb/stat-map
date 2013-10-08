@@ -27,7 +27,7 @@ body {
     display: none;
 }
 
-#UINavBar {
+#UIWrapperTop {
     position: absolute;
     left: 43px;
     top: 9px;
@@ -36,31 +36,22 @@ body {
     background-color: rgba(255,255,255,0.9);
 }
 
-#UINavBar button, #UINavBar .btn-group {
+#UIWrapperTop button, #UINavBar .btn-group {
      margin-right: 4px;
  }
 
-#UINavBar .btn-group button {
+#UIWrapperTop .btn-group button {
     margin-right: 0;
 }
 
-#UINavBar .navbar-text {
+#UIWrapperTop .navbar-text {
     float: none;
     display: inline-block;
 }
 
-#UINavBar .navbar-text.period {
+#UIWrapperTop .navbar-text.period {
     font-weight: bold;
     margin-left: 0;
-}
-
-#ContentWrapper {
-    position: absolute;
-    left: 43px;
-    top: 67px;
-    font-size: 12px;
-    z-index: 2;
-    height: 0px;
 }
 
 #LayersMenu {
@@ -126,15 +117,6 @@ body {
     margin: 0;
 }
 
-#PausePlayBtn {
-    position: absolute;
-    left: 9px;
-    top: 68px;
-    z-index: 2;
-    width: 28px;
-    height: 28px;
-}
-
 .menu-std a {
 
 }
@@ -173,4 +155,50 @@ body {
 #PeriodsOkBtn {
     clear: left;
     float: left;
+}
+
+#UIWrapperTop {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    height: 0;
+    z-index: 1;
+    font-size: 12px;
+}
+
+#Toolbar1, #Toolbar2, #Toolbar3 {
+    float: left;
+    clear: both;
+}
+
+#Toolbar3 {
+    height: 0;
+}
+
+#UIWrapperBottomLeft {
+    position: absolute;
+    left: 10px;
+    bottom: 60px;
+    width: 0;
+    z-index: 1;
+    font-size: 12px;
+}
+
+#UIWrapperBottomRight {
+    position: absolute;
+    right: 10px;
+    bottom: 60px;
+    height: 0;
+    z-index: 1;
+    font-size: 12px;
+}
+
+#Footer {
+    height: 55px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    background: #ffffff;
 }

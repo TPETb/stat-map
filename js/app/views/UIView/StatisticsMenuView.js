@@ -10,7 +10,7 @@ if (!SM) {
  */
 SM.StatisticsMenuView = function (options) {
     this._Model = options.model;
-    this._ContentWrapper = $('#ContentWrapper');
+    this._Toolbar3 = $('#Toolbar3');
     this._Menu = null;
     this._Items = [];
     this._DomNode = null;
@@ -30,7 +30,7 @@ statMenuViewP.init = function (options) {
 statMenuViewP._render = function () {
     this._Menu = $('<ul id="StatisticsMenu" class="menu-std">');
     this._Menu.menu();
-    this._ContentWrapper.append(this._Menu);
+    this._Toolbar3.append(this._Menu);
     this._Menu.hide();
     this._DomNode = $('#StatisticsMenu');
 };

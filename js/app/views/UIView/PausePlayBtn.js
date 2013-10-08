@@ -9,9 +9,9 @@ if (!SM) {
  * type: View class
  */
 SM.PausePlayBtn = function () {
-    this._ParentNode = $('body');
+    this._ParentNode = $('#Toolbar2') ;
 
-    this.Click = new TVL.Event();
+    this.StateChanged = new TVL.Event();
 
     this._render();
     this._addEventListeners();
@@ -20,7 +20,7 @@ SM.PausePlayBtn = function () {
 var pausePlayP = SM.PausePlayBtn.prototype;
 
 pausePlayP._render = function () {
-    this._DomNode = $('<button type="button" class="btn btn-default btn-xs" id="PausePlayBtn">' +
+    this._DomNode = $('<button type="button" class="btn btn-default" id="PausePlayBtn">' +
         '<span class="glyphicon glyphicon-play"></span>' +
         '<span class="glyphicon glyphicon-pause"></span>' +
         '</button>');
@@ -36,7 +36,7 @@ pausePlayP._onClick = function () {
     this._DomNode.find('.glyphicon').each(function () {
         $(this).toggle();
     });
-    this.Click.fire(this);
+    this.StateChanged.fire(this);
 };
 
 pausePlayP.setState = function (state) {

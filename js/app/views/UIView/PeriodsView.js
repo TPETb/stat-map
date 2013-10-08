@@ -14,7 +14,8 @@ SM.PeriodsView = function (options) {
 
     this._Body = $('body');
     this._NavBar = $('#UINavBar .navbar-collapse');
-    this._ContentWrapper = $('#ContentWrapper');
+    this._Toolbar2 = $('#Toolbar2');
+    this._Toolbar3 = $('#Toolbar3');
 
     this._PeriodsMenu = null;
     this._PeriodsBtn = null;
@@ -32,8 +33,11 @@ SM.PeriodsView = function (options) {
 var periodsVP = SM.PeriodsView.prototype;
 
 periodsVP._render = function () {
+    this._PausePlayBtn = new SM.PausePlayBtn();
+    this._PausePlayBtn.hide();
+
     this._PeriodsMenuWrapper = $('<div id="PeriodsMenuWrapper">');
-    this._ContentWrapper.append(this._PeriodsMenuWrapper);
+    this._Toolbar3.append(this._PeriodsMenuWrapper);
 
     this._PeriodsMenu = $('<ul id="PeriodsMenu" class="menu-std">');
     this._PeriodsMenu.menu();
@@ -45,15 +49,12 @@ periodsVP._render = function () {
     this._PeriodsOkBtn.hide();
 
     this._PeriodsBtn = $('<button type="button" class="btn btn-default navbar-btn" id="PeriodsBtn"><span class="glyphicon glyphicon-time"></span> Периоды</button>');
-    this._NavBar.append(this._PeriodsBtn);
+    this._Toolbar2.append(this._PeriodsBtn);
     this._PeriodsBtn.hide();
 
     this._TableBtn = $('<button type="button" class="btn btn-default" id="TableBtn"><span class="glyphicon glyphicon-list-alt"></span> Таблица</button>');
-    this._NavBar.append(this._TableBtn);
+    this._Toolbar2.append(this._TableBtn);
     this._TableBtn.hide();
-
-    this._PausePlayBtn = new SM.PausePlayBtn();
-    this._PausePlayBtn.hide();
 
     this._Table = $('<div id="Table">' +
         '<table class="table">' +
@@ -65,17 +66,18 @@ periodsVP._render = function () {
         '</tbody>' +
         '</table>' +
         '</div>');
-    this._ContentWrapper.append(this._Table);
+    this._Toolbar3.append(this._Table);
     this._Table.css({'max-width': $(window).width()-224});
     this._Table.hide();
 };
 
 periodsVP._addEventListeners = function () {
     this._Model.ActiveStatisticSet.add(this._onActiveStatisticSet, this);
+    this._Model.ActiveTaxonomySet.add(this._onActiveTaxonomySet, this);
     this._PeriodsBtn.on('click', $.proxy(this._onPeriodsBtnClick, this));
     this._TableBtn.on('click', $.proxy(this._onTableBtnClick, this));
     this._PeriodsOkBtn.on('click', $.proxy(this._onOkBtnClick, this));
-    this._PausePlayBtn.Click.add(this._onPausePlayClick, this);
+    this._PausePlayBtn.StateChanged.add(this._onPausePlayClick, this);
 };
 
 periodsVP._onActiveStatisticSet = function () {
@@ -87,6 +89,13 @@ periodsVP._onActiveStatisticSet = function () {
     this._ActiveStatistic.CycleCancelled.add(this._onCycleCancelled, this);
 
     this.addPeriodsMenuItems(this._ActiveStatistic.getData().periods);
+};
+
+periodsVP._onActiveTaxonomySet = function () {
+    if (!this._ActiveStatistic) return;
+
+    this._updateTable();
+    this._onCurrentPeriodSet();
 };
 
 periodsVP._onPeriodsBtnClick = function () {
@@ -122,9 +131,12 @@ periodsVP._onPausePlayClick = function () {
 
 periodsVP._onCurrentPeriodSet = function () {
     var currentPeriod  = this._ActiveStatistic.getCurrentPeriod();
+
     var ths = $('#Table tr th');
     ths.css({background: 'white'});
     $('#Table tr td').css({background: 'white'});
+
+    if (!currentPeriod) return;
 
     for (var i=0; i < ths.length; i++) {
         if ($(ths[i]).attr('data') === currentPeriod.name) {
@@ -189,25 +201,27 @@ periodsVP._updateTable = function () {
     thead.append('<th>Регион</th>')
 
     var activeStatData = this._ActiveStatistic.getData();
+    var activeTaxonomy = this._Model.getActiveTaxonomy();
 
     var theadHtml = '';
     var tbodyHtml = [];
 
-    for (var i = 0; i < activeStatData.periods[0].values.length; i++) {
-        tbodyHtml.push('<td>' + activeStatData.periods[0].values[i].object + '</td>');
-    }
-
-    for (var i = 0; i < activeStatData.periods.length; i++) {
-        if (activeStatData.periods[i].active) {
-            theadHtml = theadHtml + '<th data="' + activeStatData.periods[i].name + '">'+ activeStatData.periods[i].title +'</th>';
-            for (var k = 0; k < activeStatData.periods[i].values.length; k++) {
-                tbodyHtml[k] = tbodyHtml[k] + '<td>' + activeStatData.periods[i].values[k].value + '</td>'
+    for (var i = 0; i < activeTaxonomy.length; i++) {
+        tbodyHtml.push('<tr><td>' + activeTaxonomy[i].title + '</td>');
+        for (var k = 0; k < activeStatData.periods.length; k++) {
+            if (activeStatData.periods[k].active) {
+                if (i === 0) {
+                    theadHtml = theadHtml + '<th data="' + activeStatData.periods[k].name + '">'+ activeStatData.periods[k].title +'</th>';
+                }
+                for (var l = 0; l < activeStatData.periods[k].values.length; l++) {
+                    if (activeStatData.periods[k].values[l].object === activeTaxonomy[i].name) {
+                        tbodyHtml[i] = tbodyHtml[i] + '<td>' + activeStatData.periods[k].values[l].value + '</td>';
+                        break;
+                    }
+                }
             }
         }
-    }
-
-    for (var i = 0; i < tbodyHtml.length; i++) {
-        tbodyHtml[i] = '<tr>' + tbodyHtml[i] + '</tr>';
+        tbodyHtml[i] = tbodyHtml[i] + '</tr>';
     }
 
     tbodyHtml = tbodyHtml.join();

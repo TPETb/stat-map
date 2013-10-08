@@ -33,8 +33,10 @@ mapViewP.init = function () {
         maxBounds: [
             [20, 37],
             [57, 81]
-        ]
+        ],
+        zoomControl: false
     });
+    this._Map.addControl( L.control.zoom({position: 'topright'}) );
     this._LayerContainerView = new SM.LayerContainerView({
         model: this._Model,
         map: this._Map

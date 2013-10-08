@@ -12,8 +12,13 @@ SM.UIView = function (options) {
     this._Model = options.model;
 
     this._Body = $('body');
-    this._ToolbarTop = $('#ToolbarTop');
+    this._Toolbar1 = $('#Toolbar1');
+    this._Toolbar2 = $('#Toolbar2');
+    this._Toolbar3 = $('#Toolbar3');
+    this._Toolbar4 = $('#Toolbar4');
+    this._Toolbar5 = $('#Toolbar5');
     this._ContentWrapper = $('#ContentWrapper');
+    this._Footer = $('#Footer');
 
     // Toolbar controls
     this._StatisticsBtn = null;
@@ -39,28 +44,15 @@ uiViewP.init = function (options) {
 };
 
 uiViewP._render = function () {
-    this._NavBar = $('<nav id="UINavBar" class="navbar navbar-default" role="navigation">' +
-        '<div class="collapse navbar-collapse navbar-ex1-collapse">' +
-            '<div class="btn-group" data-toggle="buttons">' +
-                '<label id="WelayatsBtn" class="btn btn-info active">' +
-                    '<input type="radio"> Велаяты' +
-                '</label>' +
-                '<label id="EtrapsBtn" class="btn btn-info">' +
-                    '<input type="radio"> Этрапы' +
-                '</label>' +
-            '</div>' +
-            '<button type="button" class="btn btn-default navbar-btn" id="StatisticsBtn"><span class="glyphicon glyphicon-stats"></span> Статистика</button>' +
-            '<button type="button" class="btn btn-danger navbar-btn" id="StatisticsCancelBtn"><span class="glyphicon glyphicon-ban-circle"></span> Убрать статистику</button>' +
-        '</div>' +
-    '</nav>');
-    this._Body.append(this._NavBar);
+    this._MapTypeBtn = new SM.MapTypeBtn();
+    this._MapTypeBtn.setState('welayats');
 
-    this._StatisticsBtn = $('#StatisticsBtn');
-    this._StatisticsCancelBtn = $('#StatisticsCancelBtn');
+    this._StatisticsBtn = $('<button type="button" class="btn btn-default navbar-btn" id="StatisticsBtn"><span class="glyphicon glyphicon-stats"></span> Статистика</button>');
+    this._StatisticsCancelBtn = $('<button type="button" class="btn btn-danger navbar-btn" id="StatisticsCancelBtn"><span class="glyphicon glyphicon-ban-circle"></span> Убрать статистику</button>');
     this._StatisticsCancelBtn.hide();
 
-    this._WelayatsBtn = $('#WelayatsBtn');
-    this._EtrapsBtn = $('#EtrapsBtn');
+    this._Toolbar1.append(this._StatisticsBtn);
+    this._Toolbar1.append(this._StatisticsCancelBtn);
 
     this._LayersMenu = $('<ul id="LayersMenu">');
     this._LayersMenu.menu();
@@ -70,9 +62,9 @@ uiViewP._render = function () {
 
     this._PeriodsView = new SM.PeriodsView({ model: this._Model });
     this._NavBarTitle = $('<p class="navbar-text"></p>');
-    $('#UINavBar .navbar-collapse').append(this._NavBarTitle);
+    this._Footer.append(this._NavBarTitle);
     this._NavBarPeriod = $('<p class="navbar-text period"></p>');
-    $('#UINavBar .navbar-collapse').append(this._NavBarPeriod);
+    this._Footer.append(this._NavBarPeriod);
 };
 
 uiViewP._addEventListeners = function () {
@@ -81,8 +73,7 @@ uiViewP._addEventListeners = function () {
 
     this._StatisticsBtn.on('click', $.proxy(this._onStatisticsBtnClick, this));
     this._StatisticsCancelBtn.on('click', $.proxy(this._onStatisticsCancelBtnClick, this));
-    this._WelayatsBtn.on('click', $.proxy(this._onWelayatsBtnClick, this));
-    this._EtrapsBtn.on('click', $.proxy(this._onEtrapsBtnClick, this));
+    this._MapTypeBtn.StateChanged.add(this._onMapTypeBtnStateChanged, this);
 
     this._PeriodsView.PeriodsBtnClick.add(this._onPeriodsBtnClick, this);
 };
@@ -107,19 +98,11 @@ uiViewP._onStatisticsCancelBtnClick = function () {
     this._Model.setActiveStatistic(null);
 };
 
-uiViewP._onWelayatsBtnClick = function () {
-    if (this._WelayatsBtn.hasClass('active')) {
-        return;
-    }
-    this._Model.setActiveTaxonomy('welayats');
+uiViewP._onMapTypeBtnStateChanged = function () {
+    this._Model.setActiveTaxonomy(this._MapTypeBtn.getState());
 };
 
-uiViewP._onEtrapsBtnClick = function () {
-    if (this._EtrapsBtn.hasClass('active')) {
-        return;
-    }
-    this._Model.setActiveTaxonomy('etraps');
-};
+
 
 uiViewP._onPeriodsBtnClick = function () {
     this._StatisticsMenuView.hide();
