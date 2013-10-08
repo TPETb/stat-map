@@ -249,11 +249,16 @@ appModelP.getTaxonomy = function () {
 
 appModelP.setActiveTaxonomy = function (taxonomyName) {
     this._ActiveTaxonomy = this._Taxonomy[taxonomyName];
+    this._ActiveTaxonomyType = taxonomyName;
     this.ActiveTaxonomySet.fire(this);
 };
 
 appModelP.getActiveTaxonomy = function () {
     return this._ActiveTaxonomy;
+};
+
+appModelP.getActiveTaxonomyType = function () {
+    return this._ActiveTaxonomyType;
 };
 
 appModelP._addStartUpDataFiredEvent = function (event) {
