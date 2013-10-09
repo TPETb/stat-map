@@ -17,8 +17,11 @@ SM.UIView = function (options) {
     this._Toolbar3 = $('#Toolbar3');
     this._Toolbar4 = $('#Toolbar4');
     this._Toolbar5 = $('#Toolbar5');
+    this._Toolbar6 = $('#Toolbar6');
+    this._Toolbar7 = $('#Toolbar7');
+
     this._ContentWrapper = $('#ContentWrapper');
-    this._Footer = $('#Footer');
+    this._Footer = $('#Footer > .inner');
 
     // Toolbar controls
     this._StatisticsBtn = null;
@@ -47,11 +50,12 @@ uiViewP._render = function () {
     this._MapTypeBtn = new SM.MapTypeBtn();
     this._MapTypeBtn.setState('welayats');
 
-    this._StatisticsBtn = $('<button type="button" class="btn btn-default" id="StatisticsBtn"><span class="glyphicon icon-bar-chart"></span> Статистика</button>');
-    this._StatisticsCancelBtn = $('<button type="button" class="btn btn-default" id="StatisticsCancelBtn"><span class="glyphicon icon-map-marker"></span> Геокарта</button>');
-    this._TransportBtn = $('<button type="button" class="btn btn-default" id="StatisticsCancelBtn"><span class="glyphicon icon-random"></span> Транспорт и коммуникации</button>');
-    this._TourismBtn = $('<button type="button" class="btn btn-default" id="StatisticsCancelBtn"><span class="glyphicon icon-plane"></span> Туризм</button>');
-    this._TradeBtn = $('<button type="button" class="btn btn-default" id="StatisticsCancelBtn"><span class="glyphicon icon-refresh"></span> Внешняя торговля</button>');
+    this._StatisticsBtn = $('<button type="button" class="btn btn-custom" id="StatisticsBtn"><span class="glyphicon icon-bar-chart"></span> Статистика</button>');
+    this._StatisticsCancelBtn = $('<button type="button" class="btn btn-custom" id="StatisticsCancelBtn"><span class="glyphicon icon-map-marker"></span> Геокарта</button>');
+    this._TransportBtn = $('<button type="button" class="btn btn-custom" id="TransportBtn"><span class="glyphicon icon-random"></span> Транспорт и коммуникации</button>');
+    this._TourismBtn = $('<button type="button" class="btn btn-custom" id="TourismBtn"><span class="glyphicon icon-plane"></span> Туризм</button>');
+    this._TradeBtn = $('<button type="button" class="btn btn-custom" id="TradeBtn"><span class="glyphicon icon-refresh"></span> Внешняя торговля</button>');
+    this._LayersBtn = $('<button type="button" class="btn btn-custom" id="LayersBtn"><span class="glyphicon icon-check"></span> Слои</button>');
 
     this._StatisticsCancelBtn.hide();
 
@@ -60,15 +64,27 @@ uiViewP._render = function () {
     this._Toolbar1.append(this._TransportBtn);
     this._Toolbar1.append(this._TourismBtn);
     this._Toolbar1.append(this._TradeBtn);
+    this._Toolbar7.append(this._LayersBtn);
 
     this._LayersMenu = $('<ul id="LayersMenu" class="menu-std">');
-    this._Body.append(this._LayersMenu);
+    this._Toolbar6.append(this._LayersMenu);
 
     this._PeriodsView = new SM.PeriodsView({ model: this._Model });
-    this._NavBarTitle = $('<p class="navbar-text"></p>');
-    this._Footer.append(this._NavBarTitle);
-    this._NavBarPeriod = $('<p class="navbar-text period"></p>');
-    this._Footer.append(this._NavBarPeriod);
+
+    this._FooterTitle1 = $('<p class="title1">Интерактивная карта Туркменистана</p>');
+    this._FooterTitle2 = $('<p class="title2"></p>');
+    this._FooterTerritory = $('<p class="territory"></p>');
+    this._FooterPeriod = $('<p class="period"></p>');
+    this._FooterValue = $('<p class="value"></p>');
+    this._Footer.append(this._FooterTitle1);
+    this._Footer.append(this._FooterTitle2);
+    this._Footer.append(this._FooterTerritory);
+    this._Footer.append(this._FooterPeriod);
+    this._Footer.append(this._FooterValue);
+    this._FooterTitle2.hide();
+    this._FooterTerritory.hide();
+    this._FooterPeriod.hide();
+    this._FooterValue.hide();
 };
 
 uiViewP._addEventListeners = function () {
@@ -79,6 +95,7 @@ uiViewP._addEventListeners = function () {
     this._StatisticsBtn.on('click', $.proxy(this._onStatisticsBtnClick, this));
     this._StatisticsCancelBtn.on('click', $.proxy(this._onStatisticsCancelBtnClick, this));
     this._MapTypeBtn.StateChanged.add(this._onMapTypeBtnStateChanged, this);
+    this._LayersBtn.on('click', $.proxy(this._onLayersBtnClick, this));
 
     this._PeriodsView.PeriodsBtnClick.add(this._onPeriodsBtnClick, this);
 };
@@ -102,13 +119,20 @@ uiViewP._onStatisticsCancelBtnClick = function () {
     this._StatisticsMenuView.setActive(false);
     this._PeriodsView.hide();
 
-    this._NavBarTitle.html('');
-    this._NavBarPeriod.html('');
+    this._FooterTitle1.html('Интерактивная карта Туркменистана');
+    this._FooterTitle2.hide();
+    this._FooterTerritory.hide();
+    this._FooterPeriod.hide();
+    this._FooterValue.hide();
     this._Model.setActiveStatistic(null);
 };
 
 uiViewP._onMapTypeBtnStateChanged = function () {
     this._Model.setActiveTaxonomy(this._MapTypeBtn.getState());
+};
+
+uiViewP._onLayersBtnClick = function () {
+    this._LayersMenu.toggle();
 };
 
 uiViewP._onPeriodsBtnClick = function () {
@@ -127,7 +151,28 @@ uiViewP._onActiveStatisticSet = function (sender) {
     this._PeriodsView.show();
     this._StatisticsMenuView.hide();
 
-    this._NavBarTitle.html(this._ActiveStatistic.getTitle());
+    var modelLastParent = this._ActiveStatistic.getLastParent();
+    var modelParent = this._ActiveStatistic.getParent();
+    if (modelLastParent.getName() === modelParent.getName()) {
+        this._FooterTitle1.html(this._ActiveStatistic.getTitle());
+        this._FooterTitle2.hide();
+    }
+    else {
+        if (modelLastParent.getName() === 'indicator-8') {
+            // цены
+            this._FooterTitle1.html(modelLastParent.getTitle());
+        }
+        else {
+            // сэр
+            this._FooterTitle1.html(modelParent.getTitle());
+        }
+        this._FooterTitle2.html(this._ActiveStatistic.getTitle());
+        this._FooterTitle2.show();
+    }
+
+    this._FooterTerritory.hide();
+    this._FooterPeriod.hide();
+    this._FooterValue.hide();
 };
 
 uiViewP.addLayersMenuItems = function (layersConfig) {
@@ -144,15 +189,32 @@ uiViewP.addLayersMenuItems = function (layersConfig) {
         item.find('span').text(' ' + layersConfig[i].title);
         item.appendTo(this._LayersMenu);
     }
-
 };
 
 uiViewP._onCurrentPeriodSet = function () {
-    this._NavBarPeriod.html(this._ActiveStatistic.getCurrentPeriod().title);
+    var currentPeriod = this._ActiveStatistic.getCurrentPeriod();
+    this._FooterPeriod.html(currentPeriod.title);
+    this._FooterPeriod.show();
+    if (this._Model.getFocusedObject() === 'welayat') {
+
+    }
+    else {
+        this._FooterTerritory.html('Туркменистан');
+        this._FooterTerritory.show();
+        for (var i = 0; i < currentPeriod.values.length; i++) {
+            if (currentPeriod.values[i].object === 'turkmenistan') {
+                this._FooterValue.html(currentPeriod.values[i].value);
+                this._FooterValue.show();
+                break;
+            }
+        }
+    }
 };
 
 uiViewP._onCycleCancelled = function () {
-    this._NavBarPeriod.html('');
+    this._FooterTerritory.hide();
+    this._FooterPeriod.hide();
+    this._FooterValue.hide();
 };
 
 /**

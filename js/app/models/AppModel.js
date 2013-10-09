@@ -219,16 +219,13 @@ appModelP.getRegions = function () {
 };
 
 appModelP.setActiveStatistic = function (statistic) {
+    if (this._ActiveStatistic) {
+        this._ActiveStatistic.cancelCycle();
+        this._ActiveStatistic = null;
+    }
     if (statistic) {
         this._ActiveStatistic = statistic;
     }
-    else {
-        if (this._ActiveStatistic) {
-            this._ActiveStatistic.cancelCycle();
-            this._ActiveStatistic = null;
-        }
-    }
-
 };
 
 appModelP.getActiveStatistic = function () {
@@ -266,6 +263,11 @@ appModelP._addStartUpDataFiredEvent = function (event) {
     if (this._StartUpDataFiredEvents.length === 5) {
         this.StartUpDataLoaded.fire(this);
     }
+};
+
+appModelP.getFocusedObject = function () {
+    // temp
+    return 1;
 };
 
 appModelP = null;

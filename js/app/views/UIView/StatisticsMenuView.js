@@ -41,9 +41,7 @@ statMenuViewP._render = function () {
         this._BackBtn = $('<li class="menu-btn-back">Назад</li>');
         this._DomNode.append(this._BackBtn);
     }
-
 }
-
 
 statMenuViewP.addItems = function (statistics) {
     if (statistics.length > 0) {
