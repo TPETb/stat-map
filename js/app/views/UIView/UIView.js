@@ -10,6 +10,7 @@ if (!SM) {
  */
 SM.UIView = function (options) {
     this._Model = options.model;
+    this._FocusedObject = options.focusedObject;
 
     this._Body = $('body');
     this._Toolbar1 = $('#Toolbar1');
@@ -60,7 +61,10 @@ uiViewP._render = function () {
 
     this._StatisticsMenuView = new SM.StatisticsMenuView({ model: this._Model });
 
-    this._PeriodsView = new SM.PeriodsView({ model: this._Model });
+    this._PeriodsView = new SM.PeriodsView({
+        model: this._Model,
+        focusedObject: this._FocusedObject
+    });
     this._NavBarTitle = $('<p class="navbar-text"></p>');
     this._Footer.append(this._NavBarTitle);
     this._NavBarPeriod = $('<p class="navbar-text period"></p>');
@@ -76,6 +80,11 @@ uiViewP._addEventListeners = function () {
     this._MapTypeBtn.StateChanged.add(this._onMapTypeBtnStateChanged, this);
 
     this._PeriodsView.PeriodsBtnClick.add(this._onPeriodsBtnClick, this);
+};
+
+uiViewP.focusObject = function (objectName) {
+    this._FocusedObject = objectName;
+    this._PeriodsView.focusObject(objectName);
 };
 
 uiViewP._onLayersListRetrieved = function () {

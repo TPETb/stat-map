@@ -13,6 +13,9 @@ SM.AppView = function(options) {
     this._MapView = null;
     this._UIView = null;
 
+    // Focused object - generally a turkmenistan/welayat/ashhabad but might change in future
+    this._FocusedObject = "ahalskiy";
+
     this._Loader = $('#Loader');
     this._Loader.find('.inner').height($(window).height());
     this._Loader.find('.inner').width($(window).width());
@@ -24,6 +27,9 @@ SM.AppView = function(options) {
     // Statistics events
     this.StatisticShowDemanded = new TVL.Event();
     this.StatisticHideDemanded = new TVL.Event();
+
+    // Focus events
+    this.ObjectFocusDemanaded = new TVL.Event();
 
     this.init();
 };
@@ -37,10 +43,12 @@ var appViewP = SM.AppView.prototype;
  */
 appViewP.init = function() {
     this._MapView = new SM.MapView({
-        model: this._Model
+        model: this._Model,
+        focusedObject: this._FocusedObject
     });
     this._UIView = new SM.UIView({
-        model: this._Model
+        model: this._Model,
+        focusedObject: this._FocusedObject
     });
 
     this._addEventListeners();
@@ -79,6 +87,10 @@ appViewP._onLayerShowDemanded = function(sender, layerName) {
     this.LayerShowDemanded.fire(this, layerName);
 };
 
+appViewP._onObjectFocusDemanded = function(sender, objectName) {
+    this.ObjectFocusDemanaded.fire(this, objectName);
+};
+
 appViewP.hideLayer = function (layerName) {
     this._MapView.hideLayer(layerName);
 };
@@ -104,6 +116,11 @@ appViewP.startStatisticCycle = function () {
 appViewP.stopStatisticCycle = function () {
     this._MapView.getTaxonomyView().stopStatisticCycle();
     this._UIView.getPeriodsView().stopStatisticCycle();
+};
+
+appViewP.focusObject = function (objectName) {
+    this._MapView.focusObject(objectName);
+    this._UIView.focusObject(objectName);
 };
 
 appViewP.getUIView = function () {

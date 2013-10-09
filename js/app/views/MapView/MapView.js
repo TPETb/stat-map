@@ -14,6 +14,7 @@ SM.MapView = function (options) {
     this._Map = {}; // Map container
     this._LayerContainerView = null;
     this._TaxonomyView = null;
+    this._FocusedObject = options.focusedObject;
 
     this.init();
 };
@@ -39,11 +40,13 @@ mapViewP.init = function () {
     this._Map.addControl( L.control.zoom({position: 'topright'}) );
     this._LayerContainerView = new SM.LayerContainerView({
         model: this._Model,
-        map: this._Map
+        map: this._Map,
+        focusedObject: this._FocusedObject
     });
     this._TaxonomyView = new SM.TaxonomyView({
         model: this._Model,
-        map: this._Map
+        map: this._Map,
+        focusedObject: this._FocusedObject
     });
 
     this._addEventListeners();
@@ -61,6 +64,12 @@ mapViewP.showLayer = function (layerName) {
 
 mapViewP.hideLayer = function (layerName) {
     this._LayerContainerView.hideLayer(layerName);
+};
+
+mapViewP.focusObject = function (objectName) {
+    this._FocusedObject = objectName;
+    this._TaxonomyView.focusObject(objectName);
+    // @todo: center camera on chosen object
 };
 
 /**

@@ -5,6 +5,7 @@
             "name": "airoport-2",
             "title": "Ашхабадский международный аэропорт",
             "type": "marker",
+            "parents": ["turkmenistan", "ahalskiy", "ashhabad"],
             "options": {
                 "lat": 37.984798,
                 "lng": 58.475933,
@@ -17,6 +18,7 @@
             "name": "airoport-3",
             "title": "Аэропорт Дашогуз",
             "type": "marker",
+            "parents": ["turkmenistan", "dashoguzskiy", "dashoguz"],
             "options": {
                 "lat": 41.847570,
                 "lng": 59.945354,
@@ -29,6 +31,7 @@
             "name": "airoport-4",
             "title": "Аэропорт Мары",
             "type": "marker",
+            "parents": ["turkmenistan", "mariyskiy", "mari"],
             "options": {
                 "lat": 37.762573,
                 "lng": 61.730633,
@@ -41,6 +44,7 @@
             "name": "airport-5",
             "title": "Аэропорт Туркменабада",
             "type": "marker",
+            "parents": ["turkmenistan", "lebapskiy", "turkmenabad"],
             "options": {
                 "lat": 39.094364,
                 "lng": 63.440380,

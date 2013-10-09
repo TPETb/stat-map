@@ -14,6 +14,7 @@ SM.TaxonomyView = function(options) {
     this._Map = options.map;
     this._StatisticValues = [];
     this._TaxonomyObjectGroup = null;
+    this._FocusedObject = options.focusedObject;
 
     this.init();
 };
@@ -67,6 +68,11 @@ taxVP._onCycleCancelled = function () {
     this.setMapObjects(this._Model.getActiveTaxonomy());
 };
 
+taxVP.focusObject = function (objectName) {
+    this._FocusedObject = objectName;
+    this.setMapObjects(this._Model.getActiveTaxonomy());
+};
+
 /**
  * Returns array of Leaflet objects ready to add to map
  * @returns {undefined}
@@ -77,7 +83,11 @@ taxVP.setMapObjects = function(regionsConfig) {
     for (var i = 0; i < regionsConfig.length; i++) {
         var rate;
         var taxonomyObject = L.multiPolygon(regionsConfig[i].shape);
-        if (this._findStatisticByObjectName(regionsConfig[i].name)) {
+        if (this._FocusedObject !== regionsConfig[i].name && $.inArray(this._FocusedObject, regionsConfig[i].parents) === -1) {
+            // focused object is not current and is not in list of parents - should be grayed out
+            rate = "overlay";
+        }
+        else if (this._findStatisticByObjectName(regionsConfig[i].name)) {
             rate = this._getStatisticValueRate(this._findStatisticByObjectName(regionsConfig[i].name).value);
         }
         else {

@@ -10,6 +10,7 @@ if (!SM) {
  */
 SM.PeriodsView = function (options) {
     this._Model = options.model;
+    this._FocusedObject = options.focusedObject;
     this._ActiveStatistic = null;
 
     this._Body = $('body');
@@ -207,6 +208,9 @@ periodsVP._updateTable = function () {
     var tbodyHtml = [];
 
     for (var i = 0; i < activeTaxonomy.length; i++) {
+        if (this._FocusedObject !== activeTaxonomy[i].name && $.inArray(this._FocusedObject, activeTaxonomy[i].parents) === -1) {
+            continue;
+        }
         tbodyHtml.push('<tr><td>' + activeTaxonomy[i].title + '</td>');
         for (var k = 0; k < activeStatData.periods.length; k++) {
             if (activeStatData.periods[k].active) {
