@@ -1,0 +1,11 @@
+{
+  "name": "highway",
+  "version": "1.0.0",
+  "description": "",
+  "type": "overlay",
+  "format": "png",
+  "minzoom": "6",
+  "maxzoom": "8",
+  "bounds": "51.00000000,34.99886421,66.99518969,43.00000000",
+  "profile": "mercator"
+}
