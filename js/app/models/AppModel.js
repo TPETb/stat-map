@@ -18,6 +18,8 @@ SM.AppModel = function () {
     this._StatisticsList = [];
     this._Taxonomy = null;
     this._ActiveTaxonomy = null;
+    this._FocusedObjectName = "turkmenistan";
+    //this._FocusedObjectName = null;
 
     this._StartUpDataFiredEvents = [];
     this._LayerItemsRetrievedCounter = 0;
@@ -35,8 +37,7 @@ SM.AppModel = function () {
 
     this.ActiveTaxonomySet = new TVL.Event();
     this.ActiveStatisticSet = new TVL.Event();
-
-    this.FocusObjectDemanded = new TVL.Event();
+    this.FocusedObjectSet = new TVL.Event();
 
     this.init();
 };
@@ -98,13 +99,14 @@ appModelP._onLayersListRetrieved = function (sender, data) {
     this._addStartUpDataFiredEvent(this.LayersListRetrieved);
 };
 
-appModelP.focusObject = function (objectName) {
+appModelP.setFocusedObjectName = function (objectName) {
+    this._FocusedObjectName = objectName;
     if (objectName == "turkmenistan") {
         this.setActiveTaxonomy('welayats');
     } else {
         this.setActiveTaxonomy('etraps');
     }
-    this.FocusObjectDemanded.fire(this, {"objectName": objectName});
+    this.FocusedObjectSet.fire(this);
 };
 
 appModelP.requestLayersItems = function () {
@@ -176,10 +178,6 @@ appModelP._onStatisticSetActive = function (sender) {
     this._Statistics.setActive(false, sender);
     this.setActiveStatistic(sender);
     this.ActiveStatisticSet.fire(this);
-};
-
-appModelP._onFocusedObjectSet = function (sender, objectName) {
-
 };
 
 appModelP.getLayer = function (layerName) {
@@ -280,9 +278,8 @@ appModelP._addStartUpDataFiredEvent = function (event) {
     }
 };
 
-appModelP.getFocusedObject = function () {
-    // temp
-    return 1;
+appModelP.getFocusedObjectName = function () {
+    return this._FocusedObjectName;
 };
 
 appModelP = null;
