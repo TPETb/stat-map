@@ -12,8 +12,13 @@ html, body {
     height: 100%;
 }
 
-body {
+html body {
     position: relative;
+    color: #2c3e50;
+}
+
+html body button {
+    color: #2c3e50;
 }
 
 #Map {
@@ -21,69 +26,11 @@ body {
     padding: 0;
     position: relative;
     z-index: 1;
+    background: #f3f3f4;
 }
 
 #Map .leaflet-control-attribution.leaflet-control {
     display: none;
-}
-
-#UIWrapperTop {
-    position: absolute;
-    left: 43px;
-    top: 9px;
-    right: 9px;
-    z-index: 2;
-    background-color: rgba(255,255,255,0.9);
-}
-
-#UIWrapperTop button, #UINavBar .btn-group {
-     margin-right: 4px;
- }
-
-#UIWrapperTop .btn-group button {
-    margin-right: 0;
-}
-
-#UIWrapperTop .navbar-text {
-    float: none;
-    display: inline-block;
-}
-
-#UIWrapperTop .navbar-text.period {
-    font-weight: bold;
-    margin-left: 0;
-}
-
-#LayersMenu {
-    position: absolute;
-    right: 9px;
-    bottom: 9px;
-    z-index: 2;
-}
-
-#LayersMenu a input {
-    margin-right: 5px;
-}
-
-#StatisticsBtn {
-
-}
-
-#StatisticsCancelBtn {
-
-}
-
-#StatisticsMenu {
-    /*white-space: nowrap;*/
-}
-
-#StatisticsMenu ul ul {
-    max-height: 200px;
-    overflow-y: scroll;
-}
-
-#StatisticsMenu li {
-   width: 400px;
 }
 
 #PeriodsMenuWrapper {
@@ -92,41 +39,40 @@ body {
 }
 
 #PeriodsMenu {
-    width: 150px;
     margin-bottom: 5px;
 }
 
-#PeriodsMenu a input {
-    margin-right: 5px;
+#PeriodsMenu li {
+    white-space: nowrap;
+}
+
+#PeriodsOkBtn {
+    clear: left;
+    float: left;
 }
 
 #Table {
-    background-color: #fff;
-    border-width: 1px;
-    border-color: #ddd;
-    border-radius: 4px;
     box-shadow: none;
     padding: 15px;
-    border-style: solid;
     float: left;
     max-height: 500px;
     overflow-y: scroll;
+    /*padding: 20px 4px;*/
+    /*font-size: 20px;*/
+    background: #f9dcbf;
+    /*background: -moz-linear-gradient(top,  #f9dcbf 0%, #ddc4bf 100%);*/
+    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9dcbf), color-stop(100%,#ddc4bf));*/
+    /*background: -webkit-linear-gradient(top,  #f9dcbf 0%,#ddc4bf 100%);*/
+    /*background: -o-linear-gradient(top,  #f9dcbf 0%,#ddc4bf 100%);*/
+    /*background: -ms-linear-gradient(top,  #f9dcbf 0%,#ddc4bf 100%);*/
+    background: linear-gradient(to bottom,  #f9dcbf 0%,#ddc4bf 100%);
+    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9dcbf', endColorstr='#ddc4bf',GradientType=0 );*/
+    border: 1px solid #2c3e50;
+    border-radius: 5px;
 }
 
 #Table table {
     margin: 0;
-}
-
-.menu-std a {
-
-}
-
-.menu-std a.active {
-    /*border: 1px solid #999;*/
-    background: #dadada url('jquery-ui-1.10.3/images/ui-bg_glass_75_dadada_1x400.png') 50% 50% repeat-x;
-    font-weight: 400;
-    color: #212121;
-    /*margin: -1px;*/
 }
 
 #Loader {
@@ -152,23 +98,23 @@ body {
     line-height: 40px;
 }
 
-#PeriodsOkBtn {
-    clear: left;
-    float: left;
-}
-
 #UIWrapperTop {
     position: absolute;
     left: 10px;
-    top: 0;
+    top: 10px;
     height: 0;
     z-index: 1;
     font-size: 12px;
 }
 
-#Toolbar1, #Toolbar2, #Toolbar3 {
+#UIWrapperTop .toolbar {
     float: left;
     clear: both;
+}
+
+#Toolbar2 button {
+    padding: 5px 15px 5px 15px;
+    font-size: 12px;
 }
 
 #Toolbar3 {
@@ -184,21 +130,221 @@ body {
     font-size: 12px;
 }
 
+#UIBottomLeft .toolbar {
+    float: left;
+    clear: both;
+}
+
 #UIWrapperBottomRight {
     position: absolute;
     right: 10px;
     bottom: 60px;
-    height: 0;
+    width: 0;
     z-index: 1;
     font-size: 12px;
 }
 
+#UIWrapperBottomRight .toolbar {
+    float: right;
+    clear: both;
+}
+
+.toolbar > button, .toolbar > .menu-std, .toolbar > div {
+    margin: 3px;
+}
+
 #Footer {
-    height: 55px;
     position: absolute;
     left: 0;
     bottom: 0;
     right: 0;
     z-index: 1;
-    background: #ffffff;
+    background: url('../images/map-footer.png') no-repeat 10px center #f0e7e6;
+    font-size: 18px;
+    height: 54px;
+    /*border-top: 6px solid #2c3e50;*/
+    border-top: 6px solid #2c3e50;
+    padding: 0 10px 0 95px;
+}
+
+#Footer > .inner {
+    display: table;
+    height: 48px;
+}
+
+#Footer p {
+    font-size: 18px;
+    line-height: 20px;
+    padding: 0 10px;
+    display: table-cell;
+    vertical-align: middle;
+    /*border-left: 3px solid #2c3e50;*/
+    border-left: 3px solid #2c3e50;
+    white-space: nowrap;
+    text-align: center;
+}
+
+#Footer p.title1, #Footer p.title2 {
+    white-space: normal;
+}
+
+#Footer p.title1 {
+    border: none;
+}
+
+#LayersMenu {
+    white-space: nowrap;
+}
+
+.menu-std {
+    padding: 10px 4px;
+    font-size: 16px;
+    max-width: 350px;
+    background-image: linear-gradient(#fec29c, #f28e4f, #e75900);
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    overflow-x: auto;
+    max-height: 200px;
+    overflow-y: scroll;
+    color: #ffffff;
+}
+
+.menu-std li {
+    display: block;
+    line-height: 20px;
+    /*padding: 10px 15px;*/
+    padding: 9px 40px 9px 10px;
+    background: url('../images/arrow.png') no-repeat right center;
+    text-shadow: 0px 0px 5px #531400;
+}
+
+.menu-std li input {
+    margin-right: 10px;
+}
+
+#PeriodsMenu.menu-std li, #LayersMenu.menu-std li {
+    background: none;
+    padding-right: 10px;
+}
+
+.menu-std li.menu-btn-back {
+    background: url('../images/arrow-back.png') no-repeat left center;
+    padding-left: 40px;
+    border-bottom: 1px solid #ffffff;
+    font-weight: bold;
+}
+
+/* buttons */
+/*html .btn-custom {*/
+    /*font-size: 18px;*/
+    /*padding: 10px 15px 12px 15px;*/
+    /*padding: 5px 15px 7px 15px;*/
+    /*border: 1px solid #2c3e50;*/
+    /*border: 1px solid #2c3e50;*/
+    /*border-radius: 5px;*/
+    /*background: #f9dcbf;*/
+    /*background: -moz-linear-gradient(top,  #f9dcbf 0%, #ddc4bf 100%);*/
+    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9dcbf), color-stop(100%,#ddc4bf));*/
+    /*background: -webkit-linear-gradient(top,  #f9dcbf 0%,#ddc4bf 100%);*/
+    /*background: -o-linear-gradient(top,  #f9dcbf 0%,#ddc4bf 100%);*/
+    /*background: -ms-linear-gradient(top,  #f9dcbf 0%,#ddc4bf 100%);*/
+    /*background: linear-gradient(to bottom,  #f9dcbf 0%,#ddc4bf 100%);*/
+    /*background: linear-gradient(to bottom,  #ffffff 0%, #6dbcdb 100%);*/
+    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9dcbf', endColorstr='#ddc4bf',GradientType=0 );*/
+/*}*/
+
+/*html .btn-custom:hover {*/
+    /*color: #ffffff;*/
+    /*text-decoration: none;*/
+    /*background: #ff8800;*/
+    /*background: -moz-linear-gradient(top,  #ff8800 0%, #2c3e50 100%);*/
+    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff8800), color-stop(100%,#2c3e50));*/
+    /*background: -webkit-linear-gradient(top,  #ff8800 0%,#2c3e50 100%);*/
+    /*background: -o-linear-gradient(top,  #ff8800 0%,#2c3e50 100%);*/
+    /*background: -ms-linear-gradient(top,  #ff8800 0%,#2c3e50 100%);*/
+    /*background: linear-gradient(to bottom,  #ff8800 0%,#2c3e50 100%);*/
+
+    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8800', endColorstr='#2c3e50',GradientType=0 );*/
+/*}*/
+
+/* leaflet control */
+html .leaflet-bar {
+    box-shadow: none;
+    /*-webkit-border-radius: 10px;*/
+    border-radius: 5px;
+}
+
+html .leaflet-bar a, html .leaflet-bar a:hover {
+    width: 40px;
+    height: 40px;
+    border-bottom: none;
+}
+
+html .leaflet-bar a {
+    background: #f9dcbf;
+    /*background: -moz-linear-gradient(top,  #f9dcbf 0%, #ddc4bf 100%);*/
+    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9dcbf), color-stop(100%,#ddc4bf));*/
+    /*background: -webkit-linear-gradient(top,  #f9dcbf 0%,#ddc4bf 100%);*/
+    /*background: -o-linear-gradient(top,  #f9dcbf 0%,#ddc4bf 100%);*/
+    /*background: -ms-linear-gradient(top,  #f9dcbf 0%,#ddc4bf 100%);*/
+    /*background: linear-gradient(to bottom,  #f9dcbf 0%,#ddc4bf 100%);*/
+    background: linear-gradient(to bottom,  #ffffff 0%, #6dbcdb 100%);
+    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9dcbf', endColorstr='#ddc4bf',GradientType=0 );*/
+}
+
+html .leaflet-bar a:hover {
+    background: #ff8800;
+    /*background: -moz-linear-gradient(top,  #ff8800 0%, #2c3e50 100%);*/
+    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff8800), color-stop(100%,#2c3e50));*/
+    /*background: -webkit-linear-gradient(top,  #ff8800 0%,#2c3e50 100%);*/
+    /*background: -o-linear-gradient(top,  #ff8800 0%,#2c3e50 100%);*/
+    /*background: -ms-linear-gradient(top,  #ff8800 0%,#2c3e50 100%);*/
+    /*background: linear-gradient(to bottom,  #ff8800 0%,#2c3e50 100%);*/
+    background: linear-gradient(to bottom,  #ffffff 0%, #6dbcdb 100%);
+    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8800', endColorstr='#2c3e50',GradientType=0 );*/
+    color: #fff;
+}
+
+html .leaflet-bar a:first-child {
+    -webkit-border-top-left-radius: 0px;
+    border-top-left-radius: 0px;
+    -webkit-border-top-right-radius: 10px;
+    border-top-right-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    border-left: 1px solid #ff8800;
+    border-top: 1px solid #2c3e50;
+    border-right: 1px solid #2c3e50;
+    border-bottom: 1px solid #2c3e50;
+}
+
+html a.leaflet-control-zoom-out, html a.leaflet-control-zoom-out:hover {
+    float: left;
+    line-height: 42px;
+}
+
+html a.leaflet-control-zoom-in, html a.leaflet-control-zoom-in:hover {
+    float: right;
+    line-height: 38px;
+}
+
+html .leaflet-bar a:last-child {
+    -webkit-border-top-left-radius: 10px;
+    border-top-left-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    -webkit-border-bottom-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+
+    border-right: 1px solid #ff8800;
+    border-top: 1px solid #2c3e50;
+    border-left: 1px solid #2c3e50;
+    border-bottom: 1px solid #2c3e50;
+}
+
+html .btn-warning, html .btn-warning:hover, html .btn-warning:focus {
+    background-image: linear-gradient(#ff8f49, #dd5600 60%, #e75900);
+    border: 1px solid #ffffff;
+    outline: none;
 }

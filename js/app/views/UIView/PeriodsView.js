@@ -45,19 +45,18 @@ periodsVP._render = function () {
     this._Toolbar3.append(this._PeriodsMenuWrapper);
 
     this._PeriodsMenu = $('<ul id="PeriodsMenu" class="menu-std">');
-    this._PeriodsMenu.menu();
     this._PeriodsMenuWrapper.append(this._PeriodsMenu);
-    this._PeriodsMenu.hide();
+    this._PeriodsMenuWrapper.hide();
 
-    this._PeriodsOkBtn = $('<button type="button" class="btn btn-success" id="PeriodsOkBtn">Ок</button>');
+    this._PeriodsOkBtn = $('<button type="button" class="btn btn-warning" id="PeriodsOkBtn">Ок</button>');
     this._PeriodsMenuWrapper.append(this._PeriodsOkBtn);
     this._PeriodsOkBtn.hide();
 
-    this._PeriodsBtn = $('<button type="button" class="btn btn-default navbar-btn" id="PeriodsBtn"><span class="glyphicon glyphicon-time"></span> Периоды</button>');
+    this._PeriodsBtn = $('<button type="button" class="btn btn-warning" id="PeriodsBtn"><span class="glyphicon glyphicon-time"></span> Периоды</button>');
     this._Toolbar2.append(this._PeriodsBtn);
     this._PeriodsBtn.hide();
 
-    this._TableBtn = $('<button type="button" class="btn btn-default" id="TableBtn"><span class="glyphicon glyphicon-list-alt"></span> Таблица</button>');
+    this._TableBtn = $('<button type="button" class="btn btn-warning" id="TableBtn"><span class="glyphicon glyphicon-list-alt"></span> Таблица</button>');
     this._Toolbar2.append(this._TableBtn);
     this._TableBtn.hide();
 
@@ -104,7 +103,7 @@ periodsVP._onActiveTaxonomySet = function () {
 };
 
 periodsVP._onPeriodsBtnClick = function () {
-    this._PeriodsMenu.toggle();
+    this._PeriodsMenuWrapper.toggle();
     this._PeriodsOkBtn.toggle();
     this.PeriodsBtnClick.fire(this);
 };
@@ -138,40 +137,38 @@ periodsVP._onCurrentPeriodSet = function () {
     var currentPeriod  = this._ActiveStatistic.getCurrentPeriod();
 
     var ths = $('#Table tr th');
-    ths.css({background: 'white'});
-    $('#Table tr td').css({background: 'white'});
+    ths.css({background: 'none'});
+    $('#Table tr td').css({background: 'none'});
 
     if (!currentPeriod) return;
 
     for (var i=0; i < ths.length; i++) {
         if ($(ths[i]).attr('data') === currentPeriod.name) {
-            $('#Table tr th:nth-child(' + (i+1) + ')').css({background: '#cccccc'});
-            $('#Table tr td:nth-child(' + (i+1) + ')').css({background: '#cccccc'});
+            $('#Table tr th:nth-child(' + (i+1) + ')').css({background: '#ffffff'});
+            $('#Table tr td:nth-child(' + (i+1) + ')').css({background: '#ffffff'});
         }
     }
 };
 
 periodsVP._onCycleCancelled = function () {
-    $('#Table tr th').css({background: 'white'});
-    $('#Table tr td').css({background: 'white'});
+    $('#Table tr th').css({background: 'none'});
+    $('#Table tr td').css({background: 'none'});
     this._PausePlayBtn.setState('inActive');
 };
 
 periodsVP.addPeriodsMenuItems = function (periodsConfig) {
     this._PeriodsMenu.html('');
     for (var i = 0; i < periodsConfig.length; i++) {
-        var item = $('<li><a href="#"><input type="checkbox"/><span></span></a></li>');
+        var item = $('<li><input type="checkbox"/><span></span></li>');
         item.find('input').attr({
             name: periodsConfig[i].name,
             checked: periodsConfig[i].active,
             disabled: periodsConfig[i].forced
-        })
-            // add event listener right here as it is just DOM event
-            .on('change', $.proxy(this._onPeriodsChange, this));
+        }).on('change', $.proxy(this._onPeriodsChange, this));
         item.find('span').text(periodsConfig[i].title);
         item.appendTo(this._PeriodsMenu);
     }
-    this._PeriodsMenu.menu('refresh');
+
 };
 
 periodsVP._onPeriodsChange = function (event) {
@@ -256,7 +253,7 @@ periodsVP.show = function () {
 
 periodsVP.hide = function () {
     this._PeriodsBtn.hide();
-    this._PeriodsMenu.hide();
+    this._PeriodsMenuWrapper.hide();
     this._PeriodsOkBtn.hide();
     this._Table.hide();
     this._TableBtn.hide();
@@ -265,7 +262,7 @@ periodsVP.hide = function () {
 
 periodsVP.hideModals = function () {
     this._Table.hide();
-    this._PeriodsMenu.hide();
+    this._PeriodsMenuWrapper.hide();
     this._PeriodsOkBtn.hide();
 };
 

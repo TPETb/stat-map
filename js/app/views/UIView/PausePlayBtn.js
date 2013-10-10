@@ -20,7 +20,7 @@ SM.PausePlayBtn = function () {
 var pausePlayP = SM.PausePlayBtn.prototype;
 
 pausePlayP._render = function () {
-    this._DomNode = $('<button type="button" class="btn btn-default" id="PausePlayBtn">' +
+    this._DomNode = $('<button type="button" class="btn btn-warning" id="PausePlayBtn">' +
         '<span class="glyphicon glyphicon-play"></span>' +
         '<span class="glyphicon glyphicon-pause"></span>' +
         '</button>');

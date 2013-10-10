@@ -9,6 +9,7 @@ if (!SM) {
  * Handles the retrieval of data
  */
 SM.StatisticModel = function (options) {
+    this._Parent = options.parent;
     this._Title = options.title;
     this._Name = options.name;
     this._Items = [];
@@ -35,6 +36,7 @@ var statModelP = SM.StatisticModel.prototype;
 statModelP.addItems = function (itemsConfigArray) {
     if (itemsConfigArray) {
         for (var i = 0; i < itemsConfigArray.length; i++) {
+            itemsConfigArray[i].parent = this;
             this._Items.push(new SM.StatisticModel(itemsConfigArray[i]));
         }
     }
@@ -164,6 +166,34 @@ statModelP.setCurrentPeriod = function (periodName) {
             break;
         }
     }
+};
+
+statModelP.getParent = function () {
+    return this._Parent;
+};
+
+statModelP.getLastParent = function (statModel) {
+    if (statModel) {
+        if (statModel.getParent()) {
+            return statModel.getLastParent(statModel.getParent());
+        }
+        else {
+            return this;
+        }
+    }
+    else {
+        if (this.getParent()) {
+            return this.getLastParent(this.getParent());
+        }
+        else {
+            return this;
+        }
+    }
+
+};
+
+statModelP.getName = function () {
+    return this._Name;
 };
 
 statModelP = null;

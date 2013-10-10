@@ -20,7 +20,7 @@ SM.MapTypeBtn = function () {
 var mapTypeP = SM.MapTypeBtn.prototype;
 
 mapTypeP._render = function () {
-    this._DomNode = $('<button type="button" class="btn btn-default" id="MapTypeBtn">' +
+    this._DomNode = $('<button type="button" class="btn btn-warning" id="MapTypeBtn">' +
         '<span class="glyphicon welayats glyphicon-adjust"></span>' +
         '<span class="glyphicon etraps glyphicon-align-center"></span>' +
         '<span class="glyphicon welayat glyphicon-align-justify"></span>' +

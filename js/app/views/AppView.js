@@ -62,6 +62,10 @@ appViewP._addEventListeners = function() {
 
     this._UIView.LayerHideDemanded.add(this._onLayerHideDemanded, this);
     this._UIView.LayerShowDemanded.add(this._onLayerShowDemanded, this);
+
+    $('.menu-std').on('click', 'li', function () {
+        console.log('ggg');
+    });
 };
 
 appViewP._onWindowClick = function (event) {
