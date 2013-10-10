@@ -20,6 +20,8 @@ SM.AppModel = function () {
     this._Taxonomy = null;
     this._ActiveTaxonomy = null;
     this._FocusedObjectName = "turkmenistan";
+    this._DefaultSubstrate = "images/substrates/turkmenistan/{z}/{x}/{y}.png";
+    this._CurrentSubstrate = this._DefaultSubstrate;
     //this._FocusedObjectName = null;
 
     this._StartUpDataFiredEvents = [];
@@ -39,6 +41,8 @@ SM.AppModel = function () {
     this.ActiveTaxonomySet = new TVL.Event();
     this.ActiveStatisticSet = new TVL.Event();
     this.FocusedObjectSet = new TVL.Event();
+
+    this.CurrentSubstrateSet = new TVL.Event();
 
     this.init();
 };
@@ -101,10 +105,20 @@ appModelP.setFocusedObjectName = function (objectName) {
     this._FocusedObjectName = objectName;
     if (objectName == "turkmenistan") {
         this.setActiveTaxonomy('welayats');
+        this._CurrentSubstrate = this._DefaultSubstrate;
     } else {
         this.setActiveTaxonomy('etraps');
+        for (i = 0; i < this._Taxonomy.welayats.length; i++) {
+            if (this._Taxonomy.welayats[i].name == objectName) {
+                this._CurrentSubstrate = this._Taxonomy.welayats[i].substrate;
+                break;
+            }
+        }
     }
+
     this.FocusedObjectSet.fire(this);
+    // In order to rebuild layers...
+    this.LayersItemsRetrieved.fire(this);
 };
 
 appModelP.requestLayersItems = function () {
@@ -278,6 +292,10 @@ appModelP._addStartUpDataFiredEvent = function (event) {
 
 appModelP.getFocusedObjectName = function () {
     return this._FocusedObjectName;
+};
+
+appModelP.getCurrentSubstrate = function () {
+    return this._CurrentSubstrate;
 };
 
 appModelP = null;

@@ -191,9 +191,9 @@
                 "fillOpacity": 1,
                 "stroke": true,
                 "opacity": 1,
-                "color": "#ddd",
+                "color": "#f3f3f4",
                 "dashArray": "3, 0",
-                "weight": 10
+                "weight": 3
             }
         }
     ]

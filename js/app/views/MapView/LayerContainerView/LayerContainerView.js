@@ -58,6 +58,7 @@ layerCVP.render = function () {
 
 layerCVP.addItems = function (layersConfig) {
     for (var i = 0; i < layersConfig.length; i++) {
+        layersConfig[i].model = this._Model;
         this._Items.push(new SM.LayerView(layersConfig[i]));
     }
 };

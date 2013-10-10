@@ -248,3 +248,7 @@ html .btn-warning, html .btn-warning:hover, html .btn-warning:focus, html .btn-w
     border: 1px solid #ffffff;
     outline: none;
 }
+
+#leaflet-control-container {
+    z-index: 50;
+}

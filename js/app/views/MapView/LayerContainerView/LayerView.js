@@ -8,6 +8,7 @@ if (!SM) {
 SM.LayerView = function (options) {
     this._Items = [];
     this._Name = options.name;
+    this._Model = options.model;
     this.title = null;
     this.type = null;
     this.active = true; // @todo retrieve value from config
@@ -28,6 +29,9 @@ layerLVP.init = function () {
  */
 layerLVP.addItems = function(itemsConfig) {
     for (var i = 0; i < itemsConfig.length; i++) {
+        if (itemsConfig[i].parents && $.inArray(this._Model.getFocusedObjectName(), itemsConfig[i].parents) === -1) {
+            continue;
+        }
         switch (itemsConfig[i].type) {
             case 'tile':
                 this._Items.push(new SM.Layer_Item_TileView(itemsConfig[i].options));

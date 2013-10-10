@@ -12,6 +12,7 @@ SM.MapView = function (options) {
     this._DomNode = $('#Map');
     this._Model = options.model;
     this._Map = {}; // Map container
+    this._Substrate = null;
     this._LayerContainerView = null;
     this._TaxonomyView = null;
 
@@ -67,6 +68,9 @@ mapViewP.hideLayer = function (layerName) {
 
 mapViewP._onFocusedObjectSet = function () {
     // @todo: center camera on chosen object
+
+    // change substrate
+    this._Substrate.setUrl(this._Model.getCurrentSubstrate());
 };
 
 /**
@@ -82,11 +86,10 @@ mapViewP._onConfigRetrieved = function () {
         this._Map.setView([config.view.lat, config.view.lng], 6);
     }
 
-    if (config.tileProvider) {
-        L.tileLayer(config.tileProvider, {
-            attribution: ''
-        }).addTo(this._Map);
-    }
+    this._Substrate = new L.TileLayer(this._Model.getCurrentSubstrate(), {
+        attribution: ''
+    });
+    this._Substrate.addTo(this._Map);
 };
 
 mapViewP._calculateZoomRange = function () {
