@@ -4,6 +4,7 @@
             "name": "mariyskiy",
             "title": "Марыйский велаят",
             "parents": ["turkmenistan"],
+            "focusable": true,
             "descriptionSource": "data/descriptions/welayats/mariyskiy.html",
             "shape": [
                 [
@@ -1118,6 +1119,7 @@
             "name": "dashoguzskiy",
             "title": "Дашогузский велаят",
             "parents": ["turkmenistan"],
+            "focusable": true,
             "descriptionSource": "data/descriptions/welayats/dashoguzskiy.html",
             "shape": [
                 [
@@ -2315,6 +2317,7 @@
             "name": "lebapskiy",
             "title": "Лебапский велаят",
             "parents": ["turkmenistan"],
+            "focusable": true,
             "descriptionSource": "data/descriptions/welayats/lebapskiy.html",
             "shape": [
                 [
@@ -3650,6 +3653,7 @@
             "name": "balkanskiy",
             "title": "Балканский велаят",
             "parents": ["turkmenistan"],
+            "focusable": true,
             "descriptionSource": "data/descriptions/welayats/balkanskiy.html",
             "shape": [
                 [
@@ -5031,6 +5035,7 @@
             "name": "ahalskiy",
             "title": "Ахалский велаят",
             "parents": ["turkmenistan"],
+            "focusable": true,
             "descriptionSource": "data/descriptions/welayats/ahalskiy.html",
             "shape": [
                 [

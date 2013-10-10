@@ -73,6 +73,10 @@ taxVP.focusObject = function (objectName) {
     this.setMapObjects(this._Model.getActiveTaxonomy());
 };
 
+taxVP._demandObjectFocus = function (objectName) {
+    this._Model.focusObject(objectName);
+};
+
 /**
  * Returns array of Leaflet objects ready to add to map
  * @returns {undefined}
@@ -81,8 +85,10 @@ taxVP.setMapObjects = function(regionsConfig) {
     this._TaxonomyObjectGroup.clearLayers();
 
     for (var i = 0; i < regionsConfig.length; i++) {
-        var rate;
         var taxonomyObject = L.multiPolygon(regionsConfig[i].shape);
+
+        // define styles
+        var rate;
         if (this._FocusedObject !== regionsConfig[i].name && $.inArray(this._FocusedObject, regionsConfig[i].parents) === -1) {
             // focused object is not current and is not in list of parents - should be grayed out
             rate = "overlay";
@@ -94,6 +100,12 @@ taxVP.setMapObjects = function(regionsConfig) {
             rate = 0;
         }
         taxonomyObject.setStyle(this._getObjectStyleByRate(rate));
+
+        // add events
+        if (regionsConfig[i].focusable) {
+            taxonomyObject.on('click', $.proxy(this._demandObjectFocus, this, regionsConfig[i].name));
+        }
+
         this._TaxonomyObjectGroup.addLayer(taxonomyObject);
     }
 

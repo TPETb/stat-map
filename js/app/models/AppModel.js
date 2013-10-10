@@ -36,6 +36,8 @@ SM.AppModel = function () {
     this.ActiveTaxonomySet = new TVL.Event();
     this.ActiveStatisticSet = new TVL.Event();
 
+    this.FocusObjectDemanded = new TVL.Event();
+
     this.init();
 };
 
@@ -94,6 +96,15 @@ appModelP._onLayersListRetrieved = function (sender, data) {
 
     this.LayersListRetrieved.fire(this);
     this._addStartUpDataFiredEvent(this.LayersListRetrieved);
+};
+
+appModelP.focusObject = function (objectName) {
+    if (objectName == "turkmenistan") {
+        this.setActiveTaxonomy('welayats');
+    } else {
+        this.setActiveTaxonomy('etraps');
+    }
+    this.FocusObjectDemanded.fire(this, {"objectName": objectName});
 };
 
 appModelP.requestLayersItems = function () {
@@ -165,6 +176,10 @@ appModelP._onStatisticSetActive = function (sender) {
     this._Statistics.setActive(false, sender);
     this.setActiveStatistic(sender);
     this.ActiveStatisticSet.fire(this);
+};
+
+appModelP._onFocusedObjectSet = function (sender, objectName) {
+
 };
 
 appModelP.getLayer = function (layerName) {

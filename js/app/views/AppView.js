@@ -14,7 +14,7 @@ SM.AppView = function(options) {
     this._UIView = null;
 
     // Focused object - generally a turkmenistan/welayat/ashhabad but might change in future
-    this._FocusedObject = "ahalskiy";
+    this._FocusedObject = "turkmenistan";
 
     this._Loader = $('#Loader');
     this._Loader.find('.inner').height($(window).height());
@@ -58,6 +58,7 @@ appViewP._addEventListeners = function() {
     $(window).on('click', $.proxy(this._onWindowClick, this));
 
     this._Model.StartUpDataLoaded.add(this._onStartUpDataLoaded, this);
+    this._Model.FocusObjectDemanded.add(this._onFocusObjectDemanded, this);
 
     this._UIView.LayerHideDemanded.add(this._onLayerHideDemanded, this);
     this._UIView.LayerShowDemanded.add(this._onLayerShowDemanded, this);
@@ -67,6 +68,10 @@ appViewP._onWindowClick = function (event) {
     if ($('#Map').find($(event.target)).length > 0) {
         this.hideModals();
     }
+};
+
+appViewP._onFocusObjectDemanded = function (sender, settings) {
+    this.focusObject(settings.objectName);
 };
 
 appViewP._onStartUpDataLoaded = function () {

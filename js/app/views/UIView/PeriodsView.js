@@ -33,6 +33,10 @@ SM.PeriodsView = function (options) {
 
 var periodsVP = SM.PeriodsView.prototype;
 
+periodsVP.focusObject = function (objectName) {
+    this._FocusedObject = objectName;
+};
+
 periodsVP._render = function () {
     this._PausePlayBtn = new SM.PausePlayBtn();
     this._PausePlayBtn.hide();
