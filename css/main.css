@@ -55,20 +55,14 @@ html body button {
     box-shadow: none;
     padding: 15px;
     float: left;
-    max-height: 500px;
+    max-height: 400px;
     overflow-y: scroll;
-    /*padding: 20px 4px;*/
-    /*font-size: 20px;*/
-    /*background: #f9dcbf;*/
-    /*background: -moz-linear-gradient(top,  #f9dcbf 0%, #ddc4bf 100%);*/
-    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9dcbf), color-stop(100%,#ddc4bf));*/
-    /*background: -webkit-linear-gradient(top,  #f9dcbf 0%,#ddc4bf 100%);*/
-    /*background: -o-linear-gradient(top,  #f9dcbf 0%,#ddc4bf 100%);*/
-    /*background: -ms-linear-gradient(top,  #f9dcbf 0%,#ddc4bf 100%);*/
-    background: linear-gradient(to bottom,  #f9dcbf 0%,#ddc4bf 100%);
-    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9dcbf', endColorstr='#ddc4bf',GradientType=0 );*/
-    border: 1px solid #2c3e50;
-    border-radius: 5px;
+    background-image: linear-gradient(#fec29c, #e75900);
+    background-image: -webkit-linear-gradient(#fec29c, #e75900);
+    border: 1px solid #ffffff;
+    text-shadow: 0px 0px 5px #531400;
+    color: #ffffff;
+    border-radius: 4px;
 }
 
 #Table table {
@@ -195,11 +189,12 @@ html body button {
     background-image: linear-gradient(#fec29c, #e75900);
     background-image: -webkit-linear-gradient(#fec29c, #e75900);
     border: 1px solid #ffffff;
+    text-shadow: 0px 0px 5px #531400;
+    color: #ffffff;
     border-radius: 4px;
     overflow-x: auto;
-    max-height: 200px;
+    max-height: 400px;
     overflow-y: scroll;
-    color: #ffffff;
 }
 
 .menu-std li {
@@ -207,7 +202,6 @@ html body button {
     line-height: 20px;
     padding: 9px 35px 9px 0;
     background: url('../images/arrow.png') no-repeat right center;
-    text-shadow: 0px 0px 5px #531400;
     background-size: 28px 28px;
 }
 
@@ -248,9 +242,9 @@ html .leaflet-right .leaflet-control {
     margin: 13px 13px 0 0;
 }
 
-html .btn-warning, html .btn-warning:hover, html .btn-warning:focus {
-    background-image: linear-gradient(#ff8f49, #dd5600 60%, #e75900);
-    background-image: -webkit-linear-gradient(#ff8f49, #dd5600 60%, #e75900);
+html .btn-warning, html .btn-warning:hover, html .btn-warning:focus, html .btn-warning:active, html .btn-warning.active {
+    /*background-image: linear-gradient(#ff8f49, #dd5600 60%, #e75900);*/
+    /*background-image: -webkit-linear-gradient(#ff8f49, #dd5600 60%, #e75900);*/
     border: 1px solid #ffffff;
     outline: none;
 }

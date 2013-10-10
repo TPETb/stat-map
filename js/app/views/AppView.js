@@ -13,9 +13,6 @@ SM.AppView = function(options) {
     this._MapView = null;
     this._UIView = null;
 
-    // Focused object - generally a turkmenistan/welayat/ashhabad but might change in future
-    this._FocusedObject = "turkmenistan";
-
     this._Loader = $('#Loader');
     this._Loader.find('.inner').height($(window).height());
     this._Loader.find('.inner').width($(window).width());
@@ -23,13 +20,6 @@ SM.AppView = function(options) {
     // Layers events
     this.LayerHideDemanded = new TVL.Event();
     this.LayerShowDemanded = new TVL.Event();
-
-    // Statistics events
-    this.StatisticShowDemanded = new TVL.Event();
-    this.StatisticHideDemanded = new TVL.Event();
-
-    // Focus events
-    this.ObjectFocusDemanaded = new TVL.Event();
 
     this.init();
 };
@@ -43,12 +33,10 @@ var appViewP = SM.AppView.prototype;
  */
 appViewP.init = function() {
     this._MapView = new SM.MapView({
-        model: this._Model,
-        focusedObject: this._FocusedObject
+        model: this._Model
     });
     this._UIView = new SM.UIView({
-        model: this._Model,
-        focusedObject: this._FocusedObject
+        model: this._Model
     });
 
     this._addEventListeners();
@@ -58,24 +46,15 @@ appViewP._addEventListeners = function() {
     $(window).on('click', $.proxy(this._onWindowClick, this));
 
     this._Model.StartUpDataLoaded.add(this._onStartUpDataLoaded, this);
-    this._Model.FocusObjectDemanded.add(this._onFocusObjectDemanded, this);
 
     this._UIView.LayerHideDemanded.add(this._onLayerHideDemanded, this);
     this._UIView.LayerShowDemanded.add(this._onLayerShowDemanded, this);
-
-    $('.menu-std').on('click', 'li', function () {
-        console.log('ggg');
-    });
 };
 
 appViewP._onWindowClick = function (event) {
     if ($('#Map').find($(event.target)).length > 0) {
         this.hideModals();
     }
-};
-
-appViewP._onFocusObjectDemanded = function (sender, settings) {
-    this.focusObject(settings.objectName);
 };
 
 appViewP._onStartUpDataLoaded = function () {
@@ -94,10 +73,6 @@ appViewP._onLayerHideDemanded = function(sender, layerName) {
 
 appViewP._onLayerShowDemanded = function(sender, layerName) {
     this.LayerShowDemanded.fire(this, layerName);
-};
-
-appViewP._onObjectFocusDemanded = function(sender, objectName) {
-    this.ObjectFocusDemanaded.fire(this, objectName);
 };
 
 appViewP.hideLayer = function (layerName) {
@@ -125,11 +100,6 @@ appViewP.startStatisticCycle = function () {
 appViewP.stopStatisticCycle = function () {
     this._MapView.getTaxonomyView().stopStatisticCycle();
     this._UIView.getPeriodsView().stopStatisticCycle();
-};
-
-appViewP.focusObject = function (objectName) {
-    this._MapView.focusObject(objectName);
-    this._UIView.focusObject(objectName);
 };
 
 appViewP.getUIView = function () {
