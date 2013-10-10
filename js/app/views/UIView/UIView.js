@@ -50,12 +50,12 @@ uiViewP._render = function () {
     this._MapTypeBtn = new SM.MapTypeBtn();
     this._MapTypeBtn.setState('welayats');
 
-    this._StatisticsBtn = $('<button type="button" class="btn btn-custom" id="StatisticsBtn"><span class="glyphicon icon-bar-chart"></span> Статистика</button>');
-    this._StatisticsCancelBtn = $('<button type="button" class="btn btn-custom" id="StatisticsCancelBtn"><span class="glyphicon icon-map-marker"></span> Геокарта</button>');
-    this._TransportBtn = $('<button type="button" class="btn btn-custom" id="TransportBtn"><span class="glyphicon icon-random"></span> Транспорт и коммуникации</button>');
-    this._TourismBtn = $('<button type="button" class="btn btn-custom" id="TourismBtn"><span class="glyphicon icon-plane"></span> Туризм</button>');
-    this._TradeBtn = $('<button type="button" class="btn btn-custom" id="TradeBtn"><span class="glyphicon icon-refresh"></span> Внешняя торговля</button>');
-    this._LayersBtn = $('<button type="button" class="btn btn-custom" id="LayersBtn"><span class="glyphicon icon-check"></span> Слои</button>');
+    this._StatisticsBtn = $('<button type="button" class="btn btn-warning" id="StatisticsBtn"><span class="glyphicon icon-bar-chart"></span> Статистика</button>');
+    this._StatisticsCancelBtn = $('<button type="button" class="btn btn-warning" id="StatisticsCancelBtn"><span class="glyphicon icon-map-marker"></span> Геокарта</button>');
+    this._TransportBtn = $('<button type="button" class="btn btn-warning" id="TransportBtn"><span class="glyphicon icon-random"></span> Транспорт</button>');
+    this._TourismBtn = $('<button type="button" class="btn btn-warning" id="TourismBtn"><span class="glyphicon icon-plane"></span> Туризм</button>');
+    this._TradeBtn = $('<button type="button" class="btn btn-warning" id="TradeBtn"><span class="glyphicon icon-refresh"></span> Внешняя торговля</button>');
+    this._LayersBtn = $('<button type="button" class="btn btn-warning" id="LayersBtn"><span class="glyphicon icon-check"></span> Слои</button>');
 
     this._StatisticsCancelBtn.hide();
 
@@ -186,7 +186,7 @@ uiViewP.addLayersMenuItems = function (layersConfig) {
         })
             // add event listener right here as it is just DOM event
             .on('change', $.proxy(this._onLayerChange, this));
-        item.find('span').text(' ' + layersConfig[i].title);
+        item.find('span').text(layersConfig[i].title);
         item.appendTo(this._LayersMenu);
     }
 };

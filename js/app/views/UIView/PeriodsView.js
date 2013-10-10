@@ -43,15 +43,15 @@ periodsVP._render = function () {
     this._PeriodsMenuWrapper.append(this._PeriodsMenu);
     this._PeriodsMenuWrapper.hide();
 
-    this._PeriodsOkBtn = $('<button type="button" class="btn btn-custom" id="PeriodsOkBtn">Ок</button>');
+    this._PeriodsOkBtn = $('<button type="button" class="btn btn-warning" id="PeriodsOkBtn">Ок</button>');
     this._PeriodsMenuWrapper.append(this._PeriodsOkBtn);
     this._PeriodsOkBtn.hide();
 
-    this._PeriodsBtn = $('<button type="button" class="btn btn-custom" id="PeriodsBtn"><span class="glyphicon glyphicon-time"></span> Периоды</button>');
+    this._PeriodsBtn = $('<button type="button" class="btn btn-warning" id="PeriodsBtn"><span class="glyphicon glyphicon-time"></span> Периоды</button>');
     this._Toolbar2.append(this._PeriodsBtn);
     this._PeriodsBtn.hide();
 
-    this._TableBtn = $('<button type="button" class="btn btn-custom" id="TableBtn"><span class="glyphicon glyphicon-list-alt"></span> Таблица</button>');
+    this._TableBtn = $('<button type="button" class="btn btn-warning" id="TableBtn"><span class="glyphicon glyphicon-list-alt"></span> Таблица</button>');
     this._Toolbar2.append(this._TableBtn);
     this._TableBtn.hide();
 
@@ -160,7 +160,7 @@ periodsVP.addPeriodsMenuItems = function (periodsConfig) {
             checked: periodsConfig[i].active,
             disabled: periodsConfig[i].forced
         }).on('change', $.proxy(this._onPeriodsChange, this));
-        item.find('span').text(' ' + periodsConfig[i].title);
+        item.find('span').text(periodsConfig[i].title);
         item.appendTo(this._PeriodsMenu);
     }
 
