@@ -59,7 +59,7 @@ html body button {
     overflow-y: scroll;
     /*padding: 20px 4px;*/
     /*font-size: 20px;*/
-    background: #f9dcbf;
+    /*background: #f9dcbf;*/
     /*background: -moz-linear-gradient(top,  #f9dcbf 0%, #ddc4bf 100%);*/
     /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9dcbf), color-stop(100%,#ddc4bf));*/
     /*background: -webkit-linear-gradient(top,  #f9dcbf 0%,#ddc4bf 100%);*/
@@ -112,11 +112,6 @@ html body button {
     clear: both;
 }
 
-#Toolbar2 button {
-    padding: 5px 15px 5px 15px;
-    font-size: 12px;
-}
-
 #Toolbar3 {
     height: 0;
 }
@@ -160,11 +155,12 @@ html body button {
     right: 0;
     z-index: 1;
     background: url('../images/map-footer.png') no-repeat 10px center #f0e7e6;
+    background-size: 95px 50px;
     font-size: 18px;
-    height: 54px;
+    height: 57px;
     /*border-top: 6px solid #2c3e50;*/
     border-top: 6px solid #2c3e50;
-    padding: 0 10px 0 95px;
+    padding: 0 10px 0 100px;
 }
 
 #Footer > .inner {
@@ -178,17 +174,13 @@ html body button {
     padding: 0 10px;
     display: table-cell;
     vertical-align: middle;
-    /*border-left: 3px solid #2c3e50;*/
-    border-left: 3px solid #2c3e50;
+    border-left: 6px solid #2c3e50;
     white-space: nowrap;
     text-align: center;
 }
 
-#Footer p.title1, #Footer p.title2 {
+#Footer p.title {
     white-space: normal;
-}
-
-#Footer p.title1 {
     border: none;
 }
 
@@ -197,10 +189,11 @@ html body button {
 }
 
 .menu-std {
-    padding: 10px 4px;
+    padding: 15px;
     font-size: 16px;
     max-width: 350px;
-    background-image: linear-gradient(#fec29c, #f28e4f, #e75900);
+    background-image: linear-gradient(#fec29c, #e75900);
+    background-image: -webkit-linear-gradient(#fec29c, #e75900);
     border: 1px solid #ffffff;
     border-radius: 4px;
     overflow-x: auto;
@@ -212,10 +205,10 @@ html body button {
 .menu-std li {
     display: block;
     line-height: 20px;
-    /*padding: 10px 15px;*/
-    padding: 9px 40px 9px 10px;
+    padding: 9px 35px 9px 0;
     background: url('../images/arrow.png') no-repeat right center;
     text-shadow: 0px 0px 5px #531400;
+    background-size: 28px 28px;
 }
 
 .menu-std li input {
@@ -232,119 +225,32 @@ html body button {
     padding-left: 40px;
     border-bottom: 1px solid #ffffff;
     font-weight: bold;
+    background-size: 28px 28px;
 }
 
-/* buttons */
-/*html .btn-custom {*/
-    /*font-size: 18px;*/
-    /*padding: 10px 15px 12px 15px;*/
-    /*padding: 5px 15px 7px 15px;*/
-    /*border: 1px solid #2c3e50;*/
-    /*border: 1px solid #2c3e50;*/
-    /*border-radius: 5px;*/
-    /*background: #f9dcbf;*/
-    /*background: -moz-linear-gradient(top,  #f9dcbf 0%, #ddc4bf 100%);*/
-    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9dcbf), color-stop(100%,#ddc4bf));*/
-    /*background: -webkit-linear-gradient(top,  #f9dcbf 0%,#ddc4bf 100%);*/
-    /*background: -o-linear-gradient(top,  #f9dcbf 0%,#ddc4bf 100%);*/
-    /*background: -ms-linear-gradient(top,  #f9dcbf 0%,#ddc4bf 100%);*/
-    /*background: linear-gradient(to bottom,  #f9dcbf 0%,#ddc4bf 100%);*/
-    /*background: linear-gradient(to bottom,  #ffffff 0%, #6dbcdb 100%);*/
-    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9dcbf', endColorstr='#ddc4bf',GradientType=0 );*/
-/*}*/
-
-/*html .btn-custom:hover {*/
-    /*color: #ffffff;*/
-    /*text-decoration: none;*/
-    /*background: #ff8800;*/
-    /*background: -moz-linear-gradient(top,  #ff8800 0%, #2c3e50 100%);*/
-    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff8800), color-stop(100%,#2c3e50));*/
-    /*background: -webkit-linear-gradient(top,  #ff8800 0%,#2c3e50 100%);*/
-    /*background: -o-linear-gradient(top,  #ff8800 0%,#2c3e50 100%);*/
-    /*background: -ms-linear-gradient(top,  #ff8800 0%,#2c3e50 100%);*/
-    /*background: linear-gradient(to bottom,  #ff8800 0%,#2c3e50 100%);*/
-
-    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8800', endColorstr='#2c3e50',GradientType=0 );*/
-/*}*/
-
-/* leaflet control */
-html .leaflet-bar {
+html .leaflet-control-zoom.leaflet-bar {
     box-shadow: none;
-    /*-webkit-border-radius: 10px;*/
-    border-radius: 5px;
+    border: none;
 }
 
-html .leaflet-bar a, html .leaflet-bar a:hover {
-    width: 40px;
-    height: 40px;
-    border-bottom: none;
+html .leaflet-control-zoom.leaflet-bar a, html .leaflet-control-zoom.leaflet-bar a:hover, html .leaflet-control-zoom.leaflet-bar a:focus, html .leaflet-control-zoom.leaflet-bar a:last-child {
+    color: #ffffff;
+    background-image: linear-gradient(#ff8f49, #dd5600 60%, #e75900);
+    background-image: -webkit-linear-gradient(#ff8f49, #dd5600 60%, #e75900);
+    border: 1px solid #ffffff;
+    height: 34px;
+    width: 34px;
+    line-height: 34px;
+    outline: none;
 }
 
-html .leaflet-bar a {
-    background: #f9dcbf;
-    /*background: -moz-linear-gradient(top,  #f9dcbf 0%, #ddc4bf 100%);*/
-    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9dcbf), color-stop(100%,#ddc4bf));*/
-    /*background: -webkit-linear-gradient(top,  #f9dcbf 0%,#ddc4bf 100%);*/
-    /*background: -o-linear-gradient(top,  #f9dcbf 0%,#ddc4bf 100%);*/
-    /*background: -ms-linear-gradient(top,  #f9dcbf 0%,#ddc4bf 100%);*/
-    /*background: linear-gradient(to bottom,  #f9dcbf 0%,#ddc4bf 100%);*/
-    background: linear-gradient(to bottom,  #ffffff 0%, #6dbcdb 100%);
-    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9dcbf', endColorstr='#ddc4bf',GradientType=0 );*/
-}
-
-html .leaflet-bar a:hover {
-    background: #ff8800;
-    /*background: -moz-linear-gradient(top,  #ff8800 0%, #2c3e50 100%);*/
-    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff8800), color-stop(100%,#2c3e50));*/
-    /*background: -webkit-linear-gradient(top,  #ff8800 0%,#2c3e50 100%);*/
-    /*background: -o-linear-gradient(top,  #ff8800 0%,#2c3e50 100%);*/
-    /*background: -ms-linear-gradient(top,  #ff8800 0%,#2c3e50 100%);*/
-    /*background: linear-gradient(to bottom,  #ff8800 0%,#2c3e50 100%);*/
-    background: linear-gradient(to bottom,  #ffffff 0%, #6dbcdb 100%);
-    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8800', endColorstr='#2c3e50',GradientType=0 );*/
-    color: #fff;
-}
-
-html .leaflet-bar a:first-child {
-    -webkit-border-top-left-radius: 0px;
-    border-top-left-radius: 0px;
-    -webkit-border-top-right-radius: 10px;
-    border-top-right-radius: 10px;
-    -webkit-border-bottom-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-
-    border-left: 1px solid #ff8800;
-    border-top: 1px solid #2c3e50;
-    border-right: 1px solid #2c3e50;
-    border-bottom: 1px solid #2c3e50;
-}
-
-html a.leaflet-control-zoom-out, html a.leaflet-control-zoom-out:hover {
-    float: left;
-    line-height: 42px;
-}
-
-html a.leaflet-control-zoom-in, html a.leaflet-control-zoom-in:hover {
-    float: right;
-    line-height: 38px;
-}
-
-html .leaflet-bar a:last-child {
-    -webkit-border-top-left-radius: 10px;
-    border-top-left-radius: 10px;
-    -webkit-border-bottom-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    -webkit-border-bottom-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-
-    border-right: 1px solid #ff8800;
-    border-top: 1px solid #2c3e50;
-    border-left: 1px solid #2c3e50;
-    border-bottom: 1px solid #2c3e50;
+html .leaflet-right .leaflet-control {
+    margin: 13px 13px 0 0;
 }
 
 html .btn-warning, html .btn-warning:hover, html .btn-warning:focus {
     background-image: linear-gradient(#ff8f49, #dd5600 60%, #e75900);
+    background-image: -webkit-linear-gradient(#ff8f49, #dd5600 60%, #e75900);
     border: 1px solid #ffffff;
     outline: none;
 }

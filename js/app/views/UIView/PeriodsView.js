@@ -50,7 +50,6 @@ periodsVP._render = function () {
 
     this._PeriodsOkBtn = $('<button type="button" class="btn btn-warning" id="PeriodsOkBtn">Ок</button>');
     this._PeriodsMenuWrapper.append(this._PeriodsOkBtn);
-    this._PeriodsOkBtn.hide();
 
     this._PeriodsBtn = $('<button type="button" class="btn btn-warning" id="PeriodsBtn"><span class="glyphicon glyphicon-time"></span> Периоды</button>');
     this._Toolbar2.append(this._PeriodsBtn);
@@ -104,7 +103,6 @@ periodsVP._onActiveTaxonomySet = function () {
 
 periodsVP._onPeriodsBtnClick = function () {
     this._PeriodsMenuWrapper.toggle();
-    this._PeriodsOkBtn.toggle();
     this.PeriodsBtnClick.fire(this);
 };
 
@@ -249,12 +247,12 @@ periodsVP.getCheckedPeriodsNames = function () {
 periodsVP.show = function () {
     this.hide();
     this._PeriodsBtn.show();
+    this._PeriodsMenuWrapper.show();
 };
 
 periodsVP.hide = function () {
     this._PeriodsBtn.hide();
     this._PeriodsMenuWrapper.hide();
-    this._PeriodsOkBtn.hide();
     this._Table.hide();
     this._TableBtn.hide();
     this._PausePlayBtn.hide();
@@ -263,7 +261,6 @@ periodsVP.hide = function () {
 periodsVP.hideModals = function () {
     this._Table.hide();
     this._PeriodsMenuWrapper.hide();
-    this._PeriodsOkBtn.hide();
 };
 
 periodsVP = null;

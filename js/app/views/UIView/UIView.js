@@ -51,11 +51,11 @@ uiViewP._render = function () {
     this._MapTypeBtn = new SM.MapTypeBtn();
     this._MapTypeBtn.setState('welayats');
 
-    this._StatisticsBtn = $('<button type="button" class="btn btn-warning" id="StatisticsBtn"><span class="glyphicon icon-bar-chart"></span> Статистика</button>');
-    this._StatisticsCancelBtn = $('<button type="button" class="btn btn-warning" id="StatisticsCancelBtn"><span class="glyphicon icon-map-marker"></span> Геокарта</button>');
-    this._TransportBtn = $('<button type="button" class="btn btn-warning" id="TransportBtn"><span class="glyphicon icon-random"></span> Транспорт</button>');
-    this._TourismBtn = $('<button type="button" class="btn btn-warning" id="TourismBtn"><span class="glyphicon icon-plane"></span> Туризм</button>');
-    this._TradeBtn = $('<button type="button" class="btn btn-warning" id="TradeBtn"><span class="glyphicon icon-refresh"></span> Внешняя торговля</button>');
+    this._StatisticsBtn = $('<button type="button" class="btn btn-warning btn-lg" id="StatisticsBtn"><span class="glyphicon icon-bar-chart"></span> Статистика</button>');
+    this._StatisticsCancelBtn = $('<button type="button" class="btn btn-warning btn-lg" id="StatisticsCancelBtn"><span class="glyphicon icon-map-marker"></span> Геокарта</button>');
+    this._TransportBtn = $('<button type="button" class="btn btn-warning btn-lg" id="TransportBtn"><span class="glyphicon icon-random"></span> Транспорт и коммуникации</button>');
+    this._TourismBtn = $('<button type="button" class="btn btn-warning btn-lg" id="TourismBtn"><span class="glyphicon icon-plane"></span> Туризм</button>');
+    this._TradeBtn = $('<button type="button" class="btn btn-warning btn-lg" id="TradeBtn"><span class="glyphicon icon-refresh"></span> Внешняя торговля</button>');
     this._LayersBtn = $('<button type="button" class="btn btn-warning" id="LayersBtn"><span class="glyphicon icon-check"></span> Слои</button>');
 
     this._StatisticsCancelBtn.hide();
@@ -72,13 +72,14 @@ uiViewP._render = function () {
 
     this._PeriodsView = new SM.PeriodsView({ model: this._Model });
 
-    this._FooterTitle1 = $('<p class="title1">Интерактивная карта Туркменистана</p>');
-    this._FooterTitle2 = $('<p class="title2"></p>');
+    this._FooterTitle = this._Footer.find('p.title');
+    this._FooterTitle1 = $('<span class="title1">Интерактивная карта Туркменистана</span>');
+    this._FooterTitle2 = $('<span class="title2"></p>');
     this._FooterTerritory = $('<p class="territory"></p>');
     this._FooterPeriod = $('<p class="period"></p>');
     this._FooterValue = $('<p class="value"></p>');
-    this._Footer.append(this._FooterTitle1);
-    this._Footer.append(this._FooterTitle2);
+    this._FooterTitle.append(this._FooterTitle1);
+    this._FooterTitle.append(this._FooterTitle2);
     this._Footer.append(this._FooterTerritory);
     this._Footer.append(this._FooterPeriod);
     this._Footer.append(this._FooterValue);
@@ -173,7 +174,7 @@ uiViewP._onActiveStatisticSet = function (sender) {
             // сэр
             this._FooterTitle1.html(modelParent.getTitle());
         }
-        this._FooterTitle2.html(this._ActiveStatistic.getTitle());
+        this._FooterTitle2.html('&nbsp;/&nbsp;' + this._ActiveStatistic.getTitle());
         this._FooterTitle2.show();
     }
 
