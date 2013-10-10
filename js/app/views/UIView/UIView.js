@@ -53,6 +53,7 @@ uiViewP._render = function () {
     this._StatisticsBtn = $('<button type="button" class="btn btn-warning btn-lg" id="StatisticsBtn"><span class="glyphicon icon-bar-chart"></span> Статистика</button>');
     this._StatisticsCancelBtn = $('<button type="button" class="btn btn-warning btn-lg" id="StatisticsCancelBtn"><span class="glyphicon icon-map-marker"></span> Геокарта</button>');
     this._TransportBtn = $('<button type="button" class="btn btn-warning btn-lg" id="TransportBtn"><span class="glyphicon icon-road"></span> Транспорт и коммуникации</button>');
+    this._TransportBtn.addClass('active');
     this._TourismBtn = $('<button type="button" class="btn btn-warning btn-lg" id="TourismBtn"><span class="glyphicon icon-plane"></span> Туризм</button>');
     this._TradeBtn = $('<button type="button" class="btn btn-warning btn-lg" id="TradeBtn"><span class="glyphicon icon-globe"></span> Внешняя торговля</button>');
     this._LayersBtn = $('<button type="button" class="btn btn-warning" id="LayersBtn"><span class="glyphicon icon-check"></span> Слои</button>');
@@ -100,6 +101,28 @@ uiViewP._addEventListeners = function () {
     this._LayersBtn.on('click', $.proxy(this._onLayersBtnClick, this));
 
     this._PeriodsView.PeriodsBtnClick.add(this._onPeriodsBtnClick, this);
+
+    this._TransportBtn.on("click", $.proxy(this._onLayerCollectionBtnClick, this, "transport"));
+    this._TourismBtn.on("click", $.proxy(this._onLayerCollectionBtnClick, this, "tourism"));
+    this._TradeBtn.on("click", $.proxy(this._onLayerCollectionBtnClick, this, "trade"));
+};
+
+uiViewP._onLayerCollectionBtnClick = function (collectionName) {
+    this._TransportBtn.removeClass('active');
+    this._TourismBtn.removeClass('active');
+    this._TradeBtn.removeClass('active');
+    this._Model.setActiveLayerCollection(collectionName);
+    switch (collectionName) {
+        case "transport":
+            this._TransportBtn.addClass('active');
+            break;
+        case "trade":
+            this._TradeBtn.addClass('active');
+            break;
+        case "tourism":
+            this._TourismBtn.addClass('active');
+            break;
+    }
 };
 
 uiViewP._onStatisticsListRetrieved = function () {

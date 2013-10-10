@@ -31,6 +31,7 @@ layerCVP._addEventListeners = function () {
 };
 
 layerCVP._onLayersListRetrieved = function (sender) {
+    this._Items = [];
     this.addItems(this._Model.getLayers());
 };
 

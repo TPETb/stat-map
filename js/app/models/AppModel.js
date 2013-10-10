@@ -13,6 +13,7 @@ SM.AppModel = function () {
 
     this._Config = null;
     this._Layers = [];
+    this._LayerCollections = {};
     this._Regions = [];
     this._Statistics = [];
     this._StatisticsList = [];
@@ -84,19 +85,16 @@ appModelP.requestLayersList = function () {
 };
 
 appModelP._onLayersListRetrieved = function (sender, data) {
-    if (this._Layers.length === 0) {
-        this._Layers = data.items;
-    }
-    else {
-        for (var i = 0; i < data.items.length; i++) {
-            if (!this.getLayer(data.items[i].name)) {
-                this._Layers.push(data.items[i]);
-            }
-        }
-    }
+    this._LayerCollections = data;
+    this._Layers = this._LayerCollections.transport;
 
     this.LayersListRetrieved.fire(this);
     this._addStartUpDataFiredEvent(this.LayersListRetrieved);
+};
+
+appModelP.setActiveLayerCollection = function (collectionName) {
+    this._Layers = this._LayerCollections[collectionName];
+    this.LayersListRetrieved.fire(this);
 };
 
 appModelP.setFocusedObjectName = function (objectName) {
