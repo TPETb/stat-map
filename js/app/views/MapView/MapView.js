@@ -30,7 +30,8 @@ mapViewP.init = function () {
     this.resize($(window).width(), $(window).height());
 
     this._Map = L.map(this._DomNode.attr('id'), {
-        maxZoom: 12,
+        minZoom: 6,
+        maxZoom: 8,
         maxBounds: [
             [20, 37],
             [57, 81]
@@ -82,7 +83,7 @@ mapViewP._onConfigRetrieved = function () {
     var config = this._Model.getConfig();
 
     if (config.view) {
-        this._Map.setView([config.view.lat, config.view.lng], 7);
+        this._Map.setView([config.view.lat, config.view.lng], 6);
     }
 
     if (config.tileProvider) {
