@@ -10,7 +10,6 @@ if (!SM) {
  */
 SM.UIView = function (options) {
     this._Model = options.model;
-    this._FocusedObject = options.focusedObject;
 
     this._Body = $('body');
     this._Toolbar1 = $('#Toolbar1');
@@ -53,9 +52,9 @@ uiViewP._render = function () {
 
     this._StatisticsBtn = $('<button type="button" class="btn btn-warning btn-lg" id="StatisticsBtn"><span class="glyphicon icon-bar-chart"></span> Статистика</button>');
     this._StatisticsCancelBtn = $('<button type="button" class="btn btn-warning btn-lg" id="StatisticsCancelBtn"><span class="glyphicon icon-map-marker"></span> Геокарта</button>');
-    this._TransportBtn = $('<button type="button" class="btn btn-warning btn-lg" id="TransportBtn"><span class="glyphicon icon-random"></span> Транспорт и коммуникации</button>');
+    this._TransportBtn = $('<button type="button" class="btn btn-warning btn-lg" id="TransportBtn"><span class="glyphicon icon-road"></span> Транспорт и коммуникации</button>');
     this._TourismBtn = $('<button type="button" class="btn btn-warning btn-lg" id="TourismBtn"><span class="glyphicon icon-plane"></span> Туризм</button>');
-    this._TradeBtn = $('<button type="button" class="btn btn-warning btn-lg" id="TradeBtn"><span class="glyphicon icon-refresh"></span> Внешняя торговля</button>');
+    this._TradeBtn = $('<button type="button" class="btn btn-warning btn-lg" id="TradeBtn"><span class="glyphicon icon-globe"></span> Внешняя торговля</button>');
     this._LayersBtn = $('<button type="button" class="btn btn-warning" id="LayersBtn"><span class="glyphicon icon-check"></span> Слои</button>');
 
     this._StatisticsCancelBtn.hide();
@@ -93,6 +92,7 @@ uiViewP._addEventListeners = function () {
     this._Model.StatisticsListRetrieved.add(this._onStatisticsListRetrieved, this);
     this._Model.LayersListRetrieved.add(this._onLayersListRetrieved, this);
     this._Model.ActiveStatisticSet.add(this._onActiveStatisticSet, this);
+    this._Model.FocusedObjectSet.add(this._onFocusedObjectSet, this);
 
     this._StatisticsBtn.on('click', $.proxy(this._onStatisticsBtnClick, this));
     this._StatisticsCancelBtn.on('click', $.proxy(this._onStatisticsCancelBtnClick, this));
@@ -102,14 +102,8 @@ uiViewP._addEventListeners = function () {
     this._PeriodsView.PeriodsBtnClick.add(this._onPeriodsBtnClick, this);
 };
 
-
-uiViewP.focusObject = function (objectName) {
-    this._FocusedObject = objectName;
-    this._PeriodsView.focusObject(objectName);
-    }
 uiViewP._onStatisticsListRetrieved = function () {
     this._StatisticsMenuView = new SM.StatisticsMenuView({ model: this._Model.getStatistics() });
-
 };
 
 uiViewP._onLayersListRetrieved = function () {
@@ -122,6 +116,7 @@ uiViewP._onStatisticsBtnClick = function () {
 };
 
 uiViewP._onStatisticsCancelBtnClick = function () {
+    this._StatisticsBtn.removeClass('active');
     this._StatisticsCancelBtn.hide();
     this._StatisticsMenuView.hide();
     this._StatisticsMenuView.setActive(false);
@@ -136,6 +131,9 @@ uiViewP._onStatisticsCancelBtnClick = function () {
 };
 
 uiViewP._onMapTypeBtnStateChanged = function () {
+    if (this._Model.getFocusedObjectName() !== 'turkmenistan') {
+        this._Model.setFocusedObjectName('turkmenistan');
+    }
     this._Model.setActiveTaxonomy(this._MapTypeBtn.getState());
 };
 
@@ -155,6 +153,7 @@ uiViewP._onActiveStatisticSet = function (sender) {
     this._ActiveStatistic.CycleCancelled.remove(this._onCycleCancelled);
     this._ActiveStatistic.CycleCancelled.add(this._onCycleCancelled, this);
 
+    this._StatisticsBtn.addClass('active');
     this._StatisticsCancelBtn.show();
     this._PeriodsView.show();
     this._StatisticsMenuView.hide();
@@ -183,6 +182,12 @@ uiViewP._onActiveStatisticSet = function (sender) {
     this._FooterValue.hide();
 };
 
+uiViewP._onFocusedObjectSet = function () {
+    if (this._Model.getFocusedObjectName() !== 'turkmenistan') {
+        this._MapTypeBtn.setState('welayat');
+    }
+};
+
 uiViewP.addLayersMenuItems = function (layersConfig) {
     this._LayersMenu.html('');
     for (var i = 0; i < layersConfig.length; i++) {
@@ -196,6 +201,15 @@ uiViewP.addLayersMenuItems = function (layersConfig) {
             .on('change', $.proxy(this._onLayerChange, this));
         item.find('span').text(layersConfig[i].title);
         item.appendTo(this._LayersMenu);
+        item.on('click', $.proxy(this._onMenuItemClick, this));
+    }
+};
+
+uiViewP._onMenuItemClick = function (event) {
+    var input = $(event.currentTarget).find('input')[0];
+    if (input !== event.target) {
+        input.checked = !input.checked;
+        this._onLayerChange(input);
     }
 };
 
@@ -203,7 +217,7 @@ uiViewP._onCurrentPeriodSet = function () {
     var currentPeriod = this._ActiveStatistic.getCurrentPeriod();
     this._FooterPeriod.html(currentPeriod.title);
     this._FooterPeriod.show();
-    if (this._Model.getFocusedObject() === 'welayat') {
+    if (this._Model.getFocusedObjectName() === 'welayat') {
 
     }
     else {
@@ -230,11 +244,19 @@ uiViewP._onCycleCancelled = function () {
  * @param {type} input
  * @returns {undefined}
  */
-uiViewP._onLayerChange = function (event) {
-    if ($(event.target).is(':checked')) {
-        this.LayerShowDemanded.fire(this, $(event.target).attr('name'));
+uiViewP._onLayerChange = function (eventOrInput) {
+    // todo переписать как в PeriodsView, т.е. отсюда изменять в модели активный слой
+    var input;
+    if (eventOrInput.target) {
+        input = eventOrInput.target;
+    }
+    else {
+        input = eventOrInput;
+    }
+    if ($(input).is(':checked')) {
+        this.LayerShowDemanded.fire(this, $(input).attr('name'));
     } else {
-        this.LayerHideDemanded.fire(this, $(event.target).attr('name'));
+        this.LayerHideDemanded.fire(this, $(input).attr('name'));
     }
 };
 

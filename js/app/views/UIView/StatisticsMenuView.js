@@ -122,7 +122,13 @@ statMenuViewP.hide = function () {
 };
 
 statMenuViewP.toggle = function () {
-    this._DomNode.toggle();
+    if (this.isVisible()){
+        this.hide();
+    }
+    else {
+        this.hide();
+        this.show();
+    }
 };
 
 statMenuViewP.isVisible = function () {

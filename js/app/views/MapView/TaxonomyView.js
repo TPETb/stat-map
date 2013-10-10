@@ -14,7 +14,6 @@ SM.TaxonomyView = function(options) {
     this._Map = options.map;
     this._StatisticValues = [];
     this._TaxonomyObjectGroup = null;
-    this._FocusedObject = options.focusedObject;
 
     this.init();
 };
@@ -35,6 +34,7 @@ taxVP._addEventListeners = function () {
     this._Model.RegionsRetrieved.add(this._onRegionsRetrieved, this);
     this._Model.ActiveTaxonomySet.add(this._onActiveTaxonomySet, this);
     this._Model.ActiveStatisticSet.add(this._onActiveStatisticSet, this);
+    this._Model.FocusedObjectSet.add(this._onFocusedObjectSet, this);
 };
 
 taxVP._onRegionsRetrieved = function (sender) {
@@ -54,6 +54,10 @@ taxVP._onActiveStatisticSet = function () {
     this._ActiveStatistic.CycleCancelled.add(this._onCycleCancelled, this);
 };
 
+taxVP._onFocusedObjectSet = function () {
+    this.setMapObjects(this._Model.getActiveTaxonomy());
+};
+
 taxVP._onCurrentPeriodSet = function () {
     var currentPeriod  = this._ActiveStatistic.getCurrentPeriod();
 
@@ -68,13 +72,8 @@ taxVP._onCycleCancelled = function () {
     this.setMapObjects(this._Model.getActiveTaxonomy());
 };
 
-taxVP.focusObject = function (objectName) {
-    this._FocusedObject = objectName;
-    this.setMapObjects(this._Model.getActiveTaxonomy());
-};
-
-taxVP._demandObjectFocus = function (objectName) {
-    this._Model.focusObject(objectName);
+taxVP._onTaxonomyObjectClick = function (objectName) {
+    this._Model.setFocusedObjectName(objectName);
 };
 
 /**
@@ -89,7 +88,7 @@ taxVP.setMapObjects = function(regionsConfig) {
 
         // define styles
         var rate;
-        if (this._FocusedObject !== regionsConfig[i].name && $.inArray(this._FocusedObject, regionsConfig[i].parents) === -1) {
+        if (this._Model.getFocusedObjectName() !== regionsConfig[i].name && $.inArray(this._Model.getFocusedObjectName(), regionsConfig[i].parents) === -1) {
             // focused object is not current and is not in list of parents - should be grayed out
             rate = "overlay";
         }
@@ -103,7 +102,7 @@ taxVP.setMapObjects = function(regionsConfig) {
 
         // add events
         if (regionsConfig[i].focusable) {
-            taxonomyObject.on('click', $.proxy(this._demandObjectFocus, this, regionsConfig[i].name));
+            taxonomyObject.on('click', $.proxy(this._onTaxonomyObjectClick, this, regionsConfig[i].name));
         }
 
         this._TaxonomyObjectGroup.addLayer(taxonomyObject);

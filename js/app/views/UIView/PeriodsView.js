@@ -10,7 +10,6 @@ if (!SM) {
  */
 SM.PeriodsView = function (options) {
     this._Model = options.model;
-    this._FocusedObject = options.focusedObject;
     this._ActiveStatistic = null;
 
     this._Body = $('body');
@@ -32,10 +31,6 @@ SM.PeriodsView = function (options) {
 };
 
 var periodsVP = SM.PeriodsView.prototype;
-
-periodsVP.focusObject = function (objectName) {
-    this._FocusedObject = objectName;
-};
 
 periodsVP._render = function () {
     this._PausePlayBtn = new SM.PausePlayBtn();
@@ -142,8 +137,8 @@ periodsVP._onCurrentPeriodSet = function () {
 
     for (var i=0; i < ths.length; i++) {
         if ($(ths[i]).attr('data') === currentPeriod.name) {
-            $('#Table tr th:nth-child(' + (i+1) + ')').css({background: '#ffffff'});
-            $('#Table tr td:nth-child(' + (i+1) + ')').css({background: '#ffffff'});
+            $('#Table tr th:nth-child(' + (i+1) + ')').css({background: '#b44600'});
+            $('#Table tr td:nth-child(' + (i+1) + ')').css({background: '#b44600'});
         }
     }
 };
@@ -165,11 +160,11 @@ periodsVP.addPeriodsMenuItems = function (periodsConfig) {
         }).on('change', $.proxy(this._onPeriodsChange, this));
         item.find('span').text(periodsConfig[i].title);
         item.appendTo(this._PeriodsMenu);
+        item.on('click', $.proxy(this._onMenuItemClick, this));
     }
-
 };
 
-periodsVP._onPeriodsChange = function (event) {
+periodsVP._onPeriodsChange = function () {
     this._PausePlayBtn.setState('inActive');
     this._ActiveStatistic.cancelCycle();
 
@@ -193,12 +188,20 @@ periodsVP._onPeriodsChange = function (event) {
     }
 };
 
+periodsVP._onMenuItemClick = function (event) {
+    var input = $(event.currentTarget).find('input')[0];
+    if (input !== event.target) {
+        input.checked = !input.checked;
+        this._onPeriodsChange();
+    }
+};
+
 periodsVP._updateTable = function () {
     var thead = this._Table.find('thead tr');
     var tbody = this._Table.find('tbody');
     thead.html('');
     tbody.html('');
-    thead.append('<th>Регион</th>')
+    thead.append('<th>Регион</th>');
 
     var activeStatData = this._ActiveStatistic.getData();
     var activeTaxonomy = this._Model.getActiveTaxonomy();
@@ -207,7 +210,7 @@ periodsVP._updateTable = function () {
     var tbodyHtml = [];
 
     for (var i = 0; i < activeTaxonomy.length; i++) {
-        if (this._FocusedObject !== activeTaxonomy[i].name && $.inArray(this._FocusedObject, activeTaxonomy[i].parents) === -1) {
+        if (this._Model.getFocusedObjectName() !== activeTaxonomy[i].name && $.inArray(this._Model.getFocusedObjectName(), activeTaxonomy[i].parents) === -1) {
             continue;
         }
         tbodyHtml.push('<tr><td>' + activeTaxonomy[i].title + '</td>');

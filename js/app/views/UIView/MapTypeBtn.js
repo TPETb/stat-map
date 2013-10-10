@@ -66,7 +66,7 @@ mapTypeP.setState = function (state) {
             break;
         case 'welayat':
             this._DomNode.find('.welayats').show();
-            this._DomNode.find('.inner').html(' Общая карта');
+            this._DomNode.find('.inner').html(' К общей карте');
             break;
     }
 
