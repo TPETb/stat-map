@@ -4,10 +4,9 @@
         {
             "name": "welayat",
             "title": "Названия велаятов",
-            "type": "raster",
+            "type": "tile",
             "options": {
-                "url": "images/layers/welayat.png",
-                "bounds": [[35.141090, 52.441429], [42.795551, 66.684303]],
+                "provider": "images/layers/welayats/{z}/{x}/{y}.png",
                 "contentType": "html",
                 "content": ""
             }

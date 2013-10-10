@@ -14,7 +14,7 @@
         "lng": 58.5
     },
     "_tileProvider": "http://{s}.tile.cloudmade.com/674ae0a3d72a4dd7a8dcdefb608302a3/997/256/{z}/{x}/{y}.png",
-    "tileProvider": "tiles-geo/{z}/{x}/{y}.png",
+    "tileProvider": "images/substrates/turkmenistan/{z}/{x}/{y}.png",
     "markers": {
         "airport": {
             "iconUrl": "images/markers/airport.png",
