@@ -200,7 +200,7 @@ html body button {
     padding: 10px 4px;
     font-size: 16px;
     max-width: 350px;
-    background-image: linear-gradient(#fec29c, #e75900);
+    background-image: linear-gradient(#fec29c, #f28e4f, #e75900);
     border: 1px solid #ffffff;
     border-radius: 4px;
     overflow-x: auto;
@@ -343,7 +343,8 @@ html .leaflet-bar a:last-child {
     border-bottom: 1px solid #2c3e50;
 }
 
-html .btn-warning {
+html .btn-warning, html .btn-warning:hover, html .btn-warning:focus {
     background-image: linear-gradient(#ff8f49, #dd5600 60%, #e75900);
     border: 1px solid #ffffff;
+    outline: none;
 }
