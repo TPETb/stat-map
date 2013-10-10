@@ -29,6 +29,9 @@ layerLVP.init = function () {
 layerLVP.addItems = function(itemsConfig) {
     for (var i = 0; i < itemsConfig.length; i++) {
         switch (itemsConfig[i].type) {
+            case 'tile':
+                this._Items.push(new SM.Layer_Item_TileView(itemsConfig[i].options));
+                break;
             case 'marker':
                 this._Items.push(new SM.Layer_Item_MarkerView(itemsConfig[i].options));
                 break;

@@ -2,12 +2,11 @@
     "name": "railroad",
     "items": [
         {
-            "name": "railroad",
-            "title": "Железные дороги",
-            "type": "raster",
+            "name": "railroad-tile",
+            "title": "Железные дороги (tile)",
+            "type": "tile",
             "options": {
-                "url": "images/layers/railroad.png",
-                "bounds": [[35.141090, 52.441429], [42.795551, 66.684303]],
+                "provider": "images/layers/railroad/{z}/{x}/{y}.png",
                 "contentType": "html",
                 "content": ""
             }
