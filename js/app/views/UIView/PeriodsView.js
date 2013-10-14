@@ -210,7 +210,7 @@ periodsVP._updateTable = function () {
     var tbodyHtml = [];
 
     for (var i = 0; i < activeTaxonomy.length; i++) {
-        if (this._Model.getFocusedObjectName() !== activeTaxonomy[i].name && $.inArray(this._Model.getFocusedObjectName(), activeTaxonomy[i].parents) === -1) {
+        if (i > 0 && this._Model.getFocusedObjectName() !== activeTaxonomy[i].name && $.inArray(this._Model.getFocusedObjectName(), activeTaxonomy[i].parents) === -1) {
             continue;
         }
         tbodyHtml.push('<tr><td>' + activeTaxonomy[i].title + '</td>');

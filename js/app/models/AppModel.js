@@ -119,6 +119,7 @@ appModelP.setFocusedObjectName = function (objectName) {
     this.FocusedObjectSet.fire(this);
     // In order to rebuild layers...
     this.LayersItemsRetrieved.fire(this);
+    this.LayersListRetrieved.fire(this);
 };
 
 appModelP.requestLayersItems = function () {

@@ -5,7 +5,7 @@ if (!SM) {
     var SM = {};
 }
 
-SM.LayerContainerView = function(options) {
+SM.LayerContainerView = function (options) {
     this._Model = options.model;
     this._Map = options.map;
     this._Items = [];
@@ -19,9 +19,9 @@ layerCVP = SM.LayerContainerView.prototype;
  * Constructor
  * @returns {undefined}
  */
-layerCVP.init = function() {
+layerCVP.init = function () {
     this._LayersMapGroup = L.layerGroup().addTo(this._Map);
-    
+
     this._addEventListeners();
 };
 
@@ -45,10 +45,10 @@ layerCVP._onLayerItemsRetrieved = function (sender, layerName) {
 
 layerCVP.render = function () {
     this._LayersMapGroup.clearLayers();
-    
+
     for (var i = 0; i < this._Items.length; i++) {
         if (this._Items[i].active) {
-            mapObjects = this._Items[i].getMapObjects()
+            mapObjects = this._Items[i].getMapObjects();
             for (j = 0; j < mapObjects.length; j++) {
                 this._LayersMapGroup.addLayer(mapObjects[j]);
             }
