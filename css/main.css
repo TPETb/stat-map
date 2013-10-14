@@ -38,6 +38,14 @@ html body button {
     margin-right: 4px;
 }
 
+#PeriodsMenuWrapper .btn {
+    margin-right: 4px;
+}
+
+#PeriodsMenuWrapper .btn:last-child {
+    margin-right: 0;
+}
+
 #PeriodsMenu {
     margin-bottom: 5px;
 }
@@ -47,8 +55,8 @@ html body button {
 }
 
 #PeriodsOkBtn {
-    clear: left;
-    float: left;
+    /*clear: left;*/
+    /*float: left;*/
 }
 
 #Table {
@@ -192,7 +200,7 @@ html body button {
     font-size: 18px;
     height: 57px;
     /*border-top: 6px solid #2c3e50;*/
-    border-top: 6px solid #2c3e50;
+    border-top: 5px solid #b44600;
     padding: 0 10px 0 100px;
 }
 
@@ -207,7 +215,7 @@ html body button {
     padding: 0 10px;
     display: table-cell;
     vertical-align: middle;
-    border-left: 6px solid #2c3e50;
+    border-left: 3px solid #b44600;
     white-space: nowrap;
     text-align: center;
 }
