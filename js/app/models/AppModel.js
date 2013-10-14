@@ -295,6 +295,15 @@ appModelP.getFocusedObjectName = function () {
     return this._FocusedObjectName;
 };
 
+appModelP.getFocusedObject = function () {
+    for (i = this._Taxonomy.welayats.length - 1; i >= 0; i--) {
+        if (this._Taxonomy.welayats[i].name == this.getFocusedObjectName()) {
+            return this._Taxonomy.welayats[i];
+        }
+    }
+    return null;
+};
+
 appModelP.getCurrentSubstrate = function () {
     return this._CurrentSubstrate;
 };

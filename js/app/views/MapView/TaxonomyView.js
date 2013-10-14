@@ -56,6 +56,13 @@ taxVP._onActiveStatisticSet = function () {
 
 taxVP._onFocusedObjectSet = function () {
     this.setMapObjects(this._Model.getActiveTaxonomy());
+    // center map on new object
+    var fObject = this._Model.getFocusedObject();
+    if (fObject) {
+        this._Map.setView(fObject.center, 7);
+    } else {
+        this._Map.setView([this._Model.getConfig().view.lat, this._Model.getConfig().view.lng], 6);
+    }
 };
 
 taxVP._onCurrentPeriodSet = function () {
