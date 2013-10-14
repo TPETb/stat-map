@@ -316,7 +316,7 @@ uiViewP._updateLegendTable = function () {
     var tbody = this._LegendTable.find('tbody');
     tbody.html('');
 
-    for (var i = 0; i < activeStatisticRange.length; i++) {
+    for (var i = activeStatisticRange.length - 1; i >= 0; i--) {
         for (var k = 0; k < config.rates.length; k++) {
             if (activeStatisticRange[i].rate === config.rates[k].value) {
                 tbody.append('<tr><td style="background: ' + config.rates[k].polyStyle.fillColor + '"></td><td>' + activeStatisticRange[i].label + '</td></tr>');

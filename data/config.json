@@ -67,7 +67,7 @@
             "value": 1,
             "polyStyle": {
                 "fill": true,
-                "fillColor": "#877aad",
+                "fillColor": "#ffb473",
                 "fillOpacity": 1,
                 "stroke": true,
                 "color": "gray",
@@ -79,7 +79,7 @@
             "value": 2,
             "polyStyle": {
                 "fill": true,
-                "fillColor": "#8884b9",
+                "fillColor": "#ffff9d",
                 "fillOpacity": 1,
                 "stroke": true,
                 "color": "gray",
@@ -91,7 +91,7 @@
             "value": 3,
             "polyStyle": {
                 "fill": true,
-                "fillColor": "#8b92bd",
+                "fillColor": "#ddf18d",
                 "fillOpacity": 1,
                 "stroke": true,
                 "color": "gray",
@@ -103,7 +103,7 @@
             "value": 4,
             "polyStyle": {
                 "fill": true,
-                "fillColor": "#8ea1b5",
+                "fillColor": "#b4ff73",
                 "fillOpacity": 1,
                 "stroke": true,
                 "color": "gray",
@@ -115,7 +115,7 @@
             "value": 5,
             "polyStyle": {
                 "fill": true,
-                "fillColor": "#92b1a5",
+                "fillColor": "#a2ffc7",
                 "fillOpacity": 1,
                 "stroke": true,
                 "color": "gray",
@@ -127,7 +127,7 @@
             "value": 6,
             "polyStyle": {
                 "fill": true,
-                "fillColor": "#99c299",
+                "fillColor": "#b4ffff",
                 "fillOpacity": 1,
                 "stroke": true,
                 "color": "gray",
@@ -139,7 +139,7 @@
             "value": 7,
             "polyStyle": {
                 "fill": true,
-                "fillColor": "#a9d097",
+                "fillColor": "#9affff",
                 "fillOpacity": 1,
                 "stroke": true,
                 "color": "gray",
@@ -151,7 +151,7 @@
             "value": 8,
             "polyStyle": {
                 "fill": true,
-                "fillColor": "#c5dd9f",
+                "fillColor": "#9ad5ff",
                 "fillOpacity": 1,
                 "stroke": true,
                 "color": "gray",
@@ -163,7 +163,7 @@
             "value": 9,
             "polyStyle": {
                 "fill": true,
-                "fillColor": "#e1e8ab",
+                "fillColor": "#6ac2ff",
                 "fillOpacity": 1,
                 "stroke": true,
                 "color": "gray",
@@ -175,7 +175,7 @@
             "value": 10,
             "polyStyle": {
                 "fill": true,
-                "fillColor": "#f6efb3",
+                "fillColor": "#5998ff",
                 "fillOpacity": 1,
                 "stroke": true,
                 "color": "gray",
