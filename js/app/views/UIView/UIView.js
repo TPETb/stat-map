@@ -74,6 +74,7 @@ uiViewP._render = function () {
 
     this._LayersMenu = $('<ul id="LayersMenu" class="menu-std">');
     this._Toolbar6.append(this._LayersMenu);
+    this._LayersMenu.hide();
 
     this._LegendTable = $('<div id="LegendTable">' +
         '<table class="table">' +

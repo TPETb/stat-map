@@ -99,7 +99,7 @@ statModelP.setActiveStatisticPeriods = function (periodsNamesArray) {
 
 statModelP.playCycle = function () {
     this._updateCurrentPeriod();
-    this._Interval = setInterval($.proxy(this._updateCurrentPeriod, this), 3000);
+    this._Interval = setInterval($.proxy(this._updateCurrentPeriod, this), 2000);
 };
 
 statModelP._updateCurrentPeriod = function () {
@@ -108,7 +108,8 @@ statModelP._updateCurrentPeriod = function () {
             if (this._Data.periods[i] === this._CurrentPeriod) {
                 for (var k = i+1; k <= this._Data.periods.length; k++) {
                     if (k === this._Data.periods.length) {
-                        this.cancelCycle();
+                        //this.cancelCycle();
+                        this.pauseCycle();
                         return;
                     }
                     if (this._Data.periods[k].active) {
