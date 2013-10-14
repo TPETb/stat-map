@@ -34,6 +34,13 @@
             "active": true,
             "forced": false,
             "source": "data/layers/road.json"
+        },
+        {
+            "name": "welayat",
+            "title": "Названия велаятов",
+            "active": true,
+            "forced": false,
+            "source": "data/layers/welayat.json"
         }
     ],
     "tourism": [
@@ -94,6 +101,13 @@
             "active": true,
             "forced": false,
             "source": "data/layers/road.json"
+        },
+        {
+            "name": "welayat",
+            "title": "Названия велаятов",
+            "active": true,
+            "forced": false,
+            "source": "data/layers/welayat.json"
         }
     ]
 }
