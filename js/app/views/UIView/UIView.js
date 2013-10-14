@@ -77,8 +77,8 @@ uiViewP._render = function () {
 
     this._LegendTable = $('<div id="LegendTable">' +
         '<table class="table">' +
-            '<tbody>' +
-            '</tbody>' +
+        '<tbody>' +
+        '</tbody>' +
         '</table>' +
         '</div>');
     this._LegendTable.hide();
@@ -261,18 +261,33 @@ uiViewP._onMenuItemClick = function (event) {
 
 uiViewP._onCurrentPeriodSet = function () {
     var currentPeriod = this._ActiveStatistic.getCurrentPeriod();
+    var focusedObjectName = this._Model.getFocusedObjectName();
+
     this._FooterPeriod.html(currentPeriod.title);
     this._FooterPeriod.show();
-    if (this._Model.getFocusedObjectName() === 'welayat') {
+    this._FooterTerritory.show();
+    this._FooterValue.show();
 
-    }
-    else {
+    if (focusedObjectName === 'turkmenistan') {
         this._FooterTerritory.html('Туркменистан');
-        this._FooterTerritory.show();
         for (var i = 0; i < currentPeriod.values.length; i++) {
             if (currentPeriod.values[i].object === 'turkmenistan') {
                 this._FooterValue.html(currentPeriod.values[i].value);
-                this._FooterValue.show();
+                break;
+            }
+        }
+    }
+    else {
+        for (var i = 0; i < currentPeriod.values.length; i++) {
+            if (currentPeriod.values[i].object === focusedObjectName) {
+                this._FooterValue.html(currentPeriod.values[i].value);
+                break;
+            }
+        }
+        var welayats = this._Model.getTaxonomy().welayats;
+        for (var i = 0; i < welayats.length; i++) {
+            if (welayats[i].name === focusedObjectName) {
+                this._FooterTerritory.html(welayats[i].title);
                 break;
             }
         }
