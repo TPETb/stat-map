@@ -19,6 +19,8 @@ SM.UIView = function (options) {
     this._Toolbar5 = $('#Toolbar5');
     this._Toolbar6 = $('#Toolbar6');
     this._Toolbar7 = $('#Toolbar7');
+    this._Toolbar8 = $('#Toolbar8');
+    this._Toolbar9 = $('#Toolbar9');
 
     this._ContentWrapper = $('#ContentWrapper');
     this._Footer = $('#Footer > .inner');
@@ -57,8 +59,10 @@ uiViewP._render = function () {
     this._TourismBtn = $('<button type="button" class="btn btn-warning btn-lg" id="TourismBtn"><span class="glyphicon icon-plane"></span> Туризм</button>');
     this._TradeBtn = $('<button type="button" class="btn btn-warning btn-lg" id="TradeBtn"><span class="glyphicon icon-globe"></span> Внешняя торговля</button>');
     this._LayersBtn = $('<button type="button" class="btn btn-warning" id="LayersBtn"><span class="glyphicon icon-check"></span> Слои</button>');
+    this._LegendBtn = $('<button type="button" class="btn btn-warning" id="LegendBtn"><span class="glyphicon icon-tasks"></span> Легенда</button>');
 
     this._StatisticsCancelBtn.hide();
+    this._LegendBtn.hide();
 
     this._Toolbar1.append(this._StatisticsBtn);
     this._Toolbar1.append(this._StatisticsCancelBtn);
@@ -66,9 +70,19 @@ uiViewP._render = function () {
     this._Toolbar1.append(this._TourismBtn);
     this._Toolbar1.append(this._TradeBtn);
     this._Toolbar7.append(this._LayersBtn);
+    this._Toolbar8.append(this._LegendBtn);
 
     this._LayersMenu = $('<ul id="LayersMenu" class="menu-std">');
     this._Toolbar6.append(this._LayersMenu);
+
+    this._LegendTable = $('<div id="LegendTable">' +
+        '<table class="table">' +
+            '<tbody>' +
+            '</tbody>' +
+        '</table>' +
+        '</div>');
+    this._LegendTable.hide();
+    this._Toolbar9.append(this._LegendTable);
 
     this._PeriodsView = new SM.PeriodsView({ model: this._Model });
 
@@ -105,6 +119,8 @@ uiViewP._addEventListeners = function () {
     this._TransportBtn.on("click", $.proxy(this._onLayerCollectionBtnClick, this, "transport"));
     this._TourismBtn.on("click", $.proxy(this._onLayerCollectionBtnClick, this, "tourism"));
     this._TradeBtn.on("click", $.proxy(this._onLayerCollectionBtnClick, this, "trade"));
+
+    this._LegendBtn.on('click', $.proxy(this._onLegendBtnClick, this));
 };
 
 uiViewP._onLayerCollectionBtnClick = function (collectionName) {
@@ -150,6 +166,10 @@ uiViewP._onStatisticsCancelBtnClick = function () {
     this._FooterTerritory.hide();
     this._FooterPeriod.hide();
     this._FooterValue.hide();
+
+    this._LegendBtn.hide();
+    this._LegendTable.hide();
+
     this._Model.setActiveStatistic(null);
 };
 
@@ -180,6 +200,7 @@ uiViewP._onActiveStatisticSet = function (sender) {
     this._StatisticsCancelBtn.show();
     this._PeriodsView.show();
     this._StatisticsMenuView.hide();
+    this._LegendBtn.show();
 
     var modelLastParent = this._ActiveStatistic.getLastParent();
     var modelParent = this._ActiveStatistic.getParent();
@@ -203,6 +224,8 @@ uiViewP._onActiveStatisticSet = function (sender) {
     this._FooterTerritory.hide();
     this._FooterPeriod.hide();
     this._FooterValue.hide();
+
+    this._updateLegendTable();
 };
 
 uiViewP._onFocusedObjectSet = function () {
@@ -283,6 +306,26 @@ uiViewP._onLayerChange = function (eventOrInput) {
     }
 };
 
+uiViewP._onLegendBtnClick = function () {
+    this._LegendTable.toggle();
+};
+
+uiViewP._updateLegendTable = function () {
+    var activeStatisticRange = this._Model.getActiveStatistic().getData().range;
+    var config = this._Model.getConfig();
+    var tbody = this._LegendTable.find('tbody');
+    tbody.html('');
+
+    for (var i = 0; i < activeStatisticRange.length; i++) {
+        for (var k = 0; k < config.rates.length; k++) {
+            if (activeStatisticRange[i].rate === config.rates[k].value) {
+                tbody.append('<tr><td style="background: ' + config.rates[k].polyStyle.fillColor + '"></td><td>' + activeStatisticRange[i].label + '</td></tr>');
+                break;
+            }
+        }
+    }
+};
+
 uiViewP.getPeriodsView = function () {
     return this._PeriodsView;
 };
@@ -297,6 +340,7 @@ uiViewP.getLayersView = function () {
 
 uiViewP.hideModals = function () {
     this._StatisticsMenuView.hide();
+    this._LegendTable.hide();
     this._PeriodsView.hideModals();
 };
 

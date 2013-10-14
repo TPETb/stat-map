@@ -69,6 +69,31 @@ html body button {
     margin: 0;
 }
 
+#LegendTable {
+    box-shadow: none;
+    padding: 15px;
+    float: right;
+    background-image: linear-gradient(#fec29c, #e75900);
+    background-image: -webkit-linear-gradient(#fec29c, #e75900);
+    border: 1px solid #ffffff;
+    text-shadow: 0px 0px 5px #531400;
+    color: #ffffff;
+    border-radius: 4px;
+}
+
+#LegendTable tr:first-child td {
+    border-top: none;
+}
+
+#LegendTable td:first-child {
+    width: 34px;
+    height: 34px;
+}
+
+#LegendTable table {
+    margin: 0;
+}
+
 #Loader {
     position: absolute;
     left: 0;
@@ -92,7 +117,7 @@ html body button {
     line-height: 40px;
 }
 
-#UIWrapperTop {
+#UIWrapperTopLeft {
     position: absolute;
     left: 10px;
     top: 10px;
@@ -101,13 +126,27 @@ html body button {
     font-size: 12px;
 }
 
-#UIWrapperTop .toolbar {
+#UIWrapperTopLeft .toolbar {
     float: left;
     clear: both;
 }
 
 #Toolbar3 {
     height: 0;
+}
+
+#UIWrapperTopRight {
+    position: absolute;
+    right: 10px;
+    top: 84px;
+    height: 0;
+    z-index: 1;
+    font-size: 12px;
+}
+
+#UIWrapperTopRight .toolbar {
+    float: right;
+    clear: both;
 }
 
 #UIWrapperBottomLeft {
