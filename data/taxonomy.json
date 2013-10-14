@@ -5,6 +5,7 @@
             "title": "Марыйский велаят",
             "parents": ["turkmenistan"],
             "focusable": true,
+            "center": [37.535866,62.180901],
             "substrate": "images/substrates/mariyskiy/{z}/{x}/{y}.png",
             "descriptionSource": "data/descriptions/welayats/mariyskiy.html",
             "shape": [
@@ -20,6 +21,7 @@
             "title": "Дашогузский велаят",
             "parents": ["turkmenistan"],
             "focusable": true,
+            "center": [41.211722,58.819084],
             "substrate": "images/substrates/dashoguzskiy/{z}/{x}/{y}.png",
             "descriptionSource": "data/descriptions/welayats/dashoguzskiy.html",
             "shape": [
@@ -35,6 +37,7 @@
             "title": "Лебапский велаят",
             "parents": ["turkmenistan"],
             "focusable": true,
+            "center": [39.249271,63.114738],
             "substrate": "images/substrates/lebapskiy/{z}/{x}/{y}.png",
             "descriptionSource": "data/descriptions/welayats/lebapskiy.html",
             "shape": [
@@ -50,6 +53,7 @@
             "title": "Балканский велаят",
             "parents": ["turkmenistan"],
             "focusable": true,
+            "center": [39.783213,55.006828],
             "substrate": "images/substrates/balkanskiy/{z}/{x}/{y}.png",
             "descriptionSource": "data/descriptions/welayats/balkanskiy.html",
             "shape": [
@@ -65,6 +69,7 @@
             "title": "Ахалский велаят",
             "parents": ["turkmenistan"],
             "focusable": true,
+            "center": [38.186387,58.917961],
             "substrate": "images/substrates/ahalskiy/{z}/{x}/{y}.png",
             "descriptionSource": "data/descriptions/welayats/ahalskiy.html",
             "shape": [
