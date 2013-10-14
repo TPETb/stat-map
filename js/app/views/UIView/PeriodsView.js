@@ -22,7 +22,7 @@ SM.PeriodsView = function (options) {
     this._TableBtn = null;
     this._Table = null;
     this._PausePlayBtn = null;
-    this._PeriodsOkBtn = null;
+    this._OkBtn = null;
 
     this.PeriodsBtnClick = new TVL.Event();
 
@@ -43,8 +43,14 @@ periodsVP._render = function () {
     this._PeriodsMenuWrapper.append(this._PeriodsMenu);
     this._PeriodsMenuWrapper.hide();
 
-    this._PeriodsOkBtn = $('<button type="button" class="btn btn-warning" id="PeriodsOkBtn">Ок</button>');
-    this._PeriodsMenuWrapper.append(this._PeriodsOkBtn);
+    this._CheckAllBtn = $('<button type="button" class="btn btn-warning btn-sm" id="PeriodsCheckAllBtn">Отметить все</button>');
+    this._PeriodsMenuWrapper.append(this._CheckAllBtn);
+
+    this._UnCheckAllBtn = $('<button type="button" class="btn btn-warning btn-sm" id="PeriodsUnCheckAllBtn">Очистить</button>');
+    this._PeriodsMenuWrapper.append(this._UnCheckAllBtn);
+
+    this._OkBtn = $('<button type="button" class="btn btn-warning btn-sm" id="PeriodsOkBtn">Ок</button>');
+    this._PeriodsMenuWrapper.append(this._OkBtn);
 
     this._PeriodsBtn = $('<button type="button" class="btn btn-warning" id="PeriodsBtn"><span class="glyphicon glyphicon-time"></span> Периоды</button>');
     this._Toolbar2.append(this._PeriodsBtn);
@@ -74,7 +80,9 @@ periodsVP._addEventListeners = function () {
     this._Model.ActiveTaxonomySet.add(this._onActiveTaxonomySet, this);
     this._PeriodsBtn.on('click', $.proxy(this._onPeriodsBtnClick, this));
     this._TableBtn.on('click', $.proxy(this._onTableBtnClick, this));
-    this._PeriodsOkBtn.on('click', $.proxy(this._onOkBtnClick, this));
+    this._OkBtn.on('click', $.proxy(this._onOkBtnClick, this));
+    this._CheckAllBtn.on('click', $.proxy(this._onCheckAllBtnClick, this));
+    this._UnCheckAllBtn.on('click', $.proxy(this._onUnCheckAllBtnClick, this));
     this._PausePlayBtn.StateChanged.add(this._onPausePlayClick, this);
 };
 
@@ -115,6 +123,20 @@ periodsVP._onOkBtnClick = function () {
         this._PausePlayBtn.setState('active');
     }
     this.hideModals();
+};
+
+periodsVP._onCheckAllBtnClick = function () {
+    $('#PeriodsMenu li input').each(function () {
+        this.checked = true;
+    });
+    this._onPeriodsChange();
+};
+
+periodsVP._onUnCheckAllBtnClick = function () {
+    $('#PeriodsMenu li input').each(function () {
+        this.checked = false;
+    });
+    this._onPeriodsChange();
 };
 
 periodsVP._onPausePlayClick = function () {
