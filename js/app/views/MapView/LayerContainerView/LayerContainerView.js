@@ -38,6 +38,9 @@ layerCVP._onLayersListRetrieved = function (sender) {
 layerCVP._onLayerItemsRetrieved = function (sender, layerName) {
     // Populate layer with items
     var layer = this.getLayer(layerName);
+    if (!layer) {
+        return;
+    }
     layer.addItems(this._Model.getLayer(layerName).items);
 
     this.render();
@@ -57,7 +60,12 @@ layerCVP.render = function () {
 };
 
 layerCVP.addItems = function (layersConfig) {
+    var _focusedObject = SM.App.getModel().getFocusedObjectName();
+
     for (var i = 0; i < layersConfig.length; i++) {
+        if (layersConfig[i].appliedTo.indexOf(_focusedObject) == -1) {
+            continue;
+        }
         layersConfig[i].model = this._Model;
         this._Items.push(new SM.LayerView(layersConfig[i]));
     }

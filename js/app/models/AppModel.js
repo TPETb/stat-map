@@ -90,6 +90,7 @@ appModelP.requestLayersList = function () {
 
 appModelP._onLayersListRetrieved = function (sender, data) {
     this._LayerCollections = data;
+    //@todo unhard-code transport loading
     this._Layers = this._LayerCollections.transport;
 
     this.LayersListRetrieved.fire(this);

@@ -67,8 +67,6 @@ mapViewP.hideLayer = function (layerName) {
 };
 
 mapViewP._onFocusedObjectSet = function () {
-    // @todo: center camera on chosen object
-
     // change substrate
     this._Substrate.setUrl(this._Model.getCurrentSubstrate());
 };

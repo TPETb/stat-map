@@ -5,6 +5,7 @@
             "name": "seaport-1",
             "title": "Морской порт Карабогаз",
             "type": "marker",
+            "parents": ["turkmenistan", "balkanskiy"],
             "options": {
                 "lat": 41.543019,
                 "lng": 52.559795,
@@ -17,6 +18,7 @@
             "name": "seaport-2",
             "title": "Туркменбашинский международный морской порт",
             "type": "marker",
+            "parents": ["turkmenistan", "balkanskiy"],
             "options": {
                 "lat": 39.480726,
                 "lng": 53.876953,

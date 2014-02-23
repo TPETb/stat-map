@@ -237,7 +237,13 @@ uiViewP._onFocusedObjectSet = function () {
 
 uiViewP.addLayersMenuItems = function (layersConfig) {
     this._LayersMenu.html('');
+
+    var _focusedObject = SM.App.getModel().getFocusedObjectName();
+
     for (var i = 0; i < layersConfig.length; i++) {
+        if (layersConfig[i].appliedTo.indexOf(_focusedObject) == -1) {
+            continue;
+        }
         var item = $('<li><input type="checkbox"/><span></span></li>');
         item.find('input').attr({
             name: layersConfig[i].name,

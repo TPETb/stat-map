@@ -98,6 +98,8 @@ taxVP.setMapObjects = function(regionsConfig) {
         if (this._Model.getFocusedObjectName() !== regionsConfig[i].name && $.inArray(this._Model.getFocusedObjectName(), regionsConfig[i].parents) === -1) {
             // focused object is not current and is not in list of parents - should be grayed out
             rate = "overlay";
+            // I've reconsidered. It should not be added to map at all
+            continue;
         }
         else if (this._findStatisticByObjectName(regionsConfig[i].name)) {
             rate = this._getStatisticValueRate(this._findStatisticByObjectName(regionsConfig[i].name).value);
