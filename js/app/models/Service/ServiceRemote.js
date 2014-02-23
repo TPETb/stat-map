@@ -11,12 +11,12 @@ if (!SM) {
  */
 SM.ServiceRemote = function() {
 
-    this._configUrl = 'data/config.json';
-    this._layersListUrl = 'data/layers/index.json';
-    this._regionsUrl = 'data/regions3.json';
+    this._configUrl = 'data/config.js';
+    this._layersListUrl = 'data/layers/index.js';
+    this._regionsUrl = 'data/regions3.js';
 //    this._regionsUrl = 'generators/regions3.php';
-    this._statisticsListUrl = 'data/statistics/index.json';
-    this._TaxonomyUrl = 'data/taxonomy.json';
+    this._statisticsListUrl = 'data/statistics/index.js';
+    this._TaxonomyUrl = 'data/taxonomy.js';
 
     this.init();
 };
@@ -42,7 +42,16 @@ serviceRP.init = function() {
  * @returns {object}
  */
 serviceRP.requestConfig = function() {
-    $.getJSON(this._configUrl).done($.proxy(this._onConfigRetrieved, this));
+    $.ajax({
+        type: 'GET',
+        url: this._configUrl,
+        async: false,
+        jsonpCallback: 'dataconfig',
+        contentType: "application/json",
+        dataType: 'jsonp',
+        crossDomain: true,
+        success: $.proxy(this._onConfigRetrieved, this)
+    });
 };
 serviceRP._onConfigRetrieved = function(data) {
     this.ConfigRetrieved.fire(this, data);
@@ -53,7 +62,16 @@ serviceRP._onConfigRetrieved = function(data) {
  * @returns {array} of objects
  */
 serviceRP.requestLayersList = function() {
-    $.getJSON(this._layersListUrl).done($.proxy(this._onLayersListRetrieved, this));
+    $.ajax({
+        type: 'GET',
+        url: this._layersListUrl,
+        async: false,
+        jsonpCallback: 'datalayersindex',
+        contentType: "application/javascript",
+        dataType: 'jsonp',
+        crossDomain: true,
+        success: $.proxy(this._onLayersListRetrieved, this)
+    });
 };
 serviceRP._onLayersListRetrieved = function(data) {
     this.LayersListRetrieved.fire(this, data);
@@ -66,7 +84,17 @@ serviceRP._onLayersListRetrieved = function(data) {
  * @todo use single entru point for data instead of source attribute of layerConfig
  */
 serviceRP.requestLayerItems = function(layerUrl) {
-    $.getJSON(layerUrl).done($.proxy(this._onLayerItemsRetrieved, this));
+    // todo
+    $.ajax({
+        type: 'GET',
+        url: layerUrl,
+        async: false,
+        jsonpCallback: layerUrl.replace('.js', '').replace('.', '').replace('/', ''),
+        contentType: "application/javascript",
+        dataType: 'jsonp',
+        crossDomain: true,
+        success: $.proxy(this._onLayerItemsRetrieved, this)
+    });
 };
 serviceRP._onLayerItemsRetrieved = function(data) {
     this.LayerItemsRetrieved.fire(this, data);
@@ -78,7 +106,16 @@ serviceRP._onLayerItemsRetrieved = function(data) {
  */
 
 serviceRP.requestRegions = function() {
-    $.getJSON(this._regionsUrl).done($.proxy(this._onRegionsRetrieved, this));
+    $.ajax({
+        type: 'GET',
+        url: this._regionsUrl,
+        async: false,
+        jsonpCallback: 'dataregions3',
+        contentType: "application/javascript",
+        dataType: 'jsonp',
+        crossDomain: true,
+        success: $.proxy(this._onRegionsRetrieved, this)
+    });
 };
 serviceRP._onRegionsRetrieved = function(data) {
     this.RegionsRetrieved.fire(this, data);
@@ -89,14 +126,32 @@ serviceRP._onRegionsRetrieved = function(data) {
  * @returns {array}
  */
 serviceRP.requestStatisticsList = function() {
-    $.getJSON(this._statisticsListUrl).done($.proxy(this._onStatisticsListRetrieved, this));
+    $.ajax({
+        type: 'GET',
+        url: this._statisticsListUrl,
+        async: false,
+        jsonpCallback: 'datastatisticsindex',
+        contentType: "application/javascript",
+        dataType: 'jsonp',
+        crossDomain: true,
+        success: $.proxy(this._onStatisticsListRetrieved, this)
+    });
 };
 serviceRP._onStatisticsListRetrieved = function(data) {
     this.StatisticsListRetrieved.fire(this, data);
 };
 
 serviceRP.requestTaxonomy = function() {
-    $.getJSON(this._TaxonomyUrl).done($.proxy(this._onTaxonomyRetrieved, this));
+    $.ajax({
+        type: 'GET',
+        url: this._TaxonomyUrl,
+        async: false,
+        jsonpCallback: 'datataxonomy',
+        contentType: "application/javascript",
+        dataType: 'jsonp',
+        crossDomain: true,
+        success: $.proxy(this._onTaxonomyRetrieved, this)
+    });
 };
 serviceRP._onTaxonomyRetrieved = function(data) {
     this.TaxonomyRetrieved.fire(this, data);

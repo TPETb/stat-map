@@ -1,4 +1,4 @@
-{
+dataregions3({
     "items": [
         {
             "name": "mariyskiy",
@@ -28001,4 +28001,4 @@
                 ]
             ]
         }
-    ]}
+    ]});

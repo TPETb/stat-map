@@ -1,4 +1,4 @@
-{
+dataregions({
     "items": [
         {
             "name": "balkanskiy",
@@ -729,4 +729,4 @@
             ]
         }
     ]
-}
+});

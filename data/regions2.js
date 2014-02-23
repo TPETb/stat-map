@@ -1,4 +1,4 @@
-{"items": [
+dataregions2({"items": [
     {
         "name": "mariyskiy",
         "shape": [
@@ -3502,4 +3502,4 @@
             [37.979, 58.41]
         ]
     }
-]}
+]});

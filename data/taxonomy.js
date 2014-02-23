@@ -1,4 +1,4 @@
-{
+datataxonomy({
     "welayats": [
         {
             "name": "mariyskiy",
@@ -867,4 +867,4 @@
             ]
         }
     ]
-}
+});
