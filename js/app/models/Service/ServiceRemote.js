@@ -47,7 +47,7 @@ serviceRP.requestConfig = function() {
         url: this._configUrl,
         async: false,
         jsonpCallback: 'dataconfig',
-        contentType: "application/json",
+        contentType: "application/javascript",
         dataType: 'jsonp',
         crossDomain: true,
         success: $.proxy(this._onConfigRetrieved, this)
