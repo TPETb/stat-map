@@ -1,4 +1,4 @@
-datastatisticsindicator614json({"name": "indicator-6-1-4", "title": "за счет заемных средств", "range": [
+datastatisticsindicator614({"name": "indicator-6-1-4", "title": "за счет заемных средств", "range": [
     {
         "min": 84,
         "max": 102.604,

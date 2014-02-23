@@ -1,4 +1,4 @@
-datastatisticsindicator825json({"name": "indicator-8-2-5", "title": "Кабель электрический Ж2x0,75, произ-ва Турции (м)", "range": [
+datastatisticsindicator825({"name": "indicator-8-2-5", "title": "Кабель электрический Ж2x0,75, произ-ва Турции (м)", "range": [
     {
         "min": 0,
         "max": 0.204,

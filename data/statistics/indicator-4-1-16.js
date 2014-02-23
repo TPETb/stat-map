@@ -1,4 +1,4 @@
-datastatisticsindicator4116json({"name": "indicator-4-1-16", "title": "Препараты фармацевтические", "range": [
+datastatisticsindicator4116({"name": "indicator-4-1-16", "title": "Препараты фармацевтические", "range": [
     {
         "min": 109,
         "max": 111.184,

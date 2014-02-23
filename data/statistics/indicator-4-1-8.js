@@ -1,4 +1,4 @@
-datastatisticsindicator418json({"name": "indicator-4-1-8", "title": "Керосин", "range": [
+datastatisticsindicator418({"name": "indicator-4-1-8", "title": "Керосин", "range": [
     {
         "min": 92.8,
         "max": 95.024,

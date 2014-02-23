@@ -1,4 +1,4 @@
-datastatisticsindicator821json({"name": "indicator-8-2-1", "title": "Наждачная бумага 25*18 см, Китай (лист)", "range": [
+datastatisticsindicator821({"name": "indicator-8-2-1", "title": "Наждачная бумага 25*18 см, Китай (лист)", "range": [
     {
         "min": 0,
         "max": 0.104,

@@ -1,4 +1,4 @@
-datastatisticsindicator414json({"name": "indicator-4-1-4", "title": "Переработка нефти", "range": [
+datastatisticsindicator414({"name": "indicator-4-1-4", "title": "Переработка нефти", "range": [
     {
         "min": 91,
         "max": 92.804,

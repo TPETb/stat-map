@@ -1,4 +1,4 @@
-datastatisticsindicator32json({"name": "indicator-3-2", "title": "Экспорт (% к соотв. периоду прошлого года)", "range": [
+datastatisticsindicator32({"name": "indicator-3-2", "title": "Экспорт (% к соотв. периоду прошлого года)", "range": [
     {
         "min": 85,
         "max": 95.604,

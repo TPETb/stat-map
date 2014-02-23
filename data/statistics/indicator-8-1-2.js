@@ -1,4 +1,4 @@
-datastatisticsindicator812json({"name": "indicator-8-1-2", "title": "Баранина, произ-ва Туркменистан (1 кг)", "range": [
+datastatisticsindicator812({"name": "indicator-8-1-2", "title": "Баранина, произ-ва Туркменистан (1 кг)", "range": [
     {
         "min": 10,
         "max": 10.314,

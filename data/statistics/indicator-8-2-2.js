@@ -1,4 +1,4 @@
-datastatisticsindicator822json({"name": "indicator-8-2-2", "title": "Линолеум утепленный шир.1,5 м, Россия (п\\м)", "range": [
+datastatisticsindicator822({"name": "indicator-8-2-2", "title": "Линолеум утепленный шир.1,5 м, Россия (п\\м)", "range": [
     {
         "min": 11.8,
         "max": 12.524,

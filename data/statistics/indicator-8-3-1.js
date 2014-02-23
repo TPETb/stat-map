@@ -1,4 +1,4 @@
-datastatisticsindicator831json({"name": "indicator-8-3-1", "title": "Масленый насос, ГАЗ-53, ГАЗ-66 (штук)", "range": [
+datastatisticsindicator831({"name": "indicator-8-3-1", "title": "Масленый насос, ГАЗ-53, ГАЗ-66 (штук)", "range": [
     {
         "min": 130,
         "max": 136.504,

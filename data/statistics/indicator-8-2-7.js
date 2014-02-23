@@ -1,4 +1,4 @@
-datastatisticsindicator827json({"name": "indicator-8-2-7", "title": "Провод АППВ 2x2,5, Россия (м)", "range": [
+datastatisticsindicator827({"name": "indicator-8-2-7", "title": "Провод АППВ 2x2,5, Россия (м)", "range": [
     {
         "min": 0,
         "max": 0.004,

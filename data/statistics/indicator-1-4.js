@@ -1,4 +1,4 @@
-datastatisticsindicator14json({"name": "indicator-1-4", "title": "Доходы государственного бюджета (% к соотв. периоду прошлого года)", "range": [
+datastatisticsindicator14({"name": "indicator-1-4", "title": "Доходы государственного бюджета (% к соотв. периоду прошлого года)", "range": [
     {
         "min": 81,
         "max": 89.704,

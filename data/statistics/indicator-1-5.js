@@ -1,4 +1,4 @@
-datastatisticsindicator15json({"name": "indicator-1-5", "title": "Расходы государственного бюджета (% к соотв. периоду прошлого года)", "range": [
+datastatisticsindicator15({"name": "indicator-1-5", "title": "Расходы государственного бюджета (% к соотв. периоду прошлого года)", "range": [
     {
         "min": 115.6,
         "max": 120.744,

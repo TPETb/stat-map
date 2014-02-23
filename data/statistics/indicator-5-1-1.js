@@ -1,4 +1,4 @@
-datastatisticsindicator511json({"name": "indicator-5-1-1", "title": "Овощи", "range": [
+datastatisticsindicator511({"name": "indicator-5-1-1", "title": "Овощи", "range": [
     {
         "min": 92.8,
         "max": 94.644,

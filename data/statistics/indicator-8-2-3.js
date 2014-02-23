@@ -1,4 +1,4 @@
-datastatisticsindicator823json({"name": "indicator-8-2-3", "title": "Эмалевая масляная краска \"Националь\" POINTS, производства ОАЭ (4 кг)", "range": [
+datastatisticsindicator823({"name": "indicator-8-2-3", "title": "Эмалевая масляная краска \"Националь\" POINTS, производства ОАЭ (4 кг)", "range": [
     {
         "min": 0,
         "max": 4.144,

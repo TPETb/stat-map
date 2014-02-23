@@ -1,4 +1,4 @@
-datastatisticsindicator13json({"name": "indicator-1-3", "title": "Сводный индекс потребительских цен (% к декабрю прошлого года)", "range": [
+datastatisticsindicator13({"name": "indicator-1-3", "title": "Сводный индекс потребительских цен (% к декабрю прошлого года)", "range": [
     {
         "min": 95.6,
         "max": 97.494,

@@ -1,4 +1,4 @@
-datastatisticsindicator815json({"name": "indicator-8-1-5", "title": "Яйца, Туркменистан (10 штук)", "range": [
+datastatisticsindicator815({"name": "indicator-8-1-5", "title": "Яйца, Туркменистан (10 штук)", "range": [
     {
         "min": 2,
         "max": 2.204,

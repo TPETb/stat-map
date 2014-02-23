@@ -1,4 +1,4 @@
-datastatisticsindicator4132json({"name": "indicator-4-1-32", "title": "Кондитерские изделия", "range": [
+datastatisticsindicator4132({"name": "indicator-4-1-32", "title": "Кондитерские изделия", "range": [
     {
         "min": 91.9,
         "max": 93.724,

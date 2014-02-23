@@ -1,4 +1,4 @@
-datastatisticsindicator4120json({"name": "indicator-4-1-20", "title": "Швейные и трикотажные изделияа", "range": [
+datastatisticsindicator4120({"name": "indicator-4-1-20", "title": "Швейные и трикотажные изделияа", "range": [
     {
         "min": 100,
         "max": 102.434,

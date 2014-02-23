@@ -1,4 +1,4 @@
-datastatisticsindicator4134json({"name": "indicator-4-1-34", "title": "Макаронные изделия", "range": [
+datastatisticsindicator4134({"name": "indicator-4-1-34", "title": "Макаронные изделия", "range": [
     {
         "min": 92.8,
         "max": 94.644,

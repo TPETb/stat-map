@@ -1,4 +1,4 @@
-datataxonomyjson({
+datataxonomy({
     "welayats": [
         {
             "name": "mariyskiy",

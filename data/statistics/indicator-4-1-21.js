@@ -1,4 +1,4 @@
-datastatisticsindicator4121json({"name": "indicator-4-1-21", "title": "Вата и изделия из нее для медицинского применения", "range": [
+datastatisticsindicator4121({"name": "indicator-4-1-21", "title": "Вата и изделия из нее для медицинского применения", "range": [
     {
         "min": 100,
         "max": 102.324,

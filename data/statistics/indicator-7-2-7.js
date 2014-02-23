@@ -1,4 +1,4 @@
-datastatisticsindicator727json({"name": "indicator-7-2-7", "title": "воздушный транспорт", "range": [
+datastatisticsindicator727({"name": "indicator-7-2-7", "title": "воздушный транспорт", "range": [
     {
         "min": 82.8,
         "max": 84.824,

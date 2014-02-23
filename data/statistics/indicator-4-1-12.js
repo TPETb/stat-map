@@ -1,4 +1,4 @@
-datastatisticsindicator4112json({"name": "indicator-4-1-12", "title": "Минеральные удобренияP(в натуральном весе)", "range": [
+datastatisticsindicator4112({"name": "indicator-4-1-12", "title": "Минеральные удобренияP(в натуральном весе)", "range": [
     {
         "min": 92.8,
         "max": 94.644,

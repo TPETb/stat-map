@@ -1,4 +1,4 @@
-datastatisticsindicator4111json({"name": "indicator-4-1-11", "title": "Йод", "range": [
+datastatisticsindicator4111({"name": "indicator-4-1-11", "title": "Йод", "range": [
     {
         "min": 93.7,
         "max": 95.564,

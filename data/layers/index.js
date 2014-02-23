@@ -1,11 +1,11 @@
-datalayersindexjson({
+datalayersindex({
     "transport": [
         {
             "name": "airports",
             "title": "Аэропорты",
             "active": true,
             "forced": false,
-            "source": "data/layers/layerAirports.json",
+            "source": "data/layers/layerAirports.js",
             "appliedTo": ["turkmenistan", "ahalskiy", "balkanskiy", "dashoguzskiy", "lebapskiy", "mariyskiy"]
         },
         {
@@ -13,7 +13,7 @@ datalayersindexjson({
             "title": "Морские порты",
             "active": true,
             "forced": false,
-            "source": "data/layers/layerSeaports.json",
+            "source": "data/layers/layerSeaports.js",
             "appliedTo": ["turkmenistan", "ahalskiy", "balkanskiy", "dashoguzskiy", "lebapskiy", "mariyskiy"]
         },
         {
@@ -21,7 +21,7 @@ datalayersindexjson({
             "title": "Железнодорожные линии",
             "active": true,
             "forced": false,
-            "source": "data/layers/railroad.json",
+            "source": "data/layers/railroad.js",
             "appliedTo": ["turkmenistan", "ahalskiy", "balkanskiy", "dashoguzskiy", "lebapskiy", "mariyskiy"]
         },
         {
@@ -29,7 +29,7 @@ datalayersindexjson({
             "title": "Автомагистрали",
             "active": true,
             "forced": false,
-            "source": "data/layers/highway.json",
+            "source": "data/layers/highway.js",
             "appliedTo": ["turkmenistan", "ahalskiy", "balkanskiy", "dashoguzskiy", "lebapskiy", "mariyskiy"]
         },
         {
@@ -37,7 +37,7 @@ datalayersindexjson({
             "title": "Автодороги",
             "active": true,
             "forced": false,
-            "source": "data/layers/road.json",
+            "source": "data/layers/road.js",
             "appliedTo": ["turkmenistan", "ahalskiy", "balkanskiy", "dashoguzskiy", "lebapskiy", "mariyskiy"]
         },
         {
@@ -45,7 +45,7 @@ datalayersindexjson({
             "title": "Названия велаятов",
             "active": true,
             "forced": false,
-            "source": "data/layers/welayat.json",
+            "source": "data/layers/welayat.js",
             "appliedTo": ["turkmenistan"]
         },
         {
@@ -53,7 +53,7 @@ datalayersindexjson({
             "title": "Названия этрапов",
             "active": true,
             "forced": false,
-            "source": "data/layers/etrap-titles.json",
+            "source": "data/layers/etrap-titles.js",
             "appliedTo": ["ahalskiy", "balkanskiy", "dashoguzskiy", "lebapskiy", "mariyskiy"]
         }
     ],
@@ -63,7 +63,7 @@ datalayersindexjson({
             "title": "Аэропорты",
             "active": true,
             "forced": false,
-            "source": "data/layers/layerAirports.json",
+            "source": "data/layers/layerAirports.js",
             "appliedTo": ["turkmenistan", "ahalskiy", "balkanskiy", "dashoguzskiy", "lebapskiy", "mariyskiy"]
         },
         {
@@ -71,7 +71,7 @@ datalayersindexjson({
             "title": "Автомагистрали",
             "active": true,
             "forced": false,
-            "source": "data/layers/highway.json",
+            "source": "data/layers/highway.js",
             "appliedTo": ["turkmenistan", "ahalskiy", "balkanskiy", "dashoguzskiy", "lebapskiy", "mariyskiy"]
         },
         {
@@ -79,7 +79,7 @@ datalayersindexjson({
             "title": "Автодороги",
             "active": true,
             "forced": false,
-            "source": "data/layers/road.json",
+            "source": "data/layers/road.js",
             "appliedTo": ["turkmenistan", "ahalskiy", "balkanskiy", "dashoguzskiy", "lebapskiy", "mariyskiy"]
         },
         {
@@ -87,7 +87,7 @@ datalayersindexjson({
             "title": "Названия велаятов",
             "active": true,
             "forced": false,
-            "source": "data/layers/welayat.json",
+            "source": "data/layers/welayat.js",
             "appliedTo": ["turkmenistan"]
         },
         {
@@ -95,7 +95,7 @@ datalayersindexjson({
             "title": "Названия этрапов",
             "active": true,
             "forced": false,
-            "source": "data/layers/etrap-titles.json",
+            "source": "data/layers/etrap-titles.js",
             "appliedTo": ["ahalskiy", "balkanskiy", "dashoguzskiy", "lebapskiy", "mariyskiy"]
         }
     ],
@@ -105,7 +105,7 @@ datalayersindexjson({
             "title": "Морские порты",
             "active": true,
             "forced": false,
-            "source": "data/layers/layerSeaports.json",
+            "source": "data/layers/layerSeaports.js",
             "appliedTo": ["turkmenistan", "ahalskiy", "balkanskiy", "dashoguzskiy", "lebapskiy", "mariyskiy"]
         },
         {
@@ -113,7 +113,7 @@ datalayersindexjson({
             "title": "Железнодорожные линии",
             "active": true,
             "forced": false,
-            "source": "data/layers/railroad.json",
+            "source": "data/layers/railroad.js",
             "appliedTo": ["turkmenistan", "ahalskiy", "balkanskiy", "dashoguzskiy", "lebapskiy", "mariyskiy"]
         },
         {
@@ -121,7 +121,7 @@ datalayersindexjson({
             "title": "Автомагистрали",
             "active": true,
             "forced": false,
-            "source": "data/layers/highway.json",
+            "source": "data/layers/highway.js",
             "appliedTo": ["turkmenistan", "ahalskiy", "balkanskiy", "dashoguzskiy", "lebapskiy", "mariyskiy"]
         },
         {
@@ -129,7 +129,7 @@ datalayersindexjson({
             "title": "Автодороги",
             "active": true,
             "forced": false,
-            "source": "data/layers/road.json",
+            "source": "data/layers/road.js",
             "appliedTo": ["turkmenistan", "ahalskiy", "balkanskiy", "dashoguzskiy", "lebapskiy", "mariyskiy"]
         },
         {
@@ -137,7 +137,7 @@ datalayersindexjson({
             "title": "Названия велаятов",
             "active": true,
             "forced": false,
-            "source": "data/layers/welayat.json",
+            "source": "data/layers/welayat.js",
             "appliedTo": ["turkmenistan"]
         },
         {
@@ -145,7 +145,7 @@ datalayersindexjson({
             "title": "Названия этрапов",
             "active": true,
             "forced": false,
-            "source": "data/layers/etrap-titles.json",
+            "source": "data/layers/etrap-titles.js",
             "appliedTo": ["ahalskiy", "balkanskiy", "dashoguzskiy", "lebapskiy", "mariyskiy"]
         }
     ]

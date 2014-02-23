@@ -1,4 +1,4 @@
-datastatisticsindicator832json({"name": "indicator-8-3-2", "title": "Бензонасос(простой), ГАЗ-53, ГАЗ-66 (штук)", "range": [
+datastatisticsindicator832({"name": "indicator-8-3-2", "title": "Бензонасос(простой), ГАЗ-53, ГАЗ-66 (штук)", "range": [
     {
         "min": 60,
         "max": 62.004,

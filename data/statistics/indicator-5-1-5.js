@@ -1,4 +1,4 @@
-datastatisticsindicator515json({"name": "indicator-5-1-5", "title": "Молоко", "range": [
+datastatisticsindicator515({"name": "indicator-5-1-5", "title": "Молоко", "range": [
     {
         "min": 91.9,
         "max": 93.724,

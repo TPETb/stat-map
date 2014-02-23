@@ -1,4 +1,4 @@
-datastatisticsindicator415json({"name": "indicator-4-1-5", "title": "Бензин", "range": [
+datastatisticsindicator415({"name": "indicator-4-1-5", "title": "Бензин", "range": [
     {
         "min": 96.5,
         "max": 98.404,

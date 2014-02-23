@@ -1,4 +1,4 @@
-datastatisticsindicator615json({"name": "indicator-6-1-5", "title": "за счет иностранныхP инвестиций", "range": [
+datastatisticsindicator615({"name": "indicator-6-1-5", "title": "за счет иностранныхP инвестиций", "range": [
     {
         "min": 99.2,
         "max": 102.884,

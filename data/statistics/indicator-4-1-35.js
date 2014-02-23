@@ -1,4 +1,4 @@
-datastatisticsindicator4135json({"name": "indicator-4-1-35", "title": "Вода минеральная и напиткиPбезалкогольные", "range": [
+datastatisticsindicator4135({"name": "indicator-4-1-35", "title": "Вода минеральная и напиткиPбезалкогольные", "range": [
     {
         "min": 102,
         "max": 104.124,

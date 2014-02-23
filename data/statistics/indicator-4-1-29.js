@@ -1,4 +1,4 @@
-datastatisticsindicator4129json({"name": "indicator-4-1-29", "title": "Масло растительное", "range": [
+datastatisticsindicator4129({"name": "indicator-4-1-29", "title": "Масло растительное", "range": [
     {
         "min": 92.8,
         "max": 95.624,

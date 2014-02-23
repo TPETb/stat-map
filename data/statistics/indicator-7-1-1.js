@@ -1,4 +1,4 @@
-datastatisticsindicator711json({"name": "indicator-7-1-1", "title": "все виды транспорта", "range": [
+datastatisticsindicator711({"name": "indicator-7-1-1", "title": "все виды транспорта", "range": [
     {
         "min": 97.4,
         "max": 99.564,

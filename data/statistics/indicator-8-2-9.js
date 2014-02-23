@@ -1,4 +1,4 @@
-datastatisticsindicator829json({"name": "indicator-8-2-9", "title": "Мыло хозяйственное \"AKJA\", произ-ва Туркменистан (250 гр) (250 гр)", "range": [
+datastatisticsindicator829({"name": "indicator-8-2-9", "title": "Мыло хозяйственное \"AKJA\", произ-ва Туркменистан (250 гр) (250 гр)", "range": [
     {
         "min": 0,
         "max": 0.104,

@@ -1,4 +1,4 @@
-dataregions2json({"items": [
+dataregions2({"items": [
     {
         "name": "mariyskiy",
         "shape": [

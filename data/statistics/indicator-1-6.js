@@ -1,4 +1,4 @@
-datastatisticsindicator16json({"name": "indicator-1-6", "title": "Доходы государственного бюджета (% к установленному заданию)", "range": [
+datastatisticsindicator16({"name": "indicator-1-6", "title": "Доходы государственного бюджета (% к установленному заданию)", "range": [
     {
         "min": 110,
         "max": 114.904,

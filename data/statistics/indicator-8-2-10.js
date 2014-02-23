@@ -1,4 +1,4 @@
-datastatisticsindicator8210json({"name": "indicator-8-2-10", "title": "Стиральный порошок фирмы \"P&G\": Миф лимон (450 гр)", "range": [
+datastatisticsindicator8210({"name": "indicator-8-2-10", "title": "Стиральный порошок фирмы \"P&G\": Миф лимон (450 гр)", "range": [
     {
         "min": 0,
         "max": 0.404,

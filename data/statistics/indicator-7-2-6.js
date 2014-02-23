@@ -1,4 +1,4 @@
-datastatisticsindicator726json({"name": "indicator-7-2-6", "title": "морской транспорт", "range": [
+datastatisticsindicator726({"name": "indicator-7-2-6", "title": "морской транспорт", "range": [
     {
         "min": 99.2,
         "max": 102.984,

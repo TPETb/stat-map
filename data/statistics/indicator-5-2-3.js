@@ -1,4 +1,4 @@
-datastatisticsindicator523json({"name": "indicator-5-2-3", "title": "Птица", "range": [
+datastatisticsindicator523({"name": "indicator-5-2-3", "title": "Птица", "range": [
     {
         "min": 91,
         "max": 92.804,

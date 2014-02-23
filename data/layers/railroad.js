@@ -1,4 +1,4 @@
-datalayersrailroadjson({
+datalayersrailroad({
     "name": "railroad",
     "items": [
         {

@@ -1,4 +1,4 @@
-datastatisticsindicator17json({"name": "indicator-1-7", "title": "Расходы государственного бюджета (% к установленному заданию)", "range": [
+datastatisticsindicator17({"name": "indicator-1-7", "title": "Расходы государственного бюджета (% к установленному заданию)", "range": [
     {
         "min": 84.6,
         "max": 86.284,

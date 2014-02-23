@@ -1,4 +1,4 @@
-datastatisticsindicator811json({"name": "indicator-8-1-1", "title": "Говядина, произ-ва Туркменистан (1 кг)", "range": [
+datastatisticsindicator811({"name": "indicator-8-1-1", "title": "Говядина, произ-ва Туркменистан (1 кг)", "range": [
     {
         "min": 10,
         "max": 10.204,

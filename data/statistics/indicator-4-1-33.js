@@ -1,4 +1,4 @@
-datastatisticsindicator4133json({"name": "indicator-4-1-33", "title": "Хлеб и булочные изделия", "range": [
+datastatisticsindicator4133({"name": "indicator-4-1-33", "title": "Хлеб и булочные изделия", "range": [
     {
         "min": 93.7,
         "max": 95.564,

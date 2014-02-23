@@ -1,4 +1,4 @@
-datastatisticsindicator4115json({"name": "indicator-4-1-15", "title": "Нерудные строительные материалы", "range": [
+datastatisticsindicator4115({"name": "indicator-4-1-15", "title": "Нерудные строительные материалы", "range": [
     {
         "min": 104.7,
         "max": 106.774,

@@ -1,4 +1,4 @@
-datastatisticsindicator818json({"name": "indicator-8-1-8", "title": "Молоко свежее (разливное), произ-ва Туркменистан (1 л)", "range": [
+datastatisticsindicator818({"name": "indicator-8-1-8", "title": "Молоко свежее (разливное), произ-ва Туркменистан (1 л)", "range": [
     {
         "min": 0,
         "max": 0.204,

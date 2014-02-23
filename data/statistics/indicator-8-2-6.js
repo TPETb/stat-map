@@ -1,4 +1,4 @@
-datastatisticsindicator826json({"name": "indicator-8-2-6", "title": "Кабель электрический Ж4x4, произ-ва Турции (м)", "range": [
+datastatisticsindicator826({"name": "indicator-8-2-6", "title": "Кабель электрический Ж4x4, произ-ва Турции (м)", "range": [
     {
         "min": 6,
         "max": 6.204,

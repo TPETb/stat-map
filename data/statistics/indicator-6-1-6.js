@@ -1,4 +1,4 @@
-datastatisticsindicator616json({"name": "indicator-6-1-6", "title": "за счет других средств", "range": [
+datastatisticsindicator616({"name": "indicator-6-1-6", "title": "за счет других средств", "range": [
     {
         "min": 96,
         "max": 100.204,

@@ -1,4 +1,4 @@
-datastatisticsindicator4123json({"name": "indicator-4-1-23", "title": "Обувь", "range": [
+datastatisticsindicator4123({"name": "indicator-4-1-23", "title": "Обувь", "range": [
     {
         "min": 91,
         "max": 92.804,

@@ -1,4 +1,4 @@
-datastatisticsindicator512json({"name": "indicator-5-1-2", "title": "Бахча", "range": [
+datastatisticsindicator512({"name": "indicator-5-1-2", "title": "Бахча", "range": [
     {
         "min": 92.8,
         "max": 94.644,

@@ -1,4 +1,4 @@
-datastatisticsindicator824json({"name": "indicator-8-2-4", "title": "Коллеры \"Бетек\", произ-ва Турции (50 мл)", "range": [
+datastatisticsindicator824({"name": "indicator-8-2-4", "title": "Коллеры \"Бетек\", произ-ва Турции (50 мл)", "range": [
     {
         "min": 0,
         "max": 0.304,

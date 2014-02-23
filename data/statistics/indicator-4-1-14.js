@@ -1,4 +1,4 @@
-datastatisticsindicator4114json({"name": "indicator-4-1-14", "title": "Цемент", "range": [
+datastatisticsindicator4114({"name": "indicator-4-1-14", "title": "Цемент", "range": [
     {
         "min": 100.1,
         "max": 107.894,
