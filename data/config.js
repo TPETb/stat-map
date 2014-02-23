@@ -1,4 +1,4 @@
-dataconfigjson({
+dataconfig({
     "bounds": {
         "southWest": {
             "lat": 35.141090,
