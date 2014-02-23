@@ -1,4 +1,4 @@
-datastatisticsindicator813json({"name": "indicator-8-1-3", "title": "Говядина (блочное мясо), Индия (1 кг)", "range": [
+datastatisticsindicator813({"name": "indicator-8-1-3", "title": "Говядина (блочное мясо), Индия (1 кг)", "range": [
     {
         "min": 0,
         "max": 1.104,

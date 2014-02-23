@@ -1,4 +1,4 @@
-datastatisticsindicator817json({"name": "indicator-8-1-7", "title": "Масло сливочное, развесное, Туркменистан (1 кг)", "range": [
+datastatisticsindicator817({"name": "indicator-8-1-7", "title": "Масло сливочное, развесное, Туркменистан (1 кг)", "range": [
     {
         "min": 8.15,
         "max": 8.539,

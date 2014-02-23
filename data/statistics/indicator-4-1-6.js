@@ -1,4 +1,4 @@
-datastatisticsindicator416json({"name": "indicator-4-1-6", "title": "Дизельное топливо", "range": [
+datastatisticsindicator416({"name": "indicator-4-1-6", "title": "Дизельное топливо", "range": [
     {
         "min": 91,
         "max": 92.804,

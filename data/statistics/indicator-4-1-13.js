@@ -1,4 +1,4 @@
-datastatisticsindicator4113json({"name": "indicator-4-1-13", "title": "Трубы из пластмасс и стекловолокнистые", "range": [
+datastatisticsindicator4113({"name": "indicator-4-1-13", "title": "Трубы из пластмасс и стекловолокнистые", "range": [
     {
         "min": 96.5,
         "max": 100.154,

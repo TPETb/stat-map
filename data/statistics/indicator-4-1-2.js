@@ -1,4 +1,4 @@
-datastatisticsindicator412json({"name": "indicator-4-1-2", "title": "Нефть, включая газовый конденсат", "range": [
+datastatisticsindicator412({"name": "indicator-4-1-2", "title": "Нефть, включая газовый конденсат", "range": [
     {
         "min": 95.6,
         "max": 97.494,

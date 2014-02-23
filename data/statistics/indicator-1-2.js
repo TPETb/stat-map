@@ -1,4 +1,4 @@
-datastatisticsindicator12json({"name": "indicator-1-2", "title": "Валовой внутренний продукт в сопоставимых ценах  (% к соотв. периоду прошлого года)", "range": [
+datastatisticsindicator12({"name": "indicator-1-2", "title": "Валовой внутренний продукт в сопоставимых ценах  (% к соотв. периоду прошлого года)", "range": [
     {
         "min": 101,
         "max": 103.004,

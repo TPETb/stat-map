@@ -1,4 +1,4 @@
-datastatisticsindicator411json({"name": "indicator-4-1-1", "title": "Электроэнергия", "range": [
+datastatisticsindicator411({"name": "indicator-4-1-1", "title": "Электроэнергия", "range": [
     {
         "min": 95.6,
         "max": 98.044,

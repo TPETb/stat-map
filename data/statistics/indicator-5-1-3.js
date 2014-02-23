@@ -1,4 +1,4 @@
-datastatisticsindicator513json({"name": "indicator-5-1-3", "title": "Плоды и ягоды", "range": [
+datastatisticsindicator513({"name": "indicator-5-1-3", "title": "Плоды и ягоды", "range": [
     {
         "min": 91.9,
         "max": 93.724,

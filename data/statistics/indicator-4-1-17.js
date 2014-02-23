@@ -1,4 +1,4 @@
-datastatisticsindicator4117json({"name": "indicator-4-1-17", "title": "Арматура, уголки, профили", "range": [
+datastatisticsindicator4117({"name": "indicator-4-1-17", "title": "Арматура, уголки, профили", "range": [
     {
         "min": 100,
         "max": 107.444,

@@ -1,4 +1,4 @@
-datastatisticsindicator4125json({"name": "indicator-4-1-25", "title": "Рыба и рыбные продукты переработанныеPи консервированные", "range": [
+datastatisticsindicator4125({"name": "indicator-4-1-25", "title": "Рыба и рыбные продукты переработанныеPи консервированные", "range": [
     {
         "min": 108,
         "max": 115.294,

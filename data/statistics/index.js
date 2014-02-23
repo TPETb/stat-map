@@ -1,4 +1,4 @@
-datastatisticsindexjson({
+datastatisticsindex({
     "items": [
         {
             "title": "Макроэкономика",

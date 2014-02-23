@@ -1,4 +1,4 @@
-datastatisticsindicator4126json({"name": "indicator-4-1-26", "title": "Консервы плодоовощные", "range": [
+datastatisticsindicator4126({"name": "indicator-4-1-26", "title": "Консервы плодоовощные", "range": [
     {
         "min": 91.9,
         "max": 93.724,

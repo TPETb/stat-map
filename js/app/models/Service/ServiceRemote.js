@@ -89,7 +89,7 @@ serviceRP.requestLayerItems = function(layerUrl) {
         type: 'GET',
         url: layerUrl,
         async: false,
-        jsonpCallback: layerUrl.replace('.js', '').replace('.', '').replace('/', ''),
+        jsonpCallback: layerUrl.replace('.js', '').replace(/[^a-zA-Z0-9]/g, ''),
         contentType: "application/javascript",
         dataType: 'jsonp',
         crossDomain: true,

@@ -1,4 +1,4 @@
-datastatisticsindicator4119json({"name": "indicator-4-1-19", "title": "Ткани  хлопчатобумажные, включая махровые", "range": [
+datastatisticsindicator4119({"name": "indicator-4-1-19", "title": "Ткани  хлопчатобумажные, включая махровые", "range": [
     {
         "min": 95.6,
         "max": 97.494,

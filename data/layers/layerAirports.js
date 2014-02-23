@@ -1,4 +1,4 @@
-datalayerslayerAirportsjson({
+datalayerslayerAirports({
     "name": "airports",
     "items": [
         {

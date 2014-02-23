@@ -1,4 +1,4 @@
-datalayershighwayjson({
+datalayershighway({
     "name": "highway",
     "items": [
         {

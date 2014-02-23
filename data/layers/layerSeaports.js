@@ -1,4 +1,4 @@
-datalayerslayerSeaportsjson({
+datalayerslayerSeaports({
     "name": "seaports",
     "items": [
         {

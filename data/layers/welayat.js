@@ -1,4 +1,4 @@
-datalayerswelayatjson({
+datalayerswelayat({
     "name": "welayat",
     "items": [
         {

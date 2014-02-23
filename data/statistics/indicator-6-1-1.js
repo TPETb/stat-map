@@ -1,4 +1,4 @@
-datastatisticsindicator611json({"name": "indicator-6-1-1", "title": "за счет всех источников финансирования", "range": [
+datastatisticsindicator611({"name": "indicator-6-1-1", "title": "за счет всех источников финансирования", "range": [
     {
         "min": 105,
         "max": 108.404,

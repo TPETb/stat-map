@@ -1,4 +1,4 @@
-datastatisticsindicator419json({"name": "indicator-4-1-9", "title": "Полипропилен", "range": [
+datastatisticsindicator419({"name": "indicator-4-1-9", "title": "Полипропилен", "range": [
     {
         "min": 93.7,
         "max": 95.564,

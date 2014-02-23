@@ -1,4 +1,4 @@
-datastatisticsindicator613json({"name": "indicator-6-1-3", "title": "за счет централизованного и местных бюджетов", "range": [
+datastatisticsindicator613({"name": "indicator-6-1-3", "title": "за счет централизованного и местных бюджетов", "range": [
     {
         "min": 111,
         "max": 119.804,

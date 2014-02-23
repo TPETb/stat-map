@@ -1,4 +1,4 @@
-datastatisticsindicator31json({"name": "indicator-3-1", "title": "Внешнеторговый оборот в действующих ценах (% к соотв. периоду прошлого года)", "range": [
+datastatisticsindicator31({"name": "indicator-3-1", "title": "Внешнеторговый оборот в действующих ценах (% к соотв. периоду прошлого года)", "range": [
     {
         "min": 97,
         "max": 103.004,

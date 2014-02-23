@@ -1,4 +1,4 @@
-datastatisticsindicator8212json({"name": "indicator-8-2-12", "title": "Ноутбук HP PROBOOK 4530S LH430EA#ACB, Китай (штук)", "range": [
+datastatisticsindicator8212({"name": "indicator-8-2-12", "title": "Ноутбук HP PROBOOK 4530S LH430EA#ACB, Китай (штук)", "range": [
     {
         "min": 0,
         "max": 265.004,

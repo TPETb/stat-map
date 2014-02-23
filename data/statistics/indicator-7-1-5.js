@@ -1,4 +1,4 @@
-datastatisticsindicator715json({"name": "indicator-7-1-5", "title": "внутренний водный транспорт", "range": [
+datastatisticsindicator715({"name": "indicator-7-1-5", "title": "внутренний водный транспорт", "range": [
     {
         "min": 95.6,
         "max": 99.344,

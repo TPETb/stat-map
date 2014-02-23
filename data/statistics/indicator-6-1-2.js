@@ -1,4 +1,4 @@
-datastatisticsindicator612json({"name": "indicator-6-1-2", "title": "за счет средств предприятий и организаций", "range": [
+datastatisticsindicator612({"name": "indicator-6-1-2", "title": "за счет средств предприятий и организаций", "range": [
     {
         "min": 91,
         "max": 95.504,

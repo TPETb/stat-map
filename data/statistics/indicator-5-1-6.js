@@ -1,4 +1,4 @@
-datastatisticsindicator516json({"name": "indicator-5-1-6", "title": "Яйца", "range": [
+datastatisticsindicator516({"name": "indicator-5-1-6", "title": "Яйца", "range": [
     {
         "min": 92.8,
         "max": 94.644,

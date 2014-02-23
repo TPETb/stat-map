@@ -1,4 +1,4 @@
-datastatisticsindicator4131json({"name": "indicator-4-1-31", "title": "Крупы", "range": [
+datastatisticsindicator4131({"name": "indicator-4-1-31", "title": "Крупы", "range": [
     {
         "min": 94.6,
         "max": 101.144,

@@ -1,4 +1,4 @@
-datastatisticsindicator8211json({"name": "indicator-8-2-11", "title": "Бумага белая, стандартная формат А-4 (210x297мм), Double A-4 (80 gms), Тайланд (пачка 500 лист.)", "range": [
+datastatisticsindicator8211({"name": "indicator-8-2-11", "title": "Бумага белая, стандартная формат А-4 (210x297мм), Double A-4 (80 gms), Тайланд (пачка 500 лист.)", "range": [
     {
         "min": 0,
         "max": 1.739,

@@ -1,4 +1,4 @@
-datalayersetraptitlesjson({
+datalayersetraptitles({
     "name": "etrapTitles",
     "items": [
         {

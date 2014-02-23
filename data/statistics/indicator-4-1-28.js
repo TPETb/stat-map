@@ -1,4 +1,4 @@
-datastatisticsindicator4128json({"name": "indicator-4-1-28", "title": "Продукция цельномолочная", "range": [
+datastatisticsindicator4128({"name": "indicator-4-1-28", "title": "Продукция цельномолочная", "range": [
     {
         "min": 91.9,
         "max": 93.724,

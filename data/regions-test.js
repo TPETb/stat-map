@@ -1,4 +1,4 @@
-dataregionstestjson({
+dataregionstest({
     "items": [
     {
         "name": "etrap-46",

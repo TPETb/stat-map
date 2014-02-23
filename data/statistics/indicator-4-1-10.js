@@ -1,4 +1,4 @@
-datastatisticsindicator4110json({"name": "indicator-4-1-10", "title": "Сжиженные углеводородные газы", "range": [
+datastatisticsindicator4110({"name": "indicator-4-1-10", "title": "Сжиженные углеводородные газы", "range": [
     {
         "min": 100,
         "max": 102.704,

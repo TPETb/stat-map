@@ -1,4 +1,4 @@
-datastatisticsindicator33json({"name": "indicator-3-3", "title": "Импорт (% к соотв. периоду прошлого года)", "range": [
+datastatisticsindicator33({"name": "indicator-3-3", "title": "Импорт (% к соотв. периоду прошлого года)", "range": [
     {
         "min": 98.3,
         "max": 103.274,

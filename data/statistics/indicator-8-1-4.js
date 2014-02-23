@@ -1,4 +1,4 @@
-datastatisticsindicator814json({"name": "indicator-8-1-4", "title": "Куры в упаковке, Туркменистан (1 кг)", "range": [
+datastatisticsindicator814({"name": "indicator-8-1-4", "title": "Куры в упаковке, Туркменистан (1 кг)", "range": [
     {
         "min": 9,
         "max": 9.194,

@@ -1,4 +1,4 @@
-datastatisticsindicator723json({"name": "indicator-7-2-3", "title": "трубопроводный транспорт", "range": [
+datastatisticsindicator723({"name": "indicator-7-2-3", "title": "трубопроводный транспорт", "range": [
     {
         "min": 102,
         "max": 105.434,

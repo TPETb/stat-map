@@ -1,4 +1,4 @@
-dataregions3json({
+dataregions3({
     "items": [
         {
             "name": "mariyskiy",

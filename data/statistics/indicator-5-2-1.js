@@ -1,4 +1,4 @@
-datastatisticsindicator521json({"name": "indicator-5-2-1", "title": "Крупный рогатый скот", "range": [
+datastatisticsindicator521({"name": "indicator-5-2-1", "title": "Крупный рогатый скот", "range": [
     {
         "min": 91,
         "max": 92.804,

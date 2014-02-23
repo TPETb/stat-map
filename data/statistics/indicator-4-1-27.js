@@ -1,4 +1,4 @@
-datastatisticsindicator4127json({"name": "indicator-4-1-27", "title": "Масло сливочное", "range": [
+datastatisticsindicator4127({"name": "indicator-4-1-27", "title": "Масло сливочное", "range": [
     {
         "min": 91,
         "max": 93.104,

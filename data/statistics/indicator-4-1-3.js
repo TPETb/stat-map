@@ -1,4 +1,4 @@
-datastatisticsindicator413json({"name": "indicator-4-1-3", "title": "Газ", "range": [
+datastatisticsindicator413({"name": "indicator-4-1-3", "title": "Газ", "range": [
     {
         "min": 101,
         "max": 106.164,

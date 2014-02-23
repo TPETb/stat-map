@@ -1,4 +1,4 @@
-datastatisticsindicator819json({"name": "indicator-8-1-9", "title": "Помидоры грунтовые: средние, Туркменистан (1 кг)", "range": [
+datastatisticsindicator819({"name": "indicator-8-1-9", "title": "Помидоры грунтовые: средние, Туркменистан (1 кг)", "range": [
     {
         "min": 0,
         "max": 0.224,

@@ -1,4 +1,4 @@
-datastatisticsnewjson({
+datastatisticsnew({
     "items": [
         {
             "title": "Макроэкономика",

@@ -1,4 +1,4 @@
-datastatisticsindicator4122json({"name": "indicator-4-1-22", "title": "Кожа выделанная", "range": [
+datastatisticsindicator4122({"name": "indicator-4-1-22", "title": "Кожа выделанная", "range": [
     {
         "min": 91,
         "max": 92.804,

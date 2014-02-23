@@ -1,4 +1,4 @@
-datastatisticsindicator4124json({"name": "indicator-4-1-24", "title": "Рыба и прочая продукция рыболовства", "range": [
+datastatisticsindicator4124({"name": "indicator-4-1-24", "title": "Рыба и прочая продукция рыболовства", "range": [
     {
         "min": 91.9,
         "max": 93.724,

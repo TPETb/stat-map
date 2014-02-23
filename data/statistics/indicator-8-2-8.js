@@ -1,4 +1,4 @@
-datastatisticsindicator828json({"name": "indicator-8-2-8", "title": "Стол офисный MAF-716-180, произв-ва Малайзии (штук)", "range": [
+datastatisticsindicator828({"name": "indicator-8-2-8", "title": "Стол офисный MAF-716-180, произв-ва Малайзии (штук)", "range": [
     {
         "min": 731.6,
         "max": 776.644,

@@ -1,4 +1,4 @@
-datastatisticsindicator816json({"name": "indicator-8-1-6", "title": "Масло сливочное \"Президент\", Туркменистан (200гр)", "range": [
+datastatisticsindicator816({"name": "indicator-8-1-6", "title": "Масло сливочное \"Президент\", Туркменистан (200гр)", "range": [
     {
         "min": 0,
         "max": 0.504,

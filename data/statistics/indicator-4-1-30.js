@@ -1,4 +1,4 @@
-datastatisticsindicator4130json({"name": "indicator-4-1-30", "title": "Мука", "range": [
+datastatisticsindicator4130({"name": "indicator-4-1-30", "title": "Мука", "range": [
     {
         "min": 100,
         "max": 102.324,

@@ -1,4 +1,4 @@
-datastatisticsindicator724json({"name": "indicator-7-2-4", "title": "железнодорожный транспорт", "range": [
+datastatisticsindicator724({"name": "indicator-7-2-4", "title": "железнодорожный транспорт", "range": [
     {
         "min": 93.7,
         "max": 95.634,

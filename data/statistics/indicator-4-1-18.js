@@ -1,4 +1,4 @@
-datastatisticsindicator4118json({"name": "indicator-4-1-18", "title": "Пряжа хлопчатобумажная", "range": [
+datastatisticsindicator4118({"name": "indicator-4-1-18", "title": "Пряжа хлопчатобумажная", "range": [
     {
         "min": 91,
         "max": 93.904,

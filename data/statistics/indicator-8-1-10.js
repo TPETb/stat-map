@@ -1,4 +1,4 @@
-datastatisticsindicator8110json({"name": "indicator-8-1-10", "title": "Картофель: средний, Туркменистан (1 кг)", "range": [
+datastatisticsindicator8110({"name": "indicator-8-1-10", "title": "Картофель: средний, Туркменистан (1 кг)", "range": [
     {
         "min": 0,
         "max": 0.204,

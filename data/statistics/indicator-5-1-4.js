@@ -1,4 +1,4 @@
-datastatisticsindicator514json({"name": "indicator-5-1-4", "title": "Мясо (в живом весе)", "range": [
+datastatisticsindicator514({"name": "indicator-5-1-4", "title": "Мясо (в живом весе)", "range": [
     {
         "min": 91.9,
         "max": 93.724,

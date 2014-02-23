@@ -1,4 +1,4 @@
-datastatisticsindicator417json({"name": "indicator-4-1-7", "title": "Масла смазочные", "range": [
+datastatisticsindicator417({"name": "indicator-4-1-7", "title": "Масла смазочные", "range": [
     {
         "min": 97.4,
         "max": 101.464,

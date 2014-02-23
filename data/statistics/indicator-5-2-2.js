@@ -1,4 +1,4 @@
-datastatisticsindicator522json({"name": "indicator-5-2-2", "title": "Овцы и козы", "range": [
+datastatisticsindicator522({"name": "indicator-5-2-2", "title": "Овцы и козы", "range": [
     {
         "min": 91,
         "max": 92.804,

@@ -1,4 +1,4 @@
-datastatisticsindicator742json({"name": "indicator-7-4-2", "title": "автомобильный транспорт", "range": [
+datastatisticsindicator742({"name": "indicator-7-4-2", "title": "автомобильный транспорт", "range": [
     {
         "min": 100,
         "max": 102.004,
