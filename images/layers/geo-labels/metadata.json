@@ -1,0 +1,11 @@
+{
+  "name": "gn",
+  "version": "1.0.0",
+  "description": "",
+  "type": "overlay",
+  "format": "png",
+  "minzoom": "6",
+  "maxzoom": "8",
+  "bounds": "51.00000000,35.00146682,66.99956437,43.00000000",
+  "profile": "mercator"
+}
