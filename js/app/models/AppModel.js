@@ -301,6 +301,10 @@ appModelP.getFocusedObject = function (objectName) {
         var objectName = this.getFocusedObjectName();
     }
 
+    return this.getObjectByName(objectName);
+};
+
+appModelP.getObjectByName = function (objectName) {
     for (var i = this._Taxonomy.welayats.length - 1; i >= 0; i--) {
         if (this._Taxonomy.welayats[i].name === objectName) {
             return this._Taxonomy.welayats[i];

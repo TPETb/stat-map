@@ -7,7 +7,7 @@ datataxonomy({
             "focusable": true,
             "center": [37.535866,62.180901],
             "substrate": "images/substrates/mariyskiy/{z}/{x}/{y}.png",
-            "descriptionSource": "data/descriptions/welayats/mariyskiy.html",
+            "descriptionSource": "data/descriptions/welayats/mariyskiy.js",
             "shape": [
                 [
                     [
@@ -23,7 +23,7 @@ datataxonomy({
             "focusable": true,
             "center": [41.211722,58.819084],
             "substrate": "images/substrates/dashoguzskiy/{z}/{x}/{y}.png",
-            "descriptionSource": "data/descriptions/welayats/dashoguzskiy.html",
+            "descriptionSource": "data/descriptions/welayats/dashoguzskiy.js",
             "shape": [
                 [
                     [
@@ -39,7 +39,7 @@ datataxonomy({
             "focusable": true,
             "center": [39.249271,63.114738],
             "substrate": "images/substrates/lebapskiy/{z}/{x}/{y}.png",
-            "descriptionSource": "data/descriptions/welayats/lebapskiy.html",
+            "descriptionSource": "data/descriptions/welayats/lebapskiy.js",
             "shape": [
                 [
                     [
@@ -55,7 +55,7 @@ datataxonomy({
             "focusable": true,
             "center": [39.783213,55.006828],
             "substrate": "images/substrates/balkanskiy/{z}/{x}/{y}.png",
-            "descriptionSource": "data/descriptions/welayats/balkanskiy.html",
+            "descriptionSource": "data/descriptions/welayats/balkanskiy.js",
             "shape": [
                 [
                     [
@@ -71,7 +71,7 @@ datataxonomy({
             "focusable": true,
             "center": [38.186387,58.917961],
             "substrate": "images/substrates/ahalskiy/{z}/{x}/{y}.png",
-            "descriptionSource": "data/descriptions/welayats/ahalskiy.html",
+            "descriptionSource": "data/descriptions/welayats/ahalskiy.js",
             "shape": [
                 [
                     [
@@ -87,7 +87,7 @@ datataxonomy({
             "name": "ashhabad",
             "title": "Ашхабад",
             "parents": ["turkmenistan", "ahalskiy"],
-            "descriptionSource": "data/descriptions/welayats/ashhabad.html",
+            "descriptionSource": "data/descriptions/welayats/ashhabad.js",
             "shape": [
                 [
                     [
@@ -101,8 +101,7 @@ datataxonomy({
         {
             "name": "ashhabad",
             "title": "Ашхабад",
-            "descriptionSource": "data/descriptions/welayats/ashhabad.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/ashhabad.js",
             "shape": [
                 [
                     [
@@ -113,7 +112,6 @@ datataxonomy({
         },
         {
             "name": "balkanabad",
-            "focusable": true,
             "shape": [
                 [
                     [
@@ -124,7 +122,6 @@ datataxonomy({
         },
         {
             "name": "dashoguz",
-            "focusable": true,
             "shape": [
                 [
                     [
@@ -135,7 +132,6 @@ datataxonomy({
         },
         {
             "name": "turkmenabad",
-            "focusable": true,
             "shape": [
                 [
                     [
@@ -146,7 +142,6 @@ datataxonomy({
         },
         {
             "name": "mari",
-            "focusable": true,
             "shape": [
                 [
                     [
@@ -161,8 +156,7 @@ datataxonomy({
             "name": "etrap-51",
             "title": "Иолотанский этрап",
             "parents": ["turkmenistan", "mariyskiy"],
-            "descriptionSource": "data/descriptions/welayats/051.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/051.js",
             "shape": [
                 [
                     [
@@ -175,8 +169,7 @@ datataxonomy({
             "name": "etrap-50",
             "title": "Векилбазарский этрап",
             "parents": ["turkmenistan", "mariyskiy"],
-            "descriptionSource": "data/descriptions/welayats/050.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/050.js",
             "shape": [
                 [
                     [
@@ -195,8 +188,7 @@ datataxonomy({
             "name": "etrap-49",
             "title": "Туркменкалинский этрап",
             "parents": ["turkmenistan", "mariyskiy"],
-            "descriptionSource": "data/descriptions/welayats/049.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/049.js",
             "shape": [
                 [
                     [
@@ -209,8 +201,7 @@ datataxonomy({
             "name": "etrap-48",
             "title": "Тагтабазарский этрап",
             "parents": ["turkmenistan", "mariyskiy"],
-            "descriptionSource": "data/descriptions/welayats/048.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/048.js",
             "shape": [
                 [
                     [
@@ -223,8 +214,7 @@ datataxonomy({
             "name": "etrap-47",
             "title": "Серхетабадский этрап",
             "parents": ["turkmenistan", "mariyskiy"],
-            "descriptionSource": "data/descriptions/welayats/047.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/047.js",
             "shape": [
                 [
                     [
@@ -237,8 +227,7 @@ datataxonomy({
             "name": "etrap-46",
             "title": "Сакарчагинский этрап",
             "parents": ["turkmenistan", "mariyskiy"],
-            "descriptionSource": "data/descriptions/welayats/046.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/046.js",
             "shape": [
                 [
                     [
@@ -257,8 +246,7 @@ datataxonomy({
             "name": "etrap-45",
             "title": "Огузханский этрап",
             "parents": ["turkmenistan", "mariyskiy"],
-            "descriptionSource": "data/descriptions/welayats/045.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/045.js",
             "shape": [
                 [
                     [
@@ -274,8 +262,7 @@ datataxonomy({
             "name": "etrap-44",
             "title": "Мургапский этрап",
             "parents": ["turkmenistan", "mariyskiy"],
-            "descriptionSource": "data/descriptions/welayats/044.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/044.js",
             "shape": [
                 [
                     [
@@ -288,8 +275,7 @@ datataxonomy({
             "name": "etrap-43",
             "title": "Марыйский этрап",
             "parents": ["turkmenistan", "mariyskiy"],
-            "descriptionSource": "data/descriptions/welayats/043.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/043.js",
             "shape": [
                 [
                     [
@@ -323,8 +309,7 @@ datataxonomy({
             "name": "etrap-42",
             "title": "Каракумский этрап",
             "parents": ["turkmenistan", "mariyskiy"],
-            "descriptionSource": "data/descriptions/welayats/042.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/042.js",
             "shape": [
                 [
                     [
@@ -337,8 +322,7 @@ datataxonomy({
             "name": "etrap-41",
             "title": "Байрамалинский этрап",
             "parents": ["turkmenistan", "mariyskiy"],
-            "descriptionSource": "data/descriptions/welayats/041.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/041.js",
             "shape": [
                 [
                     [
@@ -357,8 +341,7 @@ datataxonomy({
             "name": "etrap-40",
             "title": "Этрап имени Сапармурата Туркменбаши",
             "parents": ["turkmenistan", "dashoguzskiy"],
-            "descriptionSource": "data/descriptions/welayats/040.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/040.js",
             "shape": [
                 [
                     [
@@ -371,8 +354,7 @@ datataxonomy({
             "name": "etrap-39",
             "title": "Этрап имени С. А. Ниязова",
             "parents": ["turkmenistan", "dashoguzskiy"],
-            "descriptionSource": "data/descriptions/welayats/039.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/039.js",
             "shape": [
                 [
                     [
@@ -385,8 +367,7 @@ datataxonomy({
             "name": "etrap-38",
             "title": "Кёнеургенчский этрап",
             "parents": ["turkmenistan", "dashoguzskiy"],
-            "descriptionSource": "data/descriptions/welayats/038.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/038.js",
             "shape": [
                 [
                     [
@@ -399,8 +380,7 @@ datataxonomy({
             "name": "etrap-37",
             "title": "Этрап имени Гурбансолтан-эдже",
             "parents": ["turkmenistan", "dashoguzskiy"],
-            "descriptionSource": "data/descriptions/welayats/037.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/037.js",
             "shape": [
                 [
                     [
@@ -413,8 +393,7 @@ datataxonomy({
             "name": "etrap-36",
             "title": "Губадагский этрап",
             "parents": ["turkmenistan", "dashoguzskiy"],
-            "descriptionSource": "data/descriptions/welayats/036.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/036.js",
             "shape": [
                 [
                     [
@@ -430,8 +409,7 @@ datataxonomy({
             "name": "etrap-35",
             "title": "Гёроглынский этрап",
             "parents": ["turkmenistan", "dashoguzskiy"],
-            "descriptionSource": "data/descriptions/welayats/035.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/035.js",
             "shape": [
                 [
                     [
@@ -444,8 +422,7 @@ datataxonomy({
             "name": "etrap-34",
             "title": "Болдумсазский этрап",
             "parents": ["turkmenistan", "dashoguzskiy"],
-            "descriptionSource": "data/descriptions/welayats/034.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/034.js",
             "shape": [
                 [
                     [
@@ -461,8 +438,7 @@ datataxonomy({
             "name": "etrap-33",
             "title": "Акдепинский этрап",
             "parents": ["turkmenistan", "dashoguzskiy"],
-            "descriptionSource": "data/descriptions/welayats/033.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/033.js",
             "shape": [
                 [
                     [
@@ -475,8 +451,7 @@ datataxonomy({
             "name": "etrap-32",
             "title": "Территория хякимляка г. Сейди",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/032.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/032.js",
             "shape": [
                 [
                     [
@@ -489,8 +464,7 @@ datataxonomy({
             "name": "etrap-31",
             "title": "Сердарабатский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/031.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/031.js",
             "shape": [
                 [
                     [
@@ -503,8 +477,7 @@ datataxonomy({
             "name": "etrap-30",
             "title": "Саятский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/030.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/030.js",
             "shape": [
                 [
                     [
@@ -517,8 +490,7 @@ datataxonomy({
             "name": "etrap-29",
             "title": "Сакарский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/029.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/029.js",
             "shape": [
                 [
                     [
@@ -531,8 +503,7 @@ datataxonomy({
             "name": "etrap-28",
             "title": "Кёйтендагский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/028.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/028.js",
             "shape": [
                 [
                     [
@@ -545,8 +516,7 @@ datataxonomy({
             "name": "etrap-27",
             "title": "Ходжамбасский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/027.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/027.js",
             "shape": [
                 [
                     [
@@ -559,8 +529,7 @@ datataxonomy({
             "name": "etrap-26",
             "title": "Халачский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/026.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/026.js",
             "shape": [
                 [
                     [
@@ -573,8 +542,7 @@ datataxonomy({
             "name": "etrap-25",
             "title": "Гарашсызлыкский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/025.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/025.js",
             "shape": [
                 [
                     [
@@ -590,8 +558,7 @@ datataxonomy({
             "name": "etrap-24",
             "title": "Карабекевюльский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/024.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/024.js",
             "shape": [
                 [
                     [
@@ -604,8 +571,7 @@ datataxonomy({
             "name": "etrap-23",
             "title": "Галкынышский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/023.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/023.js",
             "shape": [
                 [
                     [
@@ -618,8 +584,7 @@ datataxonomy({
             "name": "etrap-22",
             "title": "Фарапский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/022.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/022.js",
             "shape": [
                 [
                     [
@@ -632,8 +597,7 @@ datataxonomy({
             "name": "etrap-21",
             "title": "Биратинский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/021.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/021.js",
             "shape": [
                 [
                     [
@@ -646,8 +610,7 @@ datataxonomy({
             "name": "etrap-20",
             "title": "Бейик Туркменбаши этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/020.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/020.js",
             "shape": [
                 [
                     [
@@ -660,8 +623,7 @@ datataxonomy({
             "name": "etrap-19",
             "title": "Атамуратский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/019.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/019.js",
             "shape": [
                 [
                     [
@@ -674,8 +636,7 @@ datataxonomy({
             "name": "etrap-18",
             "title": "Территория хякимлика г. Хазара",
             "parents": ["turkmenistan", "balkanskiy"],
-            "descriptionSource": "data/descriptions/welayats/018.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/018.js",
             "shape": [
                 [
                     [
@@ -688,8 +649,7 @@ datataxonomy({
             "name": "etrap-17",
             "title": "Территория хякимлика г.Балканабада",
             "parents": ["turkmenistan", "balkanskiy"],
-            "descriptionSource": "data/descriptions/welayats/017.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/017.js",
             "shape": [
                 [
                     [
@@ -702,8 +662,7 @@ datataxonomy({
             "name": "etrap-16",
             "title": "Туркменбашийский этрап",
             "parents": ["turkmenistan", "balkanskiy"],
-            "descriptionSource": "data/descriptions/welayats/016.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/016.js",
             "shape": [
                 [
                     [
@@ -716,8 +675,7 @@ datataxonomy({
             "name": "etrap-15",
             "title": "Сердарский этрап",
             "parents": ["turkmenistan", "balkanskiy"],
-            "descriptionSource": "data/descriptions/welayats/015.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/015.js",
             "shape": [
                 [
                     [
@@ -730,8 +688,7 @@ datataxonomy({
             "name": "etrap-14",
             "title": "Махтумкулийский этрап",
             "parents": ["turkmenistan", "balkanskiy"],
-            "descriptionSource": "data/descriptions/welayats/014.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/014.js",
             "shape": [
                 [
                     [
@@ -744,8 +701,7 @@ datataxonomy({
             "name": "etrap-13",
             "title": "Этрекский этрап",
             "parents": ["turkmenistan", "balkanskiy"],
-            "descriptionSource": "data/descriptions/welayats/013.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/013.js",
             "shape": [
                 [
                     [
@@ -758,8 +714,7 @@ datataxonomy({
             "name": "etrap-12",
             "title": "Эсенкулийский этрап",
             "parents": ["turkmenistan", "balkanskiy"],
-            "descriptionSource": "data/descriptions/welayats/012.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/012.js",
             "shape": [
                 [
                     [
@@ -772,8 +727,7 @@ datataxonomy({
             "name": "etrap-11",
             "title": "Берекетский этрап",
             "parents": ["turkmenistan", "balkanskiy"],
-            "descriptionSource": "data/descriptions/welayats/011.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/011.js",
             "shape": [
                 [
                     [
@@ -786,8 +740,7 @@ datataxonomy({
             "name": "etrap-10",
             "title": "Ак-Бугдайский этрап",
             "parents": ["turkmenistan", "ahalskiy"],
-            "descriptionSource": "data/descriptions/welayats/010.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/010.js",
             "shape": [
                 [
                     [
@@ -800,8 +753,7 @@ datataxonomy({
             "name": "etrap-9",
             "title": "Тедженский этрап",
             "parents": ["turkmenistan", "ahalskiy"],
-            "descriptionSource": "data/descriptions/welayats/009.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/009.js",
             "shape": [
                 [
                     [
@@ -814,8 +766,7 @@ datataxonomy({
             "name": "etrap-8",
             "title": "Сарахский этрап",
             "parents": ["turkmenistan", "ahalskiy"],
-            "descriptionSource": "data/descriptions/welayats/008.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/008.js",
             "shape": [
                 [
                     [
@@ -828,8 +779,7 @@ datataxonomy({
             "name": "etrap-7",
             "title": "Рухабатский этрап",
             "parents": ["turkmenistan", "ahalskiy"],
-            "descriptionSource": "data/descriptions/welayats/007.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/007.js",
             "shape": [
                 [
                     [
@@ -842,8 +792,7 @@ datataxonomy({
             "name": "etrap-6",
             "title": "Какинский этрап",
             "parents": ["turkmenistan", "ahalskiy"],
-            "descriptionSource": "data/descriptions/welayats/006.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/006.js",
             "shape": [
                 [
                     [
@@ -856,8 +805,7 @@ datataxonomy({
             "name": "etrap-5",
             "title": "Какинский этрап",
             "parents": ["turkmenistan", "ahalskiy"],
-            "descriptionSource": "data/descriptions/welayats/005.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/005.js",
             "shape": [
                 [
                     [
@@ -870,8 +818,7 @@ datataxonomy({
             "name": "etrap-4",
             "title": "Бахарлынский этрап",
             "parents": ["turkmenistan", "ahalskiy"],
-            "descriptionSource": "data/descriptions/welayats/004.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/004.js",
             "shape": [
                 [
                     [
@@ -884,8 +831,7 @@ datataxonomy({
             "name": "etrap-3",
             "title": "Бабадайханский этрап",
             "parents": ["turkmenistan", "ahalskiy"],
-            "descriptionSource": "data/descriptions/welayats/003.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/003.js",
             "shape": [
                 [
                     [
@@ -898,8 +844,7 @@ datataxonomy({
             "name": "etrap-2",
             "title": "Алтын-Асырский этрап",
             "parents": ["turkmenistan", "ahalskiy"],
-            "descriptionSource": "data/descriptions/welayats/002.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/002.js",
             "shape": [
                 [
                     [
@@ -912,8 +857,7 @@ datataxonomy({
             "name": "ashhabad",
             "title": "Ашхабад",
             "parents": ["turkmenistan", "ahalskiy"],
-            "descriptionSource": "data/descriptions/welayats/ashhabad.html",
-            "focusable": true,
+            "descriptionSource": "data/descriptions/welayats/ashhabad.js",
             "shape": [
                 [
                     [
