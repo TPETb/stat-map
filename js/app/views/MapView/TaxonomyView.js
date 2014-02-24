@@ -26,6 +26,7 @@ taxVP = SM.TaxonomyView.prototype;
  */
 taxVP.init = function() {
     this._TaxonomyObjectGroup = L.layerGroup();
+    this._Taxonomy_Options_Modal = new SM.Taxonomy_Options_Modal_View({title: ''});
 
     this._addEventListeners();
 };
@@ -35,6 +36,18 @@ taxVP._addEventListeners = function () {
     this._Model.ActiveTaxonomySet.add(this._onActiveTaxonomySet, this);
     this._Model.ActiveStatisticSet.add(this._onActiveStatisticSet, this);
     this._Model.FocusedObjectSet.add(this._onFocusedObjectSet, this);
+
+    this._Taxonomy_Options_Modal.ZoomIn.add(this._on_Taxonomy_Options_Modal_ZoomIn, this);
+    this._Taxonomy_Options_Modal.Info.add(this._on_Taxonomy_Options_Modal_Info, this);
+};
+
+taxVP._on_Taxonomy_Options_Modal_ZoomIn = function () {
+    this._Model.setFocusedObjectName(this._Taxonomy_Options_Modal.get_Object_Name());
+    this._Taxonomy_Options_Modal.hide();
+};
+
+taxVP._on_Taxonomy_Options_Modal_Info = function () {
+
 };
 
 taxVP._onRegionsRetrieved = function (sender) {
@@ -80,7 +93,8 @@ taxVP._onCycleCancelled = function () {
 };
 
 taxVP._onTaxonomyObjectClick = function (objectName) {
-    this._Model.setFocusedObjectName(objectName);
+    this._Taxonomy_Options_Modal.set_Object_Name(objectName);
+    this._Taxonomy_Options_Modal.show();
 };
 
 /**

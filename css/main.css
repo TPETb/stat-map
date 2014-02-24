@@ -299,3 +299,11 @@ html .btn-warning, html .btn-warning:hover, html .btn-warning:focus, html .btn-w
 #leaflet-control-container {
     z-index: 50;
 }
+
+html .modal-content {
+    padding: 30px;
+}
+
+html .Taxonomy_Options_Modal {
+    width: 400px;
+}
