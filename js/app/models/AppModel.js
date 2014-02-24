@@ -296,12 +296,29 @@ appModelP.getFocusedObjectName = function () {
     return this._FocusedObjectName;
 };
 
-appModelP.getFocusedObject = function () {
-    for (i = this._Taxonomy.welayats.length - 1; i >= 0; i--) {
-        if (this._Taxonomy.welayats[i].name == this.getFocusedObjectName()) {
+appModelP.getFocusedObject = function (objectName) {
+    if (!objectName) {
+        var objectName = this.getFocusedObjectName();
+    }
+
+    for (var i = this._Taxonomy.welayats.length - 1; i >= 0; i--) {
+        if (this._Taxonomy.welayats[i].name === objectName) {
             return this._Taxonomy.welayats[i];
         }
     }
+
+    for (var i = this._Taxonomy.cities.length - 1; i >= 0; i--) {
+        if (this._Taxonomy.cities[i].name === objectName) {
+            return this._Taxonomy.cities[i];
+        }
+    }
+
+    for (var i = this._Taxonomy.etraps.length - 1; i >= 0; i--) {
+        if (this._Taxonomy.etraps[i].name === objectName) {
+            return this._Taxonomy.etraps[i];
+        }
+    }
+
     return null;
 };
 
