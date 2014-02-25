@@ -107,9 +107,26 @@ taxVP._onCycleCancelled = function () {
     //this.setMapObjects(this._Model.getActiveTaxonomy());
 };
 
-taxVP._onTaxonomyObjectClick = function (objectName) {
-    this._Taxonomy_Options_Modal.set_Object_Name(objectName);
-    this._Taxonomy_Options_Modal.show();
+taxVP._onTaxonomyObjectClick = function (config) {
+    if (config.parents.length < 2) {
+        this._Taxonomy_Options_Modal.set_Object_Name(config.name);
+        this._Taxonomy_Options_Modal.show();
+    }
+    else {
+        $.ajax({
+            type: 'GET',
+            url: config.descriptionSource,
+            async: false,
+            jsonpCallback: config.descriptionSource.replace('.js', '').replace(/[^a-zA-Z0-9]/g, ''),
+            contentType: "application/javascript",
+            dataType: 'jsonp',
+            crossDomain: true,
+            success: function(response) {
+                var pane = new SM.Taxonomy_Info_Modal_View({"content": response.content});
+                pane.show();
+            }
+        });
+    }
 };
 
 /**
@@ -140,7 +157,7 @@ taxVP.setMapObjects = function(regionsConfig) {
 
         // add events
         if (regionsConfig[i].focusable) {
-            taxonomyObject.on('click', $.proxy(this._onTaxonomyObjectClick, this, regionsConfig[i].name));
+            taxonomyObject.on('click', $.proxy(this._onTaxonomyObjectClick, this, regionsConfig[i]));
         }
 
         this._TaxonomyObjectGroup.addLayer(taxonomyObject);
