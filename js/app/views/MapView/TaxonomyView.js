@@ -43,7 +43,6 @@ taxVP._addEventListeners = function () {
 
 taxVP._on_Taxonomy_Options_Modal_ZoomIn = function () {
     this._Model.setFocusedObjectName(this._Taxonomy_Options_Modal.get_Object_Name());
-    this._Taxonomy_Options_Modal.hide();
 };
 
 taxVP._on_Taxonomy_Options_Modal_Info = function () {

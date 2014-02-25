@@ -39,13 +39,13 @@ var SM = SM || {};
 
         _on_BtnZoomIn_Click: function (event) {
 //            this.trigger('ZoomIn');
-            this.ZoomIn.fire(this);
+            this.ZoomIn.fire(this, this._ObjectName);
             this.hide();
         },
 
         _on_BtnInfo_Click: function (event) {
 //            this.trigger('Info');
-            this.Info.fire(this);
+            this.Info.fire(this, this._ObjectName);
             this.hide();
         },
 
