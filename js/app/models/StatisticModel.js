@@ -108,7 +108,7 @@ statModelP._updateCurrentPeriod = function () {
             if (this._Data.periods[i] === this._CurrentPeriod) {
                 for (var k = i+1; k <= this._Data.periods.length; k++) {
                     if (k === this._Data.periods.length) {
-                        //this.cancelCycle();
+                        this.cancelCycle();
                         this.pauseCycle();
                         return;
                     }

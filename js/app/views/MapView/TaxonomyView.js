@@ -104,7 +104,7 @@ taxVP._onCurrentPeriodSet = function () {
 taxVP._onCycleCancelled = function () {
     this.setStatisticValues(null);
 
-    this.setMapObjects(this._Model.getActiveTaxonomy());
+    //this.setMapObjects(this._Model.getActiveTaxonomy());
 };
 
 taxVP._onTaxonomyObjectClick = function (objectName) {
