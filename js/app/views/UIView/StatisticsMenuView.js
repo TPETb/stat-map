@@ -64,7 +64,7 @@ statMenuViewP._addEventListeners = function () {
         this._BackBtn.on('click', $.proxy(this._onBackBtnClick, this));
     }
 
-    for (var i=0; i < this._Items.length; i++) {
+    for (var i = 0; i < this._Items.length; i++) {
         this._Items[i].SetActive.add(this._onItemSetActive, this);
     }
 };
@@ -116,13 +116,13 @@ statMenuViewP.hide = function () {
     if (this._DomNode) {
         this._DomNode.hide();
     }
-    for (var i=0; i < this._Items.length; i++) {
+    for (var i = 0; i < this._Items.length; i++) {
         this._Items[i].hide();
     }
 };
 
 statMenuViewP.toggle = function () {
-    if (this.isVisible()){
+    if (this.isVisible()) {
         this.hide();
     }
     else {

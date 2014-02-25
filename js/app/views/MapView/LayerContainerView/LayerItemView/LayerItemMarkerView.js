@@ -22,7 +22,8 @@ layerIMVP.init = function(options) {
     this.lng = options.lng;
     this.icon = options.icon;
     this.contentType = options.contentType;
-    this.content = options.content;
+    this.descriptionSource = options.descriptionSource;
+//    this.content = options.content;
 };
 
 /**
@@ -44,6 +45,23 @@ layerIMVP.getMapObject = function() {
         popupAnchor: config.markers[this.icon].popupAnchor
     });
     var marker = L.marker([this.lat, this.lng], {icon: icon});
+
+    var self = this;
+    marker.on('click', function(){
+        $.ajax({
+            type: 'GET',
+            url: self.descriptionSource,
+            async: false,
+            jsonpCallback: self.descriptionSource.replace('.js', '').replace(/[^a-zA-Z0-9]/g, ''),
+            contentType: "application/javascript",
+            dataType: 'jsonp',
+            crossDomain: true,
+            success: function(response) {
+                var pane = new SM.Taxonomy_Info_Modal_View({"content": response.content});
+                pane.show();
+            }
+        });
+    });
     
     return marker;
 };

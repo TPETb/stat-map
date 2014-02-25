@@ -1,4 +1,4 @@
-datataxonomybakjson(// This version also includes "holes" in welayats for govering cities
+datataxonomybak(// This version also includes "holes" in welayats for govering cities
 {
     "welayats": [
         {
@@ -7,7 +7,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "parents": ["turkmenistan"],
             "focusable": true,
             "substrate": "images/substrates/mariyskiy/{z}/{x}/{y}.png",
-            "descriptionSource": "data/descriptions/welayats/mariyskiy.html",
+            "descriptionSource": "data/descriptions/welayats/mariyskiy.js",
             "shape": [
                 [
                     [
@@ -25,7 +25,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "parents": ["turkmenistan"],
             "focusable": true,
             "substrate": "images/substrates/dashoguzskiy/{z}/{x}/{y}.png",
-            "descriptionSource": "data/descriptions/welayats/dashoguzskiy.html",
+            "descriptionSource": "data/descriptions/welayats/dashoguzskiy.js",
             "shape": [
                 [
                     [
@@ -43,7 +43,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "parents": ["turkmenistan"],
             "focusable": true,
             "substrate": "images/substrates/lebapskiy/{z}/{x}/{y}.png",
-            "descriptionSource": "data/descriptions/welayats/lebapskiy.html",
+            "descriptionSource": "data/descriptions/welayats/lebapskiy.js",
             "shape": [
                 [
                     [
@@ -61,7 +61,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "parents": ["turkmenistan"],
             "focusable": true,
             "substrate": "images/substrates/balkanskiy/{z}/{x}/{y}.png",
-            "descriptionSource": "data/descriptions/welayats/balkanskiy.html",
+            "descriptionSource": "data/descriptions/welayats/balkanskiy.js",
             "shape": [
                 [
                     [
@@ -79,7 +79,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "parents": ["turkmenistan"],
             "focusable": true,
             "substrate": "images/substrates/ahalskiy/{z}/{x}/{y}.png",
-            "descriptionSource": "data/descriptions/welayats/ahalskiy.html",
+            "descriptionSource": "data/descriptions/welayats/ahalskiy.js",
             "shape": [
                 [
                     [
@@ -96,7 +96,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
         {
             "name": "ashhabad",
             "title": "Ашхабад",
-            "descriptionSource": "data/descriptions/welayats/ashhabad.html",
+            "descriptionSource": "data/descriptions/welayats/ashhabad.js",
             "shape": [
                 [
                     [
@@ -151,7 +151,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-51",
             "title": "Иолотанский этрап",
             "parents": ["turkmenistan", "mariyskiy"],
-            "descriptionSource": "data/descriptions/welayats/051.html",
+            "descriptionSource": "data/descriptions/welayats/051.js",
             "shape": [
                 [
                     [
@@ -164,7 +164,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-50",
             "title": "Векилбазарский этрап",
             "parents": ["turkmenistan", "mariyskiy"],
-            "descriptionSource": "data/descriptions/welayats/050.html",
+            "descriptionSource": "data/descriptions/welayats/050.js",
             "shape": [
                 [
                     [
@@ -183,7 +183,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-49",
             "title": "Туркменкалинский этрап",
             "parents": ["turkmenistan", "mariyskiy"],
-            "descriptionSource": "data/descriptions/welayats/049.html",
+            "descriptionSource": "data/descriptions/welayats/049.js",
             "shape": [
                 [
                     [
@@ -196,7 +196,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-48",
             "title": "Тагтабазарский этрап",
             "parents": ["turkmenistan", "mariyskiy"],
-            "descriptionSource": "data/descriptions/welayats/048.html",
+            "descriptionSource": "data/descriptions/welayats/048.js",
             "shape": [
                 [
                     [
@@ -209,7 +209,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-47",
             "title": "Серхетабадский этрап",
             "parents": ["turkmenistan", "mariyskiy"],
-            "descriptionSource": "data/descriptions/welayats/047.html",
+            "descriptionSource": "data/descriptions/welayats/047.js",
             "shape": [
                 [
                     [
@@ -222,7 +222,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-46",
             "title": "Сакарчагинский этрап",
             "parents": ["turkmenistan", "mariyskiy"],
-            "descriptionSource": "data/descriptions/welayats/046.html",
+            "descriptionSource": "data/descriptions/welayats/046.js",
             "shape": [
                 [
                     [
@@ -241,7 +241,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-45",
             "title": "Огузханский этрап",
             "parents": ["turkmenistan", "mariyskiy"],
-            "descriptionSource": "data/descriptions/welayats/045.html",
+            "descriptionSource": "data/descriptions/welayats/045.js",
             "shape": [
                 [
                     [
@@ -257,7 +257,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-44",
             "title": "Мургапский этрап",
             "parents": ["turkmenistan", "mariyskiy"],
-            "descriptionSource": "data/descriptions/welayats/044.html",
+            "descriptionSource": "data/descriptions/welayats/044.js",
             "shape": [
                 [
                     [
@@ -270,7 +270,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-43",
             "title": "Марыйский этрап",
             "parents": ["turkmenistan", "mariyskiy"],
-            "descriptionSource": "data/descriptions/welayats/043.html",
+            "descriptionSource": "data/descriptions/welayats/043.js",
             "shape": [
                 [
                     [
@@ -304,7 +304,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-42",
             "title": "Каракумский этрап",
             "parents": ["turkmenistan", "mariyskiy"],
-            "descriptionSource": "data/descriptions/welayats/042.html",
+            "descriptionSource": "data/descriptions/welayats/042.js",
             "shape": [
                 [
                     [
@@ -317,7 +317,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-41",
             "title": "Байрамалинский этрап",
             "parents": ["turkmenistan", "mariyskiy"],
-            "descriptionSource": "data/descriptions/welayats/041.html",
+            "descriptionSource": "data/descriptions/welayats/041.js",
             "shape": [
                 [
                     [
@@ -336,7 +336,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-40",
             "title": "Этрап имени Сапармурата Туркменбаши",
             "parents": ["turkmenistan", "dashoguzskiy"],
-            "descriptionSource": "data/descriptions/welayats/040.html",
+            "descriptionSource": "data/descriptions/welayats/040.js",
             "shape": [
                 [
                     [
@@ -349,7 +349,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-39",
             "title": "Этрап имени С. А. Ниязова",
             "parents": ["turkmenistan", "dashoguzskiy"],
-            "descriptionSource": "data/descriptions/welayats/039.html",
+            "descriptionSource": "data/descriptions/welayats/039.js",
             "shape": [
                 [
                     [
@@ -362,7 +362,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-38",
             "title": "Кёнеургенчский этрап",
             "parents": ["turkmenistan", "dashoguzskiy"],
-            "descriptionSource": "data/descriptions/welayats/038.html",
+            "descriptionSource": "data/descriptions/welayats/038.js",
             "shape": [
                 [
                     [
@@ -375,7 +375,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-37",
             "title": "Этрап имени Гурбансолтан-эдже",
             "parents": ["turkmenistan", "dashoguzskiy"],
-            "descriptionSource": "data/descriptions/welayats/037.html",
+            "descriptionSource": "data/descriptions/welayats/037.js",
             "shape": [
                 [
                     [
@@ -388,7 +388,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-36",
             "title": "Губадагский этрап",
             "parents": ["turkmenistan", "dashoguzskiy"],
-            "descriptionSource": "data/descriptions/welayats/036.html",
+            "descriptionSource": "data/descriptions/welayats/036.js",
             "shape": [
                 [
                     [
@@ -404,7 +404,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-35",
             "title": "Гёроглынский этрап",
             "parents": ["turkmenistan", "dashoguzskiy"],
-            "descriptionSource": "data/descriptions/welayats/035.html",
+            "descriptionSource": "data/descriptions/welayats/035.js",
             "shape": [
                 [
                     [
@@ -417,7 +417,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-34",
             "title": "Болдумсазский этрап",
             "parents": ["turkmenistan", "dashoguzskiy"],
-            "descriptionSource": "data/descriptions/welayats/034.html",
+            "descriptionSource": "data/descriptions/welayats/034.js",
             "shape": [
                 [
                     [
@@ -433,7 +433,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-33",
             "title": "Акдепинский этрап",
             "parents": ["turkmenistan", "dashoguzskiy"],
-            "descriptionSource": "data/descriptions/welayats/033.html",
+            "descriptionSource": "data/descriptions/welayats/033.js",
             "shape": [
                 [
                     [
@@ -446,7 +446,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-32",
             "title": "Территория хякимляка г. Сейди",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/032.html",
+            "descriptionSource": "data/descriptions/welayats/032.js",
             "shape": [
                 [
                     [
@@ -459,7 +459,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-31",
             "title": "Сердарабатский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/031.html",
+            "descriptionSource": "data/descriptions/welayats/031.js",
             "shape": [
                 [
                     [
@@ -472,7 +472,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-30",
             "title": "Саятский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/030.html",
+            "descriptionSource": "data/descriptions/welayats/030.js",
             "shape": [
                 [
                     [
@@ -485,7 +485,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-29",
             "title": "Сакарский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/029.html",
+            "descriptionSource": "data/descriptions/welayats/029.js",
             "shape": [
                 [
                     [
@@ -498,7 +498,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-28",
             "title": "Кёйтендагский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/028.html",
+            "descriptionSource": "data/descriptions/welayats/028.js",
             "shape": [
                 [
                     [
@@ -511,7 +511,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-27",
             "title": "Ходжамбасский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/027.html",
+            "descriptionSource": "data/descriptions/welayats/027.js",
             "shape": [
                 [
                     [
@@ -524,7 +524,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-26",
             "title": "Халачский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/026.html",
+            "descriptionSource": "data/descriptions/welayats/026.js",
             "shape": [
                 [
                     [
@@ -537,7 +537,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-25",
             "title": "Гарашсызлыкский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/025.html",
+            "descriptionSource": "data/descriptions/welayats/025.js",
             "shape": [
                 [
                     [
@@ -553,7 +553,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-24",
             "title": "Карабекевюльский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/024.html",
+            "descriptionSource": "data/descriptions/welayats/024.js",
             "shape": [
                 [
                     [
@@ -566,7 +566,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-23",
             "title": "Галкынышский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/023.html",
+            "descriptionSource": "data/descriptions/welayats/023.js",
             "shape": [
                 [
                     [
@@ -579,7 +579,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-22",
             "title": "Фарапский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/022.html",
+            "descriptionSource": "data/descriptions/welayats/022.js",
             "shape": [
                 [
                     [
@@ -592,7 +592,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-21",
             "title": "Биратинский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/021.html",
+            "descriptionSource": "data/descriptions/welayats/021.js",
             "shape": [
                 [
                     [
@@ -605,7 +605,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-20",
             "title": "Бейик Туркменбаши этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/020.html",
+            "descriptionSource": "data/descriptions/welayats/020.js",
             "shape": [
                 [
                     [
@@ -618,7 +618,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-19",
             "title": "Атамуратский этрап",
             "parents": ["turkmenistan", "lebapskiy"],
-            "descriptionSource": "data/descriptions/welayats/019.html",
+            "descriptionSource": "data/descriptions/welayats/019.js",
             "shape": [
                 [
                     [
@@ -631,7 +631,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-18",
             "title": "Территория хякимлика г. Хазара",
             "parents": ["turkmenistan", "balkanskiy"],
-            "descriptionSource": "data/descriptions/welayats/018.html",
+            "descriptionSource": "data/descriptions/welayats/018.js",
             "shape": [
                 [
                     [
@@ -644,7 +644,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-17",
             "title": "Территория хякимлика г.Балканабада",
             "parents": ["turkmenistan", "balkanskiy"],
-            "descriptionSource": "data/descriptions/welayats/017.html",
+            "descriptionSource": "data/descriptions/welayats/017.js",
             "shape": [
                 [
                     [
@@ -657,7 +657,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-16",
             "title": "Туркменбашийский этрап",
             "parents": ["turkmenistan", "balkanskiy"],
-            "descriptionSource": "data/descriptions/welayats/016.html",
+            "descriptionSource": "data/descriptions/welayats/016.js",
             "shape": [
                 [
                     [
@@ -670,7 +670,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-15",
             "title": "Сердарский этрап",
             "parents": ["turkmenistan", "balkanskiy"],
-            "descriptionSource": "data/descriptions/welayats/015.html",
+            "descriptionSource": "data/descriptions/welayats/015.js",
             "shape": [
                 [
                     [
@@ -683,7 +683,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-14",
             "title": "Махтумкулийский этрап",
             "parents": ["turkmenistan", "balkanskiy"],
-            "descriptionSource": "data/descriptions/welayats/014.html",
+            "descriptionSource": "data/descriptions/welayats/014.js",
             "shape": [
                 [
                     [
@@ -696,7 +696,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-13",
             "title": "Этрекский этрап",
             "parents": ["turkmenistan", "balkanskiy"],
-            "descriptionSource": "data/descriptions/welayats/013.html",
+            "descriptionSource": "data/descriptions/welayats/013.js",
             "shape": [
                 [
                     [
@@ -709,7 +709,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-12",
             "title": "Эсенкулийский этрап",
             "parents": ["turkmenistan", "balkanskiy"],
-            "descriptionSource": "data/descriptions/welayats/012.html",
+            "descriptionSource": "data/descriptions/welayats/012.js",
             "shape": [
                 [
                     [
@@ -722,7 +722,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-11",
             "title": "Берекетский этрап",
             "parents": ["turkmenistan", "balkanskiy"],
-            "descriptionSource": "data/descriptions/welayats/011.html",
+            "descriptionSource": "data/descriptions/welayats/011.js",
             "shape": [
                 [
                     [
@@ -735,7 +735,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-10",
             "title": "Ак-Бугдайский этрап",
             "parents": ["turkmenistan", "ahalskiy"],
-            "descriptionSource": "data/descriptions/welayats/010.html",
+            "descriptionSource": "data/descriptions/welayats/010.js",
             "shape": [
                 [
                     [
@@ -748,7 +748,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-9",
             "title": "Тедженский этрап",
             "parents": ["turkmenistan", "ahalskiy"],
-            "descriptionSource": "data/descriptions/welayats/009.html",
+            "descriptionSource": "data/descriptions/welayats/009.js",
             "shape": [
                 [
                     [
@@ -761,7 +761,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-8",
             "title": "Сарахский этрап",
             "parents": ["turkmenistan", "ahalskiy"],
-            "descriptionSource": "data/descriptions/welayats/008.html",
+            "descriptionSource": "data/descriptions/welayats/008.js",
             "shape": [
                 [
                     [
@@ -774,7 +774,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-7",
             "title": "Рухабатский этрап",
             "parents": ["turkmenistan", "ahalskiy"],
-            "descriptionSource": "data/descriptions/welayats/007.html",
+            "descriptionSource": "data/descriptions/welayats/007.js",
             "shape": [
                 [
                     [
@@ -787,7 +787,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-6",
             "title": "Какинский этрап",
             "parents": ["turkmenistan", "ahalskiy"],
-            "descriptionSource": "data/descriptions/welayats/006.html",
+            "descriptionSource": "data/descriptions/welayats/006.js",
             "shape": [
                 [
                     [
@@ -800,7 +800,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-5",
             "title": "Какинский этрап",
             "parents": ["turkmenistan", "ahalskiy"],
-            "descriptionSource": "data/descriptions/welayats/005.html",
+            "descriptionSource": "data/descriptions/welayats/005.js",
             "shape": [
                 [
                     [
@@ -813,7 +813,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-4",
             "title": "Бахарлынский этрап",
             "parents": ["turkmenistan", "ahalskiy"],
-            "descriptionSource": "data/descriptions/welayats/004.html",
+            "descriptionSource": "data/descriptions/welayats/004.js",
             "shape": [
                 [
                     [
@@ -826,7 +826,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-3",
             "title": "Бабадайханский этрап",
             "parents": ["turkmenistan", "ahalskiy"],
-            "descriptionSource": "data/descriptions/welayats/003.html",
+            "descriptionSource": "data/descriptions/welayats/003.js",
             "shape": [
                 [
                     [
@@ -839,7 +839,7 @@ datataxonomybakjson(// This version also includes "holes" in welayats for goveri
             "name": "etrap-2",
             "title": "Алтын-Асырский этрап",
             "parents": ["turkmenistan", "ahalskiy"],
-            "descriptionSource": "data/descriptions/welayats/002.html",
+            "descriptionSource": "data/descriptions/welayats/002.js",
             "shape": [
                 [
                     [

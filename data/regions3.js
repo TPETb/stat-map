@@ -3,7 +3,7 @@ dataregions3({
         {
             "name": "mariyskiy",
             "title": "Марыйский велаят",
-            "descriptionSource": "data/descriptions/welayats/mariyskiy.html",
+            "descriptionSource": "data/descriptions/welayats/mariyskiy.js",
             "shape": [
                 [
                     [
@@ -1116,7 +1116,7 @@ dataregions3({
         {
             "name": "dashoguzskiy",
             "title": "Дашогузский велаят",
-            "descriptionSource": "data/descriptions/welayats/dashoguzskiy.html",
+            "descriptionSource": "data/descriptions/welayats/dashoguzskiy.js",
             "shape": [
                 [
                     [
@@ -2312,7 +2312,7 @@ dataregions3({
         {
             "name": "lebapskiy",
             "title": "Лебапский велаят",
-            "descriptionSource": "data/descriptions/welayats/lebapskiy.html",
+            "descriptionSource": "data/descriptions/welayats/lebapskiy.js",
             "shape": [
                 [
                     [
@@ -3646,7 +3646,7 @@ dataregions3({
         {
             "name": "balkanskiy",
             "title": "Балканский велаят",
-            "descriptionSource": "data/descriptions/welayats/balkanskiy.html",
+            "descriptionSource": "data/descriptions/welayats/balkanskiy.js",
             "shape": [
                 [
                     [
@@ -5026,7 +5026,7 @@ dataregions3({
         {
             "name": "ahalskiy",
             "title": "Ахалский велаят",
-            "descriptionSource": "data/descriptions/welayats/ahalskiy.html",
+            "descriptionSource": "data/descriptions/welayats/ahalskiy.js",
             "shape": [
                 [
                     [
@@ -6367,7 +6367,7 @@ dataregions3({
         {
             "name": "ashhabad",
             "title": "Ашхабад",
-            "descriptionSource": "data/descriptions/welayats/ashhabad.html",
+            "descriptionSource": "data/descriptions/welayats/ashhabad.js",
             "shape": [
                 [
                     [
@@ -6557,7 +6557,7 @@ dataregions3({
         {
             "name": "etrap-51",
             "title": "Иолотанский этрап",
-            "descriptionSource": "data/descriptions/welayats/051.html",
+            "descriptionSource": "data/descriptions/welayats/051.js",
             "shape": [
                 [
                     [
@@ -6979,7 +6979,7 @@ dataregions3({
         {
             "name": "etrap-50",
             "title": "Векилбазарский этрап",
-            "descriptionSource": "data/descriptions/welayats/050.html",
+            "descriptionSource": "data/descriptions/welayats/050.js",
             "shape": [
                 [
                     [
@@ -7570,7 +7570,7 @@ dataregions3({
         {
             "name": "etrap-49",
             "title": "Туркменкалинский этрап",
-            "descriptionSource": "data/descriptions/welayats/049.html",
+            "descriptionSource": "data/descriptions/welayats/049.js",
             "shape": [
                 [
                     [
@@ -7850,7 +7850,7 @@ dataregions3({
         {
             "name": "etrap-48",
             "title": "Тагтабазарский этрап",
-            "descriptionSource": "data/descriptions/welayats/048.html",
+            "descriptionSource": "data/descriptions/welayats/048.js",
             "shape": [
                 [
                     [
@@ -8139,7 +8139,7 @@ dataregions3({
         {
             "name": "etrap-47",
             "title": "Серхетабадский этрап",
-            "descriptionSource": "data/descriptions/welayats/047.html",
+            "descriptionSource": "data/descriptions/welayats/047.js",
             "shape": [
                 [
                     [
@@ -8676,7 +8676,7 @@ dataregions3({
         {
             "name": "etrap-46",
             "title": "Сакарчагинский этрап",
-            "descriptionSource": "data/descriptions/welayats/046.html",
+            "descriptionSource": "data/descriptions/welayats/046.js",
             "shape": [
                 [
                     [
@@ -9343,7 +9343,7 @@ dataregions3({
         {
             "name": "etrap-45",
             "title": "Огузханский этрап",
-            "descriptionSource": "data/descriptions/welayats/045.html",
+            "descriptionSource": "data/descriptions/welayats/045.js",
             "shape": [
                 [
                     [
@@ -9507,7 +9507,7 @@ dataregions3({
         {
             "name": "etrap-44",
             "title": "Мургапский этрап",
-            "descriptionSource": "data/descriptions/welayats/044.html",
+            "descriptionSource": "data/descriptions/welayats/044.js",
             "shape": [
                 [
                     [
@@ -9824,7 +9824,7 @@ dataregions3({
         {
             "name": "etrap-43",
             "title": "Марыйский этрап",
-            "descriptionSource": "data/descriptions/welayats/043.html",
+            "descriptionSource": "data/descriptions/welayats/043.js",
             "shape": [
                 [
                     [
@@ -10734,7 +10734,7 @@ dataregions3({
         {
             "name": "etrap-42",
             "title": "Каракумский этрап",
-            "descriptionSource": "data/descriptions/welayats/042.html",
+            "descriptionSource": "data/descriptions/welayats/042.js",
             "shape": [
                 [
                     [
@@ -11077,7 +11077,7 @@ dataregions3({
         {
             "name": "etrap-41",
             "title": "Байрамалинский этрап",
-            "descriptionSource": "data/descriptions/welayats/041.html",
+            "descriptionSource": "data/descriptions/welayats/041.js",
             "shape": [
                 [
                     [
@@ -11708,7 +11708,7 @@ dataregions3({
         {
             "name": "etrap-40",
             "title": "Этрап имени Сапармурата Туркменбаши",
-            "descriptionSource": "data/descriptions/welayats/040.html",
+            "descriptionSource": "data/descriptions/welayats/040.js",
             "shape": [
                 [
                     [
@@ -12067,7 +12067,7 @@ dataregions3({
         {
             "name": "etrap-39",
             "title": "Этрап имени С. А. Ниязова",
-            "descriptionSource": "data/descriptions/welayats/039.html",
+            "descriptionSource": "data/descriptions/welayats/039.js",
             "shape": [
                 [
                     [
@@ -12688,7 +12688,7 @@ dataregions3({
         {
             "name": "etrap-38",
             "title": "Кёнеургенчский этрап",
-            "descriptionSource": "data/descriptions/welayats/038.html",
+            "descriptionSource": "data/descriptions/welayats/038.js",
             "shape": [
                 [
                     [
@@ -13014,7 +13014,7 @@ dataregions3({
         {
             "name": "etrap-37",
             "title": "Этрап имени Гурбансолтан-эдже",
-            "descriptionSource": "data/descriptions/welayats/037.html",
+            "descriptionSource": "data/descriptions/welayats/037.js",
             "shape": [
                 [
                     [
@@ -13449,7 +13449,7 @@ dataregions3({
         {
             "name": "etrap-36",
             "title": "Губадагский этрап",
-            "descriptionSource": "data/descriptions/welayats/036.html",
+            "descriptionSource": "data/descriptions/welayats/036.js",
             "shape": [
                 [
                     [
@@ -13991,7 +13991,7 @@ dataregions3({
         {
             "name": "etrap-35",
             "title": "Гёроглынский этрап",
-            "descriptionSource": "data/descriptions/welayats/035.html",
+            "descriptionSource": "data/descriptions/welayats/035.js",
             "shape": [
                 [
                     [
@@ -14616,7 +14616,7 @@ dataregions3({
         {
             "name": "etrap-34",
             "title": "Болдумсазский этрап",
-            "descriptionSource": "data/descriptions/welayats/034.html",
+            "descriptionSource": "data/descriptions/welayats/034.js",
             "shape": [
                 [
                     [
@@ -15128,7 +15128,7 @@ dataregions3({
         {
             "name": "etrap-33",
             "title": "Акдепинский этрап",
-            "descriptionSource": "data/descriptions/welayats/033.html",
+            "descriptionSource": "data/descriptions/welayats/033.js",
             "shape": [
                 [
                     [
@@ -15694,7 +15694,7 @@ dataregions3({
         {
             "name": "etrap-32",
             "title": "Территория хякимляка г. Сейди",
-            "descriptionSource": "data/descriptions/welayats/032.html",
+            "descriptionSource": "data/descriptions/welayats/032.js",
             "shape": [
                 [
                     [
@@ -15964,7 +15964,7 @@ dataregions3({
         {
             "name": "etrap-31",
             "title": "Сердарабатский этрап",
-            "descriptionSource": "data/descriptions/welayats/031.html",
+            "descriptionSource": "data/descriptions/welayats/031.js",
             "shape": [
                 [
                     [
@@ -16363,7 +16363,7 @@ dataregions3({
         {
             "name": "etrap-30",
             "title": "Саятский этрап",
-            "descriptionSource": "data/descriptions/welayats/030.html",
+            "descriptionSource": "data/descriptions/welayats/030.js",
             "shape": [
                 [
                     [
@@ -16750,7 +16750,7 @@ dataregions3({
         {
             "name": "etrap-29",
             "title": "Сакарский этрап",
-            "descriptionSource": "data/descriptions/welayats/029.html",
+            "descriptionSource": "data/descriptions/welayats/029.js",
             "shape": [
                 [
                     [
@@ -17026,7 +17026,7 @@ dataregions3({
         {
             "name": "etrap-28",
             "title": "Кёйтендагский этрап",
-            "descriptionSource": "data/descriptions/welayats/028.html",
+            "descriptionSource": "data/descriptions/welayats/028.js",
             "shape": [
                 [
                     [
@@ -17253,7 +17253,7 @@ dataregions3({
         {
             "name": "etrap-27",
             "title": "Ходжамбасский этрап",
-            "descriptionSource": "data/descriptions/welayats/027.html",
+            "descriptionSource": "data/descriptions/welayats/027.js",
             "shape": [
                 [
                     [
@@ -17467,7 +17467,7 @@ dataregions3({
         {
             "name": "etrap-26",
             "title": "Халачский этрап",
-            "descriptionSource": "data/descriptions/welayats/026.html",
+            "descriptionSource": "data/descriptions/welayats/026.js",
             "shape": [
                 [
                     [
@@ -17807,7 +17807,7 @@ dataregions3({
         {
             "name": "etrap-25",
             "title": "Гарашсызлыкский этрап",
-            "descriptionSource": "data/descriptions/welayats/025.html",
+            "descriptionSource": "data/descriptions/welayats/025.js",
             "shape": [
                 [
                     [
@@ -18235,7 +18235,7 @@ dataregions3({
         {
             "name": "etrap-24",
             "title": "Карабекевюльский этрап",
-            "descriptionSource": "data/descriptions/welayats/024.html",
+            "descriptionSource": "data/descriptions/welayats/024.js",
             "shape": [
                 [
                     [
@@ -18534,7 +18534,7 @@ dataregions3({
         {
             "name": "etrap-23",
             "title": "Галкынышский этрап",
-            "descriptionSource": "data/descriptions/welayats/023.html",
+            "descriptionSource": "data/descriptions/welayats/023.js",
             "shape": [
                 [
                     [
@@ -18856,7 +18856,7 @@ dataregions3({
         {
             "name": "etrap-22",
             "title": "Фарапский этрап",
-            "descriptionSource": "data/descriptions/welayats/022.html",
+            "descriptionSource": "data/descriptions/welayats/022.js",
             "shape": [
                 [
                     [
@@ -19220,7 +19220,7 @@ dataregions3({
         {
             "name": "etrap-21",
             "title": "Биратинский этрап",
-            "descriptionSource": "data/descriptions/welayats/021.html",
+            "descriptionSource": "data/descriptions/welayats/021.js",
             "shape": [
                 [
                     [
@@ -19662,7 +19662,7 @@ dataregions3({
         {
             "name": "etrap-20",
             "title": "Бейик Туркменбаши этрап",
-            "descriptionSource": "data/descriptions/welayats/020.html",
+            "descriptionSource": "data/descriptions/welayats/020.js",
             "shape": [
                 [
                     [
@@ -19947,7 +19947,7 @@ dataregions3({
         {
             "name": "etrap-19",
             "title": "Атамуратский этрап",
-            "descriptionSource": "data/descriptions/welayats/019.html",
+            "descriptionSource": "data/descriptions/welayats/019.js",
             "shape": [
                 [
                     [
@@ -20246,7 +20246,7 @@ dataregions3({
         {
             "name": "etrap-18",
             "title": "Территория хякимлика г. Хазара",
-            "descriptionSource": "data/descriptions/welayats/018.html",
+            "descriptionSource": "data/descriptions/welayats/018.js",
             "shape": [
                 [
                     [
@@ -20386,7 +20386,7 @@ dataregions3({
         {
             "name": "etrap-17",
             "title": "Территория хякимлика г.Балканабада",
-            "descriptionSource": "data/descriptions/welayats/017.html",
+            "descriptionSource": "data/descriptions/welayats/017.js",
             "shape": [
                 [
                     [
@@ -20748,7 +20748,7 @@ dataregions3({
         {
             "name": "etrap-16",
             "title": "Туркменбашийский этрап",
-            "descriptionSource": "data/descriptions/welayats/016.html",
+            "descriptionSource": "data/descriptions/welayats/016.js",
             "shape": [
                 [
                     [
@@ -21739,7 +21739,7 @@ dataregions3({
         {
             "name": "etrap-15",
             "title": "Сердарский этрап",
-            "descriptionSource": "data/descriptions/welayats/015.html",
+            "descriptionSource": "data/descriptions/welayats/015.js",
             "shape": [
                 [
                     [
@@ -22152,7 +22152,7 @@ dataregions3({
         {
             "name": "etrap-14",
             "title": "Махтумкулийский этрап",
-            "descriptionSource": "data/descriptions/welayats/014.html",
+            "descriptionSource": "data/descriptions/welayats/014.js",
             "shape": [
                 [
                     [
@@ -22416,7 +22416,7 @@ dataregions3({
         {
             "name": "etrap-13",
             "title": "Этрекский этрап",
-            "descriptionSource": "data/descriptions/welayats/013.html",
+            "descriptionSource": "data/descriptions/welayats/013.js",
             "shape": [
                 [
                     [
@@ -22768,7 +22768,7 @@ dataregions3({
         {
             "name": "etrap-12",
             "title": "Эсенкулийский этрап",
-            "descriptionSource": "data/descriptions/welayats/012.html",
+            "descriptionSource": "data/descriptions/welayats/012.js",
             "shape": [
                 [
                     [
@@ -23119,7 +23119,7 @@ dataregions3({
         {
             "name": "etrap-11",
             "title": "Берекетский этрап",
-            "descriptionSource": "data/descriptions/welayats/011.html",
+            "descriptionSource": "data/descriptions/welayats/011.js",
             "shape": [
                 [
                     [
@@ -23726,7 +23726,7 @@ dataregions3({
         {
             "name": "etrap-10",
             "title": "Ак-Бугдайский этрап",
-            "descriptionSource": "data/descriptions/welayats/010.html",
+            "descriptionSource": "data/descriptions/welayats/010.js",
             "shape": [
                 [
                     [
@@ -24083,7 +24083,7 @@ dataregions3({
         {
             "name": "etrap-9",
             "title": "Тедженский этрап",
-            "descriptionSource": "data/descriptions/welayats/009.html",
+            "descriptionSource": "data/descriptions/welayats/009.js",
             "shape": [
                 [
                     [
@@ -25041,7 +25041,7 @@ dataregions3({
         {
             "name": "etrap-8",
             "title": "Сарахский этрап",
-            "descriptionSource": "data/descriptions/welayats/008.html",
+            "descriptionSource": "data/descriptions/welayats/008.js",
             "shape": [
                 [
                     [
@@ -25393,7 +25393,7 @@ dataregions3({
         {
             "name": "etrap-7",
             "title": "Рухабатский этрап",
-            "descriptionSource": "data/descriptions/welayats/007.html",
+            "descriptionSource": "data/descriptions/welayats/007.js",
             "shape": [
                 [
                     [
@@ -26061,7 +26061,7 @@ dataregions3({
         {
             "name": "etrap-6",
             "title": "Какинский этрап",
-            "descriptionSource": "data/descriptions/welayats/006.html",
+            "descriptionSource": "data/descriptions/welayats/006.js",
             "shape": [
                 [
                     [
@@ -26480,7 +26480,7 @@ dataregions3({
         {
             "name": "etrap-5",
             "title": "Какинский этрап",
-            "descriptionSource": "data/descriptions/welayats/005.html",
+            "descriptionSource": "data/descriptions/welayats/005.js",
             "shape": [
                 [
                     [
@@ -26885,7 +26885,7 @@ dataregions3({
         {
             "name": "etrap-4",
             "title": "Бахарлынский этрап",
-            "descriptionSource": "data/descriptions/welayats/004.html",
+            "descriptionSource": "data/descriptions/welayats/004.js",
             "shape": [
                 [
                     [
@@ -27342,7 +27342,7 @@ dataregions3({
         {
             "name": "etrap-3",
             "title": "Бабадайханский этрап",
-            "descriptionSource": "data/descriptions/welayats/003.html",
+            "descriptionSource": "data/descriptions/welayats/003.js",
             "shape": [
                 [
                     [
@@ -27726,7 +27726,7 @@ dataregions3({
         {
             "name": "etrap-2",
             "title": "Алтын-Асырский этрап",
-            "descriptionSource": "data/descriptions/welayats/002.html",
+            "descriptionSource": "data/descriptions/welayats/002.js",
             "shape": [
                 [
                     [

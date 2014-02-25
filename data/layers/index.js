@@ -59,6 +59,14 @@ datalayersindex({
     ],
     "tourism": [
         {
+            "name": "landmarks",
+            "title": "Достопримечательности",
+            "active": true,
+            "forced": false,
+            "source": "data/layers/landmarks.js",
+            "appliedTo": ["turkmenistan", "ahalskiy", "balkanskiy", "dashoguzskiy", "lebapskiy", "mariyskiy"]
+        },
+        {
             "name": "airports",
             "title": "Аэропорты",
             "active": true,

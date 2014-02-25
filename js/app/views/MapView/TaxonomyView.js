@@ -27,6 +27,7 @@ taxVP = SM.TaxonomyView.prototype;
 taxVP.init = function() {
     this._TaxonomyObjectGroup = L.layerGroup();
     this._Taxonomy_Options_Modal = new SM.Taxonomy_Options_Modal_View({title: ''});
+    this._Taxonomy_Info_Modal = new SM.Taxonomy_Info_Modal_View({content: ''});
 
     this._addEventListeners();
 };
@@ -46,7 +47,22 @@ taxVP._on_Taxonomy_Options_Modal_ZoomIn = function () {
 };
 
 taxVP._on_Taxonomy_Options_Modal_Info = function () {
-
+    var objectName = this._Taxonomy_Options_Modal.get_Object_Name();
+    var object = this._Model.getObjectByName(objectName);
+    var self = this;
+    $.ajax({
+        type: 'GET',
+        url: object.descriptionSource,
+        async: false,
+        jsonpCallback: object.descriptionSource.replace('.js', '').replace(/[^a-zA-Z0-9]/g, ''),
+        contentType: "application/javascript",
+        dataType: 'jsonp',
+        crossDomain: true,
+        success: function(response) {
+            var pane = new SM.Taxonomy_Info_Modal_View({"content": response.content});
+            pane.show();
+        }
+    });
 };
 
 taxVP._onRegionsRetrieved = function (sender) {
