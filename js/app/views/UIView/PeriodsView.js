@@ -221,6 +221,7 @@ periodsVP._onMenuItemClick = function (event) {
 
 periodsVP._updateTable = function () {
     var thead = this._Table.find('thead tr');
+    thead.find('th span').off();
     var tbody = this._Table.find('tbody');
     thead.html('');
     tbody.html('');
@@ -308,7 +309,7 @@ periodsVP._updateTable = function () {
     thead.append(theadHtml);
     tbody.append(tbodyHtml);
 
-    thead.find('th span').bind('click', _.bind(this._on_Sort_Click, this));
+    thead.find('th span').on('click', _.bind(this._on_Sort_Click, this));
 };
 
 periodsVP._on_Sort_Click = function (event) {
