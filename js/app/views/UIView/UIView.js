@@ -178,7 +178,10 @@ uiViewP._onMapTypeBtnStateChanged = function () {
     if (this._Model.getFocusedObjectName() !== 'turkmenistan') {
         this._Model.setFocusedObjectName('turkmenistan');
     }
-    this._Model.setActiveTaxonomy(this._MapTypeBtn.getState());
+    else {
+        this._Model.setActiveTaxonomy(this._MapTypeBtn.getState());
+    }
+
 };
 
 uiViewP._onLayersBtnClick = function () {

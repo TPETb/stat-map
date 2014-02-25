@@ -77,6 +77,21 @@ html body button {
     margin: 0;
 }
 
+#Table th span {
+    background: url('../images/bg_sort_arrow.png') no-repeat;
+    background-position: right -1px;
+    padding: 0 15px 0 0;
+    cursor: pointer;
+}
+
+#Table th span.asc {
+    background-position: right -21px;
+}
+
+#Table th span.desc {
+    background-position: right -41px;
+}
+
 #LegendTable {
     box-shadow: none;
     padding: 15px;

@@ -87,6 +87,7 @@ periodsVP._addEventListeners = function () {
 };
 
 periodsVP._onActiveStatisticSet = function () {
+    this._Sort_Prop = null;
     this._ActiveStatistic = this._Model.getActiveStatistic();
 
     this._ActiveStatistic.CurrentPeriodSet.remove(this._onCurrentPeriodSet);
@@ -223,38 +224,106 @@ periodsVP._updateTable = function () {
     var tbody = this._Table.find('tbody');
     thead.html('');
     tbody.html('');
-    thead.append('<th>Регион</th>');
+    if (this._Sort_Prop && this._Sort_Prop.replace('_desc','') === 'title') {
+
+        if (this._Sort_Prop.search('_desc') > -1) {
+            thead.append('<th><span data="' + this._Sort_Prop + '" class="desc">Регион</span></th>');
+        }
+        else {
+            thead.append('<th><span data="' + this._Sort_Prop + '" class="asc">Регион</span></th>');
+        }
+
+
+    }
+    else {
+        thead.append('<th><span data="title">Регион</span></th>');
+    }
 
     var activeStatData = this._ActiveStatistic.getData();
     var activeTaxonomy = this._Model.getActiveTaxonomy();
 
     var theadHtml = '';
-    var tbodyHtml = [];
+    var tbodyHtml = '';
+    var visibleValues = [];
+    var periodsOrder = [];
+
+    for (var i = 0; i < activeStatData.periods.length; i++) {
+        if (activeStatData.periods[i].active) {
+            if (this._Sort_Prop && this._Sort_Prop.replace('_desc','') === activeStatData.periods[i].name) {
+                if (this._Sort_Prop.search('_desc') > -1) {
+                    theadHtml = theadHtml + '<th><span data="' + this._Sort_Prop + '" class="desc">'+ activeStatData.periods[i].title +'</span></th>';
+                }
+                else {
+                    theadHtml = theadHtml + '<th><span data="' + this._Sort_Prop + '" class="asc">'+ activeStatData.periods[i].title +'</span></th>';
+                }
+            }
+            else {
+                theadHtml = theadHtml + '<th><span data="' + activeStatData.periods[i].name + '">'+ activeStatData.periods[i].title +'</span></th>';
+            }
+
+            periodsOrder.push(activeStatData.periods[i].name);
+        }
+    }
 
     for (var i = 0; i < activeTaxonomy.length; i++) {
-        if (i > 0 && this._Model.getFocusedObjectName() !== activeTaxonomy[i].name && $.inArray(this._Model.getFocusedObjectName(), activeTaxonomy[i].parents) === -1) {
+        if (this._Model.getFocusedObjectName() !== activeTaxonomy[i].name && $.inArray(this._Model.getFocusedObjectName(), activeTaxonomy[i].parents) === -1) {
             continue;
         }
-        tbodyHtml.push('<tr><td>' + activeTaxonomy[i].title + '</td>');
+        var visibleValue = {
+            title: activeTaxonomy[i].title
+        };
+        visibleValues.push(visibleValue);
         for (var k = 0; k < activeStatData.periods.length; k++) {
             if (activeStatData.periods[k].active) {
-                if (i === 0) {
-                    theadHtml = theadHtml + '<th data="' + activeStatData.periods[k].name + '">'+ activeStatData.periods[k].title +'</th>';
-                }
                 for (var l = 0; l < activeStatData.periods[k].values.length; l++) {
                     if (activeStatData.periods[k].values[l].object === activeTaxonomy[i].name) {
-                        tbodyHtml[i] = tbodyHtml[i] + '<td>' + activeStatData.periods[k].values[l].value + '</td>';
+                        visibleValue[activeStatData.periods[k].name] = activeStatData.periods[k].values[l].value;
                         break;
                     }
                 }
             }
         }
-        tbodyHtml[i] = tbodyHtml[i] + '</tr>';
     }
 
-    tbodyHtml = tbodyHtml.join();
+    if (this._Sort_Prop) {
+        var sortProp = this._Sort_Prop.replace('_desc','');
+
+        visibleValues = _.sortBy(visibleValues, function(el){
+            return el[sortProp];
+        });
+
+        if (this._Sort_Prop.search('_desc') > -1) {
+            visibleValues = visibleValues.reverse();
+        }
+    }
+
+    for (var i = 0; i < visibleValues.length; i++) {
+        tbodyHtml = tbodyHtml + '<tr><td>' + visibleValues[i].title + '</td>';
+        for (var k = 0; k < periodsOrder.length; k++) {
+            tbodyHtml = tbodyHtml + '<td>' + visibleValues[i][periodsOrder[k]] + '</td>';
+        }
+        tbodyHtml = tbodyHtml + '</tr>';
+    }
+
     thead.append(theadHtml);
     tbody.append(tbodyHtml);
+
+    thead.find('th span').bind('click', _.bind(this._on_Sort_Click, this));
+};
+
+periodsVP._on_Sort_Click = function (event) {
+    this._Sort_Prop = $(event.currentTarget).attr('data');
+
+    if (!this._Sort_Prop) return;
+
+    if (this._Sort_Prop.search('_desc') > -1) {
+        this._Sort_Prop = this._Sort_Prop.replace('_desc', '');
+    }
+    else {
+        this._Sort_Prop = this._Sort_Prop + '_desc';
+    }
+
+    this._updateTable();
 };
 
 periodsVP.getCheckedPeriodsNames = function () {
